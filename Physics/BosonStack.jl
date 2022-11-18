@@ -12,21 +12,24 @@ end
 
 function f()
     d = 4; L = 4; N = 3
-    dt = 0.01; t = 30
-    U = 10
+    U = 50
     J = 2
-    target = 1
+    dt = 0.1 * U; t = 15 * U
+    J_e = (-1)^(N - 1) * N / factorial(N - 1) * (J/U)^(N - 1) * J
+    target = 2
     state0 = bosonstack(N, L, target)
     result = exactevolve_bosehubbard(d, L, state0, dt, t; U, J)
     res = []
     for i in 1:4
         push!(res, n_i_expval(result, d, L, i))
     end
-    pl = plot(0:dt:t, res[1], label = "site = 1", title = "U = $(U), J = $(J)")
-    plot!(pl, 0:dt:t, res[2], label = "site = 2")
-    plot!(pl, 0:dt:t, res[3], label = "site = 3")
-    plot!(pl, 0:dt:t, res[4], label = "site = 4")
-    saveplot(pl, "boson_stack_$(target)")
+    times = (0:dt:t) / (pi / J_e)
+    pl = plot(times, res[1], label = "site = 1", title = "U = $(U), J = $(J)")
+    plot!(pl, times, res[2], label = "site = 2")
+    plot!(pl, times, res[3], label = "site = 3")
+    plot!(pl, times, res[4], label = "site = 4")
+    plot!(pl, times, x -> 3/2 * (cos(x * 2 * pi) + 1))
+    #saveplot(pl, "boson_stack_$(target)")
     pl
 end
 

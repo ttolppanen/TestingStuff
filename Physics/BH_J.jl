@@ -6,16 +6,17 @@ using Plots
 include("Utility/PlotSaving.jl")
 
 function f()
-    d = 3; L = 5
-    dt = 0.01; t = L
-    J = 1
-    target = 3
+    d = 3; L = 2
+    dt = 0.01; t = 3
+    J = 3
+    target = 1
     state0 = singleone(d, L, target)
     result = exactevolve_bosehubbard(d, L, state0, dt, t; J)
     n = singlesite_n(d, L, target)
     result = expval(result, n)
-    pl = plot(0:dt:t, result, title = "J = $(J)")
-    saveplot(pl, "middle_bsn_n")
+    x_t = (0:dt:t) / (pi / J)
+    pl = plot(x_t, result, title = "J = $(J)")
+    #saveplot(pl, "middle_bsn_n")
     pl
 end
 
