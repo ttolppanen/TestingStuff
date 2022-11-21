@@ -28,7 +28,7 @@ function f()
     plot!(pl, times, res[2], label = "site = 2")
     plot!(pl, times, res[3], label = "site = 3")
     plot!(pl, times, res[4], label = "site = 4")
-    plot!(pl, times, x -> 3/2 * (cos(x * 2 * pi) + 1))
+    plot!(pl, times, x -> 3 * (cos(x * pi)^2))
     #saveplot(pl, "boson_stack_$(target)")
     pl
 end
