@@ -24,6 +24,9 @@ function f()
         push!(res, n_i_expval(result, d, L, i))
     end
     times = (0:dt:t) / (pi / J_e)
+    @show times[1]
+    @show times[2]
+    @show times[3]
     pl = plot(times, res[1], label = "site = 1", title = "U = $(U), J = $(J)")
     plot!(pl, times, res[2], label = "site = 2")
     plot!(pl, times, res[3], label = "site = 3")
