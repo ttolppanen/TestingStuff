@@ -618,27 +618,21 @@ version = "5.15.3+2"
 
 [[deps.QuantumOperators]]
 deps = ["ITensors", "KrylovKit", "LinearAlgebra", "SparseArrays"]
-git-tree-sha1 = "0f14a3d1d25758c1324f6b91e0ca341286be5781"
-repo-rev = "master"
-repo-url = "https://github.com/ttolppanen/QuantumOperators.git"
+git-tree-sha1 = "c74171cd8c011afe5b6507c4d5c352ac124bb584"
 uuid = "c0e07f3f-1bc3-43ad-95cf-312e5bf06829"
-version = "0.1.5"
+version = "0.1.6"
 
 [[deps.QuantumStates]]
 deps = ["ITensors", "SparseArrays"]
 git-tree-sha1 = "e7f1383f704da6e475240eec490a5c558860ee45"
-repo-rev = "master"
-repo-url = "https://github.com/ttolppanen/QuantumStates.git"
 uuid = "0a1581c1-ab82-4660-a1be-26f7b3483457"
 version = "0.1.2"
 
 [[deps.QuantumTimeEvolution]]
-deps = ["ITensors", "LinearAlgebra", "QuantumOperators", "SparseArrays"]
-git-tree-sha1 = "86a61101a807bbb5c80b4dbeaf3c7e306b9dd1ea"
-repo-rev = "master"
-repo-url = "https://github.com/ttolppanen/QuantumTimeEvolution.git"
+deps = ["ITensors", "LinearAlgebra", "QuantumOperators", "SparseArrays", "StaticArrays"]
+git-tree-sha1 = "6132db1ef352ed34d5a57d04a147a4357b60e411"
 uuid = "7373133c-a6f7-4e95-971a-e453f442ca60"
-version = "0.1.1"
+version = "0.1.2"
 
 [[deps.REPL]]
 deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
