@@ -33,6 +33,7 @@ function mpsconvergence(d::Integer, L::Integer; maxdim=2)
         r_m = mpsevolve(mps0, gates, dt, t; maxdim)
         ent2 = [entanglement(s, half) for s in r_m]
         dif = maximum(abs.(ent1 .- ent2))
+        @show dif
         if dif < 1E-8 break end
         ent1 .= ent2
     end
@@ -66,5 +67,5 @@ end
 # f("e")
 # f("k")
 # f("m")
-# @show exactmpsdifference(3, 6;cutoff=1E-14, maxdim=10);
-@show mpsconvergence(2, 12; maxdim = 32)
+@show exactmpsdifference(2, 8; cutoff=1E-14, maxdim=16);
+# @show mpsconvergence(2, 8; maxdim = 8)
