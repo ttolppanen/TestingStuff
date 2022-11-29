@@ -230,9 +230,9 @@ version = "0.1.2"
 
 [[deps.QuantumTimeEvolution]]
 deps = ["ITensors", "LinearAlgebra", "QuantumOperators", "SparseArrays", "StaticArrays"]
-git-tree-sha1 = "2685e9f7439aa16d319f48bfe1e5301dbadbeb17"
+git-tree-sha1 = "bf9bf26a2321d2e2bf62c13f24dc20d1be9551c6"
 uuid = "7373133c-a6f7-4e95-971a-e453f442ca60"
-version = "0.2.1"
+version = "0.2.5"
 
 [[deps.REPL]]
 deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
