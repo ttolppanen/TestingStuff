@@ -6,14 +6,15 @@ using Plots
 include("Utility/PlotSaving.jl")
 
 function mipt(d, L, dt, t, traj, prob)
-    cutoff=1E-12; maxdim=32
+    maxdim = 10
     state0 = zeroonemps(d, L)
+    gates = bosehubbardgates(siteinds(state0), dt)
     op_to_msr = nop(d)
     msrop = measurementoperators(op_to_msr, siteinds(state0))
     res = []
     for p in prob
         meffect!(state) = measuresitesrandomly!(state, msrop, p; cutoff, maxdim)
-        r_f() = mpsevolve_bosehubbard(state0, dt, t; effect! = meffect!, savelast = true, cutoff, maxdim)
+        r_f() = mpsevolve(state0, gates, dt, t; effect! = meffect!, savelast = true, maxdim)
         r_traj = solvetrajectories(r_f, traj)
         r_mean = trajmean(r_traj, s->entanglement(s, Int(floor(L/2))))
         push!(res, r_mean[1])
@@ -22,11 +23,12 @@ function mipt(d, L, dt, t, traj, prob)
 end
 
 function f()
-    res(L) = mipt(2, L, 0.2, 20.0, 10, 0.01:0.1:0.3)
+    res(L) = mipt(2, L, 0.6, 20.0, 100, 0.1:0.2:0.7)
 
-    pl = plot(res(12))
-    #plot!(pl, res(6))
-    #plot!(pl, res(8))
+    pl = plot(res(8))
+    plot!(pl, res(10))
+    plot!(pl, res(12))
+    # plot!(pl, res(10))
     #saveplot(pl, "MIPT_qubits")
     pl
 end
