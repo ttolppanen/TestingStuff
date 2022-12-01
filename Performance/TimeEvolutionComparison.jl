@@ -2,7 +2,6 @@ using QuantumStates
 using QuantumOperators
 using QuantumTimeEvolution
 using ITensors
-using BenchmarkTools
 using Plots
 
 include("Utility/PlotSaving.jl")
@@ -45,32 +44,26 @@ function calctimes(L)
     d = 2
     dt = 0.02; t = 20
     # maxdim = Int((d^L)/2)
-    maxdim = 5
-    cutoff = 1E-8
+    maxdim = 10
     state0 = zeroone(d, L)
     mps0 = zeroonemps(d, L)
     H = bosehubbard(d, L)
-    U = exp(-im * dt * Matrix(H))
-    gates = bosehubbardgates(siteinds(mps0), dt; k=1)
-    t_e = @belapsed exactevolve($state0, $U, $dt, $t)
-    t_k = @belapsed krylovevolve($state0, $H, $dt, $t, 6)
-    t_m = @belapsed mpsevolve($mps0, $gates, $dt, $t; $cutoff, $maxdim)
-    return t_e, t_k, t_m
+    gates = bosehubbardgates(siteinds(mps0), dt; k=2)
+    t_k = @elapsed krylovevolve(state0, H, dt, t, 6)
+    t_m = @elapsed mpsevolve(mps0, gates, 0.6, t; maxdim)
+    return t_k, t_m
 end
 
 function f()
-    e_times = []
     k_times = []
     m_times = []
-    Ls = 10:12
+    Ls = 12:18
     for L in Ls
-        t_e, t_k, t_m = calctimes(L)
-        push!(e_times, t_e)
+        t_k, t_m = calctimes(L)
         push!(k_times, t_k)
         push!(m_times, t_m)
     end
-    pl = plot(Ls, e_times, title = "maxdim = 5, cutoff = 1E-8", label = "exact")
-    plot!(pl, Ls, k_times, label = "krylov")
+    pl = plot(Ls, k_times, title = "maxdim = 10", label = "krylov", yaxis=:log)
     plot!(pl, Ls, m_times, label = "mps")
     # saveplot(pl, "time comparison")
 end
