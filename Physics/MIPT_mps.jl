@@ -23,15 +23,16 @@ function mipt(d, L, dt, t, traj, prob)
 end
 
 function f()
-    res(L) = mipt(2, L, 0.6, 20.0, 20, 0.2:0.1:0.6)
+    res(L) = mipt(2, L, 0.6, 20.0, 10, 0.2:0.2:0.8)
 
     pl = plot(res(8))
     plot!(pl, res(10))
     plot!(pl, res(12))
     # plot!(pl, res(10))
-    #saveplot(pl, "MIPT_qubits")
+    # saveplot(pl, "MIPT_qubits")
     pl
 end
 
-@time f()
+# 30min for 200 traj, 8 10 12 qubits, 0:0.6:20.0t, 0.2:0.1:0.6
+@profview @time f()
 
