@@ -6,7 +6,7 @@ using Plots
 include("Utility/PlotSaving.jl")
 
 function mipt(d, L, dt, t, traj, prob)
-    maxdim = 10
+    maxdim = 4
     state0 = zeroonemps(d, L)
     gates = bosehubbardgates(siteinds(state0), dt)
     op_to_msr = nop(d)
@@ -23,7 +23,7 @@ function mipt(d, L, dt, t, traj, prob)
 end
 
 function f()
-    res(L) = mipt(2, L, 0.6, 20.0, 100, 0.1:0.2:0.7)
+    res(L) = mipt(2, L, 0.6, 20.0, 20, 0.2:0.1:0.6)
 
     pl = plot(res(8))
     plot!(pl, res(10))
