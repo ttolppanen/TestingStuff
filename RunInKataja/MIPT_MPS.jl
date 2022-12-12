@@ -16,7 +16,7 @@ end
 function f(L::Integer; addplot = true)
     d = 2;
     dt = 0.6; t = 20
-    prob = 0.6:0.1:0.9; traj = 1
+    prob = 0.6:0.1:0.9; traj = 1000
     cutoff = 1E-8; maxdim = 5
     mps0 = zeroonemps(d, L)
     gates = bosehubbardgates(siteinds(mps0), dt; U=1)
