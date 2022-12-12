@@ -36,5 +36,5 @@ function mps(d, L, dt, t; addplot=false)
 end
 
 # exact(3, 3, 0.1, 2)
-# krylov(2, 8, 0.02, 20, 6; addplot=false)
-mps(3, 4, 0.6, 10; addplot=false)
+krylov(2, 8, 0.02, 20, 6; addplot=false)
+# mps(3, 4, 0.6, 10; addplot=false)
