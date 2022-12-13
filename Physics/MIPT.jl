@@ -4,30 +4,28 @@ using QuantumTimeEvolution
 using Plots
 include("Utility/PlotSaving.jl")
 
-function mipt(d, L, dt, t, traj, prob)
+function make_msrop(d, L)
+    msrop = measurementoperators(nop(d), L)
+    proj_op1 = n_bosons_projector(d, 1)
+    proj_op2 = n_bosons_projector(d, 0)
+    v_p = [isodd(i) ? proj_op1 : proj_op2 for i in 1:L]
+    # unitary_after_measurement!(v_p, msrop)
+    return msrop
+end
+
+function f(d, L, dt, t, k, traj; addplot = true)
+    gamma = 1:1:10
+    prob = dt * gamma
     state0 = zeroone(d, L)
-    op_to_msr = nop(d)
-    msrop = measurementoperators(op_to_msr, L)
-    res = []
-    for p in prob
-        meffect!(state) = measuresitesrandomly!(state, msrop, p)
-        r_exact() = krylovevolve_bosehubbard(d, L, state0, dt, t, 6; effect! = meffect!, savelast = true)
-        r_traj = solvetrajectories(r_exact, traj)
-        r_mean = trajmean(r_traj, s->entanglement(d, L, s, Int(floor(L/2))))
-        push!(res, r_mean[1])
-    end
-    return prob, res
+    H = bosehubbard(d, L)
+    msrop = make_msrop(d, L)
+    meffect!(state, msr_prob) = measuresitesrandomly!(state, msrop, msr_prob)
+    calc_ent(r_traj) = trajmean(r_traj, s -> entanglement(d, L, s, Int(floor(L/2))))
+    res = mipt(state0, H, k, meffect!, dt, t, prob, traj, calc_ent)
+    addplot ? plot!(gamma, res, label = "dt = $dt") : plot(gamma, res, label = "dt = $dt")
 end
 
-function f()
-    res(L) = mipt(2, L, 0.1, 20.0, 50, 0.01:0.01:0.3)
-
-    pl = plot(res(4))
-    plot!(pl, res(6))
-    plot!(pl, res(8))
-    #saveplot(pl, "MIPT_qubits")
-    pl
-end
-
-@time f()
-
+@time f(2, 6, 0.02, 30, 6, 5000; addplot = false)
+@time f(2, 6, 0.04, 30, 6, 5000; addplot = true)
+@time pl = f(2, 6, 0.08, 30, 6, 5000; addplot = true)
+saveplot(pl, "mipt_timestep_difference")

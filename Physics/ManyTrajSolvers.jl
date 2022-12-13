@@ -40,5 +40,6 @@ function mps(d, L, dt, t, traj, msr_prob; addplot=false)
 end
 
 # exact(3, 3, 0.1, 5, 10, 0.1)
-# @time krylov(2, 8, 0.02, 20, 6, 100, 0.02; addplot=false)
-@time mps(2, 16, 0.6, 20, 100, 0.02 * 0.6 / 0.02; addplot=true)
+# @time krylov(2, 6, 0.02, 30, 6, 2000, 0.02; addplot=false)
+@time krylov(2, 6, 0.12, 30, 6, 2000, 0.11; addplot=true)
+# @time mps(2, 16, 0.6, 20, 100, 0.02 * 0.6 / 0.02; addplot=true)
