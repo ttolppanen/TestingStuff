@@ -8,6 +8,8 @@ using QuantumTimeEvolution
 using ITensors
 using Plots
 
+include("PlotSaving.jl")
+
 function make_msrop(d, state, L)
     msrop = measurementoperators(nop(d), siteinds(state))
     proj_op1 = n_bosons_projector(d, 1)
@@ -20,7 +22,7 @@ end
 function f(L::Integer; addplot = true)
     d = 2;
     dt = 0.6; t = 20
-    prob = 0.6:0.1:0.9; traj = 1000
+    prob = 0.1:0.1:0.9; traj = 1
     cutoff = 1E-8; maxdim = 5
     mps0 = zeroonemps(d, L)
     gates = bosehubbardgates(siteinds(mps0), dt; U=1)
@@ -33,5 +35,5 @@ end
 
 @time f(6; addplot = false)
 @time f(8)
-@time f(10)
-savefig("out.png")
+@time pl = f(10)
+saveplot(pl, "")
