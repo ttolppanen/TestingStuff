@@ -27,12 +27,22 @@ function krylov(d, L, dt, t, k, traj, msr_prob; addplot=false)
     return addplot ? plot!(ts, ent) : plot(ts, ent)
 end
 
-function mps(d, L, dt, t, traj, msr_prob; addplot=false)
-    maxdim = 4
+function make_msrop(d, state, L)
+    msrop = measurementoperators(nop(d), siteinds(state))
+    proj_op1 = n_bosons_projector(d, 1)
+    proj_op2 = n_bosons_projector(d, 0)
+    v_p = [isodd(i) ? proj_op1 : proj_op2 for i in 1:L]
+    unitary_after_measurement!(v_p, msrop)
+    return msrop
+end
+
+function mps(d, L, dt, t, traj, msr_prob; addplot=false, kwargs...)
     state = zeroonemps(d, L)
     gates = bosehubbardgates(siteinds(state), dt; k=2)
-    effect! = measuresitesrandomly!(siteinds(state), nop(d), msr_prob; maxdim)
-    r_f() = mpsevolve(state, gates, dt, t; effect!, maxdim)
+    msrop = make_msrop(d, state, L)
+    effect!(state) = measuresitesrandomly!(state, msrop, msr_prob; kwargs...)
+    # effect! = measuresitesrandomly!(siteinds(state), nop(d), msr_prob; maxdim)
+    r_f() = mpsevolve(state, gates, dt, t; effect!, kwargs...)
     r = solvetrajectories(r_f, traj)
     ent = trajmean(r, s -> entanglement(s, Int(floor(L/2))))
     ts = 0:dt:t
@@ -41,5 +51,5 @@ end
 
 # exact(3, 3, 0.1, 5, 10, 0.1)
 # @time krylov(2, 6, 0.02, 30, 6, 2000, 0.02; addplot=false)
-@time krylov(2, 6, 0.12, 30, 6, 2000, 0.11; addplot=true)
-# @time mps(2, 16, 0.6, 20, 100, 0.02 * 0.6 / 0.02; addplot=true)
+# @time krylov(2, 6, 0.12, 30, 6, 2000, 0.11; addplot=true)
+@time mps(2, 8, 0.6, 30, 500, 0.1; addplot=false, maxdim=5; cutoff=1E-8)
