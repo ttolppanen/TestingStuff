@@ -1,9 +1,10 @@
+using Distributed
 using QuantumStates
 using QuantumOperators
-using QuantumTimeEvolution
 using ITensors
 using Plots
-include("Utility/PlotSaving.jl")
+
+@everywhere using QuantumTimeEvolution
 
 function krylov(d, L, dt, t, k, traj, prob; addplot = true)
     function make_msrop(d, L)
@@ -19,8 +20,8 @@ function krylov(d, L, dt, t, k, traj, prob; addplot = true)
     msrop = measurementoperators(nop(d), L)
     meffect!(state, msr_prob) = measuresitesrandomly!(state, msrop, msr_prob)
     calc_ent(r_traj) = trajmean(r_traj, s -> entanglement(d, L, s, Int(floor(L/2))))
-    res = mipt(state0, H, k, meffect!, dt, t, prob, traj, calc_ent)
-    addplot ? plot!(prob, res, label = "dt = $dt") : plot(prob, res, label = "dt = $dt")
+    res = mipt(state0, H, k, meffect!, dt, t, prob, traj, calc_ent; paral = :distributed)
+    addplot ? plot!(prob, res, label = "krylov") : plot(prob, res, label = "krylov")
 end
 
 function mps(d, L, dt, t, traj, prob; addplot = true, kwargs...)
@@ -37,10 +38,10 @@ function mps(d, L, dt, t, traj, prob; addplot = true, kwargs...)
     msrop = measurementoperators(nop(d), siteinds(mps0))
     meffect!(state, msr_prob) = measuresitesrandomly!(state, msrop, msr_prob; kwargs...)
     calc_ent(r_traj) = trajmean(r_traj, s -> entanglement(s, Int(floor(L/2))))
-    res = mipt(mps0, gates, meffect!, dt, t, prob, traj, calc_ent; kwargs...)
-    addplot ? plot!(prob, res, label = "L = $L") : plot(prob, res, label = "L = $L")
+    res = mipt(mps0, gates, meffect!, dt, t, prob, traj, calc_ent; paral = :distributed, kwargs...)
+    addplot ? plot!(prob, res, label = "mps") : plot(prob, res, label = "mps")
 end
 
-
-@time krylov(2, 6, 0.6, 30, 6, 1000, 0.1:0.1:0.4; addplot = false)
-@time mps(2, 6, 0.6, 30, 100, 0.1:0.1:0.4; addplot = true, maxdim = 5, cutoff = 1E-8)
+@time krylov(2, 6, 0.6, 30, 6, 100, 0.01:0.02:0.21; addplot = false)
+# @time mps(2, 6, 0.6, 30, 1, 0.01:0.02:0.21; addplot = true, maxdim = 5, cutoff = 1E-8)
+# png("mps_small_prob")
