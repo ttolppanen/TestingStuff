@@ -50,6 +50,6 @@ function mps(d, L, dt, t, traj, msr_prob; addplot=false, kwargs...)
 end
 
 # exact(3, 3, 0.1, 5, 10, 0.1)
-# @time krylov(2, 6, 0.02, 30, 6, 2000, 0.02; addplot=false)
+@time krylov(2, 6, 0.6, 30, 6, 1000, 0.05; addplot=false)
 # @time krylov(2, 6, 0.12, 30, 6, 2000, 0.11; addplot=true)
-@time mps(2, 8, 0.6, 30, 500, 0.1; addplot=false, maxdim=5; cutoff=1E-8)
+@time mps(2, 6, 0.6, 30, 200, 0.05; addplot=true, maxdim=5, cutoff=1E-8)
