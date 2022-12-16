@@ -1,4 +1,8 @@
 using Distributed
+@everywhere begin
+    using Pkg; Pkg.activate(".")
+    Pkg.instantiate(); Pkg.precompile()
+end
 using QuantumStates
 using QuantumOperators
 using ITensors
@@ -42,8 +46,8 @@ function mps(d, L, dt, t, traj, prob; addplot = true, kwargs...)
     addplot ? plot!(prob, res, label = "mps") : plot(prob, res, label = "mps")
 end
 
-@time krylov(2, 6, 0.3, 30, 6, 5000, 0.01:0.1:0.91; addplot = false)
-@time krylov(2, 8, 0.3, 30, 6, 4000, 0.01:0.1:0.91; addplot = true)
-@time krylov(2, 10, 0.3, 30, 6, 2000, 0.01:0.1:0.91; addplot = true)
-# @time mps(2, 6, 0.6, 30, 1000, 0.01:0.1:0.91; addplot = true, maxdim = 5, cutoff = 1E-8)
-# png("mps_small_prob")
+@time krylov(2, 6, 0.6, 30, 6, 1000, 0.01:0.1:0.91; addplot = false)
+@time krylov(2, 8, 0.6, 30, 6, 1000, 0.01:0.1:0.91; addplot = true)
+@time krylov(2, 10, 0.6, 30, 6, 1000, 0.01:0.1:0.91; addplot = true)
+@time mps(2, 8, 0.6, 30, 1000, 0.01:0.1:0.91; addplot = true, maxdim = 5, cutoff = 1E-8)
+png("mps_small_prob_L8")
