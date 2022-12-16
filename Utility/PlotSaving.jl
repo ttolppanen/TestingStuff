@@ -7,7 +7,8 @@ function filename()
 end
 
 function saveplot(pl, name)
-    path = joinpath(pwd(), "Performance", "plots", filename())
+    path = joinpath(pwd(), "Physics", "plots", filename())
     mkpath(path)
     savefig(pl, joinpath(path, name * ".png"))
 end
+@show joinpath(dirname(@__FILE__), "pltohere.png")
