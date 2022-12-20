@@ -28,7 +28,7 @@ function krylov(d, L, dt, t, k, traj, prob; addplot = true, color = :auto)
     end
     state0 = zeroone(d, L)
     H = bosehubbard(d, L)
-    msrop = make_msrop(d, L)
+    msrop = measurementoperators(nop(d), L)
     meffect!(state, msr_prob) = measuresitesrandomly!(state, msrop, msr_prob)
     calc_ent(r_traj) = trajmean(r_traj, s -> entanglement(d, L, s, Int(floor(L/2))))
     res = mipt(state0, H, k, meffect!, dt, t, prob * dt, traj, calc_ent; paral = :distributed)
