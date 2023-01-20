@@ -5,10 +5,10 @@ using DelimitedFiles
 function ReadData(fileName)
     fileNamesWithVector = ["halfLN", "LN", "smallLN", "corrlN"]
     if ContainsMeanAndVariance(fileName) && !(ContainsProperFluc(fileName))
-        data = load("/home/htolppan/Data for the paper/" * fileName * "/data.jld2", "x", "y")
+        data = load("/data/htolppan/Data for the paper/" * fileName * "/data.jld2", "x", "y")
         return data[1], SeparateMeanAndVar(data[2][1]), SeparateMeanAndVar(data[2][2]), SeparateMeanAndVar(data[2][3]), SeparateMeanAndVar(data[2][4])
     else
-        data = load("/home/htolppan/Data for the paper/" * fileName * "/data.jld2", "x", "y")
+        data = load("/data/htolppan/Data for the paper/" * fileName * "/data.jld2", "x", "y")
         return data[1], data[2][1], data[2][2], data[2][3], data[2][4]
     end
 end
