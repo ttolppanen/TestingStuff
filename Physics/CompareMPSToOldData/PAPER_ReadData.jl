@@ -1,5 +1,5 @@
 using JLD2
-using Plots
+using Gadfly
 using DelimitedFiles
 
 function ReadData(fileName)
@@ -55,10 +55,8 @@ function SaveVectorMatlab(data, observableName, dataTypeName)
     writedlm(path * "/" * dataTypeName * ".csv", data)
 end
 
-function f()
+function MakePlotFromOldData()
     x, y4, y6, y8, y10 = ReadData("M2_Entanglement")
-    display(length(y8[1]))
-    plot(x, y8[1])
+    @show x
+    return layer(x=x, y=y8[1], Geom.line, color=["Old Data"])
 end
-
-f()
