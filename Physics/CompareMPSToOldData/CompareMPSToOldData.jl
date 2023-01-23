@@ -4,10 +4,11 @@ using MIPTDataProcessing
 function f()
     oldlayer = MakePlotFromOldData()
     filename = "mipt_same_results"
-    prob = get_probabilities(filename, "mipt_1")
-    dataend = get_data_end_mean(filename, "mipt_1", prob, :entanglement_half)
+    groupname = "mipt_2"
+    prob = get_probabilities(filename, groupname)
+    dataend = get_data_end_mean(filename, groupname, prob, :entanglement_half)
     newLayer = layer(x=prob, y=dataend, Geom.line, color = ["New Data (MPS)"])
-    title = get_attributes_string(filename, "mipt_1")
+    title = get_attributes_string(filename, groupname)
     cut1 = 68
     cut2 = cut1 + 59
     title = title[1:cut1] * "\n" * title[cut1:cut2] * "\n" * title[cut2:end]
