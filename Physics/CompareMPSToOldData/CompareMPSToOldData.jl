@@ -4,7 +4,7 @@ using MIPTDataProcessing
 function f()
     oldlayer = MakePlotFromOldData()
     filename = "mipt_same_results"
-    groupname = "mipt_4"
+    groupname = "mipt_5"
     prob = get_probabilities(filename, groupname)
     dataend = get_data_end_mean(filename, groupname, prob, :entanglement_half)
     newLayer = layer(x=prob, y=dataend, Geom.line, color = ["New Data"])
