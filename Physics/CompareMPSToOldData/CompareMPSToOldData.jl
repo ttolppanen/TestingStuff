@@ -9,16 +9,15 @@ function f()
     filename = "mipt_same_results"
     l1 = getlayer("mipt_6", colorname = "krylov")
     prob = get_probabilities(filename, "mipt_6")
-    l2 = krylov(2, 8, 0.02, 30, 6, 500, prob; w=0, J=1, U=10)
     title = get_attributes_string(filename, "mipt_6")
-    p = plot(oldlayer, l1, l2, Guide.title(title))
+    p = plot(oldlayer, l1, Guide.title(title))
     p |> SVG("test.svg", 6inch, 4inch)
 end
 
 function getlayer(groupname; colorname = "New Data")
     filename = "mipt_same_results"
     prob = get_probabilities(filename, groupname)
-    dataend = get_data_end_mean(filename, groupname, prob, :entanglement_half)
+    dataend = get_data_end_mean(filename, groupname, prob, :boson_half)
     newLayer = layer(x=prob, y=dataend, Geom.line, color = [colorname])
 end
 
