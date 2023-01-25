@@ -181,9 +181,9 @@ uuid = "7b1f6079-737a-58dc-b8bc-7a2ca5c1b5ee"
 
 [[deps.FillArrays]]
 deps = ["LinearAlgebra", "Random", "SparseArrays", "Statistics"]
-git-tree-sha1 = "9a0472ec2f5409db243160a8b030f94c380167a3"
+git-tree-sha1 = "d3ba08ab64bdfd27234d3f61956c966266757fe6"
 uuid = "1a297f60-69ca-5386-bcde-b61e274b549b"
-version = "0.13.6"
+version = "0.13.7"
 
 [[deps.FixedPointNumbers]]
 deps = ["Statistics"]
@@ -376,9 +376,9 @@ uuid = "56ddb016-857b-54e1-b83d-db4d58db5568"
 
 [[deps.MIPTDataProcessing]]
 deps = ["HDF5", "ITensors", "QuantumOperators", "QuantumStates", "QuantumTimeEvolution", "Statistics", "TOML"]
-git-tree-sha1 = "7eae052885b5acc60a5448d259afaaaafe1e0471"
+git-tree-sha1 = "67345d36365436fdf8e880a3c73a906eee730857"
 uuid = "59e4b0ad-08a5-4ebc-afae-402296ac7198"
-version = "0.1.6"
+version = "0.1.7"
 
 [[deps.MKL_jll]]
 deps = ["Artifacts", "IntelOpenMP_jll", "JLLWrappers", "LazyArtifacts", "Libdl", "Pkg"]
