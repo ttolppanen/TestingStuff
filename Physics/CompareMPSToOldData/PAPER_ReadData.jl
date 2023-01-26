@@ -56,7 +56,7 @@ function SaveVectorMatlab(data, observableName, dataTypeName)
 end
 
 function MakePlotFromOldData()
-    x, y4, y6, y8 = ReadData("M2_Entanglement")
+    x, y4, y6, y8 = ReadData("M2_halfLNexpval")
     @show x
     return layer(x=x, y=y8[1], Geom.line, color=["Old Data"])
 end

@@ -7,9 +7,9 @@ using QuantumTimeEvolution
 function f()
     oldlayer = MakePlotFromOldData()
     filename = "mipt_same_results"
-    layers = [getlayer("mipt_6", colorname = "krylov"), getlayer("mipt_1", colorname = "mps")]
-    prob = get_probabilities(filename, "mipt_6")
-    title = get_attributes_string(filename, "mipt_1")
+    layers = [getlayer("mipt_7", colorname = "krylov")]
+    prob = get_probabilities(filename, "mipt_7")
+    title = get_attributes_string(filename, "mipt_7")
     p = plot(oldlayer, layers..., Guide.title(title))
     p |> SVG("test.svg", 6inch, 4inch)
 end
@@ -17,7 +17,7 @@ end
 function getlayer(groupname; colorname = "New Data")
     filename = "mipt_same_results"
     prob = get_probabilities(filename, groupname)
-    dataend = get_data_end_mean(filename, groupname, prob, :entanglement_half)
+    dataend = get_data_end_mean(filename, groupname, prob, :boson_half)
     newLayer = layer(x=prob, y=dataend, Geom.line, color = [colorname])
 end
 
