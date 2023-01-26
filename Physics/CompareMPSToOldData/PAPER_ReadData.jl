@@ -6,10 +6,10 @@ function ReadData(fileName)
     fileNamesWithVector = ["halfLN", "LN", "smallLN", "corrlN"]
     if ContainsMeanAndVariance(fileName) && !(ContainsProperFluc(fileName))
         data = load("/data/htolppan/Data for the paper/" * fileName * "/data.jld2", "x", "y")
-        return data[1], SeparateMeanAndVar(data[2][1]), SeparateMeanAndVar(data[2][2]), SeparateMeanAndVar(data[2][3]), SeparateMeanAndVar(data[2][4])
+        return data[1], SeparateMeanAndVar(data[2][1]), SeparateMeanAndVar(data[2][2]), SeparateMeanAndVar(data[2][3])
     else
         data = load("/data/htolppan/Data for the paper/" * fileName * "/data.jld2", "x", "y")
-        return data[1], data[2][1], data[2][2], data[2][3], data[2][4]
+        return data[1], data[2][1], data[2][2], data[2][3]
     end
 end
 function ContainsProperFluc(filename)
@@ -56,7 +56,7 @@ function SaveVectorMatlab(data, observableName, dataTypeName)
 end
 
 function MakePlotFromOldData()
-    x, y4, y6, y8, y10 = ReadData("M2_halfLNexpval")
+    x, y4, y6, y8 = ReadData("M2_Entanglement")
     @show x
     return layer(x=x, y=y8[1], Geom.line, color=["Old Data"])
 end
