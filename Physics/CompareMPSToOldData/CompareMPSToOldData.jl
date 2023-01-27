@@ -7,9 +7,9 @@ using QuantumTimeEvolution
 function f()
     # oldlayer = MakePlotFromOldData()
     filename = "mipt_same_results"
-    layers = [getlayer("mipt_3", colorname = "w = 100"), getlayer("mipt_6", colorname = "w = 0")]
-    prob = get_probabilities(filename, "mipt_3")
-    title = get_attributes_string(filename, "mipt_3")
+    layers = [getlayer("mipt_9", colorname = "w = 100"), getlayer("mipt_8", colorname = "w = 0")]
+    prob = get_probabilities(filename, "mipt_9")
+    title = get_attributes_string(filename, "mipt_9")
     p = plot(layers..., Guide.title(title))
     p |> SVG("test.svg", 6inch, 4inch)
 end
