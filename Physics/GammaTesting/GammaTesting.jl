@@ -24,4 +24,17 @@ function getlayer(groupname)
     newLayer = layer(x=prob ./ dt, y=dataend, Geom.line, color = ["dt = $dt"])
 end
 
+function accuracy_test()
+    filename = "mipt_same_results"
+    dt08 = "mipt_11"
+    dt08k10 = "mipt_12"
+    println(get_attributes_string(filename, dt08; addnewline = false))
+    println(get_attributes_string(filename, dt08k10; addnewline = false))
+    layers = [getlayer(dt08), getlayer(dt08k10)]
+    title = get_attributes_string(filename, dt08k10)
+    p = plot(layers..., Guide.title(title), Guide.xlabel("Gamma"))
+    p |> SVG("test.svg", 6inch, 4inch)
+end
+
 # f()
+accuracy_test()
