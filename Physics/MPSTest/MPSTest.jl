@@ -3,7 +3,7 @@ using Gadfly
 
 function f()
     filename = "mipt_same_results"
-    groups = ["mipt_15", "mipt_16"]
+    groups = ["mipt_15", "mipt_16", "mipt_17", "mipt_18"]
     for g in groups
         println(get_attributes_string(filename, g; addnewline = false))
     end

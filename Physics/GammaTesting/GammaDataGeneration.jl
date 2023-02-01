@@ -24,5 +24,20 @@ function make_data_higher_k()
     J=1, observables=[:entanglement_half])
 end
 
+function make_collapse_data()
+    dts = [0.02, 0.04, 0.08]
+    probs = [0.01:0.0025:0.06, 0.02:0.01:0.12, 0.04:0.01:0.24]
+    traj = 7000
+    for L in 6:2:10
+        @time generate_data("mipt_same_results"; alg= :krylov, d=2, L, dt=dts[1], t=30, state= :zeroone, k=6, 
+        probabilities=probs[1], measurement= :std_n, traj, w=0, U=10, 
+        J=1, observables=[:entanglement_half])
+        @time generate_data("mipt_same_results"; alg= :krylov, d=2, L, dt=dts[3], t=30, state= :onezero, k=6, 
+        probabilities=probs[3], measurement= :std_n, traj, w=0, U=10,
+        J=1, observables=[:entanglement_half])
+    end
+end
+
 # make_data()
-make_data_higher_k()
+# make_data_higher_k()
+make_collapse_data()
