@@ -32,7 +32,7 @@ function krylov(d, L, dt, t, k, traj, prob; color = :auto, kwargs...)
     meffect!(state, msr_prob) = measuresitesrandomly!(state, msrop, msr_prob)
     calc_ent(r_traj) = trajmean(r_traj, s -> entanglement(d, L, s, Int(floor(L/2))))
     res = mipt(state0, H, k, meffect!, dt, t, prob, traj, calc_ent; paral = :distributed)
-    return layer(x = prob, y = res, Geom.line)
+    return layer(x = prob ./ dt, y = res, Geom.line, color = ["dt = $dt, L = $L"])
 end
 
 function mps(d, L, dt, t, traj, prob; addplot = true, color = :auto, kwargs...)
@@ -54,13 +54,16 @@ function mps(d, L, dt, t, traj, prob; addplot = true, color = :auto, kwargs...)
 end
 
 function f()
-    prob = 0.00:0.01:0.03
-    traj = 100
+    prob002 = 0.01:0.005:0.05
+    prob008 = 0.04:0.02:0.2
+    traj = 10000
     d = 2
     t = 30
     # @time krylov(d, 6, 0.02, t, 6, traj, prob; addplot = false, color = :red)
-    @time l1 = krylov(d, 8, 0.02, t, 10, traj, prob; w=1)
-    @time l2 = krylov(d, 8, 0.02, t, 10, traj, prob; w=10)
+    @time l1 = krylov(d, 6, 0.02, t, 6, traj, prob002; w=0)
+    @time l2 = krylov(d, 6, 0.08, t, 6, traj, prob008; w=0)
+    @time l11 = krylov(d, 8, 0.02, t, 6, traj, prob002; w=0)
+    @time l22 = krylov(d, 8, 0.08, t, 6, traj, prob008; w=0)
     # @time krylov(d, 10, 0.02, t, 6, traj, prob; addplot = true, color = :red)
     # @time krylov(d, 6, 0.2, t, 6, traj, prob; addplot = true, color = :blue)
     # @time krylov(d, 8, 0.2, t, 6, traj, prob; addplot = true, color = :blue)
@@ -69,7 +72,9 @@ function f()
     # title!(make_title(; d, t, traj) * ", std_msr")
     # figure_path = joinpath(dirname(@__FILE__), "same_gamma_small_dt_stantard_msr")
     # png(figure_path)
-    plot(l1, l2)
+    title = (make_title(; d, t, traj, k = 6) * ", std_msr, measurement before time-step")
+    p = plot(l1, l2, l11, l22, Guide.title(title), Guide.xlabel("Gamma"))
+    p |> SVG("test.svg", 6inch, 4inch)
 end
 
 f()
