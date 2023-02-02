@@ -46,7 +46,7 @@ function collapse_test()
     end
     layers = [getlayer(g) for g in vcat(dt02, dt08)]
     title = get_attributes_string(filename, dt02[1])
-    p = plot(layers..., Guide.title(title * ", L = {6, 8, 10}"), Guide.xlabel("p"))
+    p = plot(layers..., Guide.title(title * ", L = {6, 8, 10}"), Guide.xlabel("Gamma"))
     p |> SVG("test.svg", 6inch, 4inch)
 end
 
