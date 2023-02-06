@@ -55,15 +55,15 @@ end
 
 function f()
     prob002 = 0.01:0.005:0.05
-    prob008 = 0.04:0.02:0.2
+    prob032 = 0.16:0.08:0.8
     traj = 10000
     d = 2
     t = 30
     # @time krylov(d, 6, 0.02, t, 6, traj, prob; addplot = false, color = :red)
     @time l1 = krylov(d, 6, 0.02, t, 6, traj, prob002; w=0)
-    @time l2 = krylov(d, 6, 0.08, t, 6, traj, prob008; w=0)
+    @time l2 = krylov(d, 6, 0.32, t, 14, traj, prob032; w=0)
     @time l11 = krylov(d, 8, 0.02, t, 6, traj, prob002; w=0)
-    @time l22 = krylov(d, 8, 0.08, t, 6, traj, prob008; w=0)
+    @time l22 = krylov(d, 8, 0.32, t, 14, traj, prob032; w=0)
     # @time krylov(d, 10, 0.02, t, 6, traj, prob; addplot = true, color = :red)
     # @time krylov(d, 6, 0.2, t, 6, traj, prob; addplot = true, color = :blue)
     # @time krylov(d, 8, 0.2, t, 6, traj, prob; addplot = true, color = :blue)
