@@ -693,9 +693,9 @@ version = "1.0.0"
 
 [[deps.MIPTDataProcessing]]
 deps = ["HDF5", "ITensors", "QuantumOperators", "QuantumStates", "QuantumTimeEvolution", "Statistics", "TOML"]
-git-tree-sha1 = "a72ef3a00f0acfaf070724e9975d76ee2ded9798"
+git-tree-sha1 = "8ad06985329c97b6c0c9151f52e5b1595659c6f1"
 uuid = "59e4b0ad-08a5-4ebc-afae-402296ac7198"
-version = "0.2.2"
+version = "0.2.3"
 
 [[deps.MKL_jll]]
 deps = ["Artifacts", "IntelOpenMP_jll", "JLLWrappers", "LazyArtifacts", "Libdl", "Pkg"]
@@ -765,9 +765,9 @@ version = "0.1.47"
 
 [[deps.NaNMath]]
 deps = ["OpenLibm_jll"]
-git-tree-sha1 = "a7c3d1da1189a1c2fe843a3bfa04d18d20eb3211"
+git-tree-sha1 = "0877504529a3e5c3343c6f8b4c0381e57e4387e4"
 uuid = "77ba4419-2d1f-58cd-9bb1-8ffee604a2e3"
-version = "1.0.1"
+version = "1.0.2"
 
 [[deps.NameResolution]]
 deps = ["PrettyPrint"]

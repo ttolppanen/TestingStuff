@@ -17,17 +17,24 @@ end
 
 function make_collapse_data()
     dt = 0.02
-    prob = 0.001:0.001:0.02
-    traj = 5000
+    prob = 0.002:0.002:0.04
+    traj = 2000
+    observables = 
+    [
+        :entanglement_half,
+        :mutual_information_first_to_half,
+        :mutual_information_half_centered,
+        :mutual_information_half_centered_region
+    ]
     for L in 6:2:10
         println("first")
         @time generate_data("mipt_same_results"; alg= :krylov, d=2, L, dt, t=30, state= :zeroone, k=6, 
         probabilities=prob, measurement= :std_n, traj, w=0, U=10, save_before_effect = false, 
-        J=1, observables=[:entanglement_half, :mutual_information_first_to_half])
+        J=1, observables)
         println("second")
         @time generate_data("mipt_same_results"; alg= :krylov, d=2, L, dt, t=30, state= :zeroone, k=6, 
         probabilities=prob, measurement= :std_n, traj, w=0, U=10, save_before_effect = true, 
-        J=1, observables=[:entanglement_half, :mutual_information_first_to_half])
+        J=1, observables)
     end
 end
 
