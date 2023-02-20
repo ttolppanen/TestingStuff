@@ -3,14 +3,14 @@ using Gadfly
 
 function f()
     filename = "mipt_same_results"
-    groups = ["mipt_19", "mipt_6", "mipt_20"]
+    groups = ["mipt_24", "mipt_25", "mipt_26"]
     for g in groups
         println(get_attributes_string(filename, g; addnewline = false))
     end
-    layers = [getlayer(g, "entanglement_half") for g in groups]
+    layers = [getlayer(g, "mutual_information_half_centered_region") for g in groups]
     title = get_attributes_string(filename, groups[1])
     p = plot(layers..., Guide.title(title), Guide.xlabel("Gamma"))
-    p |> SVG("test.svg", 8inch, 6inch)
+    p |> SVG("mihcr_before.svg", 8inch, 6inch)
 end
 
 function getlayer(groupname, dataset)
