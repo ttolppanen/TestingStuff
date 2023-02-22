@@ -13,6 +13,18 @@ function f()
     p |> SVG("mihcr_before.svg", 8inch, 6inch)
 end
 
+function f_time()
+    filename = "mipt_same_results"
+    groups = ["mipt_19", "mipt_6", "mipt_20"]
+    for g in groups
+        println(get_attributes_string(filename, g; addnewline = false))
+    end
+    layers = [time_layer(g, 0.004, "mutual_information_half_centered") for g in groups]
+    title = get_attributes_string(filename, groups[1])
+    p = plot(layers..., Guide.title(title), Guide.xlabel("t"))
+    p |> SVG("test.svg", 8inch, 6inch)
+end
+
 function getlayer(groupname, dataset)
     filename = "mipt_same_results"
     dt = get_attribute(filename, groupname, "dt")
@@ -22,6 +34,22 @@ function getlayer(groupname, dataset)
     dataend = get_data_end_mean(filename, groupname, prob, dataset)
     L = get_attribute(filename, groupname, "L")
     newLayer = layer(x=prob ./ dt, y=dataend, Geom.line, color = ["L = $L"])
+end
+
+function time_layer(groupname, p, observable)
+    filename = "mipt_same_results"
+    data = get_data(filename, groupname, p, observable)
+    timesteps = size(data)[1]
+    traj = min(size(data)[2], 2000)
+    println(traj)
+    y = zeros(timesteps)
+    for i in eachindex(y)
+        y[i] = sum(data[i, 1:traj]) / traj
+    end
+    dt = get_attribute(filename, groupname, "dt")
+    x = [i * dt for i in 1:timesteps]
+    L = get_attribute(filename, groupname, "L")
+    newLayer = layer(x=x, y=y, Geom.line, color = ["p = $p, L = $L"])
 end
 
 function collapse_test()
@@ -37,5 +65,5 @@ function collapse_test()
     p |> SVG("test.svg", 6inch, 4inch)
 end
 
-f()
+f_time()
 # collapse_test()
