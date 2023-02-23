@@ -4,6 +4,14 @@ using QuantumTimeEvolution
 using ITensors
 using Plots
 
+function traj_mean(result)
+    out = zeros(size(result[1]))
+    for traj in result
+        out .+= traj
+    end
+    return out ./ length(result)
+end
+
 function exact(d, L, dt, t, traj, msr_prob; addplot=false)
     state = zeroone(d, L)
     H = bosehubbard(d, L)
@@ -18,11 +26,11 @@ end
 
 function krylov(d, L, dt, t, k, traj, msr_prob; addplot=false)
     state = zeroone(d, L)
-    H = bosehubbard(d, L)
+    # H = bosehubbard(d, L)
     effect! = measuresitesrandomly!(L, nop(d), msr_prob)
-    r_f() = krylovevolve(state, H, dt, t, k; effect!)
+    r_f() = krylovevolve(state, bosehubbard(d, L, 2 * rand(L) .- 1), dt, t, k, s -> entanglement(d, L, s, Int(floor(L/2))); effect!)
     r = solvetrajectories(r_f, traj)
-    ent = trajmean(r, s -> entanglement(d, L, s, Int(floor(L/2))))
+    ent = traj_mean(r)[1, :]
     ts = 0:dt:t
     return addplot ? plot!(ts, ent) : plot(ts, ent)
 end
@@ -50,6 +58,6 @@ function mps(d, L, dt, t, traj, msr_prob; addplot=false, kwargs...)
 end
 
 # exact(3, 3, 0.1, 5, 10, 0.1)
-@time krylov(2, 6, 0.6, 30, 6, 1000, 0.05; addplot=false)
+@time krylov(2, 6, 0.6, 30, 6, 100, 0.2; addplot=false)
 # @time krylov(2, 6, 0.12, 30, 6, 2000, 0.11; addplot=true)
-@time mps(2, 6, 0.6, 30, 200, 0.05; addplot=true, maxdim=5, cutoff=1E-8)
+# @time mps(2, 6, 0.6, 30, 200, 0.05; addplot=true, maxdim=5, cutoff=1E-8)

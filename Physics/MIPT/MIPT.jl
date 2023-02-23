@@ -17,6 +17,14 @@ function make_title(; kwargs...)
     return out[1:end-2]
 end
 
+function traj_mean(result)
+    out = zeros(size(result[1]))
+    for traj in result
+        out .+= traj
+    end
+    return out ./ length(result)
+end
+
 function krylov(d, L, dt, t, k, traj, prob; color = :auto, kwargs...)
     function make_msrop(d, L)
         msrop = measurementoperators(nop(d), L)
@@ -33,6 +41,28 @@ function krylov(d, L, dt, t, k, traj, prob; color = :auto, kwargs...)
     calc_ent(state) = entanglement(d, L, state, Int(floor(L/2)))
     res = mipt(state0, H, k, meffect!, dt, t, prob, traj, calc_ent; paral = :distributed)
     return layer(x = prob ./ dt, y = res, Geom.line, color = ["dt = $dt, L = $L"])
+end
+
+function krylov_with_disorder(d, L, dt, t, k, w, traj, prob; kwargs...)
+    function mutual_information_half_centered(d, L)
+        a = ceil(Int, L / 2) - floor(Int, L / 4) # ceil is for the odd-case
+        b = L - (a - 1)
+        return s -> entanglement(d, L, s, [a]) + entanglement(d, L, s, [b]) - entanglement(d, L, s, [a, b])
+    end
+    state0 = zeroone(d, L)
+    msrop = measurementoperators(nop(d), L)
+    calc_ent(state) = entanglement(d, L, state, Int(floor(L/2)))
+    calc_mutual = mutual_information_half_centered(d, L)
+    make_H() = bosehubbard(d, L, w * (2 .* rand(L) .- 1); kwargs...)
+    y = []
+    for p in prob
+        effect!(state) = measuresitesrandomly!(state, msrop, p)
+        r_f() = krylovevolve(state0, make_H(), dt, t, k, calc_mutual; effect!)
+        r = solvetrajectories(r_f, traj)
+        out = traj_mean(r)[1, end]
+        push!(y, out)
+    end
+    return layer(x = prob ./ dt, y = y, Geom.line, color = ["dt = $dt, L = $L"])
 end
 
 function mps(d, L, dt, t, traj, prob; addplot = true, color = :auto, kwargs...)
@@ -54,13 +84,14 @@ function mps(d, L, dt, t, traj, prob; addplot = true, color = :auto, kwargs...)
 end
 
 function f()
-    prob002 = 0.01:0.005:0.05
-    prob032 = 0.16:0.08:0.8
-    traj = 100
+    prob002 = 0.001:0.01:0.031
+    traj = 10
     d = 2
     t = 30
     # @time krylov(d, 6, 0.02, t, 6, traj, prob; addplot = false, color = :red)
-    # @time l1 = krylov(d, 6, 0.02, t, 6, traj, prob002; w=0)
+    @time l1 = krylov_with_disorder(d, 6, 0.02, t, 6, 1, traj, prob002)
+    @time l2 = krylov_with_disorder(d, 8, 0.02, t, 6, 1, traj, prob002)
+    @time l3 = krylov_with_disorder(d, 10, 0.02, t, 6, 1, traj, prob002)
     # @time l2 = krylov(d, 6, 0.32, t, 12, traj, prob032; w=0)
     # @time l11 = krylov(d, 8, 0.02, t, 6, traj, prob002; w=0)
     # @time l22 = krylov(d, 8, 0.32, t, 12, traj, prob032; w=0)
@@ -73,7 +104,7 @@ function f()
     # figure_path = joinpath(dirname(@__FILE__), "same_gamma_small_dt_stantard_msr")
     # png(figure_path)
     title = (make_title(; d, t, traj, k = 6) * ", std_msr, measurement before time-step")
-    p = plot(l1, l2, l11, l22, Guide.title(title), Guide.xlabel("Gamma"))
+    p = plot(l1, l2, l3, Guide.title(title), Guide.xlabel("Gamma"))
     p |> SVG("test.svg", 6inch, 4inch)
 end
 
@@ -94,4 +125,4 @@ function calc_with_mps()
     p |> SVG("test.svg", 6inch, 4inch)
 end
 
-calc_with_mps()
+f()
