@@ -49,16 +49,20 @@ function krylov_with_disorder(d, L, dt, t, k, w, traj, prob; kwargs...)
         b = L - (a - 1)
         return s -> entanglement(d, L, s, [a]) + entanglement(d, L, s, [b]) - entanglement(d, L, s, [a, b])
     end
+    function mutual_information_first_to_half(d, L)
+        half = Int(floor(L/2))
+        return s -> entanglement(d, L, s, [1]) + entanglement(d, L, s, [half + 1]) - entanglement(d, L, s, [1, half + 1])
+    end
     state0 = zeroone(d, L)
     msrop = measurementoperators(nop(d), L)
     calc_ent(state) = entanglement(d, L, state, Int(floor(L/2)))
-    calc_mutual = mutual_information_half_centered(d, L)
+    calc_mutual = mutual_information_first_to_half(d, L)
     make_H() = bosehubbard(d, L, w * (2 .* rand(L) .- 1); kwargs...)
     y = []
     for p in prob
         effect!(state) = measuresitesrandomly!(state, msrop, p)
         r_f() = krylovevolve(state0, make_H(), dt, t, k, calc_mutual; effect!)
-        r = solvetrajectories(r_f, traj)
+        r = solvetrajectories(r_f, traj; paral = :distributed)
         out = traj_mean(r)[1, end]
         push!(y, out)
     end
@@ -84,8 +88,8 @@ function mps(d, L, dt, t, traj, prob; addplot = true, color = :auto, kwargs...)
 end
 
 function f()
-    prob002 = 0.001:0.01:0.031
-    traj = 10
+    prob002 = 0.001:0.001:0.031
+    traj = 2000
     d = 2
     t = 30
     # @time krylov(d, 6, 0.02, t, 6, traj, prob; addplot = false, color = :red)

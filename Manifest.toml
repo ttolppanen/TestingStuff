@@ -927,7 +927,7 @@ version = "0.1.2"
 
 [[deps.QuantumTimeEvolution]]
 deps = ["Distributed", "ITensors", "LinearAlgebra", "QuantumOperators", "SparseArrays", "StaticArrays"]
-path = "/home/htolppan/Documents/Code/Develop/QuantumTimeEvolution"
+git-tree-sha1 = "f31c4b0bb7806449ce0c07c43bca23a83ce57d0d"
 uuid = "7373133c-a6f7-4e95-971a-e453f442ca60"
 version = "0.5.1"
 
