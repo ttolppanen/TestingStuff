@@ -88,14 +88,16 @@ function mps(d, L, dt, t, traj, prob; addplot = true, color = :auto, kwargs...)
 end
 
 function f()
-    prob002 = 0.001:0.001:0.031
+    dt = 0.16
+    prob002 = 0.008:0.008:0.248
     traj = 2000
     d = 2
     t = 30
+    disorder = 1
     # @time krylov(d, 6, 0.02, t, 6, traj, prob; addplot = false, color = :red)
-    @time l1 = krylov_with_disorder(d, 6, 0.02, t, 6, 1, traj, prob002)
-    @time l2 = krylov_with_disorder(d, 8, 0.02, t, 6, 1, traj, prob002)
-    @time l3 = krylov_with_disorder(d, 10, 0.02, t, 6, 1, traj, prob002)
+    @time l1 = krylov_with_disorder(d, 6, dt, t, 10, disorder, traj, prob002)
+    @time l2 = krylov_with_disorder(d, 8, dt, t, 10, disorder, traj, prob002)
+    @time l3 = krylov_with_disorder(d, 10, dt, t, 10, disorder, traj, prob002)
     # @time l2 = krylov(d, 6, 0.32, t, 12, traj, prob032; w=0)
     # @time l11 = krylov(d, 8, 0.02, t, 6, traj, prob002; w=0)
     # @time l22 = krylov(d, 8, 0.32, t, 12, traj, prob032; w=0)
@@ -109,7 +111,7 @@ function f()
     # png(figure_path)
     title = (make_title(; d, t, traj, k = 6) * ", std_msr, measurement before time-step")
     p = plot(l1, l2, l3, Guide.title(title), Guide.xlabel("Gamma"))
-    p |> SVG("test.svg", 6inch, 4inch)
+    p |> SVG("d_dt016_mifh.svg")
 end
 
 function calc_with_mps()
