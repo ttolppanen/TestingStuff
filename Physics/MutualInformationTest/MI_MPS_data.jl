@@ -71,7 +71,7 @@ function f()
     cutoff = 1E-8
     disorder = 1
     d = 2
-    traj = 10
+    traj = 500
     mi_layers = []
     ent_layers = []
     for L in 12:2:18
@@ -83,6 +83,10 @@ function f()
     PlotAndSave.Plot(path, mi_layers...; xlabel = "gamma", ylabel = "MI(1, L/2)", d, dt, t, traj, maxdim, cutoff, disorder, save_before_msr = false)
     path = joinpath(@__DIR__, "ENT_MPS")
     PlotAndSave.Plot(path, ent_layers...; xlabel = "gamma", ylabel = "S", d, dt, t, traj, maxdim, cutoff, disorder, save_before_msr = false)
+end
+
+@everywhere begin
+    ITensors.set_warn_order(20)
 end
 
 f()
