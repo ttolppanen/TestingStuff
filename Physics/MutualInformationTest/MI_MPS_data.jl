@@ -71,7 +71,7 @@ function f()
     cutoff = 1E-8
     disorder = 1
     d = 2
-    traj = 500
+    traj = 2000
     mi_layers = []
     ent_layers = []
     for L in 12:2:18
