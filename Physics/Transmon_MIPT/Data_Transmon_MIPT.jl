@@ -2,7 +2,7 @@ function f()
     dt = 0.02
     d = 4
     prob = 0.15:0.015:0.9
-    traj = 500
+    traj = 50
     observables = 
     [
         :entanglement_half,
