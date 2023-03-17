@@ -3,16 +3,16 @@ using Gadfly
 
 function f()
     filename = "mipt_same_results"
-    groups = ["mipt_27", "mipt_29", "mipt_30"]
-    # groups = ["mipt_28", "mipt_31", "mipt_32"]
+    # groups = ["mipt_33", "mipt_34", "mipt_35"]
+    groups = ["mipt_36", "mipt_37", "mipt_38"]
     for g in groups
         println(get_attributes_string(filename, g; addnewline = false))
     end
-    dtype = "half_n_fluctuations"
+    dtype = "entanglement_half"
     layers = [getlayer(g, dtype) for g in groups]
     title = get_attributes_string(filename, groups[1])
     p = plot(layers..., Guide.title(title), Guide.xlabel("p"))
-    p |> SVG(dtype * "_20.svg")
+    p |> SVG(dtype * "_40.svg")
 end
 
 function getlayer(groupname, dataset)
