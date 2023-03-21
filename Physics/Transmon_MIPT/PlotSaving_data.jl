@@ -50,7 +50,7 @@ function f(traj)
         :dt => 0.3,
         :t => 30,
         :cutoff => 1E-8,
-        :maxdim => 90,
+        :maxdim => 110,
         :w => 0,
         :U => 5,
         :J => 1,
@@ -70,10 +70,10 @@ function f(traj)
         push!(fluc_layers, l[2])
     end
     println("Saving Data")
-    path = joinpath(@__DIR__, "qutrit_ent_90")
+    path = joinpath(@__DIR__, "qutrit_ent_110")
     # addtrajectories(path, ent_layers...)
     makeplot(path, ent_layers...; xlabel = "p", ylabel = "S", param...)
-    path = joinpath(@__DIR__, "qutrit_fluc_90")
+    path = joinpath(@__DIR__, "qutrit_fluc_110")
     # addtrajectories(path, fluc_layers...)
     makeplot(path, fluc_layers...; xlabel = "p", ylabel = "Fluc", param...)
 end
