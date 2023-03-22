@@ -64,7 +64,7 @@ function f(traj)
     prob = 0.01:0.01:0.5
     fluc_layers = []
     ent_layers = []
-    for L in [6:10]
+    for L in [6, 10]
         @time l = mps(param[:d], L, param[:dt], param[:t], traj, prob; w=param[:w], U=param[:U], J=param[:J], maxdim = param[:maxdim], cutoff = param[:cutoff])
         push!(ent_layers, l[1])
         push!(fluc_layers, l[2])
