@@ -97,14 +97,14 @@ function f()
         end
     end
     path = joinpath(@__DIR__, "out_01_ent")
-    # addtrajectories(path, ent_res...)
-    makeplot(path, ent_res...; xlabel = "p", ylabel = "S", param...)
+    addtrajectories(path, ent_res...)
+    # makeplot(path, ent_res...; xlabel = "p", ylabel = "S", param...)
     path = joinpath(@__DIR__, "out_01_n")
-    # addtrajectories(path, n_res...)
-    makeplot(path, n_res...; xlabel = "p", ylabel = "N", param...)
+    addtrajectories(path, n_res...)
+    # makeplot(path, n_res...; xlabel = "p", ylabel = "N", param...)
     path = joinpath(@__DIR__, "out_01_n_corr")
-    # addtrajectories(path, n_corr_res...)
-    makeplot(path, n_corr_res...; xlabel = "p", ylabel = "N_corr", param...)
+    addtrajectories(path, n_corr_res...)
+    # makeplot(path, n_corr_res...; xlabel = "p", ylabel = "N_corr", param...)
     println("DONE")
 end
 
