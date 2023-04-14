@@ -38,6 +38,12 @@ function make_projections_to_zeroes(d, L)
     return out
 end
 
+function make_projections_to_zeroone(d, L)
+    proj_op0 = n_bosons_projector(d, 0)
+    proj_op1 = n_bosons_projector(d, 1)
+    return [isodd(i) ? singlesite(proj_op0, L, i) : singlesite(proj_op1, L, i) for i in 1:L]
+end
+
 function make_n_corr_func(d, L)
     m = singlesite_n(d, L, 1) * singlesite_n(d, L, 2)
     for i in 2:L-1
@@ -51,7 +57,7 @@ function krylov(d, L, dt, t, k, traj, prob, proj_prob; kwargs...)
     state0 = zeroone(d, L)
     H = bosehubbard(d, L; kwargs...)
     msr_op = measurementoperators(nop(d), L)
-    proj_op = make_projections_to_zeroes(d, L)
+    proj_op = make_projections_to_zeroone(d, L)
     meffect!(state, msr_prob) = random_predetermined_measurement!(state, msr_op, msr_prob, proj_op, proj_prob)
     calc_ent(state) = entanglement(d, L, state, Int(floor(L/2)))
     n = nall(d, L) ./ L
@@ -72,7 +78,7 @@ function f()
         :U => 5,
         :J => 1,
         :d => 2,
-        :measurement => "rdm_pdtmd_to_zero",
+        :measurement => "rdm_pdtmd_to_zeroone",
         :save_before_effect => false,
         :state => "zeroone",
         :alg => "krylov",
@@ -90,15 +96,15 @@ function f()
             push!(n_corr_res, res[3])
         end
     end
-    path = joinpath(@__DIR__, "out_ent")
-    addtrajectories(path, ent_res...)
-    # makeplot(path, ent_res...; xlabel = "p", ylabel = "S", param...)
-    path = joinpath(@__DIR__, "out_n")
-    addtrajectories(path, n_res...)
-    # makeplot(path, n_res...; xlabel = "p", ylabel = "N", param...)
-    path = joinpath(@__DIR__, "out_n_corr")
-    addtrajectories(path, n_corr_res...)
-    # makeplot(path, n_corr_res...; xlabel = "p", ylabel = "N_corr", param...)
+    path = joinpath(@__DIR__, "out_01_ent")
+    # addtrajectories(path, ent_res...)
+    makeplot(path, ent_res...; xlabel = "p", ylabel = "S", param...)
+    path = joinpath(@__DIR__, "out_01_n")
+    # addtrajectories(path, n_res...)
+    makeplot(path, n_res...; xlabel = "p", ylabel = "N", param...)
+    path = joinpath(@__DIR__, "out_01_n_corr")
+    # addtrajectories(path, n_corr_res...)
+    makeplot(path, n_corr_res...; xlabel = "p", ylabel = "N_corr", param...)
     println("DONE")
 end
 
