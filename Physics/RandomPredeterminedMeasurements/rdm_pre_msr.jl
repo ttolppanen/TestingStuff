@@ -88,7 +88,7 @@ function f()
     ent_res = []
     n_res = []
     n_corr_res = []
-    for r in [0.01, 0.03]
+    for r in [0.5, 1.0]
         for L in [6, 10]
             res = krylov(param[:d], L, param[:dt], param[:t], param[:k], param[:traj], 0.01:0.005:0.06, r; w = param[:w], U = param[:U], J = param[:J])
             push!(ent_res, res[1])
@@ -96,16 +96,16 @@ function f()
             push!(n_corr_res, res[3])
         end
     end
-    path = joinpath(@__DIR__, "out_01_ent")
+    path = joinpath(@__DIR__, "out_01_r_higher_ent")
     addtrajectories(path, ent_res...)
     # makeplot(path, ent_res...; xlabel = "p", ylabel = "S", param...)
-    path = joinpath(@__DIR__, "out_01_n")
+    path = joinpath(@__DIR__, "out_01_r_higher_n")
     addtrajectories(path, n_res...)
     # makeplot(path, n_res...; xlabel = "p", ylabel = "N", param...)
-    path = joinpath(@__DIR__, "out_01_n_corr")
+    path = joinpath(@__DIR__, "out_01_r_higher_n_corr")
     addtrajectories(path, n_corr_res...)
     # makeplot(path, n_corr_res...; xlabel = "p", ylabel = "N_corr", param...)
     println("DONE")
 end
 
-f()
+@time f()
