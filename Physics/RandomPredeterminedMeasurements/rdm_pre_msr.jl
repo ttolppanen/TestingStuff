@@ -54,7 +54,7 @@ function make_n_corr_func(d, L)
     return state -> expval(state, m)
 end
 
-function projected_state_number(state)
+@everywhere function projected_state_number(state)
     random_numb = rand(Float64)
     total_prob = 0
     for i in eachindex(state)
@@ -119,7 +119,7 @@ function f()
         :state => "zeroone",
         :alg => "krylov",
         :k => 6,
-        :traj => 10
+        :traj => 1000
     )
     h5open("feedback_rate_distributions.h5", "w") do file
     end
