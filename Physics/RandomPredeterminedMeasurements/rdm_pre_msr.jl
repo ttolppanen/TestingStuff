@@ -69,7 +69,7 @@ function krylov(d, L, dt, t, k, traj, prob, proj_prob; kwargs...)
     state0 = zeroone(d, L)
     H = bosehubbard(d, L; kwargs...)
     msr_op = measurementoperators(nop(d), L)
-    proj_op = make_projections_to_zeroone(d, L)
+    proj_op = make_projections_to_zeroes(d, L)
     out = zeros(length(prob), traj, L)
     # calc_ent(state) = entanglement(d, L, state, Int(floor(L/2)))
     # n = nall(d, L) ./ L
@@ -83,7 +83,7 @@ function krylov(d, L, dt, t, k, traj, prob, proj_prob; kwargs...)
             out[i, r_i, :] = digits(Int(r[r_i][1, 1]) - 1, base=2, pad = L) |> reverse
         end
     end
-    h5open("feedback_rate_distributions.h5", "cw") do file
+    h5open("feedback_rate_distributions_000.h5", "cw") do file
         L_key = "L=$L"
         if !haskey(file, L_key)
             create_group(file, L_key)
@@ -114,19 +114,19 @@ function f()
         :U => 5,
         :J => 1,
         :d => 2,
-        :measurement => "rdm_pdtmd_to_zeroone",
+        :measurement => "rdm_pdtmd_to_zero",
         :save_before_effect => false,
         :state => "zeroone",
         :alg => "krylov",
         :k => 6,
         :traj => 1000
     )
-    h5open("feedback_rate_distributions.h5", "w") do file
+    h5open("feedback_rate_distributions_000.h5", "w") do file
     end
     # ent_res = []
     # n_res = []
     # n_corr_res = []
-    for r in [0.5, 1.0]
+    for r in [0.01, 0.03]
         for L in [6, 10]
             krylov(param[:d], L, param[:dt], param[:t], param[:k], param[:traj], 0.01:0.005:0.06, r; w = param[:w], U = param[:U], J = param[:J])
             # push!(ent_res, res[1])
