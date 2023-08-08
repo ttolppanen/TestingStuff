@@ -54,13 +54,13 @@ function f(traj)
         :alg => "krylov",
         :k => 6,
         :L => 8,
-        :p => 0.03
+        :p => 0.02
     )
     dst_layers = krylov(param[:d], param[:L], param[:dt], param[:t], traj, param[:p]; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
     println("Saving Data")
-    path = joinpath(@__DIR__, "dst_first_test_003")
+    path = joinpath(@__DIR__, "dst_single_traj")
     # addtrajectories(path, ent_layers...)
     makeplot(path, dst_layers...; xlabel = "t", ylabel = "distance", param...)
 end
 
-@time f(100)
+@time f(1)
