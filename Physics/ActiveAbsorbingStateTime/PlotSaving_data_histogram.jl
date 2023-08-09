@@ -44,7 +44,7 @@ function krylov(d, L, dt, t, traj, p; w, J, U, k)
 
     effect!(state) = measuresitesrandomly!(state, msrop, p)
     r_f() = krylovevolve(state0, H, dt, t, k, calc_dst; effect!)
-    r = solvetrajectories(r_f, traj; paral = :none)
+    r = solvetrajectories(r_f, traj; paral = :distributed)
     return return_times(r, dt)
 end
 
@@ -61,12 +61,12 @@ function f(traj)
         :state => "zeroone",
         :alg => "krylov",
         :k => 6,
-        :L => 10,
+        :L => 12,
         :p => 0.1
     )
     data = krylov(param[:d], param[:L], param[:dt], param[:t], traj, param[:p]; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
     println("Saving Data")
-    path = joinpath(@__DIR__, "dst_histogram_L10_$(param[:p])")
+    path = joinpath(@__DIR__, "dst_histogram_L12_$(param[:p])")
     makehistogram(path, data; traj, param...)
 end
 
