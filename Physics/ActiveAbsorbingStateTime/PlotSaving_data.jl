@@ -13,19 +13,34 @@ function traj_mean(result)
     return out ./ length(result)
 end
 
+function zeroone_orderparameter(L)
+    d = 2 # not well defined for higher d
+    order_parameter = singlesite_n(d, L , 1) #this is probably VERY slow for high d^L!
+    for i in 2:L
+        if isodd(i)
+            order_parameter .+= singlesite_n(d, L, i)
+        else
+            order_parameter .+= singlesite([1 0; 0 1], L, 1) .- singlesite_n(d, L, i)
+        end
+    end
+    order_parameter ./= L
+    return state -> expval(state, order_parameter)
+end
+
 function krylov(d, L, dt, t, traj, p; w, J, U, k)
     println("Generating")
-    state0 = zeroone(d, L)
+    state0 = onezero(d, L)
     msrop = measurementoperators(nop(d), L)
-    feedback = [isodd(i) ? n_bosons_projector(2, 0) : n_bosons_projector(2, 1) for i in 1:L]
+    feedback = [isodd(i) ? n_bosons_projector(d, 0) : n_bosons_projector(d, 1) for i in 1:L]
     unitary_after_measurement!(feedback, msrop)
-    bra_initial = copy(state0')
-    calc_dst(state) = abs(bra_initial * state)
+    # bra_zeroone = zeroone(d, L)'
+    # calc_dst(state) = abs(bra_zeroone * state)
+    calc_order = zeroone_orderparameter(L)
     H = bosehubbard(d, L; w, J, U)
 
     effect!(state) = measuresitesrandomly!(state, msrop, p)
-    r_f() = krylovevolve(state0, H, dt, t, k, calc_dst; effect!)
-    r = solvetrajectories(r_f, traj; paral = :none)
+    r_f() = krylovevolve(state0, H, dt, t, k, calc_order; effect!)
+    r = solvetrajectories(r_f, traj; paral = :distributed)
     r = traj_mean(r)
     dst_y = r[1, :]
     # r = solvetrajectories(r_f, traj; paral = :distributed)
@@ -40,7 +55,7 @@ function krylov(d, L, dt, t, traj, p; w, J, U, k)
     return [LineInfo(0:dt:t, dst_y, traj, "L = $L")]
 end
 
-function f(traj)
+function f()
     param = Dict(
         :dt => 0.02,
         :t => 30,
@@ -50,17 +65,18 @@ function f(traj)
         :d => 2,
         :measurement => "std_n_feedback_01",
         :save_before_effect => false,
-        :state => "zeroone",
+        :state => "onezero",
         :alg => "krylov",
         :k => 6,
-        :L => 8,
-        :p => 0.02
+        :L => 12,
+        :p => 0.06,
+        :traj => 1000
     )
-    dst_layers = krylov(param[:d], param[:L], param[:dt], param[:t], traj, param[:p]; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
+    dst_layers = krylov(param[:d], param[:L], param[:dt], param[:t], param[:traj], param[:p]; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
     println("Saving Data")
-    path = joinpath(@__DIR__, "dst_single_traj")
+    path = joinpath(@__DIR__, "order_parameter_test", "L$(param[:L])_p$(param[:p])")
     # addtrajectories(path, ent_layers...)
     makeplot(path, dst_layers...; xlabel = "t", ylabel = "distance", param...)
 end
 
-@time f(1)
+@time f()
