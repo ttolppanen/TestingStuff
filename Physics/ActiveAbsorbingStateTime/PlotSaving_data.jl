@@ -1,4 +1,5 @@
 using Distributed
+using JLD2
 @everywhere using QuantumStates
 @everywhere using QuantumOperators
 @everywhere using ITensors
@@ -52,13 +53,13 @@ function krylov(d, L, dt, t, traj, p; w, J, U, k)
     #     push!(ent_y, out[1, 1])
     #     push!(fluc_y, out[2, 1])
     # end
-    return [LineInfo(0:dt:t, dst_y, traj, "L = $L")]
+    return [LineInfo(0:dt:t, dst_y, traj, "p = $p")]
 end
 
-function f()
+function f(p)
     param = Dict(
         :dt => 0.02,
-        :t => 30,
+        :t => 2,
         :w => 0,
         :U => 1,
         :J => 1,
@@ -68,15 +69,42 @@ function f()
         :state => "onezero",
         :alg => "krylov",
         :k => 6,
-        :L => 12,
-        :p => 0.06,
+        :L => 10,
+        :p => p,
         :traj => 1000
     )
     dst_layers = krylov(param[:d], param[:L], param[:dt], param[:t], param[:traj], param[:p]; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
     println("Saving Data")
-    path = joinpath(@__DIR__, "order_parameter_test", "L$(param[:L])_p$(param[:p])")
+    path = joinpath(@__DIR__, "order_parameter_test", "tFunc_L$(param[:L])_p$(param[:p])")
     # addtrajectories(path, ent_layers...)
-    makeplot(path, dst_layers...; xlabel = "t", ylabel = "distance", param...)
+    makeplot(path, dst_layers...; xlabel = "t", ylabel = "o", param...)
 end
 
-@time f()
+function combine_figures()
+    new_path = joinpath(@__DIR__, "order_parameter_test", "tFunc_L10_combined")
+    path1 = joinpath(@__DIR__, "order_parameter_test", "tFunc_L10_p0.01")
+    path2 = joinpath(@__DIR__, "order_parameter_test", "tFunc_L10_p0.015")
+    combineplots(new_path, path1, path2)
+    for p in 0.02:0.005:0.1
+        path1 = joinpath(@__DIR__, "order_parameter_test", "tFunc_L10_p$p")
+        combineplots(new_path, new_path, path1)
+    end
+end
+
+function plot_to_log()
+    path = joinpath(@__DIR__, "order_parameter_test", "tFunc_L10_combined")
+    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
+    lines = []
+    for line in values(plotinfo.lines)
+        log_line = LineInfo(log.(line.x), log.(line.y), line.traj, line.tag)
+        push!(lines, log_line)
+    end
+    path = joinpath(@__DIR__, "order_parameter_test", "tFunc_L10_combined_log")
+    makeplot(path, lines...; xlabel = "log(t)", ylabel = "log(o)", plotinfo.parameters...)
+end
+
+# for p in 0.01:0.005:0.1
+#     @time f(p)
+# end
+# combine_figures()
+plot_to_log()
