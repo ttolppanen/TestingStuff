@@ -1,5 +1,6 @@
 using Distributed
 using JLD2
+using Statistics
 @everywhere using QuantumStates
 @everywhere using QuantumOperators
 @everywhere using ITensors
@@ -28,32 +29,51 @@ function zeroone_orderparameter(L)
     return state -> expval(state, order_parameter)
 end
 
+function return_times(result, dt, t; width = 0.01)
+    out = Float64[]
+    for traj in result
+        did_not_return = true
+        for i in 1:length(traj[1, :])
+            time_step_value = traj[1, i]
+            if abs(1 - time_step_value) <= width
+                push!(out, i * dt)
+                did_not_return = false
+                break
+            end
+        end
+        if did_not_return
+            push!(out, t)
+        end
+    end
+    return out
+end
+
 function krylov(d, L, dt, t, traj, prob; w, J, U, k)
     println("Generating")
     state0 = onezero(d, L)
     msrop = measurementoperators(nop(d), L)
-    feedback = [isodd(i) ? n_bosons_projector(2, 0) : n_bosons_projector(2, 1) for i in 1:L]
+    feedback = [isodd(i) ? n_bosons_projector(d, 0) : n_bosons_projector(d, 1) for i in 1:L]
     unitary_after_measurement!(feedback, msrop)
-    # bra_zeroone = zeroone(d, L)'
-    # calc_dst(state) = abs(bra_zeroone * state)
-    calc_order = zeroone_orderparameter(L)
+    bra_zeroone = zeroone(d, L)'
+    calc_dst(state) = abs(bra_zeroone * state)
+    # calc_order = zeroone_orderparameter(L)
     H = bosehubbard(d, L; w, J, U)
 
     dst_y = []
     for p in prob
         effect!(state) = measuresitesrandomly!(state, msrop, p)
-        r_f() = krylovevolve(state0, H, dt, t, k, calc_order; effect!, save_only_last = true)
+        r_f() = krylovevolve(state0, H, dt, t, k, calc_dst; effect!, save_only_last = true)
         r = solvetrajectories(r_f, traj; paral = :distributed)
-        out = traj_mean(r)
-        push!(dst_y, out[1, 1])
+        out = mean(return_times(r, dt, t))
+        push!(dst_y, out)
     end
-    return [LineInfo(prob, dst_y, traj, "L = $L")]
+    return LineInfo(prob, dst_y, traj, "L = $L")
 end
 
 function f()
     param = Dict(
         :dt => 0.02,
-        :t => 10,
+        :t => 120,
         :w => 0,
         :U => 1,
         :J => 1,
@@ -63,15 +83,18 @@ function f()
         :state => "onezero",
         :alg => "krylov",
         :k => 6,
-        :L => 12,
-        :traj => 1000
+        :traj => 200
     )
-    prob = 0.01:0.005:0.2
-    dst_layers = krylov(param[:d], param[:L], param[:dt], param[:t], param[:traj], prob; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
+    prob = 0.01:0.005:0.08
+    lines = []
+    for L in 8:2:12
+        line = krylov(param[:d], L, param[:dt], param[:t], param[:traj], prob; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
+        push!(lines, line)
+    end
     println("Saving Data")
-    path = joinpath(@__DIR__, "order_parameter_test", "probFunc_L$(param[:L])")
+    path = joinpath(@__DIR__, "return_mean_time")
     # addtrajectories(path, dst_layers...)
-    makeplot(path, dst_layers...; xlabel = "p", ylabel = "o", param...)
+    makeplot(path, lines...; xlabel = "p", ylabel = "<T>", param...)
 end
 
 function combine_plots()

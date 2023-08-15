@@ -120,9 +120,25 @@ function change_log_plot_bounds()
     p |> SVG(path, 6inch, 4inch)
 end
 
+function linearize_plot()
+    path = joinpath(@__DIR__, "order_parameter_test", "abs_tFunc_L10_combined")
+    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
+    layers = []
+    for line in values(plotinfo.lines)
+        p = parse(Float64, line.tag[5:end])
+        gamma = p / plotinfo.parameters[:dt]
+        log_layer = layer(x=line.x .* gamma , y=line.y, Geom.line, color = [line.tag])
+        push!(layers, log_layer)
+    end
+    path = joinpath(path, "linearized plot.svg")
+    p = plot(layers..., Coord.cartesian(xmax = 5, ymin = -5), Scale.y_log, Guide.title(plotinfo.title), Guide.xlabel("t*gamma"), Guide.ylabel("log(N / L)"))
+    p |> SVG(path, 6inch, 4inch)
+end
+
 # for p in 0.02:0.02:0.2
 #     @time f(p)
 # end
-combine_figures()
-plot_to_log()
-change_log_plot_bounds()
+# combine_figures()
+# plot_to_log()
+# change_log_plot_bounds()
+linearize_plot()
