@@ -62,7 +62,7 @@ function krylov(d, L, dt, t, traj, prob; w, J, U, k)
     dst_y = []
     for p in prob
         effect!(state) = measuresitesrandomly!(state, msrop, p)
-        r_f() = krylovevolve(state0, H, dt, t, k, calc_dst; effect!, save_only_last = true)
+        r_f() = krylovevolve(state0, H, dt, t, k, calc_dst; effect!, save_only_last = false)
         r = solvetrajectories(r_f, traj; paral = :distributed)
         out = mean(return_times(r, dt, t))
         push!(dst_y, out)
@@ -83,16 +83,16 @@ function f()
         :state => "onezero",
         :alg => "krylov",
         :k => 6,
-        :traj => 200
+        :traj => 1000
     )
-    prob = 0.01:0.005:0.08
+    prob = 0.08:0.01:0.2
     lines = []
     for L in 8:2:12
         line = krylov(param[:d], L, param[:dt], param[:t], param[:traj], prob; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
         push!(lines, line)
     end
     println("Saving Data")
-    path = joinpath(@__DIR__, "return_mean_time")
+    path = joinpath(@__DIR__, "return_mean_time_higher_p")
     # addtrajectories(path, dst_layers...)
     makeplot(path, lines...; xlabel = "p", ylabel = "<T>", param...)
 end
