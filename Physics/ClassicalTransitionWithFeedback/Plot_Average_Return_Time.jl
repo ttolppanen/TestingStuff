@@ -91,7 +91,7 @@ end # @everywhere
 function f()
     param = Dict(
         :steps => 3000,
-        :scramble_prob => 1.0,
+        :scramble_prob => 0.1,
         :initial_state => "[101010...]",
         :traj => 1000
     )
@@ -108,7 +108,7 @@ function f()
         end
         push!(lines, LineInfo(force_probs, outcomes, param[:traj], "L = $L"))
     end
-    path = joinpath(@__DIR__, "test6")
+    path = joinpath(@__DIR__, "test7")
     makeplot(path, lines...; xlabel = "force_prob", ylabel = "mean_steps", param...)
 end
 
