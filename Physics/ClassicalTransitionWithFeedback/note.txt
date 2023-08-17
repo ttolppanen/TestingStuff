@@ -1,0 +1,9 @@
+Originally the idea was to see how does the case of having feedback to |010101>
+differenciate from something classical. So with measurement and feedback to that,
+what is the quantumness of it? 
+So here the idea is to 
+1. A bitstring [10101010...]
+2. Random nearest neighbor scramble
+3. Random forcing to [01010101....]
+4. Repeat for steps
+5. How many stepts on average to reach [01010101...]?
