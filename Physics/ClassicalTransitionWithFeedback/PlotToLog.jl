@@ -15,4 +15,4 @@ function plot_to_log(name)
     p |> SVG(path, 6inch, 4inch)
 end
 
-plot_to_log("large_systems")
+plot_to_log("test7")
