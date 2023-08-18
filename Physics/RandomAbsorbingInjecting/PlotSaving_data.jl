@@ -100,10 +100,10 @@ function f()
         :state => "onezero",
         :alg => "krylov",
         :k => 6,
-        :traj => 200,
+        :traj => 100,
         :msr_prob => 0.1
     )
-    prob = 0.0:0.1:1.0
+    prob = 0.0:0.05:1.0
     lines = []
     for L in 8:2:12
         line = krylov(param[:d], L, param[:dt], param[:t], param[:traj], param[:msr_prob], prob; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
