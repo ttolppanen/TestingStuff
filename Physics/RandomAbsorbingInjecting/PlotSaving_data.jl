@@ -7,7 +7,7 @@ using Statistics
 using PlotAndSave
 @everywhere using QuantumTimeEvolution
 
-function alternating_measurement!(state::AbstractVector{<:Number}, msr_op, msr_prob::Real, abs_prob, abs_op, inj_op)
+@everywhere function alternating_measurement!(state::AbstractVector{<:Number}, msr_op, msr_prob::Real, abs_prob, abs_op, inj_op)
     for i in 1:length(msr_op)
         if rand(Float64) < msr_prob
             measuresite!(state, msr_op, i)
@@ -100,20 +100,21 @@ function f(p)
         :state => "onezero",
         :alg => "krylov",
         :k => 6,
-        :traj => 20,
+        :traj => 200,
         :msr_prob => p
     )
-    prob = 0.0:0.05:0.1
+    prob = 0.0:0.05:1.0
     lines = []
     for L in 8:2:12
         line = krylov(param[:d], L, param[:dt], param[:t], param[:traj], param[:msr_prob], prob; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
         push!(lines, line)
     end
     println("Saving Data")
-    path = joinpath(@__DIR__, "absorbing_test")
+    path = joinpath(@__DIR__, "absorbing_test_p$(p)")
     # addtrajectories(path, dst_layers...)
     makeplot(path, lines...; xlabel = "absorbing probability", ylabel = "<N>", param...)
 end
 
-@time f(0.01)
-# combine_plots()
+@time f(0.02)
+@time f(0.03)
+@time f(0.04)
