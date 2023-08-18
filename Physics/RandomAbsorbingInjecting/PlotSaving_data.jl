@@ -87,7 +87,7 @@ function krylov(d, L, dt, t, traj, msr_prob, prob; w, J, U, k)
     return LineInfo(prob, dst_y, traj, "L = $L")
 end
 
-function f()
+function f(p)
     param = Dict(
         :dt => 0.02,
         :t => 30,
@@ -100,10 +100,10 @@ function f()
         :state => "onezero",
         :alg => "krylov",
         :k => 6,
-        :traj => 100,
-        :msr_prob => 0.1
+        :traj => 20,
+        :msr_prob => p
     )
-    prob = 0.0:0.05:1.0
+    prob = 0.0:0.05:0.1
     lines = []
     for L in 8:2:12
         line = krylov(param[:d], L, param[:dt], param[:t], param[:traj], param[:msr_prob], prob; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
@@ -115,5 +115,5 @@ function f()
     makeplot(path, lines...; xlabel = "absorbing probability", ylabel = "<N>", param...)
 end
 
-@time f()
+@time f(0.01)
 # combine_plots()
