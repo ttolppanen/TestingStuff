@@ -67,8 +67,8 @@ function krylov(d, L, dt, t, traj, msr_prob, abs_prob; w, J, U, k)
     println("Generating")
     state0 = onezero(d, L)
     msrop = measurementoperators(nop(d), L)
-    abs_op = [isodd(i) ? singlesite(n_bosons_projector(d, 0), L, i) : singlesite([1 0; 0 1], L, i) for i in 1:L]
-    inj_op = [isodd(i) ? singlesite([1 0; 0 1], L, i) : singlesite(n_bosons_projector(d, 1), L, i) for i in 1:L]
+    abs_op = [singlesite(n_bosons_projector(d, 0), L, i) for i in 1:L]
+    inj_op = [singlesite(n_bosons_projector(d, 1), L, i) for i in 1:L]
     # bra_zeroone = zeroone(d, L)'
     # calc_dst(state) = abs(bra_zeroone * state)
     # calc_order = zeroone_orderparameter(L)
@@ -101,16 +101,16 @@ function f(p)
         :traj => 500,
         :abs_prob => p
     )
-    prob = 0.01:0.01:0.2
+    prob = 0.01:0.04:0.21
     lines = []
     for msr_prob in prob
         line = krylov(param[:d], param[:L], param[:dt], param[:t], param[:traj], msr_prob, param[:abs_prob]; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
         push!(lines, line)
     end
     println("Saving Data")
-    path = joinpath(@__DIR__, "time_absorbing_test_abs_prob$(param[:abs_prob])")
+    path = joinpath(@__DIR__, "time_no_structure_abs_prob$(param[:abs_prob])")
     # addtrajectories(path, dst_layers...)
-    makeplot(path, lines...; xlabel = "measurement probability", ylabel = "<N>", param...)
+    makeplot(path, lines...; xlabel = "measurement probability", ylabel = "<N/L>", param...)
 end
 
 @time f(0.1)
