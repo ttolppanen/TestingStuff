@@ -88,19 +88,19 @@ end
 
 end # @everywhere
 
-function f()
+function f(p)
     param = Dict(
         :steps => 10000,
-        :scramble_prob => 0.9,
+        :scramble_prob => p,
         :initial_state => "[101010...]",
-        :traj => 1000
+        :traj => 500
     )
     lines = []
-    for L in 10:10:100
+    for L in 100:25:200
         initial_state = [isodd(i) ? 1 : 0 for i in 1:L]
         observable(state) = state == [isodd(i) ? 0 : 1 for i in 1:L]
         outcomes = []
-        force_probs = 0.01:0.025:0.91
+        force_probs = 0.025:0.025:1.0
         for force_prob in force_probs
             r_f() = classical_trajectory(initial_state, param[:steps], param[:scramble_prob], force_prob, observable)
             r = solvetrajectories(r_f, param[:traj]; paral = :distributed)
@@ -108,8 +108,8 @@ function f()
         end
         push!(lines, LineInfo(force_probs, outcomes, param[:traj], "L = $L"))
     end
-    path = joinpath(@__DIR__, "large_systems")
+    path = joinpath(@__DIR__, "mean_steps_scramble$(param[:scramble_prob])_even larger_systems")
     makeplot(path, lines...; xlabel = "force_prob", ylabel = "mean_steps", param...)
 end
 
-@time f()
+@time f(0.1)
