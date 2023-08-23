@@ -38,14 +38,16 @@ function krylov(d, L, dt, t, traj, p; w, J, U, k)
     # bra_zeroone = zeroone(d, L)'
     # calc_dst(state) = abs(bra_zeroone * state)
     calc_order = zeroone_orderparameter(L)
+    calc_ent(state) = entanglement(d, L, state, Int(floor(L/2)))
     H = bosehubbard(d, L; w, J, U)
 
     effect!(state) = measuresitesrandomly!(state, msrop, p)
-    r_f() = krylovevolve(state0, H, dt, t, k, calc_order; effect!)
+    r_f() = krylovevolve(state0, H, dt, t, k, calc_order, calc_ent; effect!)
     println("Solving trajectories")
     r = solvetrajectories(r_f, traj; paral = :distributed)
     r = traj_mean(r)
     dst_y = r[1, :]
+    ent_y = r[2, :]
     # r = solvetrajectories(r_f, traj; paral = :distributed)
     # for p in prob
     #     effect!(state) = measuresitesrandomly!(state, msrop, p; kwargs...)
@@ -55,7 +57,7 @@ function krylov(d, L, dt, t, traj, p; w, J, U, k)
     #     push!(ent_y, out[1, 1])
     #     push!(fluc_y, out[2, 1])
     # end
-    return LineInfo(0:dt:t, dst_y, traj, "p = $p")
+    return LineInfo(0:dt:t, dst_y, traj, "order, p = $p"), LineInfo(0:dt:t, ent_y, traj, "entanglement, p = $p")
 end
 
 function krylov_prob(d, L, dt, t, traj, prob; w, J, U, k)
@@ -93,20 +95,22 @@ function f()
         :save_before_effect => false,
         :state => "onezero",
         :alg => "krylov",
+        :L => 10,
+        :entanglement => "half chain",
         :k => 6,
-        :traj => 10
+        :traj => 1000
     )
-    prob = 0.01:0.01:0.11
+    prob = [0.01, 0.02, 0.04, 0.08]
     dst_lines = []
-    for L in 8:2:12
-        line = krylov(param[:d], L, param[:dt], param[:t], param[:traj], prob; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
-        push!(dst_lines, line)
+    for p in prob
+        order_line, ent_line = krylov(param[:d], param[:L], param[:dt], param[:t], param[:traj], p; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
+        push!(dst_lines, order_line, ent_line)
     end
     
     println("Saving Data")
-    path = joinpath(@__DIR__, "order_parameter_test", "pFunc")
-    # addtrajectories(path, ent_layers...)
-    makeplot(path, dst_lines...; xlabel = "t", ylabel = "order_param", param...)
+    path = joinpath(@__DIR__, "order_parameter_test", "ent_test")
+    addtrajectories(path, dst_lines...)
+    # makeplot(path, dst_lines...; xlabel = "t", param...)
 end
 
 function combine_figures()
@@ -161,6 +165,6 @@ function linearize_plot()
     p |> SVG(path, 6inch, 4inch)
 end
 
-# @time f()
-plot_to_log()
-linearize_plot()
+@time f()
+# plot_to_log()
+# linearize_plot()
