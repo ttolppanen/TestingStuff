@@ -33,21 +33,20 @@ function krylov(d, L, dt, t, traj, p; w, J, U, k)
     println("Generating")
     state0 = onezero(d, L)
     msrop = measurementoperators(nop(d), L)
-    feedback = [isodd(i) ? n_bosons_projector(d, 0) : n_bosons_projector(d, 1) for i in 1:L]
+    feedback = complex([1 0 1; 0 0 0; 0 1 0])
     unitary_after_measurement!(feedback, msrop)
     # bra_zeroone = zeroone(d, L)'
     # calc_dst(state) = abs(bra_zeroone * state)
-    calc_order = zeroone_orderparameter(L)
-    calc_ent(state) = entanglement(d, L, state, Int(floor(L/2)))
+    op = nall(d, L) ./ L
+    calc_order(state) = expval(state, op)
     H = bosehubbard(d, L; w, J, U)
 
     effect!(state) = measuresitesrandomly!(state, msrop, p)
-    r_f() = krylovevolve(state0, H, dt, t, k, calc_order, calc_ent; effect!)
+    r_f() = krylovevolve(state0, H, dt, t, k, calc_order; effect!)
     println("Solving trajectories")
     r = solvetrajectories(r_f, traj; paral = :distributed)
     r = traj_mean(r)
     dst_y = r[1, :]
-    ent_y = r[2, :]
     # r = solvetrajectories(r_f, traj; paral = :distributed)
     # for p in prob
     #     effect!(state) = measuresitesrandomly!(state, msrop, p; kwargs...)
@@ -57,7 +56,7 @@ function krylov(d, L, dt, t, traj, p; w, J, U, k)
     #     push!(ent_y, out[1, 1])
     #     push!(fluc_y, out[2, 1])
     # end
-    return LineInfo(0:dt:t, dst_y, traj, "order, p = $p"), LineInfo(0:dt:t, ent_y, traj, "entanglement, p = $p")
+    return LineInfo(0:dt:t, dst_y, traj, "p = $p")
 end
 
 function krylov_prob(d, L, dt, t, traj, prob; w, J, U, k)
@@ -86,31 +85,30 @@ end
 function f()
     param = Dict(
         :dt => 0.02,
-        :t => 10,
+        :t => 30,
         :w => 0,
-        :U => 0.14,
+        :U => 10.0,
         :J => 1,
-        :d => 2,
-        :measurement => "std_n_feedback_01",
+        :d => 3,
+        :measurement => "|0>->|0>_|1>->|2>_|2>->|0>",
         :save_before_effect => false,
         :state => "onezero",
         :alg => "krylov",
-        :L => 10,
-        :entanglement => "half chain",
+        :L => 8,
         :k => 6,
-        :traj => 1000
+        :traj => 500
     )
     prob = [0.01, 0.02, 0.04, 0.08]
     dst_lines = []
     for p in prob
-        order_line, ent_line = krylov(param[:d], param[:L], param[:dt], param[:t], param[:traj], p; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
-        push!(dst_lines, order_line, ent_line)
+        order_line = krylov(param[:d], param[:L], param[:dt], param[:t], param[:traj], p; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
+        push!(dst_lines, order_line)
     end
     
     println("Saving Data")
-    path = joinpath(@__DIR__, "order_parameter_test", "ent_test")
-    addtrajectories(path, dst_lines...)
-    # makeplot(path, dst_lines...; xlabel = "t", param...)
+    path = joinpath(@__DIR__, "order_parameter_test", "qutrit_abs_scheme_test_L8_+10U")
+    # addtrajectories(path, dst_lines...)
+    makeplot(path, dst_lines...; xlabel = "t", ylabel = "N / L", param...)
 end
 
 function combine_figures()
