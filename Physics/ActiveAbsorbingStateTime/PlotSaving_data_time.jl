@@ -163,6 +163,24 @@ function linearize_plot()
     p |> SVG(path, 6inch, 4inch)
 end
 
-@time f()
+function linearize_plot_better()
+    path = joinpath(@__DIR__, "order_parameter_test", "tFunc_new_L10")
+    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
+    layers = []
+    for line in values(plotinfo.lines)
+        p = parse(Float64, line.tag[5:end])
+        gamma = p / plotinfo.parameters[:dt]
+        y_st = sum(line.y[end - 10 : end]) / 11
+        scale_y(y) = (y - y_st) / (1 - y_st)
+        log_layer = layer(x=line.x .* gamma , y=scale_y.(line.y), Geom.line, color = [line.tag])
+        push!(layers, log_layer)
+    end
+    path = joinpath(path, "linearized plot better.svg")
+    p = plot(layers..., Coord.cartesian(xmax = 5), Guide.title(plotinfo.title), Guide.xlabel("t*gamma"), Guide.ylabel("scaled y"))
+    p |> SVG(path, 6inch, 4inch)
+end
+
+# @time f()
 # plot_to_log()
 # linearize_plot()
+linearize_plot_better()
