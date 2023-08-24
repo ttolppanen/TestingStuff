@@ -1,6 +1,6 @@
 using Distributed
 using JLD2
-using Gadfly
+using Plots
 @everywhere using QuantumStates
 @everywhere using QuantumOperators
 @everywhere using ITensors
@@ -166,18 +166,18 @@ end
 function linearize_plot_better()
     path = joinpath(@__DIR__, "order_parameter_test", "tFunc_new_L10")
     plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
-    layers = []
+    p = plot(title = plotinfo.title, xlabel = "t*gamma", ylabel = "scaled y", dpi = 300)
     for line in values(plotinfo.lines)
-        p = parse(Float64, line.tag[5:end])
-        gamma = p / plotinfo.parameters[:dt]
+        prob = parse(Float64, line.tag[5:end])
+        gamma = prob / plotinfo.parameters[:dt]
         y_st = sum(line.y[end - 10 : end]) / 11
         scale_y(y) = (y - y_st) / (1 - y_st)
-        log_layer = layer(x=line.x .* gamma , y=scale_y.(line.y), Geom.line, color = [line.tag])
-        push!(layers, log_layer)
+        x = line.x .* gamma
+        y = scale_y.(line.y)
+        plot!(p, line.x, line.y, label = line.tag)
     end
-    path = joinpath(path, "linearized plot better.svg")
-    p = plot(layers..., Coord.cartesian(xmax = 5), Guide.title(plotinfo.title), Guide.xlabel("t*gamma"), Guide.ylabel("scaled y"))
-    p |> SVG(path, 6inch, 4inch)
+    path = joinpath(path, "linearized plot better.png")
+    savefig(p, path)
 end
 
 # @time f()
