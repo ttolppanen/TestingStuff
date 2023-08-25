@@ -85,9 +85,9 @@ end
 function f()
     param = Dict(
         :dt => 0.02,
-        :t => 30,
+        :t => 60,
         :w => 0,
-        :U => 10.0,
+        :U => 0.0,
         :J => 1,
         :d => 3,
         :measurement => "|0>->|0>_|1>->|2>_|2>->|0>",
@@ -98,7 +98,7 @@ function f()
         :k => 6,
         :traj => 500
     )
-    prob = [0.01, 0.02, 0.04, 0.08]
+    prob = [0.005, 0.01, 0.02, 0.04]
     dst_lines = []
     for p in prob
         order_line = krylov(param[:d], param[:L], param[:dt], param[:t], param[:traj], p; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
@@ -106,7 +106,7 @@ function f()
     end
     
     println("Saving Data")
-    path = joinpath(@__DIR__, "order_parameter_test", "qutrit_abs_scheme_test_L8_+10U")
+    path = joinpath(@__DIR__, "order_parameter_test", "qutrit_abs_scheme_long")
     # addtrajectories(path, dst_lines...)
     makeplot(path, dst_lines...; xlabel = "t", ylabel = "N / L", param...)
 end
@@ -149,18 +149,24 @@ function change_log_plot_bounds()
 end
 
 function linearize_plot()
-    path = joinpath(@__DIR__, "order_parameter_test", "tFunc_new_L10")
+    path = joinpath(@__DIR__, "order_parameter_test", "qutrit_abs_scheme_test_L8")
     plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
-    layers = []
+    pl = plot(yaxis = :log10, 
+    title = plotinfo.title, 
+    xlabel = "t*gamma^2", 
+    ylabel = plotinfo.ylabel, 
+    dpi = 300, 
+    legend = :outertopright,
+    ylim = (10^-3, 3),
+    xlim = (0, 60))
     for line in values(plotinfo.lines)
         p = parse(Float64, line.tag[5:end])
         gamma = p / plotinfo.parameters[:dt]
-        log_layer = layer(x=line.x .* gamma , y=line.y, Geom.line, color = [line.tag])
-        push!(layers, log_layer)
+        plot!(pl, line.x .* gamma^2, line.y, label = line.tag)
     end
-    path = joinpath(path, "linearized plot.svg")
-    p = plot(layers..., Coord.cartesian(xmax = 5, ymin = -4), Scale.y_log10, Guide.title(plotinfo.title), Guide.xlabel("t*gamma"), Guide.ylabel(plotinfo.ylabel))
-    p |> SVG(path, 6inch, 4inch)
+    path = joinpath(path, "linearized plot.png")
+    savefig(pl, path)
+    return pl
 end
 
 function linearize_plot_better()
@@ -182,5 +188,5 @@ end
 
 # @time f()
 # plot_to_log()
-# linearize_plot()
-linearize_plot_better()
+linearize_plot()
+# linearize_plot_better()
