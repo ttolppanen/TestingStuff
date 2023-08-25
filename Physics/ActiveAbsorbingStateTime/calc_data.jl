@@ -33,12 +33,11 @@ function krylov(d, L, dt, t, traj, p; w, J, U, k)
     println("Generating")
     state0 = onezero(d, L)
     msrop = measurementoperators(nop(d), L)
-    feedback = complex([1 0 1; 0 0 0; 0 1 0])
+    feedback = [isodd(i) ? n_bosons_projector(d, 0) : n_bosons_projector(d, 1) for i in 1:L]
     unitary_after_measurement!(feedback, msrop)
     # bra_zeroone = zeroone(d, L)'
     # calc_dst(state) = abs(bra_zeroone * state)
-    op = nall(d, L) ./ L
-    calc_order(state) = expval(state, op)
+    calc_order = zeroone_orderparameter(L)
     H = bosehubbard(d, L; w, J, U)
 
     effect!(state) = measuresitesrandomly!(state, msrop, p)
@@ -106,26 +105,26 @@ function f()
     end
     
     println("Saving Data")
-    path = joinpath(@__DIR__, "order_parameter_test", "all_one")
+    path = joinpath(@__DIR__, "order_parameter_test", "allone_0101")
     # addtrajectories(path, dst_lines...)
     makeplot(path, dst_lines...; xlabel = "t", ylabel = "o", param...)
 end
 
 function linearize_plot()
-    path = joinpath(@__DIR__, "order_parameter_test", "qutrit_abs_scheme_test_L8")
+    path = joinpath(@__DIR__, "order_parameter_test", "allone_0101")
     plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
     pl = plot(yaxis = :log10, 
     title = plotinfo.title, 
-    xlabel = "t*gamma^2", 
+    xlabel = "t*gamma", 
     ylabel = plotinfo.ylabel, 
     dpi = 300, 
     legend = :outertopright,
-    ylim = (10^-3, 3),
-    xlim = (0, 60))
+    xlim = (0, 10)
+    )
     for line in values(plotinfo.lines)
         p = parse(Float64, line.tag[5:end])
         gamma = p / plotinfo.parameters[:dt]
-        plot!(pl, line.x .* gamma^2, line.y, label = line.tag)
+        plot!(pl, line.x .* gamma, line.y, label = line.tag)
     end
     path = joinpath(path, "linearized plot.png")
     savefig(pl, path)
@@ -133,9 +132,14 @@ function linearize_plot()
 end
 
 function linearize_plot_better()
-    path = joinpath(@__DIR__, "order_parameter_test", "tFunc_new_L10")
+    path = joinpath(@__DIR__, "order_parameter_test", "allone_0101")
     plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
-    p = plot(title = plotinfo.title, xlabel = "t*gamma", ylabel = "scaled y", dpi = 300)
+    p = plot(title = plotinfo.title, 
+    xlabel = "t*gamma", 
+    ylabel = "scaled y", 
+    dpi = 300,
+    xlim = (0, 10)
+    )
     for line in values(plotinfo.lines)
         prob = parse(Float64, line.tag[5:end])
         gamma = prob / plotinfo.parameters[:dt]
@@ -143,7 +147,7 @@ function linearize_plot_better()
         scale_y(y) = (y - y_st) / (1 - y_st)
         x = line.x .* gamma
         y = scale_y.(line.y)
-        plot!(p, line.x, line.y, label = line.tag)
+        plot!(p, x, y, label = line.tag)
     end
     path = joinpath(path, "linearized plot better.png")
     savefig(p, path)
@@ -152,4 +156,4 @@ end
 # @time f()
 # plot_to_log()
 linearize_plot()
-# linearize_plot_better()
+linearize_plot_better()
