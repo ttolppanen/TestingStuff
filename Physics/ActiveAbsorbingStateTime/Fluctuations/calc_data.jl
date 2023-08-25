@@ -92,7 +92,7 @@ function f()
         :d => 2,
         :measurement => "std_n_feedback_01",
         :save_before_effect => false,
-        :state => "allone",
+        :state => "onezero",
         :alg => "krylov",
         :L => 10,
         :k => 6,

@@ -31,7 +31,7 @@ end
 
 function krylov(d, L, dt, t, traj, p; w, J, U, k)
     println("Generating")
-    state0 = onezero(d, L)
+    state0 = allone(d, L)
     msrop = measurementoperators(nop(d), L)
     feedback = [isodd(i) ? n_bosons_projector(d, 0) : n_bosons_projector(d, 1) for i in 1:L]
     unitary_after_measurement!(feedback, msrop)
@@ -153,7 +153,7 @@ function linearize_plot_better()
     savefig(p, path)
 end
 
-# @time f()
+@time f()
 # plot_to_log()
 linearize_plot()
 linearize_plot_better()
