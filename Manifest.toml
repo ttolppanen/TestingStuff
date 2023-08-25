@@ -890,10 +890,10 @@ deps = ["Artifacts", "Dates", "Downloads", "LibGit2", "Libdl", "Logging", "Markd
 uuid = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 
 [[deps.PlotAndSave]]
-deps = ["Gadfly", "JLD2", "Plots"]
-git-tree-sha1 = "c49f6ad2ebbbcf700f76f242a8a7a71696fc7926"
+deps = ["JLD2", "OrderedCollections", "Plots"]
+git-tree-sha1 = "09461092956ef4eb2083301065dad02e60dd42da"
 uuid = "17f9de49-761f-4084-9189-3237cc0765fb"
-version = "0.2.1"
+version = "0.2.2"
 
 [[deps.PlotThemes]]
 deps = ["PlotUtils", "Statistics"]

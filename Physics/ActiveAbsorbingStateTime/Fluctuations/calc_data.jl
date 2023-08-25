@@ -15,6 +15,16 @@ function traj_mean(result)
     return out ./ length(result)
 end
 
+function calc_fluctuations(result)
+    out = zeros(size(result[1][1, :]))
+    for traj in result
+        line = traj[1, :]
+        st_value = line[end]
+        out .+= (line .- st_value).^2
+    end
+    return out ./ length(result)
+end
+
 function zeroone_orderparameter(L)
     d = 2 # not well defined for higher d
     order_parameter = singlesite_n(d, L , 1) #this is probably VERY slow for high d^L!
@@ -33,7 +43,7 @@ function krylov(d, L, dt, t, traj, p; w, J, U, k)
     println("Generating")
     state0 = onezero(d, L)
     msrop = measurementoperators(nop(d), L)
-    feedback = complex([1 0 1; 0 0 0; 0 1 0])
+    feedback = [isodd(i) ? n_bosons_projector(d, 0) : n_bosons_projector(d, 1) for i in 1:L]
     unitary_after_measurement!(feedback, msrop)
     # bra_zeroone = zeroone(d, L)'
     # calc_dst(state) = abs(bra_zeroone * state)
@@ -45,8 +55,7 @@ function krylov(d, L, dt, t, traj, p; w, J, U, k)
     r_f() = krylovevolve(state0, H, dt, t, k, calc_order; effect!)
     println("Solving trajectories")
     r = solvetrajectories(r_f, traj; paral = :distributed)
-    r = traj_mean(r)
-    dst_y = r[1, :]
+    y = calc_fluctuations(r)
     # r = solvetrajectories(r_f, traj; paral = :distributed)
     # for p in prob
     #     effect!(state) = measuresitesrandomly!(state, msrop, p; kwargs...)
@@ -56,7 +65,7 @@ function krylov(d, L, dt, t, traj, p; w, J, U, k)
     #     push!(ent_y, out[1, 1])
     #     push!(fluc_y, out[2, 1])
     # end
-    return LineInfo(0:dt:t, dst_y, traj, "p = $p")
+    return LineInfo(0:dt:t, y, traj, "p = $p")
 end
 
 function krylov_prob(d, L, dt, t, traj, prob; w, J, U, k)
@@ -85,7 +94,7 @@ end
 function f()
     param = Dict(
         :dt => 0.02,
-        :t => 10,
+        :t => 30,
         :w => 0,
         :U => 0.0,
         :J => 1,
@@ -98,7 +107,7 @@ function f()
         :k => 6,
         :traj => 500
     )
-    prob = 0.01:0.02:0.09
+    prob = 0.01:0.02:0.19
     dst_lines = []
     for p in prob
         order_line = krylov(param[:d], param[:L], param[:dt], param[:t], param[:traj], p; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
@@ -106,9 +115,9 @@ function f()
     end
     
     println("Saving Data")
-    path = joinpath(@__DIR__, "all_one")
+    path = joinpath(@__DIR__, "fluc_test")
     # addtrajectories(path, dst_lines...)
-    makeplot(path, dst_lines...; xlabel = "t", ylabel = "o", param...)
+    makeplot(path, dst_lines...; xlabel = "t", ylabel = "Steady State Fluctuations", param...)
 end
 
 function linearize_plot()
@@ -149,7 +158,7 @@ function linearize_plot_better()
     savefig(p, path)
 end
 
-# @time f()
+@time f()
 # plot_to_log()
-linearize_plot()
+# linearize_plot()
 # linearize_plot_better()
