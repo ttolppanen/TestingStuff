@@ -85,20 +85,20 @@ end
 function f()
     param = Dict(
         :dt => 0.02,
-        :t => 60,
+        :t => 10,
         :w => 0,
         :U => 0.0,
         :J => 1,
-        :d => 3,
-        :measurement => "|0>->|0>_|1>->|2>_|2>->|0>",
+        :d => 2,
+        :measurement => "std_n_feedback_01",
         :save_before_effect => false,
-        :state => "onezero",
+        :state => "allone",
         :alg => "krylov",
-        :L => 8,
+        :L => 10,
         :k => 6,
         :traj => 500
     )
-    prob = [0.005, 0.01, 0.02, 0.04]
+    prob = 0.01:0.02:0.09
     dst_lines = []
     for p in prob
         order_line = krylov(param[:d], param[:L], param[:dt], param[:t], param[:traj], p; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
@@ -106,46 +106,9 @@ function f()
     end
     
     println("Saving Data")
-    path = joinpath(@__DIR__, "order_parameter_test", "qutrit_abs_scheme_long")
+    path = joinpath(@__DIR__, "all_one")
     # addtrajectories(path, dst_lines...)
-    makeplot(path, dst_lines...; xlabel = "t", ylabel = "N / L", param...)
-end
-
-function combine_figures()
-    new_path = joinpath(@__DIR__, "order_parameter_test", "abs_d3_tFunc_L8_combined")
-    path1 = joinpath(@__DIR__, "order_parameter_test", "abs_d3_tFunc_L8_p0.02")
-    path2 = joinpath(@__DIR__, "order_parameter_test", "abs_d3_tFunc_L8_p0.04")
-    combineplots(new_path, path1, path2)
-    for p in 0.06:0.02:0.2
-        path1 = joinpath(@__DIR__, "order_parameter_test", "abs_d3_tFunc_L8_p$p")
-        combineplots(new_path, new_path, path1)
-    end
-end
-
-function plot_to_log()
-    path = joinpath(@__DIR__, "order_parameter_test", "tFunc_new_L10")
-    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
-    layers = []
-    for line in values(plotinfo.lines)
-        log_layer = layer(x=line.x , y=line.y, Geom.line, color = [line.tag])
-        push!(layers, log_layer)
-    end
-    path = joinpath(path, "log plot.svg")
-    p = plot(layers..., Scale.y_log10, Guide.title(plotinfo.title), Guide.xlabel(plotinfo.xlabel), Guide.ylabel(plotinfo.ylabel))
-    p |> SVG(path, 6inch, 4inch)
-end
-
-function change_log_plot_bounds()
-    path = joinpath(@__DIR__, "order_parameter_test", "abs_d3_tFunc_L8_combined")
-    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
-    layers = []
-    for line in values(plotinfo.lines)
-        log_layer = layer(x=line.x, y=line.y, Geom.line, color = [line.tag])
-        push!(layers, log_layer)
-    end
-    path = joinpath(path, "log plot.svg")
-    p = plot(layers..., Coord.cartesian(ymin = -3), Scale.x_log, Scale.y_log, Guide.title(plotinfo.title), Guide.xlabel(plotinfo.xlabel), Guide.ylabel(plotinfo.ylabel))
-    p |> SVG(path, 6inch, 4inch)
+    makeplot(path, dst_lines...; xlabel = "t", ylabel = "o", param...)
 end
 
 function linearize_plot()
