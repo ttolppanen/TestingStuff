@@ -1,6 +1,7 @@
 using Distributed
 using JLD2
 using Plots
+using Statistics
 @everywhere using QuantumStates
 @everywhere using QuantumOperators
 @everywhere using ITensors
@@ -17,9 +18,9 @@ end
 
 function calc_fluctuations(result)
     out = zeros(size(result[1][1, :]))
+    st_value = mean([traj[1, end] for traj in result])
     for traj in result
         line = traj[1, :]
-        st_value = line[end]
         out .+= (line .- st_value).^2
     end
     return out ./ length(result)
