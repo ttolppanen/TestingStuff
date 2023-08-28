@@ -958,9 +958,9 @@ version = "0.1.14"
 
 [[deps.QuantumStates]]
 deps = ["ITensors", "SparseArrays"]
-git-tree-sha1 = "64ee5bc1126c217e85323750fdf0b03c2b9ff9bb"
+git-tree-sha1 = "4ca6cbfdbb15e2b3a3fd1939c13d41373932e1d4"
 uuid = "0a1581c1-ab82-4660-a1be-26f7b3483457"
-version = "0.1.4"
+version = "0.1.5"
 
 [[deps.QuantumTimeEvolution]]
 deps = ["Distributed", "ITensors", "LinearAlgebra", "QuantumOperators", "SparseArrays", "StaticArrays"]
