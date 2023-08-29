@@ -41,9 +41,9 @@ end
 
 function krylov(d, L, dt, t, traj, p; w, J, U, k)
     println("Generating")
-    state0 = productstate(d, [0, 0, 1, 0, 0, 1, 0, 0])
+    state0 = zeroone(d, L)
     msrop = measurementoperators(nop(d), L)
-    feedback = [1 0 1; 0 0 1; 0 1 0]
+    feedback = [1 0 1; 0 0 0; 0 1 0]
     fb_op = [singlesite(feedback, L, i) for i in 1:L]
     n_d = nall(d, L) ./ L
     calc_order(state) = expval(state, n_d)
@@ -60,21 +60,21 @@ end
 
 function f()
     param = Dict(
-        :dt => 0.02,
-        :t => 120,
+        :dt => 0.08,
+        :t => 240,
         :w => 0,
         :U => 0.0,
-        :J => 1,
+        :J => 4,
         :d => 3,
-        :measurement => "std_n fb: 0 -> |0>, 1 -> |2>, 2 -> (|0> + |1>)",
+        :measurement => "std_n fb: 0 -> |0>, 1 -> |2>, 2 -> |0>",
         :save_before_effect => false,
-        :state => "[0, 0, 1, 0, 0, 1, 0, 0]",
+        :state => "zeroone",
         :alg => "krylov",
         :L => 8,
         :k => 6,
         :traj => 100
     )
-    prob = 0.01:0.02:0.03
+    prob = 0.004:0.008:0.012
     dst_lines = []
     for p in prob
         order_line = krylov(param[:d], param[:L], param[:dt], param[:t], param[:traj], p; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
@@ -82,7 +82,7 @@ function f()
     end
     
     println("Saving Data")
-    path = joinpath(@__DIR__, "starting_n_d_0.25_fb_00_12_2s01")
+    path = joinpath(@__DIR__, "fb_00_12_20_high_J")
     # addtrajectories(path, dst_lines...)
     makeplot(path, dst_lines...; xlabel = "t", ylabel = "N / L", param...)
 end
