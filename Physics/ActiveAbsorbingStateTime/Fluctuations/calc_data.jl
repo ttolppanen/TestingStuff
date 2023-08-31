@@ -78,19 +78,19 @@ function f()
         :save_before_effect => false,
         :state => "onezero",
         :alg => "krylov",
-        :k => 6,
-        :traj => 500
+        :k => 6
     )
-    prob = 0.01:0.02:0.19
+    traj = 500
+    prob = 0.19:0.08:(0.19*4)
     sizes = [8, 10, 12]
     dst_lines = []
     for L in sizes
-        order_line = krylov(param[:d], L, param[:dt], param[:t], param[:traj], prob; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
+        order_line = krylov(param[:d], L, param[:dt], param[:t], traj, prob; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
         push!(dst_lines, order_line)
     end
     
     println("Saving Data")
-    path = joinpath(@__DIR__, "fluc_test_sizes")
+    path = joinpath(@__DIR__, "fluc_test_sizes_large_prob")
     # addtrajectories(path, dst_lines...)
     makeplot(path, dst_lines...; xlabel = "p", ylabel = "Steady State Fluctuations", param...)
 end
@@ -134,7 +134,7 @@ function linearize_plot_better()
 end
 
 function plot_to_log()
-    path = joinpath(@__DIR__, "fluc_test_sizes")
+    path = joinpath(@__DIR__, "fluc_test_sizes_large_prob")
     plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
     pl = plot(title = plotinfo.title, 
     xlabel = plotinfo.xlabel, 
@@ -146,11 +146,28 @@ function plot_to_log()
         L = parse(Int64, line.tag[5:end])
         plot!(pl, line.x, line.y * L, label = line.tag)
     end
-    path = joinpath(path, "log_y_axis.png")
+    path = joinpath(path, "log_y_L.png")
     savefig(pl, path)
 end
 
-# @time f()
+function plot_to_log2()
+    path = joinpath(@__DIR__, "fluc_test_sizes_large_prob")
+    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
+    pl = plot(title = plotinfo.title, 
+    xlabel = plotinfo.xlabel, 
+    ylabel = "SSFluc * L",
+    titlefontsize = 9, 
+    dpi = 300,
+    yaxis = :log10)
+    for line in values(plotinfo.lines)
+        plot!(pl, line.x, line.y, label = line.tag)
+    end
+    path = joinpath(path, "log_y.png")
+    savefig(pl, path)
+end
+
+@time f()
 plot_to_log()
+plot_to_log2()
 # linearize_plot()
 # linearize_plot_better()
