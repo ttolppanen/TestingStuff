@@ -46,10 +46,7 @@ function krylov(d, L, dt, t, traj, prob; w, J, U, k)
     msrop = measurementoperators(nop(d), L)
     feedback = [isodd(i) ? n_bosons_projector(d, 0) : n_bosons_projector(d, 1) for i in 1:L]
     unitary_after_measurement!(feedback, msrop)
-    # bra_zeroone = zeroone(d, L)'
-    # calc_dst(state) = abs(bra_zeroone * state)
-    op = nall(d, L) ./ L
-    calc_order(state) = expval(state, op)
+    calc_order = zeroone_orderparameter(L)
     H = bosehubbard(d, L; w, J, U)
 
     out = []
@@ -81,7 +78,7 @@ function f()
         :k => 6
     )
     traj = 500
-    prob = 0.19:0.08:(0.19*4)
+    prob = 0.01:0.02:0.19
     sizes = [8, 10, 12]
     dst_lines = []
     for L in sizes
@@ -90,51 +87,14 @@ function f()
     end
     
     println("Saving Data")
-    path = joinpath(@__DIR__, "fluc_test_sizes_large_prob")
+    path = joinpath(@__DIR__, "fluc_sizes")
     # addtrajectories(path, dst_lines...)
     makeplot(path, dst_lines...; xlabel = "p", ylabel = "Steady State Fluctuations", param...)
+    plot_to_log(path)
+    plot_to_log2(path)
 end
 
-function linearize_plot()
-    path = joinpath(@__DIR__, "order_parameter_test", "qutrit_abs_scheme_test_L8")
-    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
-    pl = plot(yaxis = :log10, 
-    title = plotinfo.title, 
-    xlabel = "t*gamma^2", 
-    ylabel = plotinfo.ylabel, 
-    dpi = 300, 
-    legend = :outertopright,
-    ylim = (10^-3, 3),
-    xlim = (0, 60))
-    for line in values(plotinfo.lines)
-        p = parse(Float64, line.tag[5:end])
-        gamma = p / plotinfo.parameters[:dt]
-        plot!(pl, line.x .* gamma^2, line.y, label = line.tag)
-    end
-    path = joinpath(path, "linearized plot.png")
-    savefig(pl, path)
-    return pl
-end
-
-function linearize_plot_better()
-    path = joinpath(@__DIR__, "order_parameter_test", "tFunc_new_L10")
-    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
-    p = plot(title = plotinfo.title, xlabel = "t*gamma", ylabel = "scaled y", dpi = 300)
-    for line in values(plotinfo.lines)
-        prob = parse(Float64, line.tag[5:end])
-        gamma = prob / plotinfo.parameters[:dt]
-        y_st = sum(line.y[end - 10 : end]) / 11
-        scale_y(y) = (y - y_st) / (1 - y_st)
-        x = line.x .* gamma
-        y = scale_y.(line.y)
-        plot!(p, line.x, line.y, label = line.tag)
-    end
-    path = joinpath(path, "linearized plot better.png")
-    savefig(p, path)
-end
-
-function plot_to_log()
-    path = joinpath(@__DIR__, "fluc_test_sizes_large_prob")
+function plot_to_log(path)
     plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
     pl = plot(title = plotinfo.title, 
     xlabel = plotinfo.xlabel, 
@@ -150,8 +110,7 @@ function plot_to_log()
     savefig(pl, path)
 end
 
-function plot_to_log2()
-    path = joinpath(@__DIR__, "fluc_test_sizes_large_prob")
+function plot_to_log2(path)
     plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
     pl = plot(title = plotinfo.title, 
     xlabel = plotinfo.xlabel, 
@@ -167,7 +126,3 @@ function plot_to_log2()
 end
 
 @time f()
-plot_to_log()
-plot_to_log2()
-# linearize_plot()
-# linearize_plot_better()
