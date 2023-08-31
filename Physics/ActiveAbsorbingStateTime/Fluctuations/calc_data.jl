@@ -40,7 +40,7 @@ function zeroone_orderparameter(L)
     return state -> expval(state, order_parameter)
 end
 
-function krylov(d, L, dt, t, traj, p; w, J, U, k)
+function krylov(d, L, dt, t, traj, prob; w, J, U, k)
     println("Generating")
     state0 = onezero(d, L)
     msrop = measurementoperators(nop(d), L)
@@ -52,43 +52,17 @@ function krylov(d, L, dt, t, traj, p; w, J, U, k)
     calc_order(state) = expval(state, op)
     H = bosehubbard(d, L; w, J, U)
 
-    effect!(state) = measuresitesrandomly!(state, msrop, p)
-    r_f() = krylovevolve(state0, H, dt, t, k, calc_order; effect!)
-    println("Solving trajectories")
-    r = solvetrajectories(r_f, traj; paral = :distributed)
-    y = calc_fluctuations(r)
-    # r = solvetrajectories(r_f, traj; paral = :distributed)
-    # for p in prob
-    #     effect!(state) = measuresitesrandomly!(state, msrop, p; kwargs...)
-    #     r_f() = krylovevolve(state0, H, dt, t, k; effect!)
-    #     r = solvetrajectories(r_f, traj; paral = :distributed)
-    #     out = traj_mean(r)
-    #     push!(ent_y, out[1, 1])
-    #     push!(fluc_y, out[2, 1])
-    # end
-    return LineInfo(0:dt:t, y, traj, "p = $p")
-end
-
-function krylov_prob(d, L, dt, t, traj, prob; w, J, U, k)
-    println("Generating")
-    state0 = onezero(d, L)
-    msrop = measurementoperators(nop(d), L)
-    feedback = [isodd(i) ? n_bosons_projector(d, 0) : n_bosons_projector(d, 1) for i in 1:L]
-    unitary_after_measurement!(feedback, msrop)
-    # bra_zeroone = zeroone(d, L)'
-    # calc_dst(state) = abs(bra_zeroone * state)
-    calc_order = zeroone_orderparameter(L)
-    H = bosehubbard(d, L; w, J, U)
-
-    println("Solving trajectories")
     out = []
-    r = solvetrajectories(r_f, traj; paral = :distributed)
+    num_of_steps = length(0:dt:t)
     for p in prob
+        println("p = $p")
         effect!(state) = measuresitesrandomly!(state, msrop, p)
-        r_f() = krylovevolve(state0, H, dt, t, k, calc_order; effect!, save_only_last = true)
+        r_f() = krylovevolve(state0, H, dt, t, k, calc_order; effect!)
         r = solvetrajectories(r_f, traj; paral = :distributed)
-        push!(out, traj_mean(r)[1, 1])
+        y = calc_fluctuations(r)
+        push!(out, mean(y[Int(floor(num_of_steps / 2)) : num_of_steps]))
     end
+
     return LineInfo(prob, out, traj, "L = $L")
 end
 
@@ -104,21 +78,21 @@ function f()
         :save_before_effect => false,
         :state => "onezero",
         :alg => "krylov",
-        :L => 10,
         :k => 6,
         :traj => 500
     )
     prob = 0.01:0.02:0.19
+    sizes = [8, 10, 12]
     dst_lines = []
-    for p in prob
-        order_line = krylov(param[:d], param[:L], param[:dt], param[:t], param[:traj], p; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
+    for L in sizes
+        order_line = krylov(param[:d], L, param[:dt], param[:t], param[:traj], prob; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
         push!(dst_lines, order_line)
     end
     
     println("Saving Data")
-    path = joinpath(@__DIR__, "fluc_test")
+    path = joinpath(@__DIR__, "fluc_test_sizes")
     # addtrajectories(path, dst_lines...)
-    makeplot(path, dst_lines...; xlabel = "t", ylabel = "Steady State Fluctuations", param...)
+    makeplot(path, dst_lines...; xlabel = "p", ylabel = "Steady State Fluctuations", param...)
 end
 
 function linearize_plot()
@@ -159,7 +133,24 @@ function linearize_plot_better()
     savefig(p, path)
 end
 
-@time f()
-# plot_to_log()
+function plot_to_log()
+    path = joinpath(@__DIR__, "fluc_test_sizes")
+    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
+    pl = plot(title = plotinfo.title, 
+    xlabel = plotinfo.xlabel, 
+    ylabel = "SSFluc * L",
+    titlefontsize = 9, 
+    dpi = 300,
+    yaxis = :log10)
+    for line in values(plotinfo.lines)
+        L = parse(Int64, line.tag[5:end])
+        plot!(pl, line.x, line.y * L, label = line.tag)
+    end
+    path = joinpath(path, "log_y_axis.png")
+    savefig(pl, path)
+end
+
+# @time f()
+plot_to_log()
 # linearize_plot()
 # linearize_plot_better()
