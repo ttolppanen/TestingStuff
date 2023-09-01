@@ -40,7 +40,7 @@ function zeroone_orderparameter(L)
     return state -> expval(state, order_parameter)
 end
 
-function krylov(d, L, dt, t, traj, prob; w, J, U, k)
+function krylov(d, L, dt, t, traj, p; w, J, U, k)
     println("Generating")
     state0 = onezero(d, L)
     msrop = measurementoperators(nop(d), L)
@@ -49,18 +49,12 @@ function krylov(d, L, dt, t, traj, prob; w, J, U, k)
     calc_order = zeroone_orderparameter(L)
     H = bosehubbard(d, L; w, J, U)
 
-    out = []
-    num_of_steps = length(0:dt:t)
-    for p in prob
-        println("p = $p")
-        effect!(state) = measuresitesrandomly!(state, msrop, p)
-        r_f() = krylovevolve(state0, H, dt, t, k, calc_order; effect!)
-        r = solvetrajectories(r_f, traj; paral = :distributed)
-        y = calc_fluctuations(r)
-        push!(out, mean(y[Int(floor(num_of_steps / 2)) : num_of_steps]))
-    end
+    effect!(state) = measuresitesrandomly!(state, msrop, p)
+    r_f() = krylovevolve(state0, H, dt, t, k, calc_order; effect!)
+    r = solvetrajectories(r_f, traj; paral = :distributed)
+    y = calc_fluctuations(r)
 
-    return LineInfo(prob, out, traj, "L = $L")
+    return LineInfo(0:dt:t, y, traj, "p = $p")
 end
 
 function f()
@@ -75,46 +69,28 @@ function f()
         :save_before_effect => false,
         :state => "onezero",
         :alg => "krylov",
+        :L => 10,
         :k => 6
     )
     traj = 500
     prob = 0.01:0.02:0.19
-    sizes = [8, 10, 12]
     dst_lines = []
-    for L in sizes
-        order_line = krylov(param[:d], L, param[:dt], param[:t], traj, prob; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
+    for p in prob
+        order_line = krylov(param[:d], param[:L], param[:dt], param[:t], traj, p; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
         push!(dst_lines, order_line)
     end
     
     println("Saving Data")
-    path = joinpath(@__DIR__, "fluc_sizes")
+    path = joinpath(@__DIR__, "fluc")
     # addtrajectories(path, dst_lines...)
     makeplot(path, dst_lines...; xlabel = "p", ylabel = "Steady State Fluctuations", param...)
-    plot_to_log(path)
-    plot_to_log2(path)
 end
 
 function plot_to_log(path)
     plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
     pl = plot(title = plotinfo.title, 
     xlabel = plotinfo.xlabel, 
-    ylabel = "SSFluc * L",
-    titlefontsize = 9, 
-    dpi = 300,
-    yaxis = :log10)
-    for line in values(plotinfo.lines)
-        L = parse(Int64, line.tag[5:end])
-        plot!(pl, line.x, line.y * L, label = line.tag)
-    end
-    path = joinpath(path, "log_y_L.png")
-    savefig(pl, path)
-end
-
-function plot_to_log2(path)
-    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
-    pl = plot(title = plotinfo.title, 
-    xlabel = plotinfo.xlabel, 
-    ylabel = "SSFluc * L",
+    ylabel = "SSFluc",
     titlefontsize = 9, 
     dpi = 300,
     yaxis = :log10)
@@ -125,4 +101,5 @@ function plot_to_log2(path)
     savefig(pl, path)
 end
 
-@time f()
+# @time f()
+plot_to_log(joinpath(@__DIR__, "fluc"))
