@@ -41,9 +41,9 @@ end
 
 function krylov(d, L, dt, t, traj, p; w, J, U, k)
     println("Generating")
-    state0 = zeroone(d, L)
+    state0 = allone(d, L)
     msrop = measurementoperators(nop(d), L)
-    feedback = [1 0 1; 0 0 0; 0 1 0]
+    feedback = [1 1 0; 0 0 0; 0 0 1]
     fb_op = [singlesite(feedback, L, i) for i in 1:L]
     n_d = nall(d, L) ./ L
     calc_order(state) = expval(state, n_d)
@@ -60,43 +60,45 @@ end
 
 function f()
     param = Dict(
-        :dt => 0.08,
-        :t => 240,
+        :dt => 0.02,
+        :t => 30,
         :w => 0,
-        :U => 0.0,
-        :J => 4,
+        :U => 10,
+        :J => 1,
         :d => 3,
-        :measurement => "std_n fb: 0 -> |0>, 1 -> |2>, 2 -> |0>",
+        :measurement => "std_n fb: 0 -> |0>, 1 -> |0>, 2 -> |2>",
         :save_before_effect => false,
-        :state => "zeroone",
+        :state => "allone",
         :alg => "krylov",
         :L => 8,
-        :k => 6,
-        :traj => 100
+        :k => 6
     )
-    prob = 0.004:0.008:0.012
+    traj = 200
+    prob = 0.01:0.02:0.09
     dst_lines = []
     for p in prob
-        order_line = krylov(param[:d], param[:L], param[:dt], param[:t], param[:traj], p; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
+        order_line = krylov(param[:d], param[:L], param[:dt], param[:t], traj, p; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
         push!(dst_lines, order_line)
     end
     
     println("Saving Data")
-    path = joinpath(@__DIR__, "fb_00_12_20_high_J")
-    # addtrajectories(path, dst_lines...)
-    makeplot(path, dst_lines...; xlabel = "t", ylabel = "N / L", param...)
+    path = joinpath(@__DIR__, "boson_stacking" , "fb_00_10_22_U$(param[:U])_allone")
+    addtrajectories(path, dst_lines...)
+    # makeplot(path, dst_lines...; xlabel = "t", ylabel = "N / L", param...)
 end
 
-function linearize_plot()
-    path = joinpath(@__DIR__, "order_parameter_test", "allone_0101")
+function linearize_plot(name)
+    path = joinpath(@__DIR__, "boson_stacking", name)
     plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
     pl = plot(yaxis = :log10, 
     title = plotinfo.title, 
     xlabel = "t*gamma", 
     ylabel = plotinfo.ylabel, 
-    dpi = 300, 
+    dpi = 300,
+    titlefontsize = 9,
     legend = :outertopright,
-    xlim = (0, 10)
+    xlims = (0, 30),
+    ylims = (10^-4, 1)
     )
     for line in values(plotinfo.lines)
         p = parse(Float64, line.tag[5:end])
@@ -108,29 +110,12 @@ function linearize_plot()
     return pl
 end
 
-function linearize_plot_better()
-    path = joinpath(@__DIR__, "order_parameter_test", "allone_0101")
-    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
-    p = plot(title = plotinfo.title, 
-    xlabel = "t*gamma", 
-    ylabel = "scaled y", 
-    dpi = 300,
-    xlim = (0, 10)
-    )
-    for line in values(plotinfo.lines)
-        prob = parse(Float64, line.tag[5:end])
-        gamma = prob / plotinfo.parameters[:dt]
-        y_st = sum(line.y[end - 10 : end]) / 11
-        scale_y(y) = (y - y_st) / (1 - y_st)
-        x = line.x .* gamma
-        y = scale_y.(line.y)
-        plot!(p, x, y, label = line.tag)
-    end
-    path = joinpath(path, "linearized plot better.png")
-    savefig(p, path)
-end
 
-@time f()
+
+# @time f()
 # plot_to_log()
-# linearize_plot()
+# linearize_plot("fb_00_10_22_U0.0")
+# linearize_plot("fb_00_10_22_U1.0")
+linearize_plot("fb_00_10_22_U10")
+# linearize_plot("fb_00_10_22_U10_allone")
 # linearize_plot_better()
