@@ -41,7 +41,7 @@ end
 
 function krylov(d, L, dt, t, traj, p; w, J, U, k)
     println("Generating")
-    state0 = allone(d, L)
+    state0 = zeroone(d, L)
     msrop = measurementoperators(nop(d), L)
     feedback = [1 1 0; 0 0 0; 0 0 1]
     fb_op = [singlesite(feedback, L, i) for i in 1:L]
@@ -68,13 +68,13 @@ function f()
         :d => 3,
         :measurement => "std_n fb: 0 -> |0>, 1 -> |0>, 2 -> |2>",
         :save_before_effect => false,
-        :state => "allone",
+        :state => "zeroone",
         :alg => "krylov",
         :L => 8,
         :k => 6
     )
-    traj = 200
-    prob = 0.01:0.02:0.09
+    traj = 1000
+    prob = 0.05:0.01:0.09
     dst_lines = []
     for p in prob
         order_line = krylov(param[:d], param[:L], param[:dt], param[:t], traj, p; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
@@ -82,9 +82,9 @@ function f()
     end
     
     println("Saving Data")
-    path = joinpath(@__DIR__, "boson_stacking" , "fb_00_10_22_U$(param[:U])_allone")
-    addtrajectories(path, dst_lines...)
-    # makeplot(path, dst_lines...; xlabel = "t", ylabel = "N / L", param...)
+    path = joinpath(@__DIR__, "boson_stacking" , "fb_00_10_22_U$(param[:U])_p007")
+    # addtrajectories(path, dst_lines...)
+    makeplot(path, dst_lines...; xlabel = "t", ylabel = "N / L", param...)
 end
 
 function linearize_plot(name)
@@ -112,10 +112,11 @@ end
 
 
 
-# @time f()
+@time f()
+linearize_plot("fb_00_10_22_U10_p007")
 # plot_to_log()
 # linearize_plot("fb_00_10_22_U0.0")
 # linearize_plot("fb_00_10_22_U1.0")
-linearize_plot("fb_00_10_22_U10")
+# linearize_plot("fb_00_10_22_U10")
 # linearize_plot("fb_00_10_22_U10_allone")
 # linearize_plot_better()
