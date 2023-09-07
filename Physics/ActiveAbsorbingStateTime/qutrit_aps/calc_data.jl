@@ -73,8 +73,8 @@ function f()
         :L => 8,
         :k => 6
     )
-    traj = 1000
-    prob = 0.05:0.01:0.09
+    traj = 100
+    prob = 0.01:0.2:0.61
     dst_lines = []
     for p in prob
         order_line = krylov(param[:d], param[:L], param[:dt], param[:t], traj, p; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
@@ -82,7 +82,7 @@ function f()
     end
     
     println("Saving Data")
-    path = joinpath(@__DIR__, "boson_stacking" , "fb_00_10_22_U$(param[:U])_p007")
+    path = joinpath(@__DIR__, "boson_stacking" , "fb_00_10_22_U$(param[:U])_high_prob")
     # addtrajectories(path, dst_lines...)
     makeplot(path, dst_lines...; xlabel = "t", ylabel = "N / L", param...)
 end
@@ -113,7 +113,7 @@ end
 
 
 @time f()
-linearize_plot("fb_00_10_22_U10_p007")
+linearize_plot("fb_00_10_22_U10_high_prob")
 # plot_to_log()
 # linearize_plot("fb_00_10_22_U0.0")
 # linearize_plot("fb_00_10_22_U1.0")
