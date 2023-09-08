@@ -73,7 +73,7 @@ function f()
         :L => 8,
         :k => 6
     )
-    traj = 100
+    traj = 500
     prob = 0.01:0.2:0.61
     dst_lines = []
     for p in prob
