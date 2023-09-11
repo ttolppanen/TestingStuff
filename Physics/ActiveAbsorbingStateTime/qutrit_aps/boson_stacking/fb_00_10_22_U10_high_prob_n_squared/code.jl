@@ -119,7 +119,28 @@ function linearize_plot()
     return pl
 end
 
+function log_plot()
+    path = joinpath(@__DIR__)
+    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
+    pl = plot(yaxis = :log10, 
+    title = plotinfo.title, 
+    xlabel = "t", 
+    ylabel = plotinfo.ylabel, 
+    dpi = 300,
+    titlefontsize = 9,
+    legend = :outertopright,
+    ylims = (10^-5, 1)
+    )
+    for line in values(plotinfo.lines)
+        plot!(pl, line.x, line.y, label = line.tag)
+    end
+    path = joinpath(path, "log plot.png")
+    savefig(pl, path)
+    return pl
+end
 
 
-@time f()
+
+# @time f()
 linearize_plot()
+log_plot()
