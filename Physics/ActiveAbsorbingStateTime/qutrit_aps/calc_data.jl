@@ -39,14 +39,23 @@ function zeroone_orderparameter(L)
     return state -> expval(state, order_parameter)
 end
 
+function n_squared_orderparameter(d, L)
+    n2 = nop(d).^2
+    order_parameter = singlesite(n2, L , 1) #this is probably VERY slow for high d^L!
+    for i in 2:L
+        order_parameter .+= singlesite(n2, L, i)
+    end
+    order_parameter ./= (2 * L)
+    return state -> expval(state, order_parameter)
+end
+
 function krylov(d, L, dt, t, traj, p; w, J, U, k)
     println("Generating")
     state0 = zeroone(d, L)
     msrop = measurementoperators(nop(d), L)
     feedback = [1 1 0; 0 0 0; 0 0 1]
     fb_op = [singlesite(feedback, L, i) for i in 1:L]
-    n_d = nall(d, L) ./ L
-    calc_order(state) = expval(state, n_d)
+    calc_order = n_squared_orderparameter(d, L)
     H = bosehubbard(d, L; w, J, U)
 
     effect!(state) = measurement_and_feedback!(state, msrop, p, fb_op)
@@ -82,9 +91,9 @@ function f()
     end
     
     println("Saving Data")
-    path = joinpath(@__DIR__, "boson_stacking" , "fb_00_10_22_U$(param[:U])_high_prob")
+    path = joinpath(@__DIR__, "boson_stacking" , "fb_00_10_22_U$(param[:U])_high_prob_n_squared")
     # addtrajectories(path, dst_lines...)
-    makeplot(path, dst_lines...; xlabel = "t", ylabel = "N / L", param...)
+    makeplot(path, dst_lines...; xlabel = "t", ylabel = "sum(N²ᵢ) / 2L", param...)
 end
 
 function linearize_plot(name)
@@ -113,10 +122,3 @@ end
 
 
 @time f()
-linearize_plot("fb_00_10_22_U10_high_prob")
-# plot_to_log()
-# linearize_plot("fb_00_10_22_U0.0")
-# linearize_plot("fb_00_10_22_U1.0")
-# linearize_plot("fb_00_10_22_U10")
-# linearize_plot("fb_00_10_22_U10_allone")
-# linearize_plot_better()
