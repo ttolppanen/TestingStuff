@@ -144,7 +144,7 @@ function linearize_plot_better()
         prob = parse(Float64, line.tag[5:end])
         gamma = prob / plotinfo.parameters[:dt]
         y_st = sum(line.y[end - 10 : end]) / 11
-        scale_y(y) = (y - y_st) / (1 - y_st)
+        scale_y(y) = (y - y_st) / (0.5 - y_st)
         x = line.x .* gamma
         y = scale_y.(line.y)
         plot!(p, x, y, label = line.tag)
@@ -153,7 +153,7 @@ function linearize_plot_better()
     savefig(p, path)
 end
 
-@time f()
+# @time f()
 # plot_to_log()
-linearize_plot()
+# linearize_plot()
 linearize_plot_better()
