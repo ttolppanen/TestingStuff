@@ -1,6 +1,7 @@
 using Distributed
 using JLD2
 using Plots
+using LinearAlgebra
 @everywhere using QuantumStates
 @everywhere using QuantumOperators
 @everywhere using ITensors
@@ -49,22 +50,29 @@ function n_squared_orderparameter(d, L)
     return state -> expval(state, order_parameter)
 end
 
+function anharmonicity_orderparameter(d, L)
+    local_op = nop(d) * (nop(d) - I)
+    out = singlesite(local_op, L , 1) #this is probably VERY slow for high d^L!
+    for i in 2:L
+        out .+= singlesite(local_op, L , i)
+    end
+    out ./= L
+    return state -> expval(state, out)
+end
+
 function krylov(d, L, dt, t, traj, p; w, J, U, k)
     println("Generating")
     state0 = zeroone(d, L)
     msrop = measurementoperators(nop(d), L)
     feedback = [1 1 0; 0 0 0; 0 0 1]
     fb_op = [singlesite(feedback, L, i) for i in 1:L]
-    calc_order = n_squared_orderparameter(d, L)
+    n_list = [singlesite_n(d, L, i) for i in 1:L]
+    calc_list = [s -> expval(s, n) for n in n_list]
     H = bosehubbard(d, L; w, J, U)
 
     effect!(state) = measurement_and_feedback!(state, msrop, p, fb_op)
-    r_f() = krylovevolve(state0, H, dt, t, k, calc_order; effect!)
-    println("Solving trajectories")
-    r = solvetrajectories(r_f, traj; paral = :distributed)
-    r = traj_mean(r)
-    dst_y = r[1, :]
-    return LineInfo(0:dt:t, dst_y, traj, "p = $p")
+    r = krylovevolve(state0, H, dt, t, k, calc_list...; effect!)
+    return [LineInfo(0:dt:t, r[i, :], 1, "N_$i") for  i in 1:L]
 end
 
 function f()
@@ -80,45 +88,16 @@ function f()
         :state => "zeroone",
         :alg => "krylov",
         :L => 8,
-        :k => 6
+        :k => 6,
+        :p => 0.02
     )
-    traj = 100
-    prob = 0.01:0.2:0.61
-    dst_lines = []
-    for p in prob
-        order_line = krylov(param[:d], param[:L], param[:dt], param[:t], traj, p; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
-        push!(dst_lines, order_line)
-    end
+    traj = 1
+    order_line = krylov(param[:d], param[:L], param[:dt], param[:t], traj, param[:p]; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
     
     println("Saving Data")
-    path = joinpath(@__DIR__, "boson_stacking" , "fb_00_10_22_U$(param[:U])_high_prob_n_squared")
-    # addtrajectories(path, dst_lines...)
-    makeplot(path, dst_lines...; xlabel = "t", ylabel = "sum(N²ᵢ) / 2L", param...)
+    path = joinpath(@__DIR__, "boson_stacking" , "single_trajectories_allsites_p$(param[:p])")
+    makeplot(path, order_line...; xlabel = "t", ylabel = "N_i", param...)
 end
-
-function linearize_plot(name)
-    path = joinpath(@__DIR__, "boson_stacking", name)
-    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
-    pl = plot(yaxis = :log10, 
-    title = plotinfo.title, 
-    xlabel = "t*gamma", 
-    ylabel = plotinfo.ylabel, 
-    dpi = 300,
-    titlefontsize = 9,
-    legend = :outertopright,
-    xlims = (0, 30),
-    ylims = (10^-4, 1)
-    )
-    for line in values(plotinfo.lines)
-        p = parse(Float64, line.tag[5:end])
-        gamma = p / plotinfo.parameters[:dt]
-        plot!(pl, line.x .* gamma, line.y, label = line.tag)
-    end
-    path = joinpath(path, "linearized plot.png")
-    savefig(pl, path)
-    return pl
-end
-
 
 
 @time f()
