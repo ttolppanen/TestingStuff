@@ -102,9 +102,9 @@ function f()
     end
     
     println("Saving Data")
-    path = joinpath(@__DIR__, "boson_stacking" , "fb_00_10_22_U$(param[:U])_20202020_nall")
-    # addtrajectories(path, dst_lines...)
-    makeplot(path, dst_lines...; xlabel = "t", ylabel = "N / L", param...)
+    path = joinpath(@__DIR__)
+    addtrajectories(path, dst_lines...)
+    # makeplot(path, dst_lines...; xlabel = "t", ylabel = "N / L", param...)
     linearize_plot(path)
     log_plot(path)
 end
@@ -150,6 +150,27 @@ function log_plot(path)
     return pl
 end
 
-
+function test_plot(path)
+    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
+    pl = plot(yaxis = :log10, 
+    title = plotinfo.title, 
+    xlabel = "t*gamma", 
+    ylabel = plotinfo.ylabel, 
+    dpi = 300,
+    titlefontsize = 9,
+    legend = :outertopright,
+    xlims = (0, 30),
+    ylims = (10^-4, 1)
+    )
+    for line in values(plotinfo.lines)
+        p = parse(Float64, line.tag[5:end])
+        gamma = p / plotinfo.parameters[:dt]
+        plot!(pl, line.x, line.y, label = line.tag)
+    end
+    path = joinpath(path, "test plot.png")
+    savefig(pl, path)
+    return pl
+end
 
 @time f()
+# test_plot(@__DIR__)
