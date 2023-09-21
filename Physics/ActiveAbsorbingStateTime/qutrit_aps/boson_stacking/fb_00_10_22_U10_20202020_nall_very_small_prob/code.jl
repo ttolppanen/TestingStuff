@@ -93,7 +93,7 @@ function f()
         :L => 8,
         :k => 6
     )
-    traj = 100
+    traj = 500
     prob = 0.01:0.005:0.06
     dst_lines = []
     for p in prob
@@ -195,7 +195,7 @@ function slope_plot(path)
         gamma = p / plotinfo.parameters[:dt]
         x = line.x .* gamma
         y = log10.(line.y)
-        slope = lin_reg_slope(x[1: Int(floor(end / 2))], y[1: Int(floor(end / 2))])
+        slope = lin_reg_slope(x[1 : Int(floor(end / 2))], y[1 : Int(floor(end / 2))])
         push!(ps, p)
         push!(slopes, slope)
     end
@@ -205,5 +205,5 @@ function slope_plot(path)
     return pl
 end
 
-@time f()
-# slope_plot(@__DIR__)
+# @time f()
+slope_plot(@__DIR__)
