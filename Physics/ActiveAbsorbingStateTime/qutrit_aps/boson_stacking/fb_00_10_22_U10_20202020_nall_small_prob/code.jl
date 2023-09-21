@@ -195,7 +195,7 @@ function slope_plot(path)
         gamma = p / plotinfo.parameters[:dt]
         x = line.x .* gamma
         y = log10.(line.y)
-        slope = lin_reg_slope(x, y)
+        slope = lin_reg_slope(x[1: Int(floor(end / 2))], y[1: Int(floor(end / 2))])
         push!(ps, p)
         push!(slopes, slope)
     end

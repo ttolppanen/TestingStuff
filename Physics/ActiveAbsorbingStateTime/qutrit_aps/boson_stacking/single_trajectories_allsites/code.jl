@@ -89,7 +89,7 @@ function f()
         :alg => "krylov",
         :L => 8,
         :k => 6,
-        :p => 0.06
+        :p => 0.015
     )
     traj = 1
     order_line = krylov(param[:d], param[:L], param[:dt], param[:t], traj, param[:p]; w = param[:w], U = param[:U], J = param[:J], k = param[:k])
