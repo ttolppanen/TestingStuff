@@ -108,6 +108,7 @@ function f()
     linearize_plot(path)
     log_plot(path)
     test_plot(path)
+    slope_plot(path)
 end
 
 function linearize_plot(path)
@@ -173,4 +174,36 @@ function test_plot(path)
     return pl
 end
 
-@time f()
+function lin_reg_slope(x, y) # https://jahoo.github.io/2021/01/11/simplest_linear_regression_example.html
+    A = hcat(x, ones(length(x)))
+    return (A \ y)[1]
+end
+
+function slope_plot(path)
+    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
+    pl = plot(title = plotinfo.title, 
+    xlabel = "p", 
+    ylabel = "Exp decay slopes", 
+    dpi = 300,
+    titlefontsize = 9,
+    legend = :outertopright
+    )
+    ps = []
+    slopes = []
+    for line in values(plotinfo.lines)
+        p = parse(Float64, line.tag[5:end])
+        gamma = p / plotinfo.parameters[:dt]
+        x = line.x .* gamma
+        y = log10.(line.y)
+        slope = lin_reg_slope(x, y)
+        push!(ps, p)
+        push!(slopes, slope)
+    end
+    plot!(pl, ps, slopes)
+    path = joinpath(path, "slope plot.png")
+    savefig(pl, path)
+    return pl
+end
+
+# @time f()
+slope_plot(@__DIR__)
