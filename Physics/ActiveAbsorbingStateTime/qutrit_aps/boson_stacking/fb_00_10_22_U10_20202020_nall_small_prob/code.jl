@@ -205,5 +205,26 @@ function slope_plot(path)
     return pl
 end
 
+function collapse_plot(path)
+    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
+    pl = plot(title = plotinfo.title, 
+    xlabel = "t", 
+    ylabel = "t^δ * N / L", 
+    dpi = 300,
+    titlefontsize = 9,
+    legend = :outertopright,
+    xlims = (0, 30)
+    )
+    delta = 0.159
+    dt = plotinfo.parameters[:dt]
+    for line in values(plotinfo.lines)
+        plot!(pl, line.x, [line.y[i] * (dt * (i-1))^delta for i in eachindex(line.y)], label = line.tag)
+    end
+    path = joinpath(path, "collapse plot.png")
+    savefig(pl, path)
+    return pl
+end
+
 # @time f()
-slope_plot(@__DIR__)
+# slope_plot(@__DIR__)
+collapse_plot(@__DIR__)
