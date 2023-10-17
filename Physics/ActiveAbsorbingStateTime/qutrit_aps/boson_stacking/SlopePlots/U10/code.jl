@@ -93,7 +93,7 @@ function f(U)
         :L => 8,
         :k => 6
     )
-    traj = 100
+    traj = 200
     prob = 0.01:0.01:0.1
     dst_lines = []
     for p in prob
@@ -223,8 +223,8 @@ function collapse_plot(path)
     return pl
 end
 
-@time f(0)
-@time f(1)
-@time f(5)
+@time f(7)
+@time f(9)
 @time f(10)
-@time f(20)
+@time f(11)
+@time f(13)

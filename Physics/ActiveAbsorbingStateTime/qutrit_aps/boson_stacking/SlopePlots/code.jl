@@ -223,8 +223,8 @@ function collapse_plot(path)
     return pl
 end
 
-@time f(0)
-@time f(1)
-@time f(5)
+@time f(7)
+@time f(9)
 @time f(10)
-@time f(20)
+@time f(11)
+@time f(13)
