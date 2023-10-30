@@ -223,8 +223,39 @@ function collapse_plot(path)
     return pl
 end
 
-@time f(7)
-@time f(9)
-@time f(10)
-@time f(11)
-@time f(13)
+function combine_slope_plots()
+    path = @__DIR__
+    pl = plot(xlabel = "p", 
+    ylabel = "Exp decay slopes", 
+    dpi = 300,
+    titlefontsize = 9,
+    legend = :outertopright
+    )
+    for U in [7, 9, 10, 11, 13]
+        data_path = joinpath(path, "U$U")
+        plotinfo = load(joinpath(data_path, "data.jld2"), "plotinfo")
+        ps = []
+        slopes = []
+        for line in values(plotinfo.lines)
+            p = parse(Float64, line.tag[5:end])
+            gamma = p / plotinfo.parameters[:dt]
+            x = line.x .* gamma
+            y = log10.(line.y)
+            slope = lin_reg_slope(x[1: Int(floor(end / 2))], y[1: Int(floor(end / 2))])
+            push!(ps, p)
+            push!(slopes, slope)
+        end
+        title!(plotinfo.title)
+        plot!(pl, ps, slopes, label = "U = $U")
+    end
+    path = joinpath(path, "combined slope plot.png")
+    savefig(pl, path)
+    return pl
+end
+
+# @time f(7)
+# @time f(9)
+# @time f(10)
+# @time f(11)
+# @time f(13)
+combine_slope_plots()
