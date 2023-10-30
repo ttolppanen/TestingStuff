@@ -62,7 +62,7 @@ function cnot_unitary(d, L)
     return out
 end
 
-function krylov(d, L, dt, t, traj, p)
+function solve_data(d, L, dt, t, traj, prob)
     println("Generating")
     state0 = onezero(d, L)
     msrop = measurementoperators(nop(d), L)
@@ -70,42 +70,40 @@ function krylov(d, L, dt, t, traj, p)
     n = nall(d, L) ./ L
     calc_order(s) = expval(s, n)
     H = cnot_unitary(d, L)
-
-    effect!(state) = measurement_and_feedback!(state, msrop, p, feedback)
-    r_f() = exactevolve(state0, H, dt, t, calc_order; effect!)
-    println("Solving trajectories")
-    r = solvetrajectories(r_f, traj; paral = :distributed)
-    r = traj_mean(r)
-    return LineInfo(0:dt:t, r[1, :], traj, "p = $p")
+    y = []
+    @time for p in prob
+        effect!(state) = measurement_and_feedback!(state, msrop, p, feedback)
+        r_f() = exactevolve(state0, H, dt, t, calc_order; save_only_last = true ,effect!)
+        r = solvetrajectories(r_f, traj; paral = :distributed)
+        r = traj_mean(r)
+        push!(y, r[1, 1])
+    end
+    return LineInfo(prob, y, traj, "L = $L")
 end
 
 function f()
     param = Dict(
         :dt => 0.1,
-        :t => 30,
+        :t => "L / 10",
         :d => 2,
         :measurement => "std_n->0",
         :save_before_effect => false,
         :state => "onezero",
         :alg => "exact",
-        :U => "cnot chain: C_12C_23...C_n,n+1",
-        :L => 12
+        :U => "cnot chain: C_12C_23...C_n,n+1"
     )
     traj = 100
     prob = 0.1:0.1:0.9
     dst_lines = []
-    for p in prob
-        order_line = krylov(param[:d], param[:L], param[:dt], param[:t], traj, p)
+    for L in [8, 10, 12]
+        order_line = solve_data(param[:d], L, param[:dt], L / 10, traj, prob)
         push!(dst_lines, order_line)
     end
-    
     println("Saving Data")
     path = joinpath(@__DIR__, "test")
     # addtrajectories(path, dst_lines...)
     makeplot(path, dst_lines...; xlabel = "t", ylabel = "N / L", param...)
-    linearize_plot(path)
     log_plot(path)
-    collapse_plot(path)
 end
 
 function linearize_plot(path)
