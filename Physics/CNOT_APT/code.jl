@@ -89,9 +89,9 @@ function f()
         :state => "onezero",
         :alg => "exact",
         :U => "cnot chain: C_12C_23...C_n,n+1",
-        :L => 8
+        :L => 12
     )
-    traj = 1000
+    traj = 100
     prob = 0.1:0.1:0.9
     dst_lines = []
     for p in prob
