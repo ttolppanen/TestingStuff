@@ -241,21 +241,26 @@ function combine_slope_plots()
             gamma = p / plotinfo.parameters[:dt]
             x = line.x .* gamma
             y = log10.(line.y)
-            slope = lin_reg_slope(x[1: Int(floor(end / 2))], y[1: Int(floor(end / 2))])
+            line_start_index = Int(floor(length(x) / 4))
+            line_end_index = Int(floor(length(x) * 3 / 4))
+            slope = lin_reg_slope(x[line_start_index : line_end_index], y[line_start_index : line_end_index])
             push!(ps, p)
             push!(slopes, slope)
         end
         title!(plotinfo.title)
         plot!(pl, ps, slopes, label = "U = $U")
     end
-    path = joinpath(path, "combined slope plot.png")
+    path = joinpath(path, "combined slope plot test.png")
     savefig(pl, path)
     return pl
 end
 
-# @time f(7)
-# @time f(9)
-# @time f(10)
-# @time f(11)
-# @time f(13)
+# for _ in 1:3
+#     @time f(7)
+#     @time f(9)
+#     @time f(10)
+#     @time f(11)
+#     @time f(13)
+# end
+
 combine_slope_plots()

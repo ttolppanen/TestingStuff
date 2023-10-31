@@ -195,7 +195,9 @@ function slope_plot(path)
         gamma = p / plotinfo.parameters[:dt]
         x = line.x .* gamma
         y = log10.(line.y)
-        slope = lin_reg_slope(x[1: Int(floor(end / 2))], y[1: Int(floor(end / 2))])
+        line_start_index = Int(floor(length(x) / 4))
+        line_end_index = Int(floor(length(x) * 3 / 4))
+        slope = lin_reg_slope(x[line_start_index : line_end_index], y[line_start_index : line_end_index])
         push!(ps, p)
         push!(slopes, slope)
     end
@@ -226,5 +228,5 @@ function collapse_plot(path)
 end
 
 # @time f()
-# slope_plot(@__DIR__)
-collapse_plot(@__DIR__)
+slope_plot(@__DIR__)
+# collapse_plot(@__DIR__)
