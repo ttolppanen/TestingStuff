@@ -62,9 +62,16 @@ function cnot_unitary(d, L)
     return out
 end
 
+function plus_minus_state(L) # not defined for d != 2
+    plus = sparse([1/sqrt(2), 1/sqrt(2)])
+    minus = sparse([1/sqrt(2), -1/sqrt(2)])
+    sites = [isodd(i) ? plus : minus for i in 1:L]
+    return complex(kron(sites...))
+end
+
 function solve_data(d, L, dt, t, traj, prob)
     println("Generating")
-    state0 = onezero(d, L)
+    state0 = plus_minus_state(L)
     msrop = measurementoperators(nop(d), L)
     feedback = [singlesite(n_bosons_projector(d, 0), L, i) for i in 1:L]
     n = nall(d, L) ./ L
@@ -88,12 +95,12 @@ function f()
         :d => 2,
         :measurement => "std_n->0",
         :save_before_effect => false,
-        :state => "onezero",
+        :state => "|+>|->",
         :alg => "exact",
         :U => "cnot chain: C_12C_23...C_n,n+1"
     )
-    traj = 1000
-    prob = 0.01:0.1:0.91
+    traj = 2000
+    prob = 0.01:0.01:0.2
     dst_lines = []
     for L in [8, 10, 12]
         order_line = solve_data(param[:d], L, param[:dt], 2*L, traj, prob)
@@ -101,8 +108,8 @@ function f()
     end
     println("Saving Data")
     path = @__DIR__
-    # addtrajectories(path, dst_lines...)
-    makeplot(path, dst_lines...; copy_code = false, xlabel = "p", ylabel = "N / L", param...)
+    addtrajectories(path, dst_lines...)
+    # makeplot(path, dst_lines...; copy_code = false, xlabel = "p", ylabel = "N / L", param...)
     log_plot(path)
 end
 
