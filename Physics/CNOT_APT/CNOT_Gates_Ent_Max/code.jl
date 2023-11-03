@@ -92,7 +92,7 @@ function f()
         :d => 2,
         :measurement => "std_n->0",
         :save_before_effect => false,
-        :state => "onezero",
+        :state => "|+>|->...", #there was a typo here, it said onezero
         :alg => "exact",
         :U => "cnot chain: C_12C_23...C_n,n+1",
         :L => 8
