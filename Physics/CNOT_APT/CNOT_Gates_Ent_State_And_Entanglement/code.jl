@@ -198,6 +198,35 @@ function collapse_plot(path)
     return pl
 end
 
+function s_and_n_plot(path)
+    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
+    pl = plot(title = plotinfo.title, 
+    xlabel = "N / L", 
+    ylabel = "S(L/2)",
+    dpi = 300,
+    titlefontsize = 9,
+    legend = :outertopright
+    )
+    lines = Dict()
+    for line in values(plotinfo.lines)
+        p = parse(Float64, split(line.tag)[end])
+        if !haskey(lines, p)
+            lines[p] = [[], []]
+        end
+        if line.tag[1] == 'N'
+            lines[p][1] = line.y
+        else
+            lines[p][2] = line.y
+        end
+    end
+    for (key, value) in lines
+        display(value[1])
+        plot!(pl, value[1], value[2], label = "p = $key")
+    end
+    path = joinpath(path, "s and N.png")
+    savefig(pl, path)
+    return pl
+end
+
 # @time f()
-linearize_plot(@__DIR__)
-p_scaled_plot(@__DIR__)
+s_and_n_plot(@__DIR__)
