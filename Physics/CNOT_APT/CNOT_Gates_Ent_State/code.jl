@@ -156,6 +156,26 @@ function log_plot(path)
     return pl
 end
 
+function log_log_plot(path)
+    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
+    pl = plot(yaxis = :log10,
+    xaxis = :log10,
+    title = plotinfo.title, 
+    xlabel = "t", 
+    ylabel = plotinfo.ylabel, 
+    dpi = 300,
+    titlefontsize = 9,
+    legend = :outertopright,
+    ylims = (10^-1, 0.6)
+    )
+    for line in values(plotinfo.lines)
+        plot!(pl, 10 .* (line.x .+ 0.1), line.y, label = line.tag)
+    end
+    path = joinpath(path, "log log plot.png")
+    savefig(pl, path)
+    return pl
+end
+
 function collapse_plot(path)
     plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
     pl = plot(title = plotinfo.title, 
@@ -176,4 +196,5 @@ function collapse_plot(path)
     return pl
 end
 
-@time f()
+# @time f()
+log_log_plot(@__DIR__)
