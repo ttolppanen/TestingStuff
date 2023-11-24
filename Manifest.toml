@@ -1038,9 +1038,9 @@ uuid = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 
 [[deps.PlotAndSave]]
 deps = ["JLD2", "OrderedCollections", "Plots"]
-git-tree-sha1 = "28c404cab0a098bfe2e332e5e79eae558991c621"
+git-tree-sha1 = "c473c36b4cf19ba267ac640fa0c2fa66ba8582d4"
 uuid = "17f9de49-761f-4084-9189-3237cc0765fb"
-version = "0.2.5"
+version = "0.2.6"
 
 [[deps.PlotThemes]]
 deps = ["PlotUtils", "Statistics"]
