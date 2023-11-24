@@ -42,7 +42,7 @@ function f()
     param = initial_parameters()
 
     # -----------
-    traj = 1000
+    traj = 3000
     ps = 0.01:0.01:0.1
     Us = [7, 9, 10, 11, 13]
     # -----------
