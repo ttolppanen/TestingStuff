@@ -1,0 +1,72 @@
+1 process | 100 traj
+
+ 19.096304 seconds (53.33 M allocations: 17.434 GiB, 6.28% gc time, 1.79% compilation time)
+ 20.967906 seconds (53.13 M allocations: 18.242 GiB, 5.67% gc time)
+ 22.707221 seconds (54.23 M allocations: 19.156 GiB, 5.39% gc time)
+ 25.852974 seconds (55.41 M allocations: 20.070 GiB, 5.07% gc time)
+ 27.786772 seconds (57.37 M allocations: 21.517 GiB, 5.02% gc time)
+117.321229 seconds (273.80 M allocations: 96.493 GiB, 5.39% gc time, 0.29% compilation time)
+117.854900 seconds (274.18 M allocations: 97.247 GiB, 5.42% gc time, 0.32% compilation time)
+
+2 process | 100 traj
+
+36.568062 seconds (32.99 M allocations: 9.517 GiB, 2.16% gc time, 12.06% compilation time)
+ 18.460928 seconds (10.78 M allocations: 8.223 GiB, 2.40% gc time)
+ 19.181584 seconds (10.78 M allocations: 8.223 GiB, 1.99% gc time)
+ 20.338821 seconds (10.78 M allocations: 8.223 GiB, 1.95% gc time)
+ 22.056657 seconds (10.78 M allocations: 8.223 GiB, 1.72% gc time)
+136.582680 seconds (140.90 M allocations: 46.010 GiB, 2.18% gc time, 15.28% compilation time)
+142.292593 seconds (151.84 M allocations: 47.357 GiB, 2.19% gc time, 18.32% compilation time)
+
+2 process | 200 traj
+
+ 33.478138 seconds (22.99 M allocations: 16.521 GiB, 2.72% gc time, 0.75% compilation time)
+ 35.832036 seconds (21.55 M allocations: 16.446 GiB, 1.88% gc time)
+ 37.717780 seconds (21.55 M allocations: 16.446 GiB, 1.88% gc time)
+ 41.047984 seconds (21.56 M allocations: 16.446 GiB, 1.94% gc time)
+ 43.295816 seconds (21.57 M allocations: 16.446 GiB, 1.79% gc time)
+192.317124 seconds (109.55 M allocations: 82.379 GiB, 2.02% gc time, 0.13% compilation time)
+192.774271 seconds (109.93 M allocations: 83.133 GiB, 2.04% gc time, 0.15% compilation time)
+
+4 process | 100 traj
+
+ 32.455228 seconds (32.92 M allocations: 9.530 GiB, 2.58% gc time, 13.74% compilation time)
+ 11.551849 seconds (10.72 M allocations: 8.222 GiB, 3.01% gc time)
+ 11.996662 seconds (10.72 M allocations: 8.232 GiB, 2.60% gc time)
+ 12.241111 seconds (10.73 M allocations: 8.223 GiB, 2.65% gc time)
+ 13.289142 seconds (10.73 M allocations: 8.240 GiB, 2.55% gc time)
+ 99.040470 seconds (140.61 M allocations: 46.048 GiB, 2.90% gc time, 21.22% compilation time)
+104.766585 seconds (151.55 M allocations: 47.394 GiB, 2.89% gc time, 24.99% compilation time)
+
+4 process | 200 traj
+
+22.792247 seconds (22.87 M allocations: 16.544 GiB, 3.28% gc time, 1.15% compilation time)
+ 23.211415 seconds (21.44 M allocations: 16.932 GiB, 2.99% gc time)
+ 24.087102 seconds (21.44 M allocations: 16.932 GiB, 3.02% gc time)
+ 25.645051 seconds (21.45 M allocations: 16.932 GiB, 3.05% gc time)
+ 27.201504 seconds (21.46 M allocations: 16.467 GiB, 3.07% gc time)
+123.842377 seconds (108.98 M allocations: 83.881 GiB, 3.06% gc time, 0.21% compilation time)
+124.289424 seconds (109.36 M allocations: 84.635 GiB, 3.08% gc time, 0.24% compilation time)
+
+8 process | 100 traj
+
+10.400219 seconds (12.12 M allocations: 8.296 GiB, 3.69% gc time, 2.39% compilation time)
+ 10.175172 seconds (10.67 M allocations: 8.220 GiB, 3.73% gc time)
+ 10.307624 seconds (10.67 M allocations: 8.220 GiB, 3.85% gc time)
+ 10.769935 seconds (10.68 M allocations: 8.221 GiB, 3.71% gc time)
+ 11.660323 seconds (10.68 M allocations: 8.221 GiB, 3.70% gc time)
+ 54.221372 seconds (55.15 M allocations: 41.252 GiB, 3.67% gc time, 0.46% compilation time)
+ 54.652195 seconds (55.53 M allocations: 42.006 GiB, 3.71% gc time, 0.52% compilation time)
+
+8 process | 200 traj
+
+45.236046 seconds (43.56 M allocations: 17.736 GiB, 2.91% gc time, 10.03% compilation time)
+ 20.041730 seconds (21.34 M allocations: 16.440 GiB, 4.23% gc time)
+ 20.114069 seconds (21.35 M allocations: 16.441 GiB, 3.89% gc time)
+ 21.149248 seconds (21.35 M allocations: 16.441 GiB, 4.83% gc time)
+ 20.775431 seconds (21.35 M allocations: 16.441 GiB, 3.39% gc time)
+144.638676 seconds (193.76 M allocations: 87.099 GiB, 3.63% gc time, 14.46% compilation time)
+150.396828 seconds (204.69 M allocations: 88.445 GiB, 3.60% gc time, 17.37% compilation time)
+
+
+
