@@ -1,15 +1,21 @@
 using LinearAlgebra
 
-function test_func(v)
-    normalize!(v)
+function test_func(a, b)
+     return a, b
+end
+
+function test_this(a, b, N)
+    t = (a, b)
+    @code_warntype for _ in 1:N
+        t = test_func(t...)
+    end
 end
 
 function f()
-    v = rand(100)
-    N = 1000
-    @time for _ in 1:N
-        test_func(v)
-    end
+    N = 10000
+    a = rand(N)
+    b = rand()
+    @code_warntype test_this(a, b, N)
 end
 
 f()
