@@ -1,5 +1,6 @@
 [deps]
 Distributed = "8ba89e20-285c-5b6f-9357-94700520ee1b"
+FastClosures = "9aa1b823-49e4-5ca5-8b0f-3971ec8bab6a"
 Gadfly = "c91e804a-d5a3-530f-b6f0-dfbca275c004"
 HDF5 = "f67ccb44-e63f-5c2f-98bd-6dc0ccc4ba2f"
 ITensors = "9136182c-28ba-11e9-034c-db9fb085ebd5"
