@@ -60,16 +60,19 @@ function f()
     obs_name = "N / L"
     obs(state, id) = expval(state[id], n[id])
 
+    dt = param[:dt]; t = param[:t]; k = param[:k]
+    pa_k = PA_krylov_sub(state, k)
+    pa_args, pa_out = pre_alloc_threads(zeros(1, length(0:dt:t)), traj, pa_k)
+
     @time for U in Us
         H = subspace_split(bosehubbard(d, L; w = param[:w], J = param[:J], U), ranges, perm_mat)
         plot_lines = []
         @time for p in ps
             effect!(state, id) = random_measurement_feedback!(state, id, msrop, p, feedback; skip_subspaces = 1)
             
-            dt = param[:dt]; t = param[:t]; k = param[:k]
-            r_f() = krylovevolve(state, initial_id, H, dt, t, k, obs; effect!)
-            r = solvetrajectories(r_f, traj; paral = :distributed)
-            r = traj_mean(r)
+            r_f(out, pa_k) = krylovevolve(state, initial_id, H, dt, t, k, pa_k, obs; effect!, out)
+            solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
+            r = traj_mean(pa_out)
             push!(plot_lines, LineInfo(0:dt:t, r[1, :], traj, "p = $p"))
         end
         path = joinpath(@__DIR__, "U$U")
