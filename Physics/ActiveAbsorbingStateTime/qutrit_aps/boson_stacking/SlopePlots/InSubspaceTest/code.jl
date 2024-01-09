@@ -76,8 +76,8 @@ function f()
             push!(plot_lines, LineInfo(0:dt:t, r[1, :], traj, "p = $p"))
         end
         path = joinpath(@__DIR__, "L12", "U$U")
-        makeplot(path, plot_lines...; xlabel = "t", ylabel = obs_name, U, param...)
-        # addtrajectories(path, plot_lines...)
+        # makeplot(path, plot_lines...; xlabel = "t", ylabel = obs_name, U, param...)
+        addtrajectories(path, plot_lines...)
         linearize_plot(path);
     end
     combine_slope_plots();
