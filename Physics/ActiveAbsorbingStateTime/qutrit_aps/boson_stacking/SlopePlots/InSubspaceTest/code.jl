@@ -42,8 +42,8 @@ function f()
     param = initial_parameters()
 
     # -----------
-    traj = 2000
-    ps = 0.01:0.01:0.1
+    traj = 4000
+    ps = 0.01:0.005:0.05
     Us = [7, 9, 10, 11, 13]
     # -----------
 
@@ -75,9 +75,9 @@ function f()
             r = traj_mean(pa_out)
             push!(plot_lines, LineInfo(0:dt:t, r[1, :], traj, "p = $p"))
         end
-        path = joinpath(@__DIR__, "L12", "U$U")
-        # makeplot(path, plot_lines...; xlabel = "t", ylabel = obs_name, U, param...)
-        addtrajectories(path, plot_lines...)
+        path = joinpath(@__DIR__, "L12_small_prob", "U$U")
+        makeplot(path, plot_lines...; xlabel = "t", ylabel = obs_name, U, param...)
+        # addtrajectories(path, plot_lines...)
         linearize_plot(path);
     end
     combine_slope_plots();
@@ -112,7 +112,7 @@ function lin_reg_slope(x, y) # https://jahoo.github.io/2021/01/11/simplest_linea
 end
 
 function combine_slope_plots()
-    path = joinpath(@__DIR__, "L12")
+    path = joinpath(@__DIR__, "L12_small_prob")
     pl = plot(xlabel = "p", 
     ylabel = "Exp decay slopes", 
     dpi = 300,
