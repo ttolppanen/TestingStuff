@@ -42,7 +42,7 @@ function f()
     param = initial_parameters()
 
     # -----------
-    ps = [0.01, 0.02, 0.03, 0.04, 0.5]
+    ps = [0.01, 0.02, 0.03, 0.04, 0.05]
     plots_per_p = 5
     U = 10
     # -----------
@@ -77,16 +77,15 @@ function f()
         end
     end
 
-    # plot_lines = []
-    # for i in 1:L
-    #     push!(plot_lines, LineInfo(0:dt:t, r[i, :], 1, "L = $i"))
-    # end
-    # path = joinpath(@__DIR__, "test")
-    # makeplot(path, plot_lines...; xlabel = "t", U, param...)
-    path = joinpath(@__DIR__, "test", "heatmap.png")
+    plot_lines = []
+    for i in 1:L
+        push!(plot_lines, LineInfo(0:dt:t, r[i, :], 1, "L = $i"))
+    end
+    path = joinpath(@__DIR__, "test")
+    makeplot(path, plot_lines...; xlabel = "t", U, param...)
     title = PlotAndSave.parameters_to_title(; U, param...)
     pl = plot(plots..., layout = (length(ps), plots_per_p), size = (1500, 1500), plot_title = title, plot_titlefont = 10)
-    savefig(pl, path)
+    savefig(pl, joinpath(path, "heatmap.png"))
     # x = 1:L
     # y = 0:dt:t
     # # f(x, y) = r[x, Int(floor(y / 0.02)) + 1]

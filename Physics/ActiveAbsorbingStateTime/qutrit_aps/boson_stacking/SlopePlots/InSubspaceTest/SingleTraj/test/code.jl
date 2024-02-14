@@ -42,7 +42,8 @@ function f()
     param = initial_parameters()
 
     # -----------
-    p = 0.01
+    ps = [0.01, 0.02, 0.03, 0.04, 0.05]
+    plots_per_p = 5
     U = 10
     # -----------
 
@@ -61,76 +62,32 @@ function f()
 
     dt = param[:dt]; t = param[:t]; k = param[:k]
 
-    effect!(state, id) = random_measurement_feedback!(state, id, msrop, p, feedback; skip_subspaces = 1)
-    r = krylovevolve(state, initial_id, H, dt, t, k, obs...; effect!)
-
-    plot_lines = []
-    for i in 1:L
-        push!(plot_lines, LineInfo(0:dt:t, r[i, :], 1, "L = $i"))
-    end
-    path = joinpath(@__DIR__, "test")
-    makeplot(path, plot_lines...; xlabel = "t", U, param...)
-end
-
-function linearize_plot(path)
-    plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
-    traj = collect(values(plotinfo.lines))[1].traj
-    pl = plot(yaxis = :log10, 
-    title = plotinfo.title * ", traj = $traj", 
-    xlabel = "t*gamma", 
-    ylabel = plotinfo.ylabel, 
-    dpi = 300,
-    titlefontsize = 9,
-    legend = :outertopright,
-    xlims = (0, 30),
-    ylims = (10^-1, 1)
-    )
-    for line in values(plotinfo.lines)
-        p = parse(Float64, line.tag[5:end])
-        gamma = p / plotinfo.parameters[:dt]
-        plot!(pl, line.x .* gamma, line.y, label = line.tag)
-    end
-    path = joinpath(path, "linearized plot.png")
-    savefig(pl, path)
-    return pl
-end
-
-function lin_reg_slope(x, y) # https://jahoo.github.io/2021/01/11/simplest_linear_regression_example.html
-    A = hcat(x, ones(length(x)))
-    return (A \ y)[1]
-end
-
-function combine_slope_plots()
-    path = joinpath(@__DIR__, "L2")
-    pl = plot(xlabel = "p", 
-    ylabel = "Exp decay slopes", 
-    dpi = 300,
-    titlefontsize = 9,
-    legend = :outertopright
-    )
-    for U in [7, 9, 10, 11, 13]
-        data_path = joinpath(path, "U$U")
-        plotinfo = load(joinpath(data_path, "data.jld2"), "plotinfo")
-        ps = []
-        slopes = []
-        for line in values(plotinfo.lines)
-            p = parse(Float64, line.tag[5:end])
-            gamma = p / plotinfo.parameters[:dt]
-            x = line.x .* gamma
-            y = log10.(line.y)
-            line_start_index = Int(floor(length(x) / 4))
-            line_end_index = Int(floor(length(x) * 3 / 4))
-            slope = lin_reg_slope(x[line_start_index : line_end_index], y[line_start_index : line_end_index])
-            push!(ps, p)
-            push!(slopes, slope)
+    plots = []
+    added_bar = false
+    for p in ps
+        effect!(state, id) = random_measurement_feedback!(state, id, msrop, p, feedback; skip_subspaces = 1)
+        for _ in 1:plots_per_p
+            r = krylovevolve(state, initial_id, H, dt, t, k, obs...; effect!)
+            if !added_bar
+                added_bar = true
+                push!(plots, heatmap(1:L, 0:dt:t, transpose(r)))
+            else
+                push!(plots, heatmap(1:L, 0:dt:t, transpose(r), xlabel = "site", ylabel = "t", title = "p = $p", legend = :none))
+            end
         end
-        traj = collect(values(plotinfo.lines))[1].traj
-        title!(plotinfo.title * ", traj = $traj")
-        plot!(pl, ps, slopes, label = "U = $U")
     end
-    path = joinpath(path, "combined slope plot test.png")
-    savefig(pl, path)
-    return pl
+
+    path = @__DIR__
+    title = PlotAndSave.parameters_to_title(; U, param...)
+    pl = plot(plots..., layout = (length(ps), plots_per_p), size = (1500, 1500), plot_title = title, plot_titlefont = 10)
+    savefig(pl, joinpath(path, "heatmap.png"))
+    # x = 1:L
+    # y = 0:dt:t
+    # # f(x, y) = r[x, Int(floor(y / 0.02)) + 1]
+    # # pl = contour(x, y, f)
+    # c = cgrad([:black, :yellow, :red, :purple, :white], [0.99, 1.0, 1.99, 2.0])
+    # pl = heatmap(x, y, transpose(r), color=c)
+    # plot(pl)
 end
 
 @time f()
