@@ -42,7 +42,8 @@ function f()
     param = initial_parameters()
 
     # -----------
-    p = 0.01
+    ps = [0.01, 0.02, 0.03, 0.04, 0.5]
+    plots_per_p = 5
     U = 10
     # -----------
 
@@ -61,8 +62,20 @@ function f()
 
     dt = param[:dt]; t = param[:t]; k = param[:k]
 
-    effect!(state, id) = random_measurement_feedback!(state, id, msrop, p, feedback; skip_subspaces = 1)
-    r = krylovevolve(state, initial_id, H, dt, t, k, obs...; effect!)
+    plots = []
+    added_bar = false
+    for p in ps
+        effect!(state, id) = random_measurement_feedback!(state, id, msrop, p, feedback; skip_subspaces = 1)
+        for _ in 1:plots_per_p
+            r = krylovevolve(state, initial_id, H, dt, t, k, obs...; effect!)
+            if !added_bar
+                added_bar = true
+                push!(plots, heatmap(1:L, 0:dt:t, transpose(r)))
+            else
+                push!(plots, heatmap(1:L, 0:dt:t, transpose(r), xlabel = "site", ylabel = "t", title = "p = $p", legend = :none))
+            end
+        end
+    end
 
     # plot_lines = []
     # for i in 1:L
@@ -70,15 +83,17 @@ function f()
     # end
     # path = joinpath(@__DIR__, "test")
     # makeplot(path, plot_lines...; xlabel = "t", U, param...)
-    path = joinpath(@__DIR__, "test", "contour.png")
-
-    x = 1:L
-    y = 0:dt:t
-    # f(x, y) = r[x, Int(floor(y / 0.02)) + 1]
-    # pl = contour(x, y, f)
-    c = cgrad([:black, :yellow, :red, :purple, :white], [0.99, 1.0, 1.99, 2.0])
-    pl = heatmap(x, y, transpose(r), color=c)
-    plot(pl)
+    path = joinpath(@__DIR__, "test", "heatmap.png")
+    title = PlotAndSave.parameters_to_title(; U, param...)
+    pl = plot(plots..., layout = (length(ps), plots_per_p), size = (1500, 1500), plot_title = title, plot_titlefont = 10)
+    savefig(pl, path)
+    # x = 1:L
+    # y = 0:dt:t
+    # # f(x, y) = r[x, Int(floor(y / 0.02)) + 1]
+    # # pl = contour(x, y, f)
+    # c = cgrad([:black, :yellow, :red, :purple, :white], [0.99, 1.0, 1.99, 2.0])
+    # pl = heatmap(x, y, transpose(r), color=c)
+    # plot(pl)
 end
 
 function linearize_plot(path)
