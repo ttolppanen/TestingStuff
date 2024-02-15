@@ -42,7 +42,7 @@ function f()
     param = initial_parameters()
 
     # -----------
-    ps = [0.01, 0.02, 0.03, 0.04, 0.05]
+    ps = [0.1, 0.3, 0.5, 0.7, 0.9]
     plots_per_p = 5
     U = 10
     # -----------
@@ -80,7 +80,7 @@ function f()
     path = @__DIR__
     title = PlotAndSave.parameters_to_title(; U, param...)
     pl = plot(plots..., layout = (length(ps), plots_per_p), size = (1500, 1500), plot_title = title, plot_titlefont = 10)
-    savefig(pl, joinpath(path, "heatmap.png"))
+    savefig(pl, joinpath(path, "heatmap_lp.png"))
     # x = 1:L
     # y = 0:dt:t
     # # f(x, y) = r[x, Int(floor(y / 0.02)) + 1]
