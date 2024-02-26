@@ -43,7 +43,7 @@ function f(p)
 
     # -----------
     p = p
-    U = 10
+    U = 5
     traj = 150
     # -----------
 
@@ -73,11 +73,12 @@ function f(p)
     push!(plots, LineInfo(0:dt:t, vec(sum(traj_mean(pa_out) ./ L, dims = 1)), traj, "N/L"))
     push!(plots, LineInfo(0:dt:t, vec(sum(traj_mean(f_anh.(pa_out)) ./ L, dims = 1)), traj, "sum(N(N-1))/L"))
 
-    path = joinpath(@__DIR__, "p = $p")
+    path = joinpath(@__DIR__, "U5_p = $p")
     makeplot(path, plots...; xlabel = "t", U, p, param...)
     # addtrajectories(path, plots...)
 end
 
-@time f(0.02)
+@time f(0.01)
 @time f(0.03)
+@time f(0.05)
 #exit()
