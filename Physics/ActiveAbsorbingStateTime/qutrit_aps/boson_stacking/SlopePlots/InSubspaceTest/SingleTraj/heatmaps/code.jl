@@ -42,9 +42,9 @@ function f()
     param = initial_parameters()
 
     # -----------
-    ps = [0.1, 0.3, 0.5, 0.7, 0.9]
+    ps = [0.01, 0.02, 0.03, 0.04, 0.05]
     plots_per_p = 5
-    U = 10
+    U = 5
     # -----------
 
     d = param[:d]; L = param[:L];
@@ -65,14 +65,15 @@ function f()
     plots = []
     added_bar = false
     for p in ps
+        gamma = p / dt
         effect!(state, id) = random_measurement_feedback!(state, id, msrop, p, feedback; skip_subspaces = 1)
         for _ in 1:plots_per_p
             r = krylovevolve(state, initial_id, H, dt, t, k, obs...; effect!)
             if !added_bar
                 added_bar = true
-                push!(plots, heatmap(1:L, 0:dt:t, transpose(r)))
+                push!(plots, heatmap(1:L, (0:dt:t) * gamma, transpose(r)))
             else
-                push!(plots, heatmap(1:L, 0:dt:t, transpose(r), xlabel = "site", ylabel = "t", title = "p = $p", legend = :none))
+                push!(plots, heatmap(1:L, (0:dt:t) * gamma, transpose(r), xlabel = "site", ylabel = "t * gamma", title = "p = $p", legend = :none))
             end
         end
     end
@@ -80,7 +81,7 @@ function f()
     path = @__DIR__
     title = PlotAndSave.parameters_to_title(; U, param...)
     pl = plot(plots..., layout = (length(ps), plots_per_p), size = (1500, 1500), plot_title = title, plot_titlefont = 10)
-    savefig(pl, joinpath(path, "heatmap_lp.png"))
+    savefig(pl, joinpath(path, "gamma_heatmapU5.png"))
     # x = 1:L
     # y = 0:dt:t
     # # f(x, y) = r[x, Int(floor(y / 0.02)) + 1]
