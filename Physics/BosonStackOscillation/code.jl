@@ -6,15 +6,15 @@ using Plots # <- julia package for plotting
 using NumericalIntegration
 
 function example()
-    d = 3 # qubits
+    d = 3 # qutrits
     L = 2 # number of sites
     dt = 0.01
-    t = 0.1
+    t = 1.0
     k = 6 # the krylov subspace dimenion, this affects the accuracy of the numerics.
     initial_state = productstate(d, [isodd(i) ? 2 : 0 for i in 1:L]) # |01> 
     w = 0.0
-    U = 20.0
-    J = 3.0
+    U = 13.0
+    J = 1.0
     H = bosehubbard(d, L; w=w, U=U, J=J) # in julia the arguments after ; are keyword arguments. Here since the argument name is the same as the keyword, you dont need to write w=w, you can just put w. 
 
     one_one = allone(d, L)
@@ -39,6 +39,11 @@ function example()
     # ]
     # save_data_path = joinpath(@__DIR__ , "plot_data")
     # makeplot(save_data_path, plot_lines...; xlabel = "t", ylabel = "I dont know", d, L, dt, t, k, w, U, J, state = "|01>")
+end
+
+function add_vline_gamma(p)
+    gamma = p / 0.02
+    vline!([1 / gamma])
 end
 
 @time example()
