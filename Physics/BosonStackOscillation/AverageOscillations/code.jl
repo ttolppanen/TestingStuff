@@ -14,7 +14,7 @@ function traj_mean(result)
 end
 
 function example()
-    traj = 5000
+    traj = 1000
     d = 3 # qutrits
     L = 2 # number of sites
     dt = 0.01
@@ -22,7 +22,7 @@ function example()
     k = 6 # the krylov subspace dimenion, this affects the accuracy of the numerics.
     initial_state = productstate(d, [isodd(i) ? 2 : 0 for i in 1:L]) # |01> 
     w = 0.0
-    U = 9
+    U = 7
     J = 1.0
     H = bosehubbard(d, L; w=w, U=U, J=J) # in julia the arguments after ; are keyword arguments. Here since the argument name is the same as the keyword, you dont need to write w=w, you can just put w. 
 
@@ -30,7 +30,7 @@ function example()
     one_one = one_one * one_one'
     calc_one_one_expval(state) = expval(state, one_one) # notice that calc_n_expval is a function with one argument, and n is "captured".
 
-    p = 0.03
+    p = 0.01
     op = nop(d)
     msr_op = measurementoperators(op, L)
     effect!(state) = random_measurement!(state, msr_op, p)
@@ -45,8 +45,9 @@ function example()
     int = float(integrate(time_steps, r))
     int = int / t
     int = round(int, digits = 3)
-    plot!(time_steps, r, label = "|11> density, U = $U, I/t = $int")
-    add_vline_gamma(p, dt)
+    
+    plot(time_steps, r, label = "|11> density, U = $U, I/t = $int")
+    check_rabi(U, J, dt)
     # making the plot with PlotAndSave
     # plot_lines = [
     #     LineInfo(time_steps, n_results, 1, "Total boson number"), # here the number 1 refers to the number of trajectories.
@@ -59,6 +60,13 @@ end
 function add_vline_gamma(p, dt)
     gamma = p / dt
     vline!([1 / gamma])
+end
+
+function check_rabi(U, J, dt)
+    w = sqrt(U^2 + 2*(J)^2) / (2 * pi)
+    p = w * 2 * dt
+    println(p)
+    add_vline_gamma(p, dt)
 end
 
 @time example()
