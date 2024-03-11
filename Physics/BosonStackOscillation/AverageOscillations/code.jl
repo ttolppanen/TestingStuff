@@ -14,7 +14,7 @@ function traj_mean(result)
 end
 
 function example()
-    traj = 1000
+    traj = 5000
     d = 3 # qutrits
     L = 2 # number of sites
     dt = 0.01
@@ -29,25 +29,28 @@ function example()
     one_one = allone(d, L)
     one_one = one_one * one_one'
     calc_one_one_expval(state) = expval(state, one_one) # notice that calc_n_expval is a function with one argument, and n is "captured".
+    calc_ent(state) = entanglement(d, L, state, 1)
 
-    p = 0.01
+    p = 0.05
     op = nop(d)
     msr_op = measurementoperators(op, L)
     effect!(state) = random_measurement!(state, msr_op, p)
 
-    r_f() = krylovevolve(initial_state, H, dt, t, k, calc_one_one_expval; effect!)
+    r_f() = krylovevolve(initial_state, H, dt, t, k, calc_one_one_expval, calc_ent; effect!)
     results = solvetrajectories(r_f, traj)
     results = traj_mean(results)
 
     time_steps = 0:dt:t
     r = results[1, :]
+    r_ent = results[2, :]
     
     int = float(integrate(time_steps, r))
     int = int / t
     int = round(int, digits = 3)
     
-    plot(time_steps, r, label = "|11> density, U = $U, I/t = $int")
-    check_rabi(U, J, dt)
+    #plot!(time_steps, r, label = "|11> density, U = $U, I/t = $int")
+    plot!(time_steps, r_ent, label = "Ent, U = $U")
+    #check_rabi(U, J, dt)
     # making the plot with PlotAndSave
     # plot_lines = [
     #     LineInfo(time_steps, n_results, 1, "Total boson number"), # here the number 1 refers to the number of trajectories.
