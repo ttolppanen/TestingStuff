@@ -21,7 +21,7 @@ function initial_parameters()
     param[:dt] = 0.02
     param[:t] = 30
     param[:d] = 3
-    param[:L] = 6
+    param[:L] = 12
     param[:state] = ValueInfo(productstate(param[:d], [isodd(i) ? 2 : 0 for i in 1:param[:L]]), "|2020...>")
     param[:alg] = "krylov BN-subspace"
     param[:k] = 6
@@ -40,7 +40,7 @@ function f()
     param = initial_parameters()
 
     # -----------
-    traj = 20
+    traj = 1000
     ps = 0.01:0.01:0.1
     Us = [7, 9, 10, 11, 13]
     # -----------
@@ -148,3 +148,4 @@ function combine_slope_plots()
 end
 
 @time f()
+exit()
