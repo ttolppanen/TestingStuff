@@ -19,9 +19,9 @@ end
 function initial_parameters()
     param = OrderedDict()
     param[:dt] = 0.02
-    param[:t] = 30
+    param[:t] = 60
     param[:d] = 3
-    param[:L] = 12
+    param[:L] = 2
     param[:state] = ValueInfo(productstate(param[:d], [isodd(i) ? 2 : 0 for i in 1:param[:L]]), "|2020...>")
     param[:alg] = "krylov BN-subspace"
     param[:k] = 6
@@ -41,8 +41,8 @@ function f()
 
     # -----------
     traj = 1000
-    ps = 0.01:0.01:0.1
-    Us = [7, 9, 10, 11, 13]
+    ps = 0.01:0.02:0.09
+    Us = [10]
     # -----------
 
     d = param[:d]; L = param[:L];
@@ -54,15 +54,13 @@ function f()
     msrop = measurement_subspace(param[:effect].val.msr, ranges, perm_mat)
 
     obs_name = "anh / L"
-    n_i = [subspace_split(singlesite_n(d, L, i), ranges, perm_mat) for i in 1:L]
-    obs(state, id) = begin
-        out = 0.0
-        for i in 1:L
-            n = expval(state[id], n_i[i][id])
-            out += n * (n - 1)
-        end
-        out / L
+    n_i = [singlesite_n(d, L, i) for i in 1:L]
+    n = n_i[1] * (n_i[1] - I)
+    for i in 2:L
+        n .+= n_i[i] * (n_i[i] - I)
     end
+    n = subspace_split(n, ranges, perm_mat)
+    obs(state, id) = expval(state[id], n[id]) / L
     dt = param[:dt]; t = param[:t]; k = param[:k]
     pa_k = PA_krylov_sub(state, k)
     pa_args, pa_out = pre_alloc_threads(zeros(1, length(0:dt:t)), traj, pa_k)
@@ -78,12 +76,11 @@ function f()
             r = traj_mean(pa_out)
             push!(plot_lines, LineInfo(0:dt:t, r[1, :], traj, "p = $p"))
         end
-        path = joinpath(@__DIR__, "L12", "U$U")
+        path = joinpath(@__DIR__, "L2_long", "U$U")
         makeplot(path, plot_lines...; xlabel = "t", ylabel = obs_name, U, param...)
         # addtrajectories(path, plot_lines...)
         linearize_plot(path);
     end
-    combine_slope_plots();
 end
 
 function linearize_plot(path)
@@ -148,4 +145,3 @@ function combine_slope_plots()
 end
 
 @time f()
-exit()

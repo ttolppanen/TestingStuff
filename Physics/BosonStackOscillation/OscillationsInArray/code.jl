@@ -7,21 +7,28 @@ using NumericalIntegration
 
 function example()
     d = 3 # qutrits
-    L = 8 # number of sites
+    L = 2 # number of sites
     dt = 0.01
-    t = 5.0
+    t = 20.0
     k = 6 # the krylov subspace dimenion, this affects the accuracy of the numerics.
     initial_state = productstate(d, [isodd(i) ? 2 : 0 for i in 1:L]) # |01> 
     w = 0.0
-    U = 0.0
+    U = 10.0
     J = 1.0
     H = bosehubbard(d, L; w=w, U=U, J=J) # in julia the arguments after ; are keyword arguments. Here since the argument name is the same as the keyword, you dont need to write w=w, you can just put w. 
+
+    n_i = [singlesite_n(d, L, i) for i in 1:L]
+    n = n_i[1] * (n_i[1] - I)
+    for i in 2:L
+        n .+= n_i[i] * (n_i[i] - I)
+    end
+    obs(state) = expval(state, n) / L
 
     n1 = singlesite_n(d, L, 1)
     n1_1bos = n1 * (n1 - I * 2)
     calc_n_expval(state) = expval(state, n1_1bos) # notice that calc_n_expval is a function with one argument, and n is "captured".
 
-    results = krylovevolve(initial_state, H, dt, t, k, calc_n_expval) # this returns a matrix, where the different columns refer to timesteps, and the rows to different observables.
+    results = krylovevolve(initial_state, H, dt, t, k, obs) # this returns a matrix, where the different columns refer to timesteps, and the rows to different observables.
 
     time_steps = 0:dt:t
     r = results[1, :]
