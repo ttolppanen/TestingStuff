@@ -40,7 +40,7 @@ function f()
     param = initial_parameters()
 
     # -----------
-    traj = 10
+    traj = 10000
     ps = 0.01:0.03:0.4
     Us = [7, 9, 10, 11, 13]
     # -----------
@@ -144,3 +144,4 @@ function combine_slope_plots()
 end
 
 @time f()
+exit()
