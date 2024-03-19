@@ -15,7 +15,7 @@ end
 
 function add_rabi(U, J, dt)
     w = sqrt(U^2 + 2*(J)^2) / (2 * pi)
-    p = w * 2 * dt
+    p = U * dt
     println(p)
     if U == 7
         color = :blue
@@ -37,7 +37,7 @@ function add_rabi(U, J, dt)
 end
 
 function combine_slope_plots()
-    path = joinpath(@__DIR__, "L12")
+    path = joinpath(@__DIR__, "L12_high_prob/")
     pl = plot(xlabel = "p", 
     ylabel = "Exp decay slopes", 
     dpi = 300,
