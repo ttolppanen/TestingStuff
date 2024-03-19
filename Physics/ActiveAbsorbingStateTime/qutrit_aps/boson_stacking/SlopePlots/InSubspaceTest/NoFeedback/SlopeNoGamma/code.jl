@@ -128,8 +128,8 @@ function combine_slope_plots()
             p = parse(Float64, line.tag[5:end])
             x = line.x
             y = log10.(line.y)
-            line_start_index = Int(floor(length(x) / 4))
-            line_end_index = Int(floor(length(x) * 3 / 4))
+            line_start_index = 1
+            line_end_index = Int(floor(length(x) * 1 / 30))
             slope = lin_reg_slope(x[line_start_index : line_end_index], y[line_start_index : line_end_index])
             push!(ps, p)
             push!(slopes, slope)
@@ -143,5 +143,6 @@ function combine_slope_plots()
     return pl
 end
 
-@time f()
-exit()
+# @time f()
+# exit()
+combine_slope_plots()
