@@ -51,10 +51,10 @@ function initial_parameters()
     param = OrderedDict()
     param[:dt] = 0.02
     param[:gamma] = 0.1
-    param[:t] = 120
+    param[:t] = 80
     param[:d] = 3
-    param[:L] = 9
-    param[:state] = ValueInfo(productstate(param[:d], [0,0,0,0,1,0,0,0,0]), "|000020000>")
+    param[:L] = 7
+    param[:state] = ValueInfo(productstate(param[:d], [0,0,0,2,0,0,0]), "|0002000>")
     param[:alg] = "krylov BN-subspace"
     param[:k] = 6
     param[:H] = "BH, d_w, fixed |2> energy"
