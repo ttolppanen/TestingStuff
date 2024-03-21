@@ -13,9 +13,9 @@ function lin_reg_slope(x, y) # https://jahoo.github.io/2021/01/11/simplest_linea
     return (A \ y)[1]
 end
 
-function add_rabi(U, J, dt)
+function add_rabi(U, L, J, dt)
     w = sqrt(U^2 + 2*(J)^2) / (2 * pi)
-    p = U * dt
+    p = U * dt / L
     println(p)
     if U == 7
         color = :blue
@@ -37,7 +37,7 @@ function add_rabi(U, J, dt)
 end
 
 function combine_slope_plots()
-    path = joinpath(@__DIR__, "L12_high_prob/")
+    path = joinpath(@__DIR__, "L12")
     pl = plot(xlabel = "p", 
     ylabel = "Exp decay slopes", 
     dpi = 300,
@@ -52,7 +52,7 @@ function combine_slope_plots()
         for line in values(plotinfo.lines)
             p = parse(Float64, line.tag[5:end])
             gamma = p / plotinfo.parameters[:dt]
-            x = line.x .* gamma
+            x = line.x
             y = log10.(line.y)
             line_start_index = Int(floor(length(x) / 4))
             line_end_index = Int(floor(length(x) * 3 / 4))
@@ -63,9 +63,9 @@ function combine_slope_plots()
         traj = collect(values(plotinfo.lines))[1].traj
         title!(plotinfo.title * ", traj = $traj")
         plot!(pl, ps, slopes, label = "U = $U")
-        add_rabi(U, plotinfo.parameters[:J], plotinfo.parameters[:dt])
+        add_rabi(U, plotinfo.parameters[:L], plotinfo.parameters[:J], plotinfo.parameters[:dt])
     end
-    path = joinpath(path, "slopes with msr gamma.png")
+    path = joinpath(path, "slopes no gamma.png")
     savefig(pl, path)
     return pl
 end
