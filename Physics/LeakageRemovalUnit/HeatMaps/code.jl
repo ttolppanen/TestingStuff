@@ -50,8 +50,8 @@ end
 function initial_parameters()
     param = OrderedDict()
     param[:dt] = 0.02
-    param[:gamma] = 0.1
-    param[:t] = 80
+    param[:gamma] = 20
+    param[:t] = 90
     param[:d] = 3
     param[:L] = 7
     param[:state] = ValueInfo(productstate(param[:d], [0,0,0,2,0,0,0]), "|0002000>")
@@ -77,7 +77,8 @@ function f()
     param = initial_parameters()
 
     # -----------
-    traj = 100
+    traj = 1
+    n_plots = 5
     # -----------
 
     d = param[:d]; L = param[:L];
@@ -97,13 +98,23 @@ function f()
     pa_args, pa_out = pre_alloc_threads(zeros(length(obs), length(0:dt:t)), traj, pa_k)
 
     H = subspace_split(bosehubbard(d, L; w = param[:dw].val, U = param[:dU].val, J = param[:J]), ranges, perm_mat)
+    
     r_f(out, pa_k) = begin 
         effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
         krylovevolve(state, initial_id, H, dt, t, k, pa_k, obs...; effect!, out)
     end
-    solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
-    r = traj_mean(pa_out)
-    heatmap(1:L, 0:dt:t, transpose(r), xlabel = "site", ylabel = "t", legend = :none)
+
+    plots = []
+    for _ in 1:n_plots  
+        solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
+        r = traj_mean(pa_out)
+        map = heatmap(1:L, 0:dt:t, transpose(r), xlabel = "site", ylabel = "t", legend = :none)
+        push!(plots, map)
+    end
+
+    title = PlotAndSave.parameters_to_title(; param...)
+    pl = plot(plots..., layout = (1, n_plots), size = (1500, 1500), plot_title = title, plot_titlefont = 10)
+    savefig(pl, joinpath(@__DIR__, "heatmap.png"))
 end
 
 function linearize_plot(path)
