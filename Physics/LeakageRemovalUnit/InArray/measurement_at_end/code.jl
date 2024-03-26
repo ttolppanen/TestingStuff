@@ -74,7 +74,7 @@ function f()
     param = initial_parameters(4)
     # -----------
     traj = 4000
-    Ls = [4,5,6,7]
+    Ls = [3,4,5,6,7]
     gammas = vcat(0.01:0.01:0.1, 0.2:0.2:1, 1:30)
     # -----------
     lines = []
@@ -111,7 +111,7 @@ function f()
         push!(lines, LineInfo(gammas, out, traj, "L = $L"))
     end
     path = joinpath(@__DIR__)
-    makeplot(path, lines...; xlabel = "gamma", ylabel = "N", param, copy_code = false)
+    makeplot(path, lines...; xlabel = "gamma", ylabel = "anh", copy_code = false, param...)
     # addtrajectories(path, line)
 end
 
