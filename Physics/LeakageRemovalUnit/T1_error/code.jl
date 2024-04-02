@@ -54,7 +54,8 @@ function initial_parameters(L)
     param[:t] = 400
     param[:d] = 3
     param[:state] = ValueInfo(bosonstack(1, L, 1; d = param[:d]), "|100...>")
-    param[:alg] = "exact sbspc"
+    param[:alg] = "krylov sbspc"
+    param[:k] = 6
     param[:H] = "BH, d_w, fixed |2> energy"
     param[:w] = 1000
     param[:dw] = ValueInfo(param[:w] .+ (rand(L) .- 0.5) * 10, "10")
@@ -74,7 +75,7 @@ end
 function f()
     param = initial_parameters(3)
     # -----------
-    traj = 100
+    traj = 2000
     Ls = [3,4,5,6,7]
     # -----------
     lines = []
@@ -92,14 +93,15 @@ function f()
         ops = subspace_split(param[:state].val * param[:state].val', ranges, perm_mat)
         obs = (state, id) -> expval(state[id], ops[id])
 
-        dt = param[:dt]; t = param[:t]
-        pa_args, pa_out = pre_alloc_threads(zeros(1, length(0:dt:t)), traj, deepcopy(state))
+        dt = param[:dt]; t = param[:t]; k = param[:k]
+        pa_k = PA_krylov_sub(state, k)
+        pa_args, pa_out = pre_alloc_threads(zeros(1, length(0:dt:t)), traj, pa_k)
 
         out = []
-        r_f(out, work_vector) = begin
+        r_f(out, pa_k) = begin
             effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
-            U = H_from_param(L, param, ranges, perm_mat)
-            exactevolve(state, work_vector, initial_id, U, dt, t, obs; effect!, out)
+            H = H_from_param(L, param, ranges, perm_mat)
+            krylovevolve(state, initial_id, H, dt, t, k, pa_k, obs; effect!, out)
         end
         @time solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
         r = traj_mean(pa_out)
@@ -115,9 +117,7 @@ function H_from_param(L, param, ranges, perm_mat)
     dw = param[:w] .+ (rand(L) .- 0.5) * 10
     dU = 2 * dw .- (2 * param[:w] - param[:U])
     H = bosehubbard(param[:d], L; w = dw, U = dU, J = param[:J])
-    U = subspace_split(exp(-1im * param[:dt] * Matrix(H)), ranges, perm_mat)
-    return U
+    return subspace_split(H, ranges, perm_mat)
 end
 
 @time f()
-exit()
