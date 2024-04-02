@@ -51,9 +51,9 @@ function initial_parameters(L)
     param = OrderedDict()
     param[:gamma] = 27
     param[:dt] = 0.02
-    param[:t] = 400
+    param[:t] = 90
     param[:d] = 3
-    param[:state] = ValueInfo(bosonstack(2, L, 1), "|200...>")
+    param[:state] = ValueInfo(bosonstack(1, L, 1; d = param[:d]), "|100...>")
     param[:alg] = "exact sbspc"
     param[:H] = "BH, d_w, fixed |2> energy"
     param[:w] = 1000
@@ -74,10 +74,9 @@ end
 function f()
     param = initial_parameters(3)
     # -----------
-    traj = 2000
+    traj = 1000
     Ls = [3,4,5,6,7]
     # -----------
-    lines = []
     for L in Ls
         param = initial_parameters(L)
         d = param[:d]
@@ -89,29 +88,31 @@ function f()
         msrop = measurement_subspace(param[:effect].val.msr, ranges, perm_mat)
         feedback = feedback_measurement_subspace(param[:effect].val.fb, msrop, indices; digit_error = 10, id_relative_guess = -1)
 
-        anh = subspace_split(anhall(d, L), ranges, perm_mat)
-        obs = (state, id) -> expval(state[id], anh[id])
+        op = param[:state].val * param[:state].val'
+        op = subspace_split(op, ranges, perm_mat)
+        obs = (state, id) -> expval(state[id], op[id])
 
         dt = param[:dt]; t = param[:t]
-        pa_args, pa_out = pre_alloc_threads(zeros(1, length(0:dt:t)), traj, deepcopy(state))
+        pa_args, pa_out = pre_alloc_threads(zeros(1, 1), traj, deepcopy(state))
 
-        H = bosehubbard(d, L; w = param[:dw].val, U = param[:dU].val, J = param[:J])
-        Uop = subspace_split(exp(-1im * dt * Matrix(H)), ranges, perm_mat)
-
-        out = []
         r_f(out, work_vector) = begin
+            U = H_from_param(L, param, ranges, perm_mat)
             effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
-            exactevolve(state, work_vector, initial_id, Uop, dt, t, obs; effect!, out)
+            exactevolve(state, work_vector, initial_id, U, dt, t, obs; effect!, out, save_only_last = true)
         end
-        @time solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
-        r = traj_mean(pa_out)
-        y = r[1, :]
-        push!(lines, LineInfo(0:dt:t, y, traj, "L = $L"))
+        solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
+        
+        path = joinpath(@__DIR__, "$L")
+        makehistogram(path, map(x -> x[1, 1], pa_out); xlabel = "initial state overlap", ylabel = "count", copy_code = false, bins = 10, param...)
     end
-    path = joinpath(@__DIR__)
-    makeplot(path, lines...; xlabel = "t", ylabel = "anh", copy_code = false, param...)
-    # addtrajectories(path, line)
+end
+
+function H_from_param(L, param, ranges, perm_mat)
+    dw = param[:w] .+ (rand(L) .- 0.5) * 10
+    dU = 2 * dw .- (2 * param[:w] - param[:U])
+    H = bosehubbard(param[:d], L; w = dw, U = dU, J = param[:J])
+    U = subspace_split(exp(-1im * param[:dt] * Matrix(H)), ranges, perm_mat)
+    return U
 end
 
 @time f()
-exit()

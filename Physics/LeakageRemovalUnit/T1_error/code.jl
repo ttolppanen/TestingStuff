@@ -51,7 +51,7 @@ function initial_parameters(L)
     param = OrderedDict()
     param[:gamma] = 27
     param[:dt] = 0.02
-    param[:t] = 90
+    param[:t] = 400
     param[:d] = 3
     param[:state] = ValueInfo(bosonstack(1, L, 1; d = param[:d]), "|100...>")
     param[:alg] = "exact sbspc"
@@ -74,9 +74,10 @@ end
 function f()
     param = initial_parameters(3)
     # -----------
-    traj = 1000
+    traj = 100
     Ls = [3,4,5,6,7]
     # -----------
+    lines = []
     for L in Ls
         param = initial_parameters(L)
         d = param[:d]
@@ -88,23 +89,26 @@ function f()
         msrop = measurement_subspace(param[:effect].val.msr, ranges, perm_mat)
         feedback = feedback_measurement_subspace(param[:effect].val.fb, msrop, indices; digit_error = 10, id_relative_guess = -1)
 
-        op = param[:state].val * param[:state].val'
-        op = subspace_split(op, ranges, perm_mat)
-        obs = (state, id) -> expval(state[id], op[id])
+        ops = subspace_split(param[:state].val * param[:state].val', ranges, perm_mat)
+        obs = (state, id) -> expval(state[id], ops[id])
 
         dt = param[:dt]; t = param[:t]
-        pa_args, pa_out = pre_alloc_threads(zeros(1, 1), traj, deepcopy(state))
+        pa_args, pa_out = pre_alloc_threads(zeros(1, length(0:dt:t)), traj, deepcopy(state))
 
+        out = []
         r_f(out, work_vector) = begin
-            U = H_from_param(L, param, ranges, perm_mat)
             effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
-            exactevolve(state, work_vector, initial_id, U, dt, t, obs; effect!, out, save_only_last = true)
+            U = H_from_param(L, param, ranges, perm_mat)
+            exactevolve(state, work_vector, initial_id, U, dt, t, obs; effect!, out)
         end
-        solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
-        
-        path = joinpath(@__DIR__, "$L")
-        makehistogram(path, map(x -> x[1, 1], pa_out); xlabel = "initial state overlap", ylabel = "count", copy_code = false, bins = 10, param...)
+        @time solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
+        r = traj_mean(pa_out)
+        y = r[1, :]
+        push!(lines, LineInfo(0:dt:t, y, traj, "L = $L"))
     end
+    path = joinpath(@__DIR__)
+    makeplot(path, lines...; xlabel = "t", ylabel = "initial state overlap", copy_code = false, param...)
+    # addtrajectories(path, line)
 end
 
 function H_from_param(L, param, ranges, perm_mat)
@@ -116,3 +120,4 @@ function H_from_param(L, param, ranges, perm_mat)
 end
 
 @time f()
+exit()
