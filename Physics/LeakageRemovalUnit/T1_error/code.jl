@@ -103,7 +103,7 @@ function f()
         solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
         
         path = joinpath(@__DIR__, "$L")
-        makehistogram(path, map(x -> x[1, 1], pa_out); xlabel = "gamma", ylabel = "initial state overlap", copy_code = false, bins = 10, param...)
+        makehistogram(path, map(x -> x[1, 1], pa_out); xlabel = "initial state overlap", ylabel = "count", copy_code = false, bins = 10, param...)
     end
 end
 
@@ -116,4 +116,3 @@ function H_from_param(L, param, ranges, perm_mat)
 end
 
 @time f()
-exit()
