@@ -49,6 +49,7 @@ end
 
 function initial_parameters(L)
     param = OrderedDict()
+    param[:gamma] = 27
     param[:dt] = 0.02
     param[:t] = 90
     param[:d] = 3
@@ -73,9 +74,8 @@ end
 function f()
     param = initial_parameters(3)
     # -----------
-    traj = 100
-    Ls = [3,4,5]
-    gamma = 27
+    traj = 1000
+    Ls = [3,4,5,6,7]
     # -----------
     for L in Ls
         param = initial_parameters(L)
@@ -97,13 +97,13 @@ function f()
 
         r_f(out, work_vector) = begin
             U = H_from_param(L, param, ranges, perm_mat)
-            effect! = measure_ends_effect!(msrop, param[:dt], gamma, feedback)
+            effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
             exactevolve(state, work_vector, initial_id, U, dt, t, obs; effect!, out, save_only_last = true)
         end
         solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
         
         path = joinpath(@__DIR__, "$L")
-        makehistogram(path, map(x -> x[1, 1], pa_out); xlabel = "gamma", ylabel = "initial state overlap", copy_code = false, param...)
+        makehistogram(path, map(x -> x[1, 1], pa_out); xlabel = "gamma", ylabel = "initial state overlap", copy_code = false, bins = 10, param...)
     end
 end
 
@@ -116,3 +116,4 @@ function H_from_param(L, param, ranges, perm_mat)
 end
 
 @time f()
+exit()
