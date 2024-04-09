@@ -29,13 +29,14 @@ function qubit_error_fix_U(d, L, param, dw, dU)
             for site in 1:L
                 n_j[site] = floor((i-1) / d^(site-1)) % d
             end
-            if 2 in n_i || 2 in n_j
+            if i != j && (!(n_i == [10] && n_j == [01]) || !(n_i == [01] && n_j == [10]))
                 H[i, j] = 0
             end
         end
     end
-    U = sparse(exp(1im * Matrix(H) * param[:dt]))
-    return kron(U, sparse(I, d^(param[:L] - L), d^(param[:L] - L)))
+    H_rest = bosehubbard(d, param[:L] - L; w = dw[(L + 1):param[:L]], U = dU[(L + 1):param[:L]], J = 0)
+    U = sparse(exp(1im * Matrix(kron(H, H_rest)) * param[:dt]))
+    return U
 end
 
 function measure_ends_effect!(msr_op::Vector, 
