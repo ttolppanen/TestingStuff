@@ -19,24 +19,27 @@ end
 
 function qubit_error_fix_U(sign, d, L, param, dw, dU, ranges, perm_mat)
     time = [0.0]
+
+    H = bosehubbard(d, L; w = dw, U = dU, J = param[:J])
+    n_i = zeros(L)
+    n_j = zeros(L)
+    for j in 1:d^L
+        for site in 1:L
+            n_i[site] = floor((j-1) / d^(site-1)) % d
+        end
+        for i in 1:d^L
+            for site in 1:L
+                n_j[site] = floor((i-1) / d^(site-1)) % d
+            end
+            # if i != j && (!(n_i == [10] && n_j == [01]) || !(n_i == [01] && n_j == [10]))
+            #     H[i, j] = 0
+            # end
+        end
+    end
+
     out(state, id) = begin
         time[1] += param[:dt]
-        H = bosehubbard(d, L; w = dw, U = dU, J = param[:J])
-        n_i = zeros(L)
-        n_j = zeros(L)
-        for j in 1:d^L
-            for site in 1:L
-                n_i[site] = floor((j-1) / d^(site-1)) % d
-            end
-            for i in 1:d^L
-                for site in 1:L
-                    n_j[site] = floor((i-1) / d^(site-1)) % d
-                end
-                if 2 in n_i || 2 in n_j
-                    H[i, j] = 0
-                end
-            end
-        end
+        
         U = sparse(exp(sign * 1im * Matrix(H) * time[1]))
         U = kron(U, sparse(I, d^(param[:L] - L), d^(param[:L] - L)))
         
@@ -78,7 +81,7 @@ end
 
 function initial_parameters()
     param = OrderedDict()
-    param[:gamma] = 27
+    param[:gamma] = 0.001
     param[:dt] = 0.02
     param[:t] = 90
     param[:d] = 3
@@ -135,12 +138,12 @@ function f()
 
         first_obs = (state, id) -> begin
             new_state, id = reverse_obs(state, id)
-            state[id] .= new_state[id]
+            state[id] .= new_state
             return 100
         end
         last_obs = (state, id) -> begin
             new_state, id = reverse_back_obs(state, id)
-            state[id] .= new_state[id]
+            state[id] .= new_state
             return 100
         end
 
