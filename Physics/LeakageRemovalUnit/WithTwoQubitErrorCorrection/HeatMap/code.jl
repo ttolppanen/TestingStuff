@@ -29,14 +29,15 @@ function qubit_error_fix_U(d, L, param, dw, dU)
             for site in 1:L
                 n_j[site] = floor((i-1) / d^(site-1)) % d
             end
-            if i != j && (!(n_i == [10] && n_j == [01]) || !(n_i == [01] && n_j == [10]))
+            if !((n_i == [1,0] && n_j == [0,1]) || (n_i == [0,1] && n_j == [1,0]))
                 H[i, j] = 0
             end
         end
     end
-    H_rest = bosehubbard(d, param[:L] - L; w = dw[(L + 1):param[:L]], U = dU[(L + 1):param[:L]], J = 0)
-    U = sparse(exp(1im * Matrix(kron(H, H_rest)) * param[:dt]))
-    return U
+    # H_rest = bosehubbard(d, param[:L] - L; w = dw[(L + 1):param[:L]], U = dU[(L + 1):param[:L]], J = 0)
+    U = sparse(exp(1im * Matrix(H) * param[:dt]))
+    sub_d = d^(param[:L]- L)
+    return kron(U, sparse(I, sub_d, sub_d))
 end
 
 function measure_ends_effect!(msr_op::Vector, 
@@ -77,7 +78,7 @@ function initial_parameters()
     param[:t] = 90
     param[:d] = 3
     param[:L] = 5
-    param[:state] = ValueInfo(bosonstack(2, param[:L], 1; d = param[:d]), "|200...>")
+    param[:state] = ValueInfo(bosonstack(1, param[:L], 1; d = param[:d]), "|200...>")
     param[:alg] = "exact sbspc"
     param[:H] = "BH, d_w, fixed |2> energy"
     param[:w] = 1000

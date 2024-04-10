@@ -31,9 +31,9 @@ function qubit_error_fix_U(sign, d, L, param, dw, dU, ranges, perm_mat)
             for site in 1:L
                 n_j[site] = floor((i-1) / d^(site-1)) % d
             end
-            # if i != j && (!(n_i == [10] && n_j == [01]) || !(n_i == [01] && n_j == [10]))
-            #     H[i, j] = 0
-            # end
+            if i != j && !((n_i == [1, 0] && n_j == [0, 1]) || (n_i == [0, 1] && n_j == [1, 0]))
+                H[i, j] = 0
+            end
         end
     end
 
@@ -81,16 +81,16 @@ end
 
 function initial_parameters()
     param = OrderedDict()
-    param[:gamma] = 0.001
+    param[:gamma] = 0.0001
     param[:dt] = 0.02
     param[:t] = 90
     param[:d] = 3
-    param[:L] = 5
+    param[:L] = 2
     param[:state] = ValueInfo(bosonstack(1, param[:L], 1; d = param[:d]), "|200...>")
     param[:alg] = "exact sbspc"
     param[:H] = "BH, d_w, fixed |2> energy"
     param[:w] = 1000
-    param[:dw] = 10
+    param[:dw] = 0
     param[:U] = 50
     param[:J] = 1
 
