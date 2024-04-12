@@ -1,4 +1,5 @@
 [deps]
+DSP = "717857b8-e6f2-59f4-9121-6e50c889abd2"
 Distributed = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 FastClosures = "9aa1b823-49e4-5ca5-8b0f-3971ec8bab6a"
 Gadfly = "c91e804a-d5a3-530f-b6f0-dfbca275c004"

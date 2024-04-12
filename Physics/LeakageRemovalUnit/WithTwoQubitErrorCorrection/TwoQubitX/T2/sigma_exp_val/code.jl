@@ -8,6 +8,7 @@ using SparseArrays
 using PlotAndSave
 @everywhere using QuantumTimeEvolution
 using OrderedCollections
+using DSP
 
 function traj_mean(result)
     out = zeros(size(result[1]))
@@ -91,10 +92,10 @@ function f()
 
         sigma_x = sparse(complex([0 1.0 0; 1 0 0; 0 0 0]))
         ops = singlesite(sigma_x, L, 1)
-        obs = [(state) -> expval(state, ops), state -> abs(expval(state, ops))]
+        obs = (state) -> expval(state, ops)
 
         dt = param[:dt]; t = param[:t]
-        pa_args, pa_out = pre_alloc_threads(zeros(2, length(0:dt:t)), traj, deepcopy(state))
+        pa_args, pa_out = pre_alloc_threads(zeros(1, length(0:dt:t)), traj, deepcopy(state))
 
         out = []
 
@@ -115,13 +116,13 @@ function f()
                 state = fix_error(state)
                 return msr_effect!(state)
             end
-            exactevolve(state, work_vector, Uop, dt, t, obs...; effect!, out)
+            exactevolve(state, work_vector, Uop, dt, t, obs; effect!, out)
         end
         solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
-        r = traj_mean(pa_out)
+        r = map(x -> abs.(hilbert(x[1,:])), pa_out)
+        r = traj_mean(r)
 
-        push!(lines, LineInfo(0:dt:t, r[1, :], traj, "L = $L"))
-        push!(lines, LineInfo(0:dt:t, r[2, :], traj, "with abs, L = $L"))
+        push!(lines, LineInfo(0:dt:t, r, traj, "L = $L"))
     end
     path = joinpath(@__DIR__)
     makeplot(path, lines...; xlabel = "t", ylabel = "<first site sigma_x>", copy_code = false, param...)
