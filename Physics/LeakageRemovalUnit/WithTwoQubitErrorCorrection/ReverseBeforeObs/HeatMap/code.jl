@@ -8,6 +8,7 @@ using SparseArrays
 using PlotAndSave
 @everywhere using QuantumTimeEvolution
 using OrderedCollections
+using Random
 
 function traj_mean(result)
     out = zeros(size(result[1]))
@@ -17,9 +18,12 @@ function traj_mean(result)
     return out ./ length(result)
 end
 
-function qubit_error_fix_U(sign, d, L, param, dw, dU, ranges, perm_mat)
+function qubit_error_fix_U(sign, d, L, param, dw_val, ranges, perm_mat)
     time = [0.0]
 
+    dw = copy(dw_val)
+    dw[2] += param[:J]^2 / (dw[2] - dw[3])
+    dU = 2 * dw .- (2 * param[:w] - param[:U])
     H = bosehubbard(d, L; w = dw, U = dU, J = param[:J])
     n_i = zeros(L)
     n_j = zeros(L)
@@ -37,13 +41,13 @@ function qubit_error_fix_U(sign, d, L, param, dw, dU, ranges, perm_mat)
         end
     end
 
-    out(state, id) = begin
+    out() = begin
         time[1] += param[:dt]
         
         U = sparse(exp(sign * 1im * Matrix(H) * time[1]))
         U = kron(U, sparse(I, d^(param[:L] - L), d^(param[:L] - L)))
         
-        return subspace_split(U, ranges, perm_mat)[id] * state[id], id
+        return subspace_split(U, ranges, perm_mat)
     end
     return out
 end
@@ -85,12 +89,12 @@ function initial_parameters()
     param[:dt] = 0.02
     param[:t] = 90
     param[:d] = 3
-    param[:L] = 2
+    param[:L] = 3
     param[:state] = ValueInfo(bosonstack(1, param[:L], 1; d = param[:d]), "|200...>")
     param[:alg] = "exact sbspc"
     param[:H] = "BH, d_w, fixed |2> energy"
     param[:w] = 1000
-    param[:dw] = 0
+    param[:dw] = 10
     param[:U] = 50
     param[:J] = 1
 
@@ -104,6 +108,7 @@ function initial_parameters()
 end
 
 function f()
+    Random.seed!(1)
     param = initial_parameters()
     # -----------
     traj = 1
@@ -133,17 +138,17 @@ function f()
         H = bosehubbard(d, L; w = dw, U = dU, J = param[:J])
         Uop = subspace_split(exp(-1im * dt * Matrix(H)), ranges, perm_mat)
 
-        reverse_obs = qubit_error_fix_U(1, d, 2, param, dw, dU, ranges, perm_mat)
-        reverse_back_obs = qubit_error_fix_U(-1, d, 2, param, dw, dU, ranges, perm_mat)
+        reverse_obs = qubit_error_fix_U(1, d, 2, param, dw, ranges, perm_mat)
+        reverse_back_obs = qubit_error_fix_U(-1, d, 2, param, dw, ranges, perm_mat)
 
         first_obs = (state, id) -> begin
-            new_state, id = reverse_obs(state, id)
-            state[id] .= new_state
+            U = reverse_obs()
+            state[id] .= U[id] * state[id]
             return 100
         end
         last_obs = (state, id) -> begin
-            new_state, id = reverse_back_obs(state, id)
-            state[id] .= new_state
+            U = reverse_back_obs()
+            state[id] .= U[id] * state[id]
             return 100
         end
 
