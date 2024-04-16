@@ -61,7 +61,7 @@ end
 function initial_parameters(L)
     param = OrderedDict()
     param[:gamma] = 27
-    param[:dt] = 0.02
+    param[:dt] = 1
     param[:t] = 400
     param[:d] = 3
     param[:L] = L
@@ -101,7 +101,7 @@ function f()
         msrop = measurement_subspace(param[:effect].val.msr, ranges, perm_mat)
         feedback = feedback_measurement_subspace(param[:effect].val.fb, msrop, indices; digit_error = 10, id_relative_guess = -1)
 
-        ops = subspace_split(param[:state].val * param[:state].val', ranges, perm_mat)
+        ops = subspace_split(singlesite_n(d, L, 1), ranges, perm_mat)
         obs = (state, id) -> expval(state[id], ops[id])
 
         dt = param[:dt]; t = param[:t]
@@ -132,11 +132,22 @@ function f()
         solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
         r = traj_mean(pa_out)
 
-        push!(lines, LineInfo(0:dt:t, r[1, :], traj, "L = $L"))
+        x = 0:dt:t
+        y = r[1, :]
+        t1 = T1(x, y)
+        push!(lines, LineInfo(x, y, traj, "L = $L, T1 = $t1"))
     end
     path = joinpath(@__DIR__)
-    makeplot(path, lines...; xlabel = "t", ylabel = "initial state overlap", copy_code = false, param...)
+    makeplot(path, lines...; xlabel = "t", ylabel = "n1", copy_code = false, param...)
     # addtrajectories(path, line)
+end
+
+function T1(x, y) 
+    # linreg for slope
+    # https://jahoo.github.io/2021/01/11/simplest_linear_regression_example.html
+    A = hcat(x, ones(length(x)))
+    slope = (A \ log.(y))[1]
+    return -1 / slope
 end
 
 @time f()

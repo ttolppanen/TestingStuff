@@ -90,7 +90,7 @@ function initial_parameters()
     param[:t] = 90
     param[:d] = 3
     param[:L] = 3
-    param[:state] = ValueInfo(bosonstack(1, param[:L], 1; d = param[:d]), "|200...>")
+    param[:state] = ValueInfo(bosonstack(1, param[:L], 1; d = param[:d]), "|100...>")
     param[:alg] = "exact sbspc"
     param[:H] = "BH, d_w, fixed |2> energy"
     param[:w] = 1000
