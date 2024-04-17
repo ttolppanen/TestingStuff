@@ -61,8 +61,8 @@ end
 function initial_parameters()
     param = OrderedDict()
     param[:gamma] = 27
-    param[:dt] = 0.02
-    param[:t] = 90
+    param[:dt] = 0.5
+    param[:t] = 400
     param[:d] = 3
     param[:L] = 5
     N = 1
@@ -71,7 +71,7 @@ function initial_parameters()
     param[:H] = "BH, d_w, fixed |2> energy"
     param[:extra_U] = "two qubit sigma_x"
     param[:w] = 1000
-    param[:dw] = 10
+    param[:dw] = 1
     param[:U] = 50
     param[:J] = 1
 
