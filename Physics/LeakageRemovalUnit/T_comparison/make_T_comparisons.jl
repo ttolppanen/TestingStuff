@@ -50,4 +50,10 @@ function make_fit_plot(dir)
     return pl
 end
 
-make_fit_plot("Gamma/T2/")
+make_fit_plot("gamma/small_gamma/stack/")
+make_fit_plot("gamma/small_gamma/T1/")
+make_fit_plot("gamma/small_gamma/T2/")
+
+make_fit_plot("disorder/stack/")
+make_fit_plot("disorder/T1/")
+make_fit_plot("disorder/T2/")
