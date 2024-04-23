@@ -108,3 +108,4 @@ function f()
 end
 
 @time f()
+exit()
