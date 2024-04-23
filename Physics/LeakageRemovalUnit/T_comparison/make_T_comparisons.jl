@@ -50,4 +50,4 @@ function make_fit_plot(dir)
     return pl
 end
 
-make_fit_plot("Size/T2/")
+make_fit_plot("Gamma/T2/")
