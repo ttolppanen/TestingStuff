@@ -61,7 +61,7 @@ function initial_parameters(L)
     param[:dw] = ValueInfo(param[:w] .+ (rand(L) .- 0.5) * 10, "10")
     param[:U] = 50
     param[:dU] = ValueInfo(2 * param[:dw].val .- (2 * param[:w] - param[:U]), "10")
-    param[:J] = 1
+    param[:J] = 1.5
 
     d = param[:d]
     msrop = measurementoperators(nop(d), L)
