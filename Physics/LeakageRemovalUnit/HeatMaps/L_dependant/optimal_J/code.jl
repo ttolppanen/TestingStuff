@@ -53,14 +53,13 @@ function initial_parameters(L)
     param[:dt] = 0.02
     param[:gamma] = 0.01
     param[:d] = 3
-    param[:state] = ValueInfo(bosonstack(2, L, 1), "|200...>")
+    param[:state] = ValueInfo(bosonstack(2, L, 1; d = param[:d]), "|200...>")
     param[:alg] = "krylov BN-subspace"
     param[:k] = 6
     param[:H] = "BH d_w fixed |2> energy"
     param[:w] = 1000
-    param[:dw] = ValueInfo(param[:w] .+ (rand(L) .- 0.5) * 10, "10")
+    param[:dw] = 0
     param[:U] = 50
-    param[:dU] = ValueInfo(2 * param[:dw].val .- (2 * param[:w] - param[:U]), "10")
     param[:J_i] = "l * (L - l)"
 
     d = param[:d]
@@ -99,15 +98,22 @@ function f()
         pa_k = PA_krylov_sub(state, k)
         pa_args, pa_out = pre_alloc_threads(zeros(length(obs), length(0:dt:t)), traj, pa_k)
 
+        dw = param[:w] .+ (rand(L) .- 0.5) * param[:dw]
+        dU = 2 * dw .- (2 * param[:w] - param[:U])
+        for l in 1:(L-1)
+            dU[l] += stack_freq_diff(l, L, 2, param[:U], 1)
+        end
+
         J = [(l * (L - l))^(1.0/4.0) for l in 1:(L-1)]
-        H = subspace_split(bosehubbard(d, L; w = param[:dw].val, U = param[:dU].val, J), ranges, perm_mat)
+        # J = 1
+        
+        H = subspace_split(bosehubbard(d, L; w = dw, U = dU, J), ranges, perm_mat)
         
         r_f(out, pa_k) = begin 
             # effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
             krylovevolve(state, initial_id, H, dt, t, k, pa_k, obs...; out)
         end
 
-    
         solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
         r = traj_mean(pa_out)
         map = heatmap(1:L, 0:dt:t, transpose(r), 
@@ -122,6 +128,15 @@ function f()
     # title = PlotAndSave.parameters_to_title(; param...)
     pl = plot(plots..., layout = (1, length(Ls)), size = (1500, 1500))
     savefig(pl, joinpath(@__DIR__, "heatmap.png"))
+end
+
+function stack_freq_diff(l, L, N, U, J)
+    C = 1
+    if l > L / 2
+        C = -1
+    end
+    l = min(l, L - l)
+    return C * N / (N - 1)^(2*l - 1) * (J / U)^(2*l - 1) * J
 end
 
 @time f()
