@@ -49,9 +49,10 @@ function make_fit_plot(dir)
     savefig(bars, joinpath(path, "T_times.png"))
     return pl
 end
-include("gamma/small_gamma_U25/stack/code.jl")
-include("gamma/small_gamma_U25/T1/code.jl")
-include("gamma/small_gamma_U25/T2/code.jl")
-make_fit_plot("gamma/small_gamma_U25/stack")
-make_fit_plot("gamma/small_gamma_U25/T1")
-make_fit_plot("gamma/small_gamma_U25/T2")
+
+include("gamma/large_gamma/freq_fix/stack/code.jl")
+include("gamma/large_gamma/freq_fix/T1/code.jl")
+include("gamma/large_gamma/freq_fix/T2/code.jl")
+make_fit_plot("gamma/large_gamma/freq_fix/stack")
+make_fit_plot("gamma/large_gamma/freq_fix/T1")
+make_fit_plot("gamma/large_gamma/freq_fix/T2")

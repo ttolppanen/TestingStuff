@@ -58,7 +58,7 @@ function initial_parameters(L)
     param[:k] = 6
     param[:H] = "BH d_w fixed |2> energy"
     param[:w] = 1000
-    param[:dw] = 0
+    param[:dw] = 10
     param[:U] = 50
     param[:J_i] = "l * (L - l)"
 
@@ -104,8 +104,8 @@ function f()
             dU[l] += stack_freq_diff(l, L, 2, param[:U], 1)
         end
 
-        J = [(l * (L - l))^(1.0/4.0) for l in 1:(L-1)]
-        # J = 1
+        # J = [(l * (L - l))^(1.0/4.0) for l in 1:(L-1)]
+        J = 1
         
         H = subspace_split(bosehubbard(d, L; w = dw, U = dU, J), ranges, perm_mat)
         
