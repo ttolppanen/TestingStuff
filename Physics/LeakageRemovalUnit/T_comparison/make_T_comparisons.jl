@@ -50,9 +50,11 @@ function make_fit_plot(dir)
     return pl
 end
 
-include("gamma/large_gamma/freq_fix/stack/code.jl")
-include("gamma/large_gamma/freq_fix/T1/code.jl")
-include("gamma/large_gamma/freq_fix/T2/code.jl")
-make_fit_plot("gamma/large_gamma/freq_fix/stack")
-make_fit_plot("gamma/large_gamma/freq_fix/T1")
-make_fit_plot("gamma/large_gamma/freq_fix/T2")
+include("gamma/freq_fix_long_time/large_gamma/stack/code.jl")
+include("gamma/freq_fix_long_time/large_gamma/freq_fix/stack/code.jl")
+include("gamma/freq_fix_long_time/small_gamma/stack/code.jl")
+include("gamma/freq_fix_long_time/small_gamma/freq_fix/stack/code.jl")
+make_fit_plot("gamma/freq_fix_long_time/large_gamma/stack")
+make_fit_plot("gamma/freq_fix_long_time/large_gamma/freq_fix/stack")
+make_fit_plot("gamma/freq_fix_long_time/small_gamma/stack")
+make_fit_plot("gamma/freq_fix_long_time/small_gamma/freq_fix/stack")
