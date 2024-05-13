@@ -40,7 +40,7 @@ end
 
 function initial_parameters()
     param = OrderedDict()
-    param[:t] = 180
+    param[:t] = 300
     param[:dt] = 0.02
     param[:gamma] = 0.03
     param[:d] = 3
@@ -48,12 +48,12 @@ function initial_parameters()
     state = complex(spzeros(param[:d]))
     state[param[:d]] = 1.0
     param[:state] = ValueInfo(state, "|2> + thermal state")
-    param[:T] = 1
+    param[:T] = 0.1
     kb = 1.3806 * 10^-23
     hbar = 1.0546 * 10^-34
     J = 10 * 10^6
     param[:T_scale] = ValueInfo(kb / (hbar * J), "kb/hbarJ")
-    param[:alg] = "krylov BN-subspace"
+    param[:alg] = "krylov"
     param[:k] = 6
     param[:H] = "BH d_w fixed |2> energy"
     param[:w] = 1000
@@ -74,8 +74,8 @@ end
 function f()
 
     # -----------
-    n_plots = 6
-    traj = 500
+    n_plots = 1
+    traj = 1000
     # -----------
     plots = []
     param = initial_parameters()
