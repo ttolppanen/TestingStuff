@@ -48,7 +48,11 @@ function initial_parameters()
     state = complex(spzeros(param[:d]))
     state[param[:d]] = 1.0
     param[:state] = ValueInfo(state, "|2> + thermal state")
-    param[:T] = 500
+    param[:T] = 1
+    kb = 1.3806 * 10^-23
+    hbar = 1.0546 * 10^-34
+    J = 10 * 10^6
+    param[:T_scale] = ValueInfo(kb / (hbar * J), "kb/hbarJ")
     param[:alg] = "krylov BN-subspace"
     param[:k] = 6
     param[:H] = "BH d_w fixed |2> energy"
@@ -70,8 +74,8 @@ end
 function f()
 
     # -----------
-    n_plots = 5
-    traj = 300
+    n_plots = 6
+    traj = 500
     # -----------
     plots = []
     param = initial_parameters()
@@ -79,7 +83,7 @@ function f()
         d = param[:d]; L = param[:L]
 
         H_diag = diag(bosehubbard(d, L - 1; w = param[:dw].val[2:end], U = param[:dU].val[2:end], J = 0))
-        ts = thermal_state(H_diag, param[:T])
+        ts = thermal_state(H_diag, param[:T] * param[:T_scale].val)
         ts_sample = vec_from_density_op(ts)
         state = kron(param[:state].val, ts_sample)  
 
