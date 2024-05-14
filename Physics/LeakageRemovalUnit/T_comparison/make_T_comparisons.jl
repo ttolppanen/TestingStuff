@@ -50,9 +50,9 @@ function make_fit_plot(dir)
     return pl
 end
 
-# include("Gamma/thermal_state/stack/code.jl")
-# include("Gamma/thermal_state/T1/code.jl")
-# include("Gamma/thermal_state/T2/code.jl")
-make_fit_plot("Gamma/thermal_state/stack/")
-make_fit_plot("Gamma/thermal_state/T1/")
-make_fit_plot("Gamma/thermal_state/T2/")
+include("Gamma/thermal_state/n1/stack/code.jl")
+include("Gamma/thermal_state/n1/T1/code.jl")
+include("Gamma/thermal_state/n1/T2/code.jl")
+make_fit_plot("Gamma/thermal_state/n1/stack/")
+make_fit_plot("Gamma/thermal_state/n1/T1/")
+make_fit_plot("Gamma/thermal_state/n1/T2/")
