@@ -7,6 +7,7 @@ using LinearAlgebra
 using PlotAndSave
 @everywhere using QuantumTimeEvolution
 using OrderedCollections
+using SparseArrays
 
 function traj_mean(result)
     out = zeros(size(result[1]))

@@ -50,9 +50,9 @@ function make_fit_plot(dir)
     return pl
 end
 
-include("Gamma/thermal_state/stack/code.jl")
-include("Gamma/thermal_state/T1/code.jl")
-include("Gamma/thermal_state/T2/code.jl")
-make_fit_plot("Gamma/thermal_state/stack/code.jl")
-make_fit_plot("Gamma/thermal_state/T1/code.jl")
-make_fit_plot("Gamma/thermal_state/T2/comake_fit_plot")
+# include("Gamma/thermal_state/stack/code.jl")
+# include("Gamma/thermal_state/T1/code.jl")
+# include("Gamma/thermal_state/T2/code.jl")
+make_fit_plot("Gamma/thermal_state/stack/")
+make_fit_plot("Gamma/thermal_state/T1/")
+make_fit_plot("Gamma/thermal_state/T2/")
