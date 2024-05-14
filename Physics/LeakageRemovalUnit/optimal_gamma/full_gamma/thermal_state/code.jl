@@ -7,6 +7,7 @@ using LinearAlgebra
 using PlotAndSave
 @everywhere using QuantumTimeEvolution
 using OrderedCollections
+using SparseArrays
 
 function traj_mean(result)
     out = zeros(size(result[1]))
@@ -136,5 +137,5 @@ function xlog_plot(path)
     return pl
 end
 
-# @time f()
-xlog_plot(joinpath(@__DIR__, "t_1/"))
+@time f()
+# xlog_plot(joinpath(@__DIR__, "t_1/"))
