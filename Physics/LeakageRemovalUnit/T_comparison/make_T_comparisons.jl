@@ -50,9 +50,10 @@ function make_fit_plot(dir)
     return pl
 end
 
-include("Gamma/thermal_state/large_gamma/n1/stack/code.jl")
-include("Gamma/thermal_state/large_gamma/n1/T1/code.jl")
-include("Gamma/thermal_state/large_gamma/n1/T2/code.jl")
-make_fit_plot("Gamma/thermal_state/large_gamma/n1/stack/")
-make_fit_plot("Gamma/thermal_state/large_gamma/n1/T1/")
-make_fit_plot("Gamma/thermal_state/large_gamma/n1/T2/")
+include("disorder/thermal_state/stack/code.jl")
+include("disorder/thermal_state/T1/code.jl")
+include("disorder/thermal_state/T2/code.jl")
+make_fit_plot("disorder/thermal_state/stack/")
+make_fit_plot("disorder/thermal_state/T1/")
+make_fit_plot("disorder/thermal_state/T2/")
+exit()
