@@ -61,13 +61,13 @@ function initial_parameters()
     param[:T] = 0.1
     kb = 1.3806 * 10^-23
     hbar = 1.0546 * 10^-34
-    J = 5.0 * 10^6
-    param[:J_unit] = "5 MHz"
+    J = 2 * pi* 5.0 * 10^6
+    param[:J_unit] = "2pi * 5 MHz"
     param[:T_scale] = ValueInfo(kb / (hbar * J), "kb/hbarJ")
     param[:alg] = "krylov sbspc"
     param[:H] = "BH, d_w, fixed |2> energy"
     param[:k] = 6
-    param[:w] = 1000
+    param[:w] = 1500
     param[:U] = 50
     param[:J] = 1
 
