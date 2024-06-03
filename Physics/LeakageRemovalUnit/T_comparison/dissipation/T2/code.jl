@@ -52,8 +52,10 @@ function initial_parameters()
     param[:k] = 6
     param[:H] = "BH, d_w, fixed |2> energy"
     param[:w] = 1000
+    param[:dw] = 10
     param[:U] = 50
     param[:J] = 1
+    param[:J_val] = "5Mhz"
 
     d = param[:d]; L = param[:L]
     msrop = measurementoperators(nop(d), L)
@@ -67,8 +69,8 @@ end
 function f()
     param = initial_parameters()
     # -----------
-    traj = 1000
-    dws = [5, 10, 15, 20]
+    traj = 100
+    diss_rates = [4, 8, 12, 16] ./ 5000
     # -----------
     lines = []
     d = param[:d]; L = param[:L]
@@ -85,22 +87,29 @@ function f()
     pa_k = PA_krylov(state, k)
     pa_args, pa_out = pre_alloc_threads(zeros(1, length(0:dt:t)), traj, pa_k)
     
-    for dw_i in dws
-        out = []
+    diss_ops = [singlesite_a(d, L, i) for i in 2:L]
 
+    for diss_i in diss_rates
+        out = []
+        diss_op_i = sqrt(diss_i) .* diss_ops
         r_f(out, pa_k) = begin
-            dw = param[:w] .+ (rand(L) .- 0.5) * dw_i
+            dw = param[:w] .+ (rand(L) .- 0.5) * param[:dw]
             dU = 2 * dw .- (2 * param[:w] - param[:U])
             H = bosehubbard(d, L; w = dw, U = dU, J = param[:J])
 
-            effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
+            msr_effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
+            effect!(state) = begin
+                diss_deco_effect!(state, diss_op_i)
+                normalize!(state)
+                msr_effect!(state)
+            end
             krylovevolve(state, H, dt, t, k, pa_k, obs; effect!, out)
         end
         @time solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
         r = map(x -> abs.(hilbert(x[1,:])), pa_out)
         r = traj_mean(r)
 
-        push!(lines, LineInfo(0:dt:t, r, traj, "dw = $dw_i"))
+        push!(lines, LineInfo(0:dt:t, r, traj, "d = $diss_i"))
     end
     path = joinpath(@__DIR__)
     makeplot(path, lines...; xlabel = "t", ylabel = "sigma_x1 env", copy_code = false, param...)

@@ -49,8 +49,10 @@ function initial_parameters()
     param[:H] = "BH, d_w, fixed |2> energy"
     param[:k] = 6
     param[:w] = 1000
+    param[:dw] = 10
     param[:U] = 50
     param[:J] = 1
+    param[:J_val] = "5Mhz"
 
     d = param[:d]; L = param[:L]
     msrop = measurementoperators(nop(d), L)
@@ -65,9 +67,10 @@ function f()
     param = initial_parameters()
     # -----------
     traj = 1000
-    diss_rates = [5, 10, 15, 20]
+    diss_rates = [4, 8, 12, 16] ./ 5000
     # -----------
     lines = []
+    
     d = param[:d]; L = param[:L]
     state = param[:state].val
 
@@ -75,20 +78,28 @@ function f()
     feedback = param[:effect].val.fb
 
     op = singlesite_n(d, L, 1) + singlesite_n(d, L, 2)
-    obs = (state, id) -> expval(state[id], op[id])
+    obs = (state) -> expval(state, op)
 
     dt = param[:dt]; t = param[:t]; k = param[:k]
-    pa_k = PA_krylov_sub(state, k)
+    pa_k = PA_krylov(state, k)
     pa_args, pa_out = pre_alloc_threads(zeros(1, length(0:dt:t)), traj, pa_k)
+
+    diss_ops = [singlesite_a(d, L, i) for i in 2:L]
 
     for diss_i in diss_rates
         out = []
+        diss_op_i = sqrt(diss_i) .* diss_ops
         r_f(out, pa_k) = begin
             dw = param[:w] .+ (rand(L) .- 0.5) * param[:dw]
             dU = 2 * dw .- (2 * param[:w] - param[:U])
-            H = subspace_split(bosehubbard(d, L; w = dw, U = dU, J = param[:J]), ranges, perm_mat)
-            effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
-            krylovevolve(state, initial_id, H, dt, t, k, pa_k, obs; effect!, out)
+            H = bosehubbard(d, L; w = dw, U = dU, J = param[:J])
+            msr_effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
+            effect!(state) = begin
+                diss_deco_effect!(state, diss_op_i)
+                normalize!(state)
+                msr_effect!(state)
+            end
+            krylovevolve(state, H, dt, t, k, pa_k, obs; effect!, out)
         end
         @time solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
         r = traj_mean(pa_out)

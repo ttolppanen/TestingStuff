@@ -50,10 +50,10 @@ function make_fit_plot(dir)
     return pl
 end
 
-include("disorder/thermal_state/t_1/stack/code.jl")
-include("disorder/thermal_state/t_1/T1/code.jl")
-include("disorder/thermal_state/t_1/T2/code.jl")
-make_fit_plot("disorder/thermal_state/t_1/stack/")
-make_fit_plot("disorder/thermal_state/t_1/T1/")
-make_fit_plot("disorder/thermal_state/t_1/T2/")
+include("dissipation/stack/code.jl")
+include("dissipation/T1/code.jl")
+# include("dissipation/T2/code.jl")
+make_fit_plot("dissipation/stack/")
+make_fit_plot("dissipation/T1/")
+# make_fit_plot("dissipation/T2/")
 exit()
