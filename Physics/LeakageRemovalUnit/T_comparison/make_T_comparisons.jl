@@ -50,10 +50,10 @@ function make_fit_plot(dir)
     return pl
 end
 
-# include("dephasing/stack/code.jl")
-# include("dephasing/T1/code.jl")
-include("dephasing/T2/code.jl")
-make_fit_plot("dephasing/stack/")
-make_fit_plot("dephasing/T1/")
-make_fit_plot("dephasing/T2/")
+# include("dissipation/large_dissipation/stack/code.jl")
+# include("dissipation/large_dissipation/T1/code.jl")
+include("dissipation/large_dissipation/T2/code.jl")
+make_fit_plot("dissipation/large_dissipation/stack/")
+make_fit_plot("dissipation/large_dissipation/T1/")
+make_fit_plot("dissipation/large_dissipation/T2/")
 exit()
