@@ -88,12 +88,15 @@ function f()
             dw = param[:w] .+ (rand(L) .- 0.5) * param[:dw]
             dU = 2 * dw .- (2 * param[:w] - param[:U])
             H = bosehubbard(d, L; w = dw, U = dU, J = param[:J])
+            for op in diss_op_i
+                H .-= 1.0im / 2 .* op' * op
+            end
 
             effect!(state) = begin
                 diss_deco_effect!(state, diss_op_i)
                 normalize!(state)
             end
-            krylovevolve(state, H, dt, t, k, pa_k, obs; effect!, out)
+            krylovevolve(state, H, dt, t, k, pa_k, obs; effect!, out, krylov_alg = :arnoldi)
         end
         @time solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
         r = map(x -> abs.(hilbert(x[1,:])), pa_out)

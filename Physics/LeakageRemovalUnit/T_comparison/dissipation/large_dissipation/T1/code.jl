@@ -66,7 +66,7 @@ end
 function f()
     param = initial_parameters()
     # -----------
-    traj = 1000
+    traj = 100
     diss_rates = 10 .* [4, 8, 12, 16] ./ 5000
     # -----------
     lines = []
@@ -84,7 +84,7 @@ function f()
     pa_k = PA_krylov(state, k)
     pa_args, pa_out = pre_alloc_threads(zeros(1, length(0:dt:t)), traj, pa_k)
 
-    diss_ops = [singlesite_a(d, L, i) for i in 2:L]
+    diss_ops = [singlesite_a(d, L, i) for i in 1:L]
     
     for diss_i in diss_rates
         out = []
@@ -93,13 +93,16 @@ function f()
             dw = param[:w] .+ (rand(L) .- 0.5) * param[:dw]
             dU = 2 * dw .- (2 * param[:w] - param[:U])
             H = bosehubbard(d, L; w = dw, U = dU, J = param[:J])
+            for op in diss_op_i
+                H .-= 1.0im / 2 .* op' * op
+            end
             msr_effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
             effect!(state) = begin
                 diss_deco_effect!(state, diss_op_i)
                 normalize!(state)
                 msr_effect!(state)
             end
-            krylovevolve(state, H, dt, t, k, pa_k, obs; effect!, out)
+            krylovevolve(state, H, dt, t, k, pa_k, obs; effect!, out, krylov_alg = :arnoldi)
         end
         @time solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
         r = traj_mean(pa_out)
