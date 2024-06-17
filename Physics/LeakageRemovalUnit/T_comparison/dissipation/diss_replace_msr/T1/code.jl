@@ -39,11 +39,11 @@ end
 
 function initial_parameters()
     param = OrderedDict()
-    param[:dt] = 0.02
+    param[:dt] = 0.2
     param[:gamma] = 27
     param[:t] = 400
     param[:d] = 3
-    param[:L] = 5
+    param[:L] = 3
     param[:state] = ValueInfo(bosonstack(1, param[:L], 1; d = param[:d]), "|100...>")
     param[:alg] = "krylov sbspc"
     param[:H] = "BH, d_w, fixed |2> energy"
@@ -61,8 +61,8 @@ end
 function f()
     param = initial_parameters()
     # -----------
-    traj = 400
-    diss_rates = exp.(range(log(0.01), log(50), length = 101))
+    traj = 100
+    diss_rates = exp.(range(log(0.01), log(50), length = 51))
     # -----------
     lines = []
 

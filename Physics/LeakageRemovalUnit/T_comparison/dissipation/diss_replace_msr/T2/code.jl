@@ -64,7 +64,7 @@ end
 function f()
     param = initial_parameters()
     # -----------
-    traj = 400
+    traj = 10
     diss_rates = exp.(range(log(0.01), log(50), length = 101))
     # -----------
     lines = []
