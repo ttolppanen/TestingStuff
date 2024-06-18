@@ -69,7 +69,7 @@ end
 function f()
     param = initial_parameters()
     # -----------
-    traj = 1000
+    traj = 100
     diss_rates = [20, 40, 60, 80] ./ 5000
     # -----------
     lines = []
@@ -96,6 +96,9 @@ function f()
             dw = param[:w] .+ (rand(L) .- 0.5) * param[:dw]
             dU = 2 * dw .- (2 * param[:w] - param[:U])
             H = bosehubbard(d, L; w = dw, U = dU, J = param[:J])
+            for op in diss_op_i
+                H .-= 1.0im / 2 .* op' * op
+            end
 
             msr_effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
             effect!(state) = begin
@@ -103,7 +106,7 @@ function f()
                 normalize!(state)
                 msr_effect!(state)
             end
-            krylovevolve(state, H, dt, t, k, pa_k, obs; effect!, out)
+            krylovevolve(state, H, dt, t, k, pa_k, obs; effect!, out, krylov_alg = :arnoldi)
         end
         @time solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
         r = map(x -> abs.(hilbert(x[1,:])), pa_out)
@@ -112,8 +115,8 @@ function f()
         push!(lines, LineInfo(0:dt:t, r, traj, "de = $diss_i"))
     end
     path = joinpath(@__DIR__)
-    makeplot(path, lines...; xlabel = "t", ylabel = "sigma_x1 env", copy_code = false, param...)
-    # addtrajectories(path, line)
+    # makeplot(path, lines...; xlabel = "t", ylabel = "sigma_x1 env", copy_code = false, param...)
+    addtrajectories(path, lines...)
 end
 
 @time f()
