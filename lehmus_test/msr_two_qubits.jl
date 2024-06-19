@@ -2,13 +2,14 @@ using QuantumStates
 using QuantumOperators
 using QuantumTimeEvolution
 using PlotAndSave
+using Statistics
 using Plots # <- julia package for plotting
 
 function example()
     d = 2 # qubits
     L = 2 # number of sites
     dt = 0.01
-    t = 5.0
+    t = 500.0
     k = 6 # the krylov subspace dimenion, this affects the accuracy of the numerics.
     initial_state = zeroone(d, L) # |01> 
     w = 0.0
@@ -22,7 +23,10 @@ function example()
     n1 = singlesite_n(d, L, 1)
     calc_n1_expval(state) = expval(state, n1) # first site boson occupation number
 
-    results = krylovevolve(initial_state, H, dt, t, k, calc_n1_expval; effect!) # this returns a matrix, where the different columns refer to timesteps, and the rows to different observables.
+    r_f() = krylovevolve(initial_state, H, dt, t, k, calc_n1_expval; effect!) # this returns a matrix, where the different columns refer to timesteps, and the rows to different observables.
+    traj = 1000
+    out = solvetrajectories(r_f, traj; paral = :threads)
+    results = mean(out)
 
     time_steps = 0:dt:t
     n1_results = results[1, :]

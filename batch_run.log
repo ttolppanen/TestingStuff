@@ -1,0 +1,11 @@
+/homedir02/htolppan/Documents/TestingStuff
+lehmus-cn1.oulu.fi
+Wed Jun 19 15:16:03 EEST 2024
+    Updating registry at `~/.julia/registries/Private_ttolppanen`
+    Updating git-repo `http://github.com/ttolppanen/ttolppanen_JuliaRegistry`
+    Updating registry at `~/.julia/registries/General.toml`
+  Activating project at `~/Documents/TestingStuff`
+  No Changes to `~/Documents/TestingStuff/Project.toml`
+  No Changes to `~/Documents/TestingStuff/Manifest.toml`
+138.399028 seconds (1.63 G allocations: 119.886 GiB, 43.40% gc time, 25.33% compilation time)
+Wed Jun 19 15:19:50 EEST 2024
