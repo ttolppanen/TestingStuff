@@ -25,7 +25,7 @@ function example()
 
     r_f() = krylovevolve(initial_state, H, dt, t, k, calc_n1_expval; effect!) # this returns a matrix, where the different columns refer to timesteps, and the rows to different observables.
     traj = 1000
-    @time out = solvetrajectories(r_f, traj; paral = :none)
+    @time out = solvetrajectories(r_f, traj; paral = :threads)
     results = mean(out)
 
     time_steps = 0:dt:t
