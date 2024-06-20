@@ -7,9 +7,9 @@ using Plots # <- julia package for plotting
 
 function example()
     d = 2 # qubits
-    L = 2 # number of sites
+    L = 6 # number of sites
     dt = 0.01
-    t = 500.0
+    t = 100.0
     k = 6 # the krylov subspace dimenion, this affects the accuracy of the numerics.
     initial_state = zeroone(d, L) # |01> 
     w = 0.0
@@ -25,7 +25,7 @@ function example()
 
     r_f() = krylovevolve(initial_state, H, dt, t, k, calc_n1_expval; effect!) # this returns a matrix, where the different columns refer to timesteps, and the rows to different observables.
     traj = 1000
-    out = solvetrajectories(r_f, traj; paral = :threads)
+    @time out = solvetrajectories(r_f, traj; paral = :none)
     results = mean(out)
 
     time_steps = 0:dt:t
