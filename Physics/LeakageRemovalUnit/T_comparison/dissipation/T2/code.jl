@@ -87,7 +87,7 @@ function f()
     pa_k = PA_krylov(state, k)
     pa_args, pa_out = pre_alloc_threads(zeros(1, length(0:dt:t)), traj, pa_k)
     
-    diss_ops = [singlesite_a(d, L, i) for i in 2:L]
+    diss_ops = [singlesite_a(d, L, i) for i in 1:L]
 
     for diss_i in diss_rates
         out = []
