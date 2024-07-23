@@ -50,8 +50,8 @@ function make_fit_plot(dir)
     return pl
 end
 
-include("dissipation/stack/code.jl")
-include("dissipation/T1/code.jl")
+# include("dissipation/stack/code.jl")
+# include("dissipation/T1/code.jl")
 include("dissipation/T2/code.jl")
 make_fit_plot("dissipation/stack/")
 make_fit_plot("dissipation/T1/")

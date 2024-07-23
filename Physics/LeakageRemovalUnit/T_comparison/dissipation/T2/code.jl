@@ -69,7 +69,7 @@ end
 function f()
     param = initial_parameters()
     # -----------
-    traj = 100
+    traj = 1000
     diss_rates = [4, 8, 12, 16] ./ 5000
     # -----------
     lines = []
