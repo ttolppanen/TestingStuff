@@ -69,7 +69,7 @@ end
 function f()
     param = initial_parameters()
     # -----------
-    traj = 100
+    traj = 1000
     diss_rates = [20, 40, 60, 80] ./ 5000
     # -----------
     lines = []
@@ -115,8 +115,8 @@ function f()
         push!(lines, LineInfo(0:dt:t, r, traj, "de = $diss_i"))
     end
     path = joinpath(@__DIR__)
-    # makeplot(path, lines...; xlabel = "t", ylabel = "sigma_x1 env", copy_code = false, param...)
-    addtrajectories(path, lines...)
+    makeplot(path, lines...; xlabel = "t", ylabel = "sigma_x1 env", copy_code = false, param...)
+    # addtrajectories(path, lines...)
 end
 
 @time f()
