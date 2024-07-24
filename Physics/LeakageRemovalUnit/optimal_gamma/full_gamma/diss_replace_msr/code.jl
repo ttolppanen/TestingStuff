@@ -120,7 +120,7 @@ end
 function xlog_plot(path)
     plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
     pl = plot(xaxis = :log10,
-    xticks = ([0.01, 0.03, 0.1, 5, 10, 20, 50], [0.01, 0.03, 0.1, 5, 10, 20, 50]),
+    xticks = ([0.01, 0.03, 0.1, 5, 10, 20, 50, 100], [0.01, 0.03, 0.1, 5, 10, 20, 50, 100]),
     title = plotinfo.title, 
     xlabel = plotinfo.xlabel, 
     ylabel = plotinfo.ylabel, 
@@ -136,5 +136,5 @@ function xlog_plot(path)
     savefig(pl, path)
     return pl
 end
-
-@time f()
+xlog_plot(@__DIR__)
+# @time f()
