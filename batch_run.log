@@ -1,6 +1,6 @@
 /homedir02/htolppan/Documents/TestingStuff
 lehmus-cn3.oulu.fi
-Tue Jul 23 15:35:14 EEST 2024
+Tue Jul 23 16:15:02 EEST 2024
     Updating registry at `~/.julia/registries/Private_ttolppanen`
     Updating git-repo `http://github.com/ttolppanen/ttolppanen_JuliaRegistry`
     Updating registry at `~/.julia/registries/General.toml`
@@ -8,9 +8,5 @@ Tue Jul 23 15:35:14 EEST 2024
   No Changes to `~/Documents/TestingStuff/Project.toml`
   No Changes to `~/Documents/TestingStuff/Manifest.toml`
 Threads used by julia = 40
-548.758469 seconds (588.78 M allocations: 218.696 GiB, 18.68% gc time, 2.62% compilation time)
-519.306344 seconds (556.37 M allocations: 216.662 GiB, 18.34% gc time)
-508.277548 seconds (560.57 M allocations: 214.524 GiB, 19.04% gc time)
-518.351628 seconds (558.82 M allocations: 215.454 GiB, 19.71% gc time)
-2128.892914 seconds (2.34 G allocations: 871.901 GiB, 18.67% gc time, 1.90% compilation time)
-Tue Jul 23 16:11:34 EEST 2024
+20041.022725 seconds (22.74 G allocations: 4.247 TiB, 14.82% gc time, 0.19% compilation time)
+Tue Jul 23 21:49:36 EEST 2024

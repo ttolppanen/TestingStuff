@@ -49,7 +49,7 @@ end
 
 function initial_parameters(L)
     param = OrderedDict()
-    param[:dt] = 0.02
+    param[:dt] = 0.01
     param[:t] = 90
     param[:d] = 3
     param[:state] = ValueInfo(bosonstack(2, L, 1), "|200...>")
@@ -69,9 +69,9 @@ end
 function f()
     param = initial_parameters(4)
     # -----------
-    traj = 100
+    traj = 1000
     Ls = [3]
-    gammas = exp.(range(log(0.01), log(50), length = 101))
+    gammas = exp.(range(log(0.01), log(100), length = 101))
     # -----------
     lines = []
     for L in Ls
