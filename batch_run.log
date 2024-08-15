@@ -1,12 +1,14 @@
 /homedir02/htolppan/Documents/TestingStuff
-lehmus-cn4.oulu.fi
-Mon Jul 29 12:30:29 EEST 2024
+lehmus-cn6.oulu.fi
+Wed Aug 14 15:27:22 EEST 2024
     Updating registry at `~/.julia/registries/Private_ttolppanen`
     Updating git-repo `http://github.com/ttolppanen/ttolppanen_JuliaRegistry`
     Updating registry at `~/.julia/registries/General.toml`
   Activating project at `~/Documents/TestingStuff`
+   Installed Rmath_jll ─ v0.4.2+1
   No Changes to `~/Documents/TestingStuff/Project.toml`
-  No Changes to `~/Documents/TestingStuff/Manifest.toml`
+    Updating `~/Documents/TestingStuff/Manifest.toml`
+  [f50d1b31] ↑ Rmath_jll v0.4.2+0 ⇒ v0.4.2+1
 Threads used by julia = 40
-4410.034937 seconds (5.10 G allocations: 915.969 GiB, 16.81% gc time, 0.96% compilation time)
-Mon Jul 29 13:44:31 EEST 2024
+6983.666193 seconds (66.97 G allocations: 7.145 TiB, 87.36% gc time, 0.57% compilation time)
+Wed Aug 14 17:24:55 EEST 2024
