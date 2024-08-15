@@ -28,7 +28,7 @@ function make_fit_plot(dir)
     t_times = []
     t_time_x = []
     for line in lines
-        fit_line_start = floor(Int, length(line.x) / 2)
+        fit_line_start = floor(Int, length(line.x) * 0.05)
         t_line, t_time = T1(line.x[fit_line_start:end], line.y[fit_line_start:end])
         plot!(pl, line.x, line.y, label = line.tag)
         plot!(pl, line.x[fit_line_start:end], t_line, label = line.tag * " fit")
@@ -40,7 +40,7 @@ function make_fit_plot(dir)
     bar_x_label = collect(lines)[1].tag[1]
     bars = plot(t_time_x, t_times,
     xlabel = bar_x_label,
-    ylabel = "T",
+    ylabel = "T2",
     dpi = 300,
     titlefontsize = 9,
     title = plotinfo.title,
@@ -50,10 +50,10 @@ function make_fit_plot(dir)
     return pl
 end
 
-include("Ts/code.jl")
+# include("Ts/code.jl")
 # include("T1/code.jl")
 # include("T2/code.jl")
-make_fit_plot("Ts/")
+# make_fit_plot("Ts/")
 # make_fit_plot("T1/")
-# make_fit_plot("T2/")
-exit()
+make_fit_plot("T2/")
+# exit()

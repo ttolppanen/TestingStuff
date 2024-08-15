@@ -88,7 +88,7 @@ function f()
     msrop = measurement_subspace(param[:effect].val.msr, ranges, perm_mat)
     feedback = feedback_measurement_subspace(param[:effect].val.fb, msrop, indices; digit_error = 10, id_relative_guess = -1)
 
-    op = subspace_split(singlesite_n(d, L, 1) + singlesite_n(d, L, 2), ranges, perm_mat)
+    op = subspace_split(singlesite_n(d, L, 1), ranges, perm_mat)
     obs = (state, id) -> expval(state[id], op[id])
 
     dt = param[:dt]; t = param[:t]; k = param[:k]
@@ -110,7 +110,7 @@ function f()
         push!(lines, LineInfo(0:dt:t, y, traj, "dw = $dw_i"))
     end
     path = joinpath(@__DIR__)
-    makeplot(path, lines...; xlabel = "t", ylabel = "n1 + n2", copy_code = false, param...)
+    makeplot(path, lines...; xlabel = "t", ylabel = "n1", copy_code = false, param...)
     # addtrajectories(path, line)
 end
 
