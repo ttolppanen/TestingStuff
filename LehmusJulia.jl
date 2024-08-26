@@ -1,4 +1,4 @@
 include("EnvThreads.jl")
 include("DisablePlots.jl")
 
-include("Physics/LeakageRemovalUnit/PlotsForPaper/total_anh/gamma/code.jl")
+include("Physics/LeakageRemovalUnit/PlotsForPaper/second_figure/total_anh/size/code.jl")
