@@ -74,7 +74,7 @@ function combine_fit_plot()
     t_time_x2, T2 = make_fit_line("T2", 0.05)
 
     pl = plot(t_time_xs, Ts,
-    xlabel = "d",
+    xlabel = "L",
     ylabel = "T",
     label = "Ts",
     dpi = 300,
@@ -88,8 +88,8 @@ end
 # include("Ts/code.jl")
 # include("T1/code.jl")
 # include("T2/code.jl")
-make_fit_plot("Ts/", "Ts", 0.8)
+# make_fit_plot("Ts/", "Ts", 0.8)
 # make_fit_plot("T1/", "T1", 0.05)
 # make_fit_plot("T2/", "T2", 0.05)
-# combine_fit_plot()
+combine_fit_plot()
 # exit()

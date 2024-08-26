@@ -12,7 +12,7 @@ function T1(x, y)
     return exp.(slope * collect(x) .+ c), -1 / slope 
 end
 
-function make_fit_plot(dir)
+function make_fit_plot(dir, ylabel, line_start)
     path = joinpath(@__DIR__, dir)
     plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
 
@@ -28,7 +28,7 @@ function make_fit_plot(dir)
     t_times = []
     t_time_x = []
     for line in lines
-        fit_line_start = floor(Int, length(line.x) * 0.6)
+        fit_line_start = floor(Int, length(line.x) * line_start)
         t_line, t_time = T1(line.x[fit_line_start:end], line.y[fit_line_start:end])
         plot!(pl, line.x, line.y, label = line.tag)
         plot!(pl, line.x[fit_line_start:end], t_line, label = line.tag * " fit")
@@ -40,7 +40,7 @@ function make_fit_plot(dir)
     bar_x_label = collect(lines)[1].tag[1]
     bars = plot(t_time_x, t_times,
     xlabel = bar_x_label,
-    ylabel = "Ts",
+    ylabel = ylabel,
     dpi = 300,
     titlefontsize = 9,
     title = plotinfo.title,
@@ -87,9 +87,9 @@ end
 
 # include("Ts/code.jl")
 # include("T1/code.jl")
-# include("T2/code.jl")
-make_fit_plot("Ts/")
-# make_fit_plot("T1/")
-# make_fit_plot("T2/")
-# combine_fit_plot()
+include("T2/code.jl")
+make_fit_plot("Ts/", "Ts", 0.5)
+make_fit_plot("T1/", "T1", 0.05)
+make_fit_plot("T2/", "T2", 0.05)
+combine_fit_plot()
 # exit()

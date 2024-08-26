@@ -42,7 +42,7 @@ end
 function initial_parameters()
     param = OrderedDict()
     param[:dt] = 0.02
-    param[:gamma] = 27
+    param[:gamma] = 50
     param[:t] = 400
     param[:d] = 3
     param[:L] = 5
@@ -108,4 +108,3 @@ function f()
 end
 
 @time f()
-exit()

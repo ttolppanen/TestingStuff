@@ -50,7 +50,7 @@ end
 function initial_parameters(L)
     param = OrderedDict()
     param[:dt] = 0.02
-    param[:gamma] = 27
+    param[:gamma] = 50
     param[:t] = 400
     param[:d] = 3
     param[:L] = L
