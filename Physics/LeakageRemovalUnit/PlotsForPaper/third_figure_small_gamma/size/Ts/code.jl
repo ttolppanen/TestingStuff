@@ -51,7 +51,7 @@ function initial_parameters(L)
     param = OrderedDict()
     param[:dt] = 0.02
     param[:gamma] = 0.03
-    param[:t] = 400
+    param[:t] = 1000
     param[:d] = 3
     param[:L] = L
     param[:state] = ValueInfo(bosonstack(2, L, 1), "|200...>")
@@ -75,7 +75,7 @@ end
 function f()
     param = initial_parameters(3)
     # -----------
-    traj = 1000
+    traj = 2000
     Ls = 3:7
     # -----------
     lines = []
@@ -111,8 +111,8 @@ function f()
         push!(lines, LineInfo(0:dt:t, y, traj, "L = $L"))
     end
     path = joinpath(@__DIR__)
-    # makeplot(path, lines...; xlabel = "t", ylabel = "anh_tot", copy_code = false, param...)
-    addtrajectories(path, lines...)
+    makeplot(path, lines...; xlabel = "t", ylabel = "anh_tot", copy_code = false, param...)
+    # addtrajectories(path, lines...)
 end
 
 @time f()
