@@ -31,7 +31,7 @@ function measure_ends_effect!(msr_op::Vector,
             return state, subspace_id::Int64
         end
         current_subspace_id = subspace_id
-        for site in [1, length(msr_op[current_subspace_id])]
+        for site in [length(msr_op[current_subspace_id])]
             msr_outcome = measuresite!(state[current_subspace_id], msr_op[current_subspace_id], site)
             new_id, op = feedback[current_subspace_id][site][msr_outcome]
             if new_id == current_subspace_id
@@ -49,11 +49,11 @@ end
 
 function initial_parameters(L)
     param = OrderedDict()
-    param[:t] = 180
+    param[:t] = 40
     param[:dt] = 0.02
-    param[:gamma] = 20
+    param[:gamma] = 0.03
     param[:d] = 3
-    param[:state] = ValueInfo(bosonstack(2, L, 1), "|200...>")
+    param[:state] = ValueInfo(bosonstack(2, L, 1; d = 3), "|200...>")
     param[:alg] = "krylov BN-subspace"
     param[:k] = 6
     param[:H] = "BH d_w fixed |2> energy"
@@ -68,7 +68,7 @@ function initial_parameters(L)
     feedback = [1 1 1; 0 0 0; 0 0 0]
     fb_op = [singlesite(feedback, L, i) for i in 1:L]
     
-    # param[:effect] = ValueInfo((msr = msrop, fb = fb_op), "msr_n ends -> fb -> 0")
+    param[:effect] = ValueInfo((msr = msrop, fb = fb_op), "msr_n ends -> fb -> 0")
     return param
 end
 
@@ -76,7 +76,7 @@ function f()
     
 
     # -----------
-    Ls = [3, 5, 7]
+    Ls = [4]
     traj = 1
     # -----------
     plots = []
@@ -89,8 +89,8 @@ function f()
         initial_id = find_subspace(param[:state].val, indices)
         state = subspace_split(param[:state].val, ranges, perm_mat)
 
-        # msrop = measurement_subspace(param[:effect].val.msr, ranges, perm_mat)
-        # feedback = feedback_measurement_subspace(param[:effect].val.fb, msrop, indices; digit_error = 10, id_relative_guess = -1)
+        msrop = measurement_subspace(param[:effect].val.msr, ranges, perm_mat)
+        feedback = feedback_measurement_subspace(param[:effect].val.fb, msrop, indices; digit_error = 10, id_relative_guess = -1)
 
         n_op = [subspace_split(singlesite_n(d, L, i), ranges, perm_mat) for i in 1:L]
         obs = [(state, id) -> expval(state[id], n_op[i][id]) for i in 1:L]
@@ -102,8 +102,8 @@ function f()
         H = subspace_split(bosehubbard(d, L; w = param[:dw].val, U = param[:dU].val, J = param[:J]), ranges, perm_mat)
         
         r_f(out, pa_k) = begin 
-            # effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
-            krylovevolve(state, initial_id, H, dt, t, k, pa_k, obs...; out)
+            effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
+            krylovevolve(state, initial_id, H, dt, t, k, pa_k, obs...; effect!, out)
         end
 
     
@@ -121,6 +121,7 @@ function f()
     # title = PlotAndSave.parameters_to_title(; param...)
     pl = plot(plots..., layout = (1, length(Ls)), size = (1500, 1500))
     savefig(pl, joinpath(@__DIR__, "heatmap.png"))
+    savefig(pl, joinpath(@__DIR__, "heatmap.svg"))
 end
 
 @time f()
