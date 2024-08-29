@@ -73,7 +73,7 @@ end
 function f()
     param = initial_parameters(2)
     # -----------
-    traj = 1000
+    traj = 2000
     Ls = [5]
     gammas = exp.(range(log(0.01), log(100), length = 101))
     # -----------
@@ -112,8 +112,8 @@ function f()
         push!(lines, LineInfo(gammas, out, traj, "L = $L"))
     end
     path = joinpath(@__DIR__)
-    makeplot(path, lines...; xlabel = "gamma", ylabel = "anh", copy_code = false, param...)
-    # addtrajectories(path, line)
+    # makeplot(path, lines...; xlabel = "gamma", ylabel = "anh", copy_code = false, param...)
+    addtrajectories(path, lines...)
     xlog_plot(@__DIR__)
 end
 
