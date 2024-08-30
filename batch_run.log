@@ -1,3 +1,222 @@
 /homedir02/htolppan/Documents/TestingStuff
-lehmus-cn15
-Thu Aug 29 13:05:07 EEST 2024
+lehmus-cn13
+Thu Aug 29 18:24:17 EEST 2024
+Threads used by julia = 40
+    Updating registry at `~/.julia/registries/Private_ttolppanen`
+    Updating git-repo `http://github.com/ttolppanen/ttolppanen_JuliaRegistry`
+    Updating registry at `~/.julia/registries/General.toml`
+  Activating project at `~/Documents/TestingStuff`
+   Installed libfdk_aac_jll ────────── v2.0.3+0
+   Installed x265_jll ──────────────── v3.6.0+0
+   Installed libdecor_jll ──────────── v0.2.2+0
+   Installed Opus_jll ──────────────── v1.3.3+0
+   Installed OffsetArrays ──────────── v1.14.1
+   Installed HypergeometricFunctions ─ v0.3.24
+   Installed Accessors ─────────────── v0.1.37
+   Installed Unitful ───────────────── v1.21.0
+   Installed InlineStrings ─────────── v1.4.2
+   Installed ConcurrentUtilities ───── v2.4.2
+   Installed IntelOpenMP_jll ───────── v2024.2.0+0
+   Installed StaticArrays ──────────── v1.9.7
+   Installed RandomNumbers ─────────── v1.6.0
+   Installed Polynomials ───────────── v4.0.11
+   Installed FFMPEG ────────────────── v0.2.4
+   Installed Functors ──────────────── v0.4.12
+   Installed Pango_jll ─────────────── v1.54.1+0
+   Installed LinearMaps ────────────── v3.11.3
+   Installed Hwloc_jll ─────────────── v2.11.1+0
+   Installed HarfBuzz_jll ──────────── v8.3.1+0
+   Installed StaticArraysCore ──────── v1.4.3
+   Installed ChunkSplitters ────────── v2.4.5
+   Installed MicroCollections ──────── v0.2.0
+   Installed ColorSchemes ──────────── v3.26.0
+   Installed fzf_jll ───────────────── v0.53.0+0
+   Installed TranscodingStreams ────── v0.10.10
+   Installed UnsafeAtomicsLLVM ─────── v0.1.5
+   Installed VectorInterface ───────── v0.4.6
+   Installed GLFW_jll ──────────────── v3.4.0+1
+   Installed Rmath_jll ─────────────── v0.4.3+0
+   Installed QuantumTimeEvolution ──── v0.7.0
+   Installed x264_jll ──────────────── v10164.0.0+0
+   Installed JLFzf ─────────────────── v0.1.8
+   Installed BinaryProvider ────────── v0.5.10
+   Installed Compat ────────────────── v4.16.0
+   Installed BangBang ──────────────── v0.4.3
+   Installed StaticArrayInterface ──── v1.6.0
+   Installed Xorg_libxcb_jll ───────── v1.17.0+0
+   Installed CodecZlib ─────────────── v0.7.6
+   Installed FLoops ────────────────── v0.2.2
+   Installed ArrayLayouts ──────────── v1.10.3
+   Installed MPICH_jll ─────────────── v4.2.2+0
+   Installed Dbus_jll ──────────────── v1.14.10+0
+   Installed OpenMPI_jll ───────────── v5.0.5+0
+   Installed MKL_jll ───────────────── v2024.2.0+0
+   Installed EnzymeCore ────────────── v0.7.8
+   Installed ConstructionBase ──────── v1.5.7
+   Installed XSLT_jll ──────────────── v1.1.41+0
+   Installed libass_jll ────────────── v0.15.2+0
+   Installed LogExpFunctions ───────── v0.3.28
+   Installed InverseFunctions ──────── v0.1.16
+   Installed Strided ───────────────── v2.1.1
+   Installed ChainRulesCore ────────── v1.24.0
+   Installed XML2_jll ──────────────── v2.13.3+0
+   Installed KernelAbstractions ────── v0.9.25
+   Installed Transducers ───────────── v0.4.82
+   Installed FFMPEG_jll ────────────── v6.1.2+0
+   Installed LLVMOpenMP_jll ────────── v17.0.6+0
+   Installed OpenSSL_jll ───────────── v3.0.14+0
+   Installed BitFlags ──────────────── v0.1.9
+   Installed Tables ────────────────── v1.12.0
+   Installed TestItems ─────────────── v1.0.0
+   Installed Latexify ──────────────── v0.16.5
+   Installed FillArrays ────────────── v1.12.0
+   Installed QuadGK ────────────────── v2.10.1
+   Installed UnitfulLatexify ───────── v1.6.4
+   Installed ChangesOfVariables ────── v0.1.9
+   Installed Distributions ─────────── v0.25.111
+    Building FFMPEG → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/9143266ba77d3313a4cf61d8333a1970e8c5d8b6/build.log`
+Precompiling project...
+[32m  ✓ [39m[90mConcurrentUtilities[39m
+[32m  ✓ [39m[90mInverseFunctions[39m
+[32m  ✓ [39m[90mCompat[39m
+[32m  ✓ [39m[90mTestItems[39m
+[32m  ✓ [39m[90mTranscodingStreams[39m
+[32m  ✓ [39m[90mVectorInterface[39m
+[32m  ✓ [39m[90mConstructionBase[39m
+[32m  ✓ [39m[90mBitFlags[39m
+[32m  ✓ [39m[90mStaticArraysCore[39m
+[32m  ✓ [39m[90mEnzymeCore[39m
+[32m  ✓ [39m[90mFunctors[39m
+[32m  ✓ [39m[90mRandomNumbers[39m
+[32m  ✓ [39m[90mOffsetArrays[39m
+[32m  ✓ [39m[90mTables[39m
+[32m  ✓ [39m[90mFFMPEG[39m
+[32m  ✓ [39m[90mFillArrays[39m
+[32m  ✓ [39m[90mDensityInterface[39m
+[32m  ✓ [39m[90mChangesOfVariables[39m
+[32m  ✓ [39m[90mContextVariablesX[39m
+[32m  ✓ [39m[90mChunkSplitters[39m
+[32m  ✓ [39m[90mCodecZlib[39m
+[32m  ✓ [39m[90mXML2_jll[39m
+[32m  ✓ [39m[90mDbus_jll[39m
+[32m  ✓ [39m[90mx264_jll[39m
+[32m  ✓ [39m[90mOpenSSL_jll[39m
+[32m  ✓ [39m[90mLLVMOpenMP_jll[39m
+[32m  ✓ [39m[90mLatexify[39m
+[32m  ✓ [39m[90mUnsafeAtomicsLLVM[39m
+[32m  ✓ [39m[90mRmath_jll[39m
+[32m  ✓ [39m[90mChainRulesCore[39m
+[32m  ✓ [39m[90mlibfdk_aac_jll[39m
+[32m  ✓ [39m[90mIntelOpenMP_jll[39m
+[32m  ✓ [39m[90mHwloc_jll[39m
+[32m  ✓ [39m[90mStaticArrayInterface[39m
+[32m  ✓ [39m[90mfzf_jll[39m
+[32m  ✓ [39m[90mOpus_jll[39m
+[32m  ✓ [39m[90mx265_jll[39m
+[32m  ✓ [39m[90mFLoopsBase[39m
+[32m  ✓ [39m[90mSetfield[39m
+[32m  ✓ [39m[90mRandom123[39m
+[32m  ✓ [39m[90mDataStructures[39m
+[32m  ✓ [39m[90mPixman_jll[39m
+[32m  ✓ [39m[90mRmath[39m
+[32m  ✓ [39m[90mWayland_jll[39m
+[32m  ✓ [39m[90mAccessors[39m
+[32m  ✓ [39m[90mXSLT_jll[39m
+[32m  ✓ [39m[90mInlineStrings[39m
+[32m  ✓ [39m[90mGettext_jll[39m
+[32m  ✓ [39m[90mOpenSSL[39m
+[32m  ✓ [39m[90mEllipsisNotation[39m
+[32m  ✓ [39m[90mOpenMPI_jll[39m
+[32m  ✓ [39m[90mJLFzf[39m
+[32m  ✓ [39m[90mZygoteRules[39m
+[32m  ✓ [39m[90mMPICH_jll[39m
+[32m  ✓ [39m[90mAbstractFFTs[39m
+[32m  ✓ [39m[90mLogExpFunctions[39m
+[32m  ✓ [39m[90mSortingAlgorithms[39m
+[32m  ✓ [39m[90mKrylovKit[39m
+[32m  ✓ [39m[90mSplittablesBase[39m
+[32m  ✓ [39m[90mQuadGK[39m
+[32m  ✓ [39m[90mBangBang[39m
+[32m  ✓ [39m[90mLinearMaps[39m
+[32m  ✓ [39m[90mXorg_libxcb_jll[39m
+[32m  ✓ [39m[90mGlib_jll[39m
+[32m  ✓ [39m[90mXorg_xcb_util_jll[39m
+[32m  ✓ [39m[90mXorg_libX11_jll[39m
+[32m  ✓ [39m[90mHDF5_jll[39m
+[32m  ✓ [39m[90mMicroCollections[39m
+[32m  ✓ [39m[90mColorSchemes[39m
+[32m  ✓ [39m[90mXorg_xcb_util_keysyms_jll[39m
+[32m  ✓ [39m[90mXorg_xcb_util_image_jll[39m
+[32m  ✓ [39m[90mXorg_xcb_util_renderutil_jll[39m
+[32m  ✓ [39m[90mXorg_libXrender_jll[39m
+[32m  ✓ [39m[90mXorg_xcb_util_wm_jll[39m
+[32m  ✓ [39m[90mCompose[39m
+[32m  ✓ [39m[90mStatsBase[39m
+[32m  ✓ [39m[90mXorg_libXfixes_jll[39m
+[32m  ✓ [39m[90mXorg_libXext_jll[39m
+[32m  ✓ [39m[90mXorg_libxkbfile_jll[39m
+[32m  ✓ [39m[90mHTTP[39m
+[32m  ✓ [39m[90mCoupledFields[39m
+[32m  ✓ [39m[90mXorg_xcb_util_cursor_jll[39m
+[32m  ✓ [39m[90mXorg_libXcursor_jll[39m
+[32m  ✓ [39m[90mStaticArrays[39m
+[32m  ✓ [39m[90mXorg_libXi_jll[39m
+[32m  ✓ [39m[90mLibglvnd_jll[39m
+[32m  ✓ [39m[90mXorg_libXinerama_jll[39m
+[32m  ✓ [39m[90mXorg_libXrandr_jll[39m
+[32m  ✓ [39m[90mCairo_jll[39m
+[32m  ✓ [39m[90mXorg_xkbcomp_jll[39m
+[32m  ✓ [39m[90mSpecialFunctions[39m
+[32m  ✓ [39m[90mXorg_xkeyboard_config_jll[39m
+[32m  ✓ [39m[90mTransducers[39m
+[32m  ✓ [39m[90mHarfBuzz_jll[39m
+[32m  ✓ [39m[90mHypergeometricFunctions[39m
+[32m  ✓ [39m[90mPlotUtils[39m
+[32m  ✓ [39m[90mxkbcommon_jll[39m
+[32m  ✓ [39m[90mPango_jll[39m
+[32m  ✓ [39m[90mInterpolations[39m
+[32m  ✓ [39m[90mlibass_jll[39m
+[32m  ✓ [39m[90mVulkan_Loader_jll[39m
+[32m  ✓ [39m[90mFFMPEG_jll[39m
+[32m  ✓ [39m[90mlibdecor_jll[39m
+[32m  ✓ [39mHDF5
+[32m  ✓ [39m[90mStatsFuns[39m
+[32m  ✓ [39m[90mKernelAbstractions[39m
+[32m  ✓ [39m[90mGLFW_jll[39m
+[32m  ✓ [39m[90mQt6Base_jll[39m
+[32m  ✓ [39mJLD2
+[32m  ✓ [39m[90mRecipesPipeline[39m
+[32m  ✓ [39m[90mPlotThemes[39m
+[32m  ✓ [39m[90mFolds[39m
+[32m  ✓ [39m[90mArrayLayouts[39m
+[32m  ✓ [39m[90mFLoops[39m
+[32m  ✓ [39m[90mGR_jll[39m
+[32m  ✓ [39m[90mPolynomials[39m
+[32m  ✓ [39m[90mDistributions[39m
+[32m  ✓ [39m[90mGR[39m
+[32m  ✓ [39m[90mUnitful[39m
+[32m  ✓ [39m[90mMKL_jll[39m
+[32m  ✓ [39m[90mBlockArrays[39m
+[32m  ✓ [39m[90mUnitfulLatexify[39m
+[32m  ✓ [39m[90mFFTW[39m
+[32m  ✓ [39m[90mKernelDensity[39m
+[32m  ✓ [39mDSP
+[32m  ✓ [39mGadfly
+[32m  ✓ [39m[90mCUDA[39m
+[32m  ✓ [39m[90mStridedViews[39m
+[32m  ✓ [39m[90mStrided[39m
+[32m  ✓ [39m[90mNDTensors[39m
+[32m  ✓ [39mITensors
+[32m  ✓ [39mPlots
+[32m  ✓ [39mQuantumStates
+[32m  ✓ [39mQuantumOperators
+[32m  ✓ [39mPlotAndSave
+[32m  ✓ [39mQuantumTimeEvolution
+[32m  ✓ [39mMIPTDataProcessing
+  137 dependencies successfully precompiled in 117 seconds (155 already precompiled)
+  No Changes to `~/Documents/TestingStuff/Project.toml`
+  No Changes to `~/Documents/TestingStuff/Manifest.toml`
+Started!
+13625.561681 seconds (133.84 G allocations: 14.277 TiB, 80.21% gc time, 0.35% compilation time)
+Ended!
+Thu Aug 29 22:16:07 EEST 2024
