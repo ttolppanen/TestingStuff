@@ -105,7 +105,7 @@ function f()
                 effect! = measure_ends_effect!(msrop, param[:dt], gamma, feedback)
                 krylovevolve(state, initial_id, H, dt, t, k, pa_k, obs; effect!, out, save_only_last = true)
             end
-            solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
+            @time solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
             r = traj_mean(pa_out)
             push!(out, r[1, 1])
         end
@@ -113,8 +113,8 @@ function f()
     end
     path = joinpath(@__DIR__)
     # makeplot(path, lines...; xlabel = "gamma", ylabel = "anh", copy_code = false, param...)
-    addtrajectories(path, lines...)
-    xlog_plot(@__DIR__)
+    # addtrajectories(path, lines...)
+    # xlog_plot(@__DIR__)
 end
 
 function xlog_plot(path)
