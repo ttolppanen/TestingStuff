@@ -44,18 +44,26 @@ function f()
     for L in Ls
         param = initial_parameters(L)
         d = param[:d]
-        state = param[:state].val
-        anh = anhall(d, L)
-        obs = (state) -> expval(state, anh)
+        indices = total_boson_number_subspace_indices(d, L)
+        ranges, perm_mat = total_boson_number_subspace_tools(d, L)
+        initial_id = find_subspace(param[:state].val, indices)
+        ssplit(x) = subspace_split(x, ranges, perm_mat)
+        state = ssplit(param[:state].val)
+
+        anh = ssplit(anhall(d, L))
+        obs = (state, id) -> expval(state[id], anh[id])
 
         dt = param[:dt]; t = param[:t]; k = param[:k]
-        pa_k = PA_krylov_dd(state, k)
+        pa_k = PA_krylov_sub_dd(state, k)
         pa_args, pa_out = pre_alloc_threads(zeros(1, 1), traj, pa_k)
 
         out = []
+        a_relations = [-1 for _ in eachindex(ranges)]
+        a_relations[1] = 0
         for gamma in diss_rates
             diss_op = [sqrt(gamma) * singlesite_a(d, L, L)]
             H_dd = diss_op[1]' * diss_op[1]
+            diss_op = [subspace_split(op, ranges, perm_mat, a_relations) for op in diss_op]
             # for i in 2:L
             #     H_dd .+= diss_op[i]' * diss_op[i]
             # end
@@ -64,7 +72,8 @@ function f()
                 dU = 2 * dw .- (2 * param[:w] - param[:U])
                 H = bosehubbard(d, L; w = dw, U = dU, J = param[:J])
                 H .-= 1.0im / 2 .* H_dd
-                krylovevolve(state, H, diss_op, dt, t, k, pa_k, obs; out, save_only_last = true)
+                H = ssplit(H)
+                krylovevolve(state, initial_id, H, diss_op, [], dt, t, k, pa_k, obs; out, save_only_last = true)
             end
             @time solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
             r = traj_mean(pa_out)
