@@ -145,8 +145,8 @@ function f()
         push!(lines, LineInfo(gammas, out, traj, "L = $L"))
     end
     path = joinpath(@__DIR__)
-    makeplot(path, lines...; xlabel = "gamma", ylabel = "anh", copy_code = false, param...)
-    # addtrajectories(path, lines...)
+    # makeplot(path, lines...; xlabel = "gamma", ylabel = "anh", copy_code = false, param...)
+    addtrajectories(path, lines...)
     xlog_plot(@__DIR__)
 end
 
