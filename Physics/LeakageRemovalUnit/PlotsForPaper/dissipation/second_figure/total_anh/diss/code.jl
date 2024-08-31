@@ -66,6 +66,7 @@ function f()
                 H .-= 1.0im / 2 .* H_dd
                 krylovevolve(state, H, diss_op, dt, t, k, pa_k, obs; out, save_only_last = true)
             end
+            solvetrajectories(r_f, 1, pa_args, pa_out; paral = :none)
             @time solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
             r = traj_mean(pa_out)
             push!(out, r[1, 1])
