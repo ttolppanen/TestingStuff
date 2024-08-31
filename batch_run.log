@@ -1,222 +1,146 @@
 /homedir02/htolppan/Documents/TestingStuff
-lehmus-cn13
-Thu Aug 29 18:24:17 EEST 2024
-Threads used by julia = 40
+lehmus-cn3.oulu.fi
+Fri Aug 30 19:34:58 EEST 2024
     Updating registry at `~/.julia/registries/Private_ttolppanen`
     Updating git-repo `http://github.com/ttolppanen/ttolppanen_JuliaRegistry`
     Updating registry at `~/.julia/registries/General.toml`
   Activating project at `~/Documents/TestingStuff`
-   Installed libfdk_aac_jll ────────── v2.0.3+0
-   Installed x265_jll ──────────────── v3.6.0+0
-   Installed libdecor_jll ──────────── v0.2.2+0
-   Installed Opus_jll ──────────────── v1.3.3+0
-   Installed OffsetArrays ──────────── v1.14.1
-   Installed HypergeometricFunctions ─ v0.3.24
-   Installed Accessors ─────────────── v0.1.37
-   Installed Unitful ───────────────── v1.21.0
-   Installed InlineStrings ─────────── v1.4.2
-   Installed ConcurrentUtilities ───── v2.4.2
-   Installed IntelOpenMP_jll ───────── v2024.2.0+0
-   Installed StaticArrays ──────────── v1.9.7
-   Installed RandomNumbers ─────────── v1.6.0
-   Installed Polynomials ───────────── v4.0.11
-   Installed FFMPEG ────────────────── v0.2.4
-   Installed Functors ──────────────── v0.4.12
-   Installed Pango_jll ─────────────── v1.54.1+0
-   Installed LinearMaps ────────────── v3.11.3
-   Installed Hwloc_jll ─────────────── v2.11.1+0
-   Installed HarfBuzz_jll ──────────── v8.3.1+0
-   Installed StaticArraysCore ──────── v1.4.3
-   Installed ChunkSplitters ────────── v2.4.5
-   Installed MicroCollections ──────── v0.2.0
-   Installed ColorSchemes ──────────── v3.26.0
-   Installed fzf_jll ───────────────── v0.53.0+0
-   Installed TranscodingStreams ────── v0.10.10
-   Installed UnsafeAtomicsLLVM ─────── v0.1.5
-   Installed VectorInterface ───────── v0.4.6
-   Installed GLFW_jll ──────────────── v3.4.0+1
-   Installed Rmath_jll ─────────────── v0.4.3+0
-   Installed QuantumTimeEvolution ──── v0.7.0
-   Installed x264_jll ──────────────── v10164.0.0+0
-   Installed JLFzf ─────────────────── v0.1.8
-   Installed BinaryProvider ────────── v0.5.10
-   Installed Compat ────────────────── v4.16.0
-   Installed BangBang ──────────────── v0.4.3
-   Installed StaticArrayInterface ──── v1.6.0
-   Installed Xorg_libxcb_jll ───────── v1.17.0+0
-   Installed CodecZlib ─────────────── v0.7.6
-   Installed FLoops ────────────────── v0.2.2
-   Installed ArrayLayouts ──────────── v1.10.3
-   Installed MPICH_jll ─────────────── v4.2.2+0
-   Installed Dbus_jll ──────────────── v1.14.10+0
-   Installed OpenMPI_jll ───────────── v5.0.5+0
-   Installed MKL_jll ───────────────── v2024.2.0+0
-   Installed EnzymeCore ────────────── v0.7.8
-   Installed ConstructionBase ──────── v1.5.7
-   Installed XSLT_jll ──────────────── v1.1.41+0
-   Installed libass_jll ────────────── v0.15.2+0
-   Installed LogExpFunctions ───────── v0.3.28
-   Installed InverseFunctions ──────── v0.1.16
-   Installed Strided ───────────────── v2.1.1
-   Installed ChainRulesCore ────────── v1.24.0
-   Installed XML2_jll ──────────────── v2.13.3+0
-   Installed KernelAbstractions ────── v0.9.25
-   Installed Transducers ───────────── v0.4.82
-   Installed FFMPEG_jll ────────────── v6.1.2+0
-   Installed LLVMOpenMP_jll ────────── v17.0.6+0
-   Installed OpenSSL_jll ───────────── v3.0.14+0
-   Installed BitFlags ──────────────── v0.1.9
-   Installed Tables ────────────────── v1.12.0
-   Installed TestItems ─────────────── v1.0.0
-   Installed Latexify ──────────────── v0.16.5
-   Installed FillArrays ────────────── v1.12.0
-   Installed QuadGK ────────────────── v2.10.1
-   Installed UnitfulLatexify ───────── v1.6.4
-   Installed ChangesOfVariables ────── v0.1.9
-   Installed Distributions ─────────── v0.25.111
-    Building FFMPEG → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/9143266ba77d3313a4cf61d8333a1970e8c5d8b6/build.log`
+   Installed Loess ──────────────── v0.6.4
+   Installed IntelOpenMP_jll ────── v2024.2.1+0
+   Installed PtrArrays ──────────── v1.2.1
+   Installed FillArrays ─────────── v1.13.0
+   Installed QuantumTimeEvolution ─ v0.7.1
+   Installed QuantumOperators ───── v0.1.30
 Precompiling project...
-[32m  ✓ [39m[90mConcurrentUtilities[39m
-[32m  ✓ [39m[90mInverseFunctions[39m
-[32m  ✓ [39m[90mCompat[39m
-[32m  ✓ [39m[90mTestItems[39m
-[32m  ✓ [39m[90mTranscodingStreams[39m
-[32m  ✓ [39m[90mVectorInterface[39m
-[32m  ✓ [39m[90mConstructionBase[39m
-[32m  ✓ [39m[90mBitFlags[39m
-[32m  ✓ [39m[90mStaticArraysCore[39m
-[32m  ✓ [39m[90mEnzymeCore[39m
-[32m  ✓ [39m[90mFunctors[39m
-[32m  ✓ [39m[90mRandomNumbers[39m
-[32m  ✓ [39m[90mOffsetArrays[39m
-[32m  ✓ [39m[90mTables[39m
-[32m  ✓ [39m[90mFFMPEG[39m
 [32m  ✓ [39m[90mFillArrays[39m
-[32m  ✓ [39m[90mDensityInterface[39m
-[32m  ✓ [39m[90mChangesOfVariables[39m
-[32m  ✓ [39m[90mContextVariablesX[39m
-[32m  ✓ [39m[90mChunkSplitters[39m
-[32m  ✓ [39m[90mCodecZlib[39m
-[32m  ✓ [39m[90mXML2_jll[39m
-[32m  ✓ [39m[90mDbus_jll[39m
-[32m  ✓ [39m[90mx264_jll[39m
-[32m  ✓ [39m[90mOpenSSL_jll[39m
-[32m  ✓ [39m[90mLLVMOpenMP_jll[39m
-[32m  ✓ [39m[90mLatexify[39m
-[32m  ✓ [39m[90mUnsafeAtomicsLLVM[39m
-[32m  ✓ [39m[90mRmath_jll[39m
-[32m  ✓ [39m[90mChainRulesCore[39m
-[32m  ✓ [39m[90mlibfdk_aac_jll[39m
+[32m  ✓ [39m[90mPtrArrays[39m
+[32m  ✓ [39m[90mLoess[39m
+[32m  ✓ [39m[90mAliasTables[39m
 [32m  ✓ [39m[90mIntelOpenMP_jll[39m
-[32m  ✓ [39m[90mHwloc_jll[39m
-[32m  ✓ [39m[90mStaticArrayInterface[39m
-[32m  ✓ [39m[90mfzf_jll[39m
-[32m  ✓ [39m[90mOpus_jll[39m
-[32m  ✓ [39m[90mx265_jll[39m
-[32m  ✓ [39m[90mFLoopsBase[39m
-[32m  ✓ [39m[90mSetfield[39m
-[32m  ✓ [39m[90mRandom123[39m
-[32m  ✓ [39m[90mDataStructures[39m
-[32m  ✓ [39m[90mPixman_jll[39m
-[32m  ✓ [39m[90mRmath[39m
-[32m  ✓ [39m[90mWayland_jll[39m
-[32m  ✓ [39m[90mAccessors[39m
-[32m  ✓ [39m[90mXSLT_jll[39m
-[32m  ✓ [39m[90mInlineStrings[39m
-[32m  ✓ [39m[90mGettext_jll[39m
-[32m  ✓ [39m[90mOpenSSL[39m
-[32m  ✓ [39m[90mEllipsisNotation[39m
-[32m  ✓ [39m[90mOpenMPI_jll[39m
-[32m  ✓ [39m[90mJLFzf[39m
-[32m  ✓ [39m[90mZygoteRules[39m
-[32m  ✓ [39m[90mMPICH_jll[39m
-[32m  ✓ [39m[90mAbstractFFTs[39m
-[32m  ✓ [39m[90mLogExpFunctions[39m
-[32m  ✓ [39m[90mSortingAlgorithms[39m
-[32m  ✓ [39m[90mKrylovKit[39m
-[32m  ✓ [39m[90mSplittablesBase[39m
-[32m  ✓ [39m[90mQuadGK[39m
-[32m  ✓ [39m[90mBangBang[39m
-[32m  ✓ [39m[90mLinearMaps[39m
-[32m  ✓ [39m[90mXorg_libxcb_jll[39m
-[32m  ✓ [39m[90mGlib_jll[39m
-[32m  ✓ [39m[90mXorg_xcb_util_jll[39m
-[32m  ✓ [39m[90mXorg_libX11_jll[39m
-[32m  ✓ [39m[90mHDF5_jll[39m
-[32m  ✓ [39m[90mMicroCollections[39m
-[32m  ✓ [39m[90mColorSchemes[39m
-[32m  ✓ [39m[90mXorg_xcb_util_keysyms_jll[39m
-[32m  ✓ [39m[90mXorg_xcb_util_image_jll[39m
-[32m  ✓ [39m[90mXorg_xcb_util_renderutil_jll[39m
-[32m  ✓ [39m[90mXorg_libXrender_jll[39m
-[32m  ✓ [39m[90mXorg_xcb_util_wm_jll[39m
-[32m  ✓ [39m[90mCompose[39m
-[32m  ✓ [39m[90mStatsBase[39m
-[32m  ✓ [39m[90mXorg_libXfixes_jll[39m
-[32m  ✓ [39m[90mXorg_libXext_jll[39m
-[32m  ✓ [39m[90mXorg_libxkbfile_jll[39m
-[32m  ✓ [39m[90mHTTP[39m
-[32m  ✓ [39m[90mCoupledFields[39m
-[32m  ✓ [39m[90mXorg_xcb_util_cursor_jll[39m
-[32m  ✓ [39m[90mXorg_libXcursor_jll[39m
-[32m  ✓ [39m[90mStaticArrays[39m
-[32m  ✓ [39m[90mXorg_libXi_jll[39m
-[32m  ✓ [39m[90mLibglvnd_jll[39m
-[32m  ✓ [39m[90mXorg_libXinerama_jll[39m
-[32m  ✓ [39m[90mXorg_libXrandr_jll[39m
-[32m  ✓ [39m[90mCairo_jll[39m
-[32m  ✓ [39m[90mXorg_xkbcomp_jll[39m
-[32m  ✓ [39m[90mSpecialFunctions[39m
-[32m  ✓ [39m[90mXorg_xkeyboard_config_jll[39m
-[32m  ✓ [39m[90mTransducers[39m
-[32m  ✓ [39m[90mHarfBuzz_jll[39m
-[32m  ✓ [39m[90mHypergeometricFunctions[39m
-[32m  ✓ [39m[90mPlotUtils[39m
-[32m  ✓ [39m[90mxkbcommon_jll[39m
-[32m  ✓ [39m[90mPango_jll[39m
-[32m  ✓ [39m[90mInterpolations[39m
-[32m  ✓ [39m[90mlibass_jll[39m
-[32m  ✓ [39m[90mVulkan_Loader_jll[39m
-[32m  ✓ [39m[90mFFMPEG_jll[39m
-[32m  ✓ [39m[90mlibdecor_jll[39m
-[32m  ✓ [39mHDF5
-[32m  ✓ [39m[90mStatsFuns[39m
-[32m  ✓ [39m[90mKernelAbstractions[39m
-[32m  ✓ [39m[90mGLFW_jll[39m
-[32m  ✓ [39m[90mQt6Base_jll[39m
-[32m  ✓ [39mJLD2
-[32m  ✓ [39m[90mRecipesPipeline[39m
-[32m  ✓ [39m[90mPlotThemes[39m
-[32m  ✓ [39m[90mFolds[39m
-[32m  ✓ [39m[90mArrayLayouts[39m
-[32m  ✓ [39m[90mFLoops[39m
-[32m  ✓ [39m[90mGR_jll[39m
-[32m  ✓ [39m[90mPolynomials[39m
-[32m  ✓ [39m[90mDistributions[39m
-[32m  ✓ [39m[90mGR[39m
-[32m  ✓ [39m[90mUnitful[39m
 [32m  ✓ [39m[90mMKL_jll[39m
-[32m  ✓ [39m[90mBlockArrays[39m
-[32m  ✓ [39m[90mUnitfulLatexify[39m
 [32m  ✓ [39m[90mFFTW[39m
+[32m  ✓ [39m[90mDistributions[39m
 [32m  ✓ [39m[90mKernelDensity[39m
 [32m  ✓ [39mDSP
+[32m  ✓ [39m[90mArrayLayouts[39m
+[32m  ✓ [39m[90mBlockArrays[39m
 [32m  ✓ [39mGadfly
-[32m  ✓ [39m[90mCUDA[39m
-[32m  ✓ [39m[90mStridedViews[39m
-[32m  ✓ [39m[90mStrided[39m
 [32m  ✓ [39m[90mNDTensors[39m
 [32m  ✓ [39mITensors
-[32m  ✓ [39mPlots
 [32m  ✓ [39mQuantumStates
 [32m  ✓ [39mQuantumOperators
-[32m  ✓ [39mPlotAndSave
 [32m  ✓ [39mQuantumTimeEvolution
 [32m  ✓ [39mMIPTDataProcessing
-  137 dependencies successfully precompiled in 117 seconds (155 already precompiled)
+  19 dependencies successfully precompiled in 72 seconds (273 already precompiled)
   No Changes to `~/Documents/TestingStuff/Project.toml`
   No Changes to `~/Documents/TestingStuff/Manifest.toml`
+
+Threads used by julia = 40
+
 Started!
-13625.561681 seconds (133.84 G allocations: 14.277 TiB, 80.21% gc time, 0.35% compilation time)
+
+216.228413 seconds (210.95 M allocations: 42.969 GiB, 15.30% gc time, 0.07% compilation time)
+211.442677 seconds (210.87 M allocations: 42.893 GiB, 16.28% gc time)
+217.925781 seconds (210.52 M allocations: 43.087 GiB, 15.43% gc time)
+223.243942 seconds (210.43 M allocations: 43.186 GiB, 15.43% gc time)
+214.909925 seconds (210.79 M allocations: 42.988 GiB, 15.51% gc time)
+219.222764 seconds (211.00 M allocations: 42.589 GiB, 15.06% gc time)
+217.961460 seconds (210.80 M allocations: 42.777 GiB, 16.40% gc time)
+215.375650 seconds (210.85 M allocations: 42.428 GiB, 15.68% gc time)
+217.539722 seconds (210.87 M allocations: 42.490 GiB, 15.73% gc time)
+216.004114 seconds (211.15 M allocations: 42.404 GiB, 15.42% gc time)
+221.552106 seconds (211.29 M allocations: 42.431 GiB, 15.02% gc time)
+217.429805 seconds (211.19 M allocations: 42.203 GiB, 15.34% gc time)
+213.829413 seconds (211.37 M allocations: 42.098 GiB, 15.53% gc time)
+214.415338 seconds (211.47 M allocations: 42.267 GiB, 15.32% gc time)
+211.463499 seconds (211.95 M allocations: 41.878 GiB, 15.52% gc time)
+216.750529 seconds (211.17 M allocations: 42.212 GiB, 15.37% gc time)
+211.579970 seconds (210.96 M allocations: 42.191 GiB, 15.43% gc time)
+211.472457 seconds (211.42 M allocations: 42.098 GiB, 15.49% gc time)
+209.719509 seconds (211.85 M allocations: 41.788 GiB, 14.88% gc time)
+205.468059 seconds (211.56 M allocations: 41.838 GiB, 15.89% gc time)
+208.140043 seconds (211.84 M allocations: 41.678 GiB, 15.42% gc time)
+209.832350 seconds (211.39 M allocations: 41.861 GiB, 15.74% gc time)
+209.295099 seconds (212.11 M allocations: 41.615 GiB, 15.71% gc time)
+208.050423 seconds (211.79 M allocations: 41.646 GiB, 15.73% gc time)
+210.886449 seconds (211.64 M allocations: 41.708 GiB, 15.38% gc time)
+209.593167 seconds (211.67 M allocations: 41.901 GiB, 15.53% gc time)
+213.472856 seconds (212.23 M allocations: 41.592 GiB, 15.15% gc time)
+211.587081 seconds (212.58 M allocations: 41.287 GiB, 15.53% gc time)
+205.364769 seconds (212.53 M allocations: 41.323 GiB, 15.62% gc time)
+211.611485 seconds (211.46 M allocations: 41.849 GiB, 15.37% gc time)
+204.703074 seconds (212.31 M allocations: 41.393 GiB, 16.01% gc time)
+207.969589 seconds (212.67 M allocations: 41.392 GiB, 15.57% gc time)
+206.872321 seconds (212.48 M allocations: 41.330 GiB, 15.37% gc time)
+206.671162 seconds (212.80 M allocations: 41.103 GiB, 15.13% gc time)
+206.678485 seconds (212.20 M allocations: 41.514 GiB, 15.78% gc time)
+212.505128 seconds (212.79 M allocations: 41.160 GiB, 14.79% gc time)
+201.206035 seconds (213.45 M allocations: 40.803 GiB, 14.73% gc time)
+192.916859 seconds (213.93 M allocations: 40.633 GiB, 16.56% gc time)
+203.786836 seconds (213.53 M allocations: 40.890 GiB, 15.78% gc time)
+210.289498 seconds (212.63 M allocations: 41.235 GiB, 15.41% gc time)
+193.203861 seconds (213.43 M allocations: 41.028 GiB, 16.64% gc time)
+209.807054 seconds (213.12 M allocations: 41.072 GiB, 14.62% gc time)
+213.486849 seconds (212.79 M allocations: 41.019 GiB, 14.50% gc time)
+210.435584 seconds (213.70 M allocations: 40.755 GiB, 15.47% gc time)
+198.262226 seconds (214.21 M allocations: 40.409 GiB, 15.46% gc time)
+196.478520 seconds (213.98 M allocations: 40.453 GiB, 16.38% gc time)
+204.371346 seconds (213.32 M allocations: 41.187 GiB, 15.67% gc time)
+212.795469 seconds (213.27 M allocations: 41.071 GiB, 14.94% gc time)
+205.438284 seconds (214.26 M allocations: 40.380 GiB, 15.58% gc time)
+207.882691 seconds (214.32 M allocations: 40.664 GiB, 15.74% gc time)
+204.017842 seconds (214.33 M allocations: 40.640 GiB, 14.67% gc time)
+208.925860 seconds (214.65 M allocations: 40.585 GiB, 14.95% gc time)
+215.354395 seconds (213.53 M allocations: 41.127 GiB, 14.12% gc time)
+200.963705 seconds (214.64 M allocations: 40.286 GiB, 14.93% gc time)
+197.846028 seconds (214.13 M allocations: 40.932 GiB, 16.05% gc time)
+198.228673 seconds (214.68 M allocations: 40.397 GiB, 15.31% gc time)
+208.055621 seconds (213.48 M allocations: 41.260 GiB, 15.52% gc time)
+198.323180 seconds (214.11 M allocations: 40.948 GiB, 15.57% gc time)
+200.298328 seconds (215.30 M allocations: 40.160 GiB, 16.34% gc time)
+204.457588 seconds (214.40 M allocations: 40.509 GiB, 15.41% gc time)
+204.040393 seconds (214.59 M allocations: 40.509 GiB, 14.61% gc time)
+193.562396 seconds (215.13 M allocations: 40.499 GiB, 15.83% gc time)
+199.352629 seconds (214.47 M allocations: 40.739 GiB, 15.42% gc time)
+188.350795 seconds (215.00 M allocations: 40.621 GiB, 15.83% gc time)
+200.622384 seconds (215.28 M allocations: 40.436 GiB, 15.49% gc time)
+191.557375 seconds (215.83 M allocations: 40.191 GiB, 16.17% gc time)
+204.210257 seconds (214.66 M allocations: 40.970 GiB, 15.48% gc time)
+195.253253 seconds (215.12 M allocations: 40.658 GiB, 16.31% gc time)
+189.143324 seconds (215.77 M allocations: 40.376 GiB, 17.03% gc time)
+197.412292 seconds (215.38 M allocations: 40.799 GiB, 16.50% gc time)
+205.468751 seconds (215.01 M allocations: 41.089 GiB, 16.10% gc time)
+212.598541 seconds (214.51 M allocations: 41.415 GiB, 14.94% gc time)
+215.725359 seconds (214.43 M allocations: 41.644 GiB, 14.76% gc time)
+207.885629 seconds (215.00 M allocations: 41.757 GiB, 15.64% gc time)
+219.868795 seconds (214.83 M allocations: 41.844 GiB, 15.17% gc time)
+207.795125 seconds (215.61 M allocations: 41.432 GiB, 15.55% gc time)
+204.010387 seconds (215.34 M allocations: 41.647 GiB, 15.95% gc time)
+207.095917 seconds (215.55 M allocations: 41.409 GiB, 15.07% gc time)
+213.393665 seconds (216.17 M allocations: 41.325 GiB, 15.35% gc time)
+212.570661 seconds (217.07 M allocations: 41.281 GiB, 15.00% gc time)
+210.092470 seconds (216.98 M allocations: 41.533 GiB, 14.80% gc time)
+216.371428 seconds (216.48 M allocations: 42.179 GiB, 14.53% gc time)
+217.061767 seconds (216.89 M allocations: 42.061 GiB, 15.11% gc time)
+209.663864 seconds (217.16 M allocations: 42.502 GiB, 16.49% gc time)
+215.228995 seconds (218.25 M allocations: 42.307 GiB, 15.61% gc time)
+219.535986 seconds (218.32 M allocations: 42.811 GiB, 14.74% gc time)
+216.829084 seconds (218.39 M allocations: 43.015 GiB, 15.53% gc time)
+219.094764 seconds (219.09 M allocations: 43.163 GiB, 15.08% gc time)
+222.549710 seconds (219.30 M allocations: 44.151 GiB, 15.29% gc time)
+220.749335 seconds (220.22 M allocations: 44.184 GiB, 15.87% gc time)
+222.652043 seconds (221.29 M allocations: 44.230 GiB, 15.07% gc time)
+226.391195 seconds (221.28 M allocations: 45.288 GiB, 15.97% gc time)
+219.163142 seconds (223.16 M allocations: 45.397 GiB, 15.82% gc time)
+200.373327 seconds (224.11 M allocations: 45.502 GiB, 17.93% gc time)
+212.783737 seconds (224.76 M allocations: 46.536 GiB, 17.12% gc time)
+212.946098 seconds (226.08 M allocations: 47.304 GiB, 17.23% gc time)
+227.477340 seconds (227.26 M allocations: 47.947 GiB, 16.33% gc time)
+231.525319 seconds (228.77 M allocations: 48.179 GiB, 16.20% gc time)
+231.494162 seconds (230.85 M allocations: 49.115 GiB, 16.49% gc time)
+225.672742 seconds (232.71 M allocations: 50.121 GiB, 17.33% gc time)
+223.840987 seconds (234.55 M allocations: 50.739 GiB, 17.68% gc time)
+21299.176453 seconds (21.88 G allocations: 4.176 TiB, 15.57% gc time, 0.15% compilation time)
+
 Ended!
-Thu Aug 29 22:16:07 EEST 2024
+Sat Aug 31 01:31:56 EEST 2024

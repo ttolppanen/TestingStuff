@@ -6,7 +6,7 @@ println("")
 println("Started!")
 println("")
 
-include("Physics/LeakageRemovalUnit/PlotsForPaper/second_figure/total_anh/gamma/code.jl")
+include("Physics/LeakageRemovalUnit/PlotsForPaper/fourth_figure/gamma/code.jl")
 
 println("")
 println("Ended!")

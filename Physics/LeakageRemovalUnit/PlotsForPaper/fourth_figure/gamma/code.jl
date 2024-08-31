@@ -70,8 +70,8 @@ function initial_parameters(L)
     param[:U] = 50
     param[:J] = 1
 
-    param[:diss] = 0.002
-    param[:deco] = 0.06
+    param[:diss] = 0.001
+    param[:deco] = 0.01
 
     d = param[:d]
     msrop = measurementoperators(nop(d), L)
