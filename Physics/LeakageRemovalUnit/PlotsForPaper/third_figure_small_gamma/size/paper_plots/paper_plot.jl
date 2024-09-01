@@ -145,7 +145,8 @@ function t1_plot()
     pl = plot(dpi = 300,
     xlabel = "time", 
     ylabel = "First Site Population", 
-    ylims = (0.2, 1)
+    ylims = (0.2, 1),
+    legend = :bottomleft
     )
     fit_lines = T1_fit()
     for line in values(plotinfo.lines)
@@ -237,7 +238,9 @@ function combine_fit_plot()
     return pl
 end
 
+Plots.scalefontsizes(1.5)
 ts_plot()
 t1_plot()
 t2_plot()
 combine_fit_plot();
+Plots.scalefontsizes()
