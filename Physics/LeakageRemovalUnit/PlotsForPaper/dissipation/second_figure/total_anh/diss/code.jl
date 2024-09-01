@@ -36,9 +36,9 @@ end
 function f()
     param = initial_parameters(2)
     # -----------
-    traj = 100
+    traj = 500
     Ls = [5]
-    diss_rates = exp.(range(log(0.01), log(100), length = 11))
+    diss_rates = exp.(range(log(0.01), log(100), length = 101))
     # -----------
     lines = []
     for L in Ls
@@ -82,8 +82,8 @@ function f()
         push!(lines, LineInfo(diss_rates, out, traj, "L = $L"))
     end
     path = joinpath(@__DIR__)
-    makeplot(path, lines...; xlabel = "diss", ylabel = "anh", copy_code = false, param...)
-    # addtrajectories(path, line)
+    # makeplot(path, lines...; xlabel = "diss", ylabel = "anh", copy_code = false, param...)
+    addtrajectories(path, lines...)
     xlog_plot(@__DIR__)
 end
 
