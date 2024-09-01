@@ -225,13 +225,13 @@ function combine_fit_plot()
     pl = plot(t_time_xs, Ts,
     xlabel = "L",
     ylabel = "Survival Times",
-    label = "Ts",
+    label = "Tₛ",
     legend = :topleft,
     dpi = 300,
     titlefontsize = 9
     )
-    plot!(pl, t_time_x1, T1, label = "T1")
-    plot!(pl, t_time_x2, T2, label = "T2")
+    plot!(pl, t_time_x1, T1, label = "T₁")
+    plot!(pl, t_time_x2, T2, label = "T₂")
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
     return pl
