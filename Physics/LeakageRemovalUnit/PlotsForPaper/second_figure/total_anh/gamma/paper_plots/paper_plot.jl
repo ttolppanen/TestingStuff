@@ -5,7 +5,7 @@ function make_plot()
     path = @__DIR__
     plotinfo = load(joinpath(dirname(path), "data.jld2"), "plotinfo")
     pl = plot(xaxis = :log10,
-    xticks = ([0.03, 45], [0.03, 45]),
+    xticks = ([0.03, 50], [0.03, 50]),
     dpi = 300,
     xlabel = "Measurement Rate",
     ylabel = "Leakage Population in the Array", 

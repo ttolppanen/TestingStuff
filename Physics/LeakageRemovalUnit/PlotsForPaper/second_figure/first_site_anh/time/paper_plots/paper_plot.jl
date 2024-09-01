@@ -5,10 +5,11 @@ function make_plot()
     path = @__DIR__
     plotinfo = load(joinpath(dirname(path), "data.jld2"), "plotinfo")
     pl = plot(dpi = 300,
-    xlabel = "t", 
-    ylabel = "First Site Leakage Population", 
+    xlabel = "time", 
+    ylabel = "First Site Leakage Population"
     # ylims = (10^-5, 1)
     )
+    Plots.scalefontsizes(1.5)
     for line in values(plotinfo.lines)
         if line.tag != "gamma = 0.1"
             gamma = parse(Float64, line.tag[8:end])
@@ -20,6 +21,7 @@ function make_plot()
     end
     savefig(pl, joinpath(path, "paper_plot.png"))
     savefig(pl, joinpath(path, "paper_plot.svg"))
+    Plots.scalefontsizes()
     return pl
 end
 
