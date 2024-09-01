@@ -9,10 +9,10 @@ function T1(x, y)
     res = (A \ log.(y))
     slope = res[1]
     c = res[2]
-    return exp.(slope * collect(x) .+ c), -1 / slope 
+    return x -> exp.(slope .* x .+ c), -1 / slope 
 end
 
-function make_fit_plot(dir, ylabel, fit_start)
+function make_fit_plot(dir, ylabel, fit_start, fit_end = 1.0)
     path = joinpath(@__DIR__, dir)
     plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
 
@@ -29,9 +29,10 @@ function make_fit_plot(dir, ylabel, fit_start)
     t_time_x = []
     for line in lines
         fit_line_start = floor(Int, length(line.x) * fit_start)
-        t_line, t_time = T1(line.x[fit_line_start:end], line.y[fit_line_start:end])
+        fit_line_end = floor(Int, length(line.x) * fit_end)
+        t_line_func, t_time = T1(line.x[fit_line_start:fit_line_end], line.y[fit_line_start:fit_line_end])
         plot!(pl, line.x, line.y, label = line.tag)
-        plot!(pl, line.x[fit_line_start:end], t_line, label = line.tag * " fit")
+        plot!(pl, line.x, t_line_func(line.x), label = line.tag * " fit")
 
         t_x = parse(Float64, line.tag[5:end])
         push!(t_times, t_time)
@@ -85,11 +86,10 @@ function combine_fit_plot()
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
 end
 
-include("Ts/code.jl")
+# include("Ts/code.jl")
 # include("T1/code.jl")
 # include("T2/code.jl")
-make_fit_plot("Ts/", "Ts", 0.8)
-# make_fit_plot("T1/", "T1", 0.05)
-# make_fit_plot("T2/", "T2", 0.05)
+make_fit_plot("Ts/", "Ts", 0.1, 0.25)
+make_fit_plot("T1/", "T1", 0.05)
+make_fit_plot("T2/", "T2", 0.05)
 combine_fit_plot()
-exit()

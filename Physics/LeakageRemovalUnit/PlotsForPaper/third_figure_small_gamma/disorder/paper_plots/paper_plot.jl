@@ -5,12 +5,12 @@ function t1_plot()
     path = @__DIR__
     plotinfo = load(joinpath(dirname(path), "T1", "data.jld2"), "plotinfo")
     pl = plot(dpi = 300,
-    xlabel = "t", 
+    xlabel = "time", 
     ylabel = "First Site Population", 
     ylims = (0.2, 1)
     )
     for line in values(plotinfo.lines)
-        disorder = parse(Float64, line.tag[5:end])
+        disorder = parse(Int64, line.tag[5:end])
         plot!(pl, line.x, line.y, label = "Disorder = " * string(disorder))
     end
     savefig(pl, joinpath(path, "T1.png"))
@@ -22,12 +22,12 @@ function t2_plot()
     path = @__DIR__
     plotinfo = load(joinpath(dirname(path), "T2", "data.jld2"), "plotinfo")
     pl = plot(dpi = 300,
-    xlabel = "t", 
+    xlabel = "time",
     ylabel = "<σₓ> envelope", 
     ylims = (0.4, 1)
     )
     for line in values(plotinfo.lines)
-        disorder = parse(Float64, line.tag[5:end])
+        disorder = parse(Int64, line.tag[5:end])
         plot!(pl, line.x, line.y, label = "Disorder = " * string(disorder))
     end
     savefig(pl, joinpath(path, "T2.png"))
@@ -56,7 +56,7 @@ function make_fit_line(dir, cut_size)
         fit_line_start = floor(Int, length(line.x) * cut_size)
         t_line, t_time = T1(line.x[fit_line_start:end], line.y[fit_line_start:end])
 
-        t_x = parse(Float64, line.tag[5:end])
+        t_x = parse(Int64, line.tag[5:end])
         push!(t_times, t_time)
         push!(t_time_x, t_x)
     end
@@ -69,7 +69,6 @@ function combine_fit_plot()
     t_time_x, T2 = make_fit_line("T2", 0.05)
 
     pl = plot(t_time_x, Ts,
-    yaxis = :log10,
     xlabel = "Disorder",
     ylabel = "T",
     label = "Ts",
