@@ -62,8 +62,8 @@ function initial_parameters()
     param[:T] = 0.1
     kb = 1.3806 * 10^-23
     hbar = 1.0546 * 10^-34
-    J = 5 * 10^6
-    param[:J_value] = "5MHz"
+    J = 5 * 10^6 * 2 * pi # added 2 * pi 
+    param[:J_value] = ValueInfo(J, "5MHz * 2pi")
     param[:T_scale] = ValueInfo(kb / (hbar * J), "kb/hbarJ")
     param[:diss] = 0.001
     param[:deco] = 0.01
@@ -71,7 +71,7 @@ function initial_parameters()
     param[:alg] = "krylov sbspc"
     param[:H] = "BH, d_w, fixed |2> energy"
     param[:k] = 6
-    param[:w] = 1000
+    param[:w] = 1500 # changed this from 1000
     param[:U] = 50
     param[:J] = 1
 
@@ -123,9 +123,10 @@ function f()
             dU = 2 * dw .- (2 * param[:w] - param[:U])
             H = bosehubbard(d, L; w = dw, U = dU, J = param[:J])
 
-            H_diag = diag(bosehubbard(d, L - 1; w = dw[2:end], U = dU[2:end], J = 0))
-            ts = thermal_state(H_diag, param[:T] * param[:T_scale].val)
-            ts_sample = vec_from_density_op(ts)
+            t_T = param[:T]
+            t_w = param[:w] * param[:J_value].val
+            t_U = param[:U] * param[:J_value].val
+            ts_sample = sample_transmon_thermal_state(d, L-1, t_T, t_w, t_U)
             state = kron(param[:state].val, ts_sample)
 
             initial_id = find_subspace(state, indices)
