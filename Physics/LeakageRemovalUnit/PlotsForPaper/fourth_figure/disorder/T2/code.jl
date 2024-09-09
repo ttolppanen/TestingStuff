@@ -9,6 +9,7 @@ using PlotAndSave
 @everywhere using QuantumTimeEvolution
 using OrderedCollections
 using DSP
+using SparseArrays
 
 function traj_mean(result)
     out = zeros(size(result[1]))
@@ -114,8 +115,8 @@ function f()
             H = bosehubbard(d, L; w = dw, U = dU, J = param[:J]) .+ H_dd
 
             t_T = param[:T]
-            t_w = param[:w] * param[:J_value]
-            t_U = param[:U] * param[:J_value]
+            t_w = param[:w] * param[:J_value].val
+            t_U = param[:U] * param[:J_value].val
             ts_sample = sample_transmon_thermal_state(d, L-1, t_T, t_w, t_U)
             state = kron(param[:state].val, ts_sample)
 
@@ -130,8 +131,8 @@ function f()
         push!(lines, LineInfo(0:dt:t, r, traj, "dw = $dw_i"))
     end
     path = joinpath(@__DIR__)
-    makeplot(path, lines...; xlabel = "t", ylabel = "sigma_x1 env", copy_code = false, param...)
-    # addtrajectories(path, lines...)
+    # makeplot(path, lines...; xlabel = "t", ylabel = "sigma_x1 env", copy_code = false, param...)
+    addtrajectories(path, lines...)
 end
 
 @time f()

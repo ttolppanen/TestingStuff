@@ -144,8 +144,8 @@ function f()
         push!(lines, LineInfo(0:dt:t, y, traj, "dw = $dw_i"))
     end
     path = joinpath(@__DIR__)
-    makeplot(path, lines...; xlabel = "t", ylabel = "anh_tot", copy_code = false, param...)
-    # addtrajectories(path, lines...)
+    # makeplot(path, lines...; xlabel = "t", ylabel = "anh_tot", copy_code = false, param...)
+    addtrajectories(path, lines...)
 end
 
 @time f()

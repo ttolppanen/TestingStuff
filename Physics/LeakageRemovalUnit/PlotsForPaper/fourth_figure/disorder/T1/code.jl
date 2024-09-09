@@ -7,6 +7,7 @@ using LinearAlgebra
 using PlotAndSave
 @everywhere using QuantumTimeEvolution
 using OrderedCollections
+using SparseArrays
 
 function traj_mean(result)
     out = zeros(size(result[1]))
@@ -144,8 +145,8 @@ function f()
         push!(lines, LineInfo(0:dt:t, y, traj, "dw = $dw_i"))
     end
     path = joinpath(@__DIR__)
-    makeplot(path, lines...; xlabel = "t", ylabel = "n1", copy_code = false, param...)
-    # addtrajectories(path, line)
+    # makeplot(path, lines...; xlabel = "t", ylabel = "n1", copy_code = false, param...)
+    addtrajectories(path, line)
 end
 
 @time f()
