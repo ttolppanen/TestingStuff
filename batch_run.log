@@ -1,30 +1,3 @@
 /homedir02/htolppan/Documents/TestingStuff
 lehmus-cn1.oulu.fi
-Tue Sep 10 13:42:07 EEST 2024
-    Updating registry at `~/.julia/registries/Private_ttolppanen`
-    Updating git-repo `http://github.com/ttolppanen/ttolppanen_JuliaRegistry`
-    Updating registry at `~/.julia/registries/General.toml`
-  Activating project at `~/Documents/TestingStuff`
-  No Changes to `~/Documents/TestingStuff/Project.toml`
-  No Changes to `~/Documents/TestingStuff/Manifest.toml`
-
-Threads used by julia = 40
-
-Started!
-
-711.405775 seconds (687.68 M allocations: 80.096 GiB, 2.82% gc time, 1.53% compilation time)
-669.676477 seconds (682.76 M allocations: 81.971 GiB, 3.16% gc time)
-656.487835 seconds (682.43 M allocations: 82.098 GiB, 3.20% gc time)
-668.590330 seconds (679.33 M allocations: 83.683 GiB, 3.22% gc time)
-2735.062663 seconds (2.76 G allocations: 329.983 GiB, 3.09% gc time, 1.43% compilation time: 13% of which was recompilation)
-406.415536 seconds (678.36 M allocations: 70.274 GiB, 4.24% gc time, 0.65% compilation time)
-525.980270 seconds (661.13 M allocations: 77.958 GiB, 3.67% gc time)
-555.103886 seconds (657.01 M allocations: 80.010 GiB, 3.57% gc time)
-575.667111 seconds (654.12 M allocations: 81.272 GiB, 3.46% gc time)
-2065.900131 seconds (2.65 G allocations: 309.977 GiB, 3.70% gc time, 0.16% compilation time)
-1423.940940 seconds (527.67 M allocations: 128.116 GiB, 2.33% gc time, 0.40% compilation time)
-1588.958801 seconds (522.16 M allocations: 133.978 GiB, 2.17% gc time)
-1554.360254 seconds (521.30 M allocations: 134.940 GiB, 2.30% gc time)
-1581.075964 seconds (520.45 M allocations: 135.833 GiB, 2.22% gc time)
-6170.134347 seconds (2.10 G allocations: 536.036 GiB, 2.26% gc time, 0.12% compilation time: <1% of which was recompilation)
-Tue Sep 10 16:45:42 EEST 2024
+Thu Sep 12 12:15:39 EEST 2024
