@@ -1,5 +1,6 @@
 [deps]
 DSP = "717857b8-e6f2-59f4-9121-6e50c889abd2"
+Images = "916415d5-f1e6-5110-898d-aaa5f9f070e0"
 JLD2 = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
 OrderedCollections = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
 PlotAndSave = "17f9de49-761f-4084-9189-3237cc0765fb"
