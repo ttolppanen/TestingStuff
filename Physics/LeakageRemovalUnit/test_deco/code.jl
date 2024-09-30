@@ -9,12 +9,13 @@ using Images
 
 function f()
     d = 2; L = 1;
-    dt = 0.02; t = 10;
+    dt = 0.02; t = 1;
     k = 6
     state = complex(sparse([1.0, 1]))
     normalize!(state)
     H = bosehubbard(d, L)
-    ops = [sqrt(10) * singlesite_n(d, L, 1)]
+    deco_rate = 10
+    ops = [sqrt(1.85 * deco_rate) * singlesite_n(d, L, 1)]
     for op in ops
         H .-= 1.0im / 2 .* op' * op
     end
@@ -23,7 +24,7 @@ function f()
     obs = (state) -> expval(state, sigma_x)
 
     r_f() = krylovevolve(state, H, ops, dt, t, k, obs)
-    r = solvetrajectories(r_f, 1000)
+    r = solvetrajectories(r_f, 10000; paral = :threads)
 
     function traj_mean(result)
         out = zeros(size(result[1]))
@@ -41,9 +42,9 @@ function f()
 
     push!(lines, LineInfo(x_t, r, 100, "data"))
     
-    x_max = findlocalmaxima(r)
-    push!(lines, LineInfo(x_t[x_max], r[x_max], 100, "maxima"))
-    push!(lines, LineInfo(x_t, exp.(-x_t * 10), 1, "theoretical"))
+    # x_max = findlocalmaxima(r)
+    # push!(lines, LineInfo(x_t[x_max], r[x_max], 100, "maxima"))
+    push!(lines, LineInfo(x_t, exp.(-x_t * deco_rate), 1, "theoretical"))
     
     makeplot(joinpath(@__DIR__), lines...; copy_code = false)
 end
