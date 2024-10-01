@@ -9,13 +9,13 @@ using Images
 
 function f()
     d = 2; L = 1;
-    dt = 0.02; t = 1;
+    dt = 0.02; t = 10;
     k = 6
     state = complex(sparse([1.0, 1]))
     normalize!(state)
     H = bosehubbard(d, L)
-    deco_rate = 10
-    ops = [sqrt(1.85 * deco_rate) * singlesite_n(d, L, 1)]
+    deco_rate = 0.8
+    ops = [sqrt(2 * deco_rate) * singlesite_n(d, L, 1)]
     for op in ops
         H .-= 1.0im / 2 .* op' * op
     end
@@ -24,7 +24,7 @@ function f()
     obs = (state) -> expval(state, sigma_x)
 
     r_f() = krylovevolve(state, H, ops, dt, t, k, obs)
-    r = solvetrajectories(r_f, 10000; paral = :threads)
+    r = solvetrajectories(r_f, 4000; paral = :threads)
 
     function traj_mean(result)
         out = zeros(size(result[1]))
@@ -40,13 +40,15 @@ function f()
     x_t = 0:dt:t
     lines = []
 
-    push!(lines, LineInfo(x_t, r, 100, "data"))
+    pl = plot(x_t, r, label = "data")
+    #push!(lines, LineInfo(x_t, r, 100, "data"))
     
     # x_max = findlocalmaxima(r)
     # push!(lines, LineInfo(x_t[x_max], r[x_max], 100, "maxima"))
-    push!(lines, LineInfo(x_t, exp.(-x_t * deco_rate), 1, "theoretical"))
-    
-    makeplot(joinpath(@__DIR__), lines...; copy_code = false)
+    y_t(x) = cos(x) * exp(-x * deco_rate)
+    #push!(lines, LineInfo(x_t, y_t.(x_t), 1, "theoretical"))
+    plot!(pl, x_t, y_t, label = "analytical", linestyle = :dash)
+    #makeplot(joinpath(@__DIR__), lines...; copy_code = false)
 end
 
 f()

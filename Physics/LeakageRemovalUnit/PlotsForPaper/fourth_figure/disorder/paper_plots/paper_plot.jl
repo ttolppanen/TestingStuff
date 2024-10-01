@@ -168,9 +168,9 @@ function t2_plot()
     end
 
     # normal decoherence
-    # t = plotinfo.lines["dw = 5"].x
-    # deph_rate = plotinfo.parameters[:deco]
-    # plot!(pl, t, x -> exp(-x * deph_rate), label = "decoherence")
+    t = plotinfo.lines["dw = 5"].x
+    deph_rate = plotinfo.parameters[:deco]
+    plot!(pl, t, x -> exp(-x * deph_rate * 0.5), label = "decoherence")
 
     plot!(pl, [0], [0], label = "fit", lc = :grey)
     savefig(pl, joinpath(path, "T2.png"))
