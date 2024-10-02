@@ -1531,9 +1531,9 @@ version = "0.1.9"
 
 [[deps.QuantumTimeEvolution]]
 deps = ["ChunkSplitters", "Distributed", "ExponentialUtilities", "FastClosures", "ITensors", "LinearAlgebra", "QuantumOperators", "SparseArrays", "StaticArrays"]
-git-tree-sha1 = "6d4336ec7fe0b0eebda534240e06b46cfde3eae4"
+git-tree-sha1 = "e3f16d9a7180fd014142cf28b709483da9cc40db"
 uuid = "7373133c-a6f7-4e95-971a-e453f442ca60"
-version = "0.7.1"
+version = "0.7.2"
 
 [[deps.Quaternions]]
 deps = ["LinearAlgebra", "Random", "RealDot"]
