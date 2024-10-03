@@ -72,7 +72,7 @@ function initial_parameters(L)
     param[:H] = "BH, d_w, fixed |2> energy"
     param[:k] = 6
     param[:w] = 1500
-    param[:dw] = 10
+    param[:dw] = 20
     param[:U] = 50
     param[:J] = 1
 
