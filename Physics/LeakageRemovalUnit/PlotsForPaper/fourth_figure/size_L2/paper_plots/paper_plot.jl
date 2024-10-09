@@ -202,6 +202,13 @@ function combine_fit_plot()
     )
     plot!(pl, t_time_x1, T1, label = "T₁")
     plot!(pl, t_time_x2, T2, label = "T₂")
+
+    plotinfo = load(joinpath(dirname(@__DIR__), "T1", "data.jld2"), "plotinfo")
+    diss = plotinfo.parameters[:diss]
+    hline!(pl, [1 / diss], ls = :dash, label = "inherit dissipation")
+    deco = plotinfo.parameters[:deco]
+    hline!(pl, [2 / deco], ls = :dash, label = "inherit decoherence")
+
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
     return pl
