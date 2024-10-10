@@ -1,6 +1,7 @@
 using JLD2
 using Plots
 using OrderedCollections
+using PlotAndSave
 
 function TS_fit()
     path = @__DIR__
@@ -211,6 +212,10 @@ function combine_fit_plot()
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
+
+    # lines = []
+    # traj = plotinfo.parameters[:traj]
+    # push!(lines, LineInfo(t_time_xs, Ts, traj, ))
     return pl
 end
 
