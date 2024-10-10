@@ -213,9 +213,12 @@ function combine_fit_plot()
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
 
-    # lines = []
-    # traj = plotinfo.parameters[:traj]
-    # push!(lines, LineInfo(t_time_xs, Ts, traj, ))
+    lines = []
+    traj = get_traj(plotinfo)
+    push!(lines, LineInfo(t_time_xs, Ts, traj, "Ts"))
+    push!(lines, LineInfo(t_time_x1, T1, traj, "T1"))
+    push!(lines, LineInfo(t_time_x2, T2, traj, "T2"))
+    savedata(@__DIR__, lines...; xlabel = "L", ylabel = "Survival Times", copy_code = false, plotinfo.parameters...)
     return pl
 end
 
