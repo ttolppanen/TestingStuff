@@ -1525,9 +1525,9 @@ version = "0.1.30"
 
 [[deps.QuantumStates]]
 deps = ["ITensors", "LinearAlgebra", "SparseArrays"]
-git-tree-sha1 = "31460f3d2611087c1d3c63482efb92093e07fcae"
+git-tree-sha1 = "f6e4cd195c00e4749f698860aa738a8801b5a408"
 uuid = "0a1581c1-ab82-4660-a1be-26f7b3483457"
-version = "0.1.10"
+version = "0.1.11"
 
 [[deps.QuantumTimeEvolution]]
 deps = ["ChunkSplitters", "Distributed", "ExponentialUtilities", "FastClosures", "ITensors", "LinearAlgebra", "QuantumOperators", "SparseArrays", "StaticArrays"]

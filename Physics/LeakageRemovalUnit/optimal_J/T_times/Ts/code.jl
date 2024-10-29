@@ -40,9 +40,12 @@ end
 
 function initial_parameters(J)
     param = OrderedDict()
-    param[:dt] = 0.02
-    param[:gamma] = 0.03 * J / (5)
-    param[:t] = 400
+    param[:U] = ValueInfo(250, "250MHz")
+    U = param[:U].val
+    param[:gamma] = 3/2 * (J / U)^2 # this is 3/2 J^2/U, in units of U
+
+    param[:t] = 1000 * U / 5 # J was 5Mhz
+    param[:dt] = param[:t] / 10000
     param[:d] = 3
     param[:L] = 2
 
@@ -50,18 +53,15 @@ function initial_parameters(J)
     state[param[:d]] = 1.0
     param[:state] = ValueInfo(state, "|2> + thermal state")
     param[:T] = 0.1
-    kb = 1.3806 * 10^-23
-    hbar = 1.0546 * 10^-34
-    param[:T_scale] = ValueInfo(kb / (hbar * J * 2 * pi), "kb/hbarJ")
-    param[:diss] = ValueInfo(0.005 / J, "5kHz")
-    param[:deco] = ValueInfo(0.05 / J, "50kHz")
+    param[:diss] = ValueInfo(0.005 / U, "5kHz")
+    param[:deco] = ValueInfo(0.05 / U, "50kHz")
     
-    param[:alg] = "exact sbspc"
+    param[:alg] = "exact dd"
     param[:H] = "BH, d_w, fixed |2> energy"
     param[:k] = 6
-    param[:w] = ValueInfo(7500 / J, "7.5GHz")
-    param[:dw] = ValueInfo(100 / J, "100MHz")
-    param[:U] = ValueInfo(250 / J, "250MHz")
+    param[:w] = ValueInfo(7500 / U, "7.5GHz")
+    param[:dw] = ValueInfo(100 / U, "100MHz")
+
 
     d = param[:d]; L = param[:L]
     msrop = measurementoperators(nop(d), L)
@@ -76,7 +76,7 @@ function f()
     param = initial_parameters(1)
     # -----------
     traj = 1000
-    Js = range(1, 10, length = 11)
+    Js = 1:2:20
     # -----------
     lines = []
     for J_i in Js
@@ -86,7 +86,7 @@ function f()
         msrop = param[:effect].val.msr
         feedback = param[:effect].val.fb
         
-        op = anhall(d, L)
+        op = singlesite_n(d, L, 1)
         obs = (state) -> expval(state, op)
 
         dt = param[:dt]; t = param[:t];
@@ -103,12 +103,12 @@ function f()
         out = []
         r_f(out, pa_e) = begin
             dw = param[:w].val .+ (rand(L) .- 0.5) * param[:dw].val
-            dU = 2 * dw .- (2 * param[:w].val - param[:U].val)
-            H = bosehubbard(d, L; w = dw, U = dU, J = 1)
+            dU = 2 * dw .- (2 * param[:w].val - 1)
+            H = bosehubbard(d, L; w = dw, U = dU, J = J_i / param[:U].val)
 
             t_T = param[:T]
-            t_w = param[:w].val * J_i * 10^6 * 2 * pi
-            t_U = param[:U].val * J_i * 10^6 * 2 * pi
+            t_w = param[:w].val * param[:U].val * 10^6 * 2 * pi
+            t_U = param[:U].val * 10^6 * 2 * pi
             ts_sample = sample_transmon_thermal_state(d, L-1, t_T, t_w, t_U)
             state = kron(param[:state].val, ts_sample)
 
@@ -123,8 +123,8 @@ function f()
         push!(lines, LineInfo(0:dt:t, y, traj, "J = $J_i"))
     end
     path = joinpath(@__DIR__)
-    makeplot(path, lines...; xlabel = "t", ylabel = "anh_tot", copy_code = false, param...)
-    # addtrajectories(path, lines...)
+    # makeplot(path, lines...; xlabel = "t", ylabel = "anh_tot", copy_code = false, param...)
+    addtrajectories(path, lines...)
 end
 
 @time f()

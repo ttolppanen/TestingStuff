@@ -63,12 +63,13 @@ function f()
     param = initial_parameters(2)
     # -----------
     traj = 5000
-    Js = [4, 5, 6] # In Mhz / 2pi
-    gammas = range(0.0001, 0.001, length = 50)
+    Js = [(20, 175)] # In Mhz / 2pi
+    gammas = range(0.001, 0.08, length = 50)
     # -----------
     lines = []
-    for J in Js
+    for (J, t) in Js
         d = param[:d]; L = param[:L]
+        param[:t] = t
         state = param[:state].val
 
         msrop = param[:effect].val.msr
@@ -94,10 +95,13 @@ function f()
             r = traj_mean(pa_out)
             push!(out, r[1, 1])
         end
+        line = LineInfo(gammas, out, traj, "J = $J")
+        path = joinpath(@__DIR__, "J = $J")
+        makeplot(path, line; xlabel = "gamma", ylabel = "anh", copy_code = false, param...)
         push!(lines, LineInfo(gammas, out, traj, "J = $J"))
     end
     path = joinpath(@__DIR__)
-    makeplot(path, lines...; xlabel = "gamma", ylabel = "anh", copy_code = false, param...)
+    # makeplot(path, lines...; xlabel = "gamma", ylabel = "anh", copy_code = false, param...)
     # addtrajectories(path, lines...)
     # xlog_plot(@__DIR__)
 end

@@ -69,9 +69,9 @@ function make_fit_line(dir, cut_size)
 end
 
 function combine_fit_plot()
-    t_time_x, Ts = make_fit_line("Ts", 0.5)
-    t_time_x, T1 = make_fit_line("T1", 0.5)
-    t_time_x, T2 = make_fit_line("T2", 0.5)
+    t_time_x, Ts = make_fit_line("Ts", 0.05)
+    t_time_x, T1 = make_fit_line("T1", 0.05)
+    t_time_x, T2 = make_fit_line("T2", 0.05)
 
     pl = plot(t_time_x, Ts,
     xlabel = "d",
@@ -85,9 +85,9 @@ function combine_fit_plot()
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
 end
 
-# include("Ts/code.jl")
-# include("T1/code.jl")
-# include("T2/code.jl")
+include("Ts/code.jl")
+include("T1/code.jl")
+include("T2/code.jl")
 make_fit_plot("Ts/")
 make_fit_plot("T1/")
 make_fit_plot("T2/")
