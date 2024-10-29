@@ -75,7 +75,7 @@ end
 function f()
     param = initial_parameters(1)
     # -----------
-    traj = 1000
+    traj = 4000
     Js = 1:2:20
     # -----------
     lines = []
