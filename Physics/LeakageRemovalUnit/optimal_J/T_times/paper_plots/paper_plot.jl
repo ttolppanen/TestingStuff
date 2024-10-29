@@ -1,113 +1,43 @@
 using JLD2
 using Plots
 using OrderedCollections
+using PlotAndSave
+
+function T1(x, y) 
+    # linreg for slope
+    # https://jahoo.github.io/2021/01/11/simplest_linear_regression_example.html
+    A = hcat(x, ones(length(x)))
+    res = (A \ log.(y))
+    slope = res[1]
+    c = res[2]
+    return x -> exp.(slope * x .+ c), -1 / slope 
+end
+
+function T_fit(dir_name, start_cut)
+    path = @__DIR__
+    plotinfo = load(joinpath(dirname(path), dir_name, "data.jld2"), "plotinfo")
+    lines = OrderedDict()
+
+    for (key, line) in plotinfo.lines
+        f_s = floor(Int, length(line.x) * start_cut)
+        smaller_than = findfirst(x -> x < 0.05, line.y)
+        f_e = isnothing(smaller_than) ? length(line.x) : smaller_than
+
+        x = line.x[f_s:f_e]
+        y = line.y[f_s:f_e]
+        lines[line.tag] = T1(x, y)
+    end
+    return lines
+end
 
 function TS_fit()
-    path = @__DIR__
-    plotinfo = load(joinpath(dirname(path), "Ts", "data.jld2"), "plotinfo")
-    lines = OrderedDict()
-
-    line = plotinfo.lines["dw = 5"]
-    f_s = floor(Int, length(line.x) * 0.3)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["dw = 10"]
-    f_s = floor(Int, length(line.x) * 0.3)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["dw = 15"]
-    f_s = floor(Int, length(line.x) * 0.3)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["dw = 20"]
-    f_s = floor(Int, length(line.x) * 0.3)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-    
-    return lines
+    T_fit("Ts", 0.01)
 end
-
 function T1_fit()
-    path = @__DIR__
-    plotinfo = load(joinpath(dirname(path), "T1", "data.jld2"), "plotinfo")
-    lines = OrderedDict()
-
-    line = plotinfo.lines["dw = 5"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["dw = 10"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["dw = 15"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["dw = 20"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-    
-    return lines
+    T_fit("T1", 0.05)
 end
-
 function T2_fit()
-    path = @__DIR__
-    plotinfo = load(joinpath(dirname(path), "T2", "data.jld2"), "plotinfo")
-    lines = OrderedDict()
-
-    line = plotinfo.lines["dw = 5"]
-    f_s = floor(Int, length(line.x) * 0.25)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["dw = 10"]
-    f_s = floor(Int, length(line.x) * 0.25)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["dw = 15"]
-    f_s = floor(Int, length(line.x) * 0.25)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["dw = 20"]
-    f_s = floor(Int, length(line.x) * 0.25)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-    
-    return lines
+    T_fit("T2", 0.05)
 end
 
 function ts_plot()
@@ -119,8 +49,8 @@ function ts_plot()
     )
     fit_lines = TS_fit()
     for line in values(plotinfo.lines)
-        dw = parse(Int64, line.tag[5:end])
-        plot!(pl, line.x, line.y, label = "Disorder = " * string(dw))
+        J = parse(Int64, line.tag[5:end])
+        plot!(pl, line.x, line.y, label = "J = " * string(J))
         f, T = fit_lines[line.tag]
         plot!(pl, line.x, f, label = "", lc = :grey, ls = :dash)
     end
@@ -141,8 +71,8 @@ function t1_plot()
     )
     fit_lines = T1_fit()
     for line in values(plotinfo.lines)
-        dw = parse(Int64, line.tag[5:end])
-        plot!(pl, line.x, line.y, label = "Disorder = " * string(dw))
+        J = parse(Int64, line.tag[5:end])
+        plot!(pl, line.x, line.y, label = "J = " * string(J))
         f, T = fit_lines[line.tag]
         plot!(pl, line.x, f, label = "", lc = :grey, ls = :dash)
     end
@@ -161,15 +91,17 @@ function t2_plot()
     )
     fit_lines = T2_fit()
     for line in values(plotinfo.lines)
-        dw = parse(Int64, line.tag[5:end])
-        plot!(pl, line.x, line.y, label = "Disorder = " * string(dw))
+        J = parse(Int64, line.tag[5:end])
+        plot!(pl, line.x, line.y, label = "J = " * string(J))
         f, T = fit_lines[line.tag]
         plot!(pl, line.x, f, label = "", lc = :grey, ls = :dash)
     end
 
     # normal decoherence
-    t = plotinfo.lines["dw = 5"].x
-    deph_rate = plotinfo.parameters[:deco]
+    t = plotinfo.lines["J = 5"].x
+    deph_rate = parse(Float64, plotinfo.parameters[:deco][1:end - 3])
+    U = parse(Float64, plotinfo.parameters[:U][1:end - 3])
+    deph_rate = deph_rate / U
     plot!(pl, t, x -> exp(-x * deph_rate * 0.5), label = "decoherence")
 
     plot!(pl, [0], [0], label = "fit", lc = :grey)
@@ -178,15 +110,7 @@ function t2_plot()
     return pl
 end
 
-function T1(x, y) 
-    # linreg for slope
-    # https://jahoo.github.io/2021/01/11/simplest_linear_regression_example.html
-    A = hcat(x, ones(length(x)))
-    res = (A \ log.(y))
-    slope = res[1]
-    c = res[2]
-    return x -> exp.(slope * x .+ c), -1 / slope 
-end
+
 
 function make_fit_line(dir, cut_size)
     path = joinpath(dirname(@__DIR__), dir)
@@ -220,7 +144,7 @@ function combine_fit_plot()
     T2 = [val[2] for val in values(lines)]
 
     pl = plot(t_time_xs, Ts,
-    xlabel = "Disorder",
+    xlabel = "J",
     ylabel = "Survival Times",
     label = "Tₛ",
     legend = :topleft,
@@ -234,7 +158,7 @@ function combine_fit_plot()
     return pl
 end
 
-Plots.scalefontsizes(1.5)
+#Plots.scalefontsizes(1.5)
 ts_plot()
 t1_plot()
 t2_plot()
