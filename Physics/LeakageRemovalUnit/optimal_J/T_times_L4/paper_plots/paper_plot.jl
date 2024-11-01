@@ -13,7 +13,7 @@ function T1(x, y)
     return x -> exp.(slope * x .+ c), -1 / slope 
 end
 
-function T_fit(dir_name, start_cut)
+function T_fit(dir_name, start_cut; end_cut = 1.0)
     path = @__DIR__
     plotinfo = load(joinpath(dirname(path), dir_name, "data.jld2"), "plotinfo")
     lines = OrderedDict()
@@ -21,13 +21,26 @@ function T_fit(dir_name, start_cut)
     for (key, line) in plotinfo.lines
         f_s = floor(Int, length(line.x) * start_cut)
         smaller_than = findfirst(x -> x < 0.05, line.y)
-        f_e = isnothing(smaller_than) ? length(line.x) : smaller_than
+        f_e = isnothing(smaller_than) ? Int(floor(length(line.x) * end_cut)) : smaller_than
 
         x = line.x[f_s:f_e]
         y = line.y[f_s:f_e]
         lines[line.tag] = T1(x, y)
     end
     return lines
+end
+
+function find_TS_from_less_than(less_than = 0.01)
+    path = @__DIR__
+    plotinfo = load(joinpath(dirname(path), "Ts", "data.jld2"), "plotinfo")
+    Ts_times = []
+
+    for (key, line) in plotinfo.lines
+        smaller_than = findfirst(x -> x < less_than, line.y)
+        Ts = isnothing(smaller_than) ? line.x[end] : line.x[smaller_than]
+        push!(Ts_times, Ts)
+    end
+    return Ts_times
 end
 
 function TS_fit()
