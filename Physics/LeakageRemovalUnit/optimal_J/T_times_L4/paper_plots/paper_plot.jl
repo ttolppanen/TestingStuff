@@ -146,7 +146,7 @@ end
 function combine_fit_plot()
     lines = TS_fit()
     t_time_xs = [parse(Int64, key[5:end]) for key in keys(lines)]
-    Ts = [val[2] for val in values(lines)]
+    Ts = find_TS_from_less_than(0.1)
     
     lines = T1_fit()
     t_time_x1 = [parse(Int64, key[5:end]) for key in keys(lines)]
@@ -166,8 +166,24 @@ function combine_fit_plot()
     )
     plot!(pl, t_time_x1, T1, label = "T₁")
     plot!(pl, t_time_x2, T2, label = "T₂")
+
+    plotinfo = load(joinpath(dirname(@__DIR__), "T1", "data.jld2"), "plotinfo")
+    to_flt(x) = parse(Float64, match(r"\d+", x).match)
+    U = to_flt(plotinfo.parameters[:U])
+    diss = to_flt(plotinfo.parameters[:diss]) * 10^(-3) / U
+    hline!(pl, [1 / diss], ls = :dash, label = "inherit dissipation")
+    deco = to_flt(plotinfo.parameters[:deco]) * 10^(-3) / U
+    hline!(pl, [2 / deco], ls = :dash, label = "inherit decoherence")
+
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
+
+    lines = []
+    traj = get_traj(plotinfo)
+    push!(lines, LineInfo(t_time_xs, Ts, traj, "Ts"))
+    push!(lines, LineInfo(t_time_x1, T1, traj, "T1"))
+    push!(lines, LineInfo(t_time_x2, T2, traj, "T2"))
+    savedata(@__DIR__, lines...; xlabel = "J", ylabel = "Survival Times", copy_code = false, plotinfo.parameters...)
     return pl
 end
 
