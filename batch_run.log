@@ -1,6 +1,6 @@
 /homedir02/htolppan/Documents/TestingStuff
 lehmus-cn12
-Tue Oct 29 14:38:55 EET 2024
+Thu Oct 31 12:08:10 EET 2024
     Updating registry at `~/.julia/registries/Private_ttolppanen`
     Updating git-repo `http://github.com/ttolppanen/ttolppanen_JuliaRegistry`
     Updating registry at `~/.julia/registries/General.toml`
@@ -12,39 +12,17 @@ Threads used by julia = 40
 
 Started!
 
- 13.895302 seconds (247.82 M allocations: 17.860 GiB, 18.59% gc time, 1819.89% compilation time)
-  5.643926 seconds (240.55 M allocations: 17.424 GiB)
-  6.416921 seconds (239.95 M allocations: 17.415 GiB, 42.40% gc time)
-  6.198198 seconds (240.10 M allocations: 17.456 GiB, 43.04% gc time)
-  6.259324 seconds (240.49 M allocations: 17.521 GiB, 44.15% gc time)
-  6.912723 seconds (241.04 M allocations: 17.606 GiB, 48.28% gc time)
-  7.891700 seconds (241.71 M allocations: 17.708 GiB, 53.89% gc time)
-  6.252586 seconds (242.50 M allocations: 17.827 GiB, 42.19% gc time)
-  7.040939 seconds (243.42 M allocations: 17.964 GiB, 45.53% gc time)
-  7.110839 seconds (244.45 M allocations: 18.118 GiB, 41.90% gc time)
- 87.304864 seconds (2.43 G allocations: 180.497 GiB, 34.49% gc time, 304.25% compilation time: 1% of which was recompilation)
-  4.010423 seconds (240.69 M allocations: 17.427 GiB, 711.49% compilation time)
-  4.865752 seconds (240.15 M allocations: 17.403 GiB, 33.16% gc time)
-  5.004206 seconds (240.11 M allocations: 17.424 GiB, 35.14% gc time)
-  4.103931 seconds (240.25 M allocations: 17.464 GiB, 18.73% gc time)
-  5.035202 seconds (240.61 M allocations: 17.528 GiB, 32.17% gc time)
-  4.514679 seconds (241.10 M allocations: 17.609 GiB, 22.41% gc time)
-  4.862834 seconds (241.74 M allocations: 17.709 GiB, 31.49% gc time)
-  5.397521 seconds (242.54 M allocations: 17.829 GiB, 39.39% gc time)
-  6.727064 seconds (243.43 M allocations: 17.965 GiB, 49.25% gc time)
-  4.295847 seconds (244.47 M allocations: 18.119 GiB, 18.35% gc time)
- 62.855920 seconds (2.42 G allocations: 179.477 GiB, 42.33% gc time, 45.56% compilation time)
-  3.737762 seconds (240.20 M allocations: 17.402 GiB, 590.35% compilation time)
-  4.617918 seconds (239.76 M allocations: 17.383 GiB, 30.24% gc time)
-  4.745353 seconds (239.85 M allocations: 17.410 GiB, 32.53% gc time)
-  3.285683 seconds (240.10 M allocations: 17.457 GiB)
-  5.896041 seconds (240.50 M allocations: 17.522 GiB, 45.76% gc time)
-  5.874084 seconds (241.04 M allocations: 17.606 GiB, 44.40% gc time)
-  3.375701 seconds (241.70 M allocations: 17.708 GiB, 2.47% gc time)
-  3.452734 seconds (242.51 M allocations: 17.828 GiB, 6.12% gc time)
-  5.701215 seconds (243.41 M allocations: 17.964 GiB, 41.73% gc time)
-  3.442787 seconds (244.45 M allocations: 18.118 GiB, 5.77% gc time)
-132.777326 seconds (2.41 G allocations: 191.350 GiB, 21.49% gc time, 16.75% compilation time: <1% of which was recompilation)
+1697.358346 seconds (1.05 G allocations: 212.296 GiB, 2.14% gc time, 18.79% compilation time)
+1611.403119 seconds (1.04 G allocations: 212.384 GiB, 2.19% gc time)
+1512.482904 seconds (1.04 G allocations: 207.551 GiB, 2.24% gc time)
+1402.771699 seconds (1.05 G allocations: 204.469 GiB, 2.45% gc time)
+1488.732550 seconds (1.05 G allocations: 199.258 GiB, 2.25% gc time)
+1344.133061 seconds (1.06 G allocations: 194.517 GiB, 2.44% gc time)
+1286.614510 seconds (1.06 G allocations: 190.863 GiB, 2.40% gc time)
+1300.964615 seconds (1.07 G allocations: 187.017 GiB, 2.69% gc time)
+1352.158679 seconds (1.07 G allocations: 183.066 GiB, 2.31% gc time)
+1071.505985 seconds (1.07 G allocations: 182.268 GiB, 3.06% gc time)
+14148.740121 seconds (10.56 G allocations: 1.943 TiB, 2.39% gc time, 2.34% compilation time: <1% of which was recompilation)
 
 Ended!
-Tue Oct 29 14:44:11 EET 2024
+Thu Oct 31 16:04:33 EET 2024

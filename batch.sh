@@ -5,7 +5,7 @@
 #SBATCH --nodes=1                               # Run all processes on a single node	
 #SBATCH --ntasks=1                              # Run a single task		
 #SBATCH --cpus-per-task=40                      # Number of CPU cores per task
-#SBATCH --mem=20gb                               # Job memory request
+#SBATCH --mem=40gb                               # Job memory request
 #SBATCH --time=6:00:00                         # Time limit hrs:min:sec
 #SBATCH --output=batch_run.log                  # Standard output and error log
 pwd; hostname; date
