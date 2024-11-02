@@ -28,6 +28,7 @@ function make_loss_comparison(path)
     plot!(pl, x, Ts_perf, label = "Ts / T2")
 
     savefig(pl, joinpath(@__DIR__, "plot.png"))
+    savefig(pl, joinpath(@__DIR__, "plot.svg"))
 end
 
 make_loss_comparison(joinpath(dirname(@__DIR__), "paper_plots", "data.jld2"))
