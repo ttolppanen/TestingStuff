@@ -58,7 +58,7 @@ function initial_parameters(J)
 
     param[:T] = 0.1
     param[:diss] = ValueInfo(0.005 / U, "5kHz")
-    param[:deco] = ValueInfo(0.005 / U, "5kHz")
+    param[:deco] = ValueInfo(0.010 / U, "10kHz")
     
     param[:alg] = "exact sbspc"
     param[:H] = "BH, d_w, fixed |2> energy"
@@ -78,7 +78,7 @@ end
 function f()
     param = initial_parameters(1)
     # -----------
-    traj = 1600
+    traj = 2000
     Js = 1:2:20
     # -----------
     lines = []
@@ -128,8 +128,8 @@ function f()
         push!(lines, LineInfo(0:dt:t, r, traj, "J = $J_i"))
     end
     path = joinpath(@__DIR__)
-    # makeplot(path, lines...; xlabel = "t", ylabel = "sigma_x1 env", copy_code = false, param...)
-    addtrajectories(path, lines...)
+    makeplot(path, lines...; xlabel = "t", ylabel = "sigma_x1 env", copy_code = false, param...)
+    # addtrajectories(path, lines...)
 end
 
 @time f()

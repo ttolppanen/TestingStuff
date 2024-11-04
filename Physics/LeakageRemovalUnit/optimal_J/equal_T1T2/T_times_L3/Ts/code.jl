@@ -54,7 +54,7 @@ function initial_parameters(J)
     param[:state] = ValueInfo(state, "|2> + thermal state")
     param[:T] = 0.1
     param[:diss] = ValueInfo(0.005 / U, "5kHz")
-    param[:deco] = ValueInfo(0.005 / U, "5kHz")
+    param[:deco] = ValueInfo(0.010 / U, "10kHz")
     
     param[:alg] = "exact dd"
     param[:H] = "BH, d_w, fixed |2> energy"
@@ -75,7 +75,7 @@ end
 function f()
     param = initial_parameters(1)
     # -----------
-    traj = 1000
+    traj = 2000
     Js = 1:2:20
     # -----------
     lines = []
