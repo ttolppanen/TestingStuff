@@ -75,7 +75,7 @@ end
 function f()
     param = initial_parameters(1)
     # -----------
-    traj = 4000
+    traj = 5000
     Js = 1:2:20
     # -----------
     lines = []
@@ -86,7 +86,7 @@ function f()
         msrop = param[:effect].val.msr
         feedback = param[:effect].val.fb
         
-        op = singlesite_n(d, L, 1)
+        op = anhall(d, L)
         obs = (state) -> expval(state, op)
 
         dt = param[:dt]; t = param[:t]; k = param[:k];
@@ -122,8 +122,8 @@ function f()
         push!(lines, LineInfo(0:dt:t, y, traj, "J = $J_i"))
     end
     path = joinpath(@__DIR__)
-    # makeplot(path, lines...; xlabel = "t", ylabel = "anh_tot", copy_code = false, param...)
-    addtrajectories(path, lines...)
+    makeplot(path, lines...; xlabel = "t", ylabel = "anh_tot", copy_code = false, param...)
+    # addtrajectories(path, lines...)
 end
 
 @time f()
