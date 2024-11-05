@@ -146,7 +146,7 @@ end
 function combine_fit_plot()
     lines = TS_fit()
     t_time_xs = [parse(Int64, key[5:end]) for key in keys(lines)]
-    Ts = find_TS_from_less_than(0.1)
+    Ts = [val[2] for val in values(lines)]
     
     lines = T1_fit()
     t_time_x1 = [parse(Int64, key[5:end]) for key in keys(lines)]
@@ -187,9 +187,30 @@ function combine_fit_plot()
     return pl
 end
 
+function ts_proportional_check()
+    lines = TS_fit()
+    t_time_xs = [parse(Int64, key[5:end]) for key in keys(lines)]
+    Ts = [val[2] for val in values(lines)]
+    
+    pl = plot(t_time_xs, Ts,
+    xlabel = "J",
+    ylabel = "Survival Times",
+    label = "Tₛ",
+    legend = :topleft,
+    dpi = 300,
+    titlefontsize = 9
+    )
+    L = 4
+    U = 250
+    f_ts(J) = 5/3*(L - 1) * 1 / (2 * (J/U)^2)
+    plot!(pl, t_time_xs, f_ts, label = "5/3(L-1)U/(2J^2)")
+    return pl
+end
+
 #Plots.scalefontsizes(1.5)
 ts_plot()
 t1_plot()
 t2_plot()
 combine_fit_plot();
 Plots.scalefontsizes();
+ts_proportional_check()
