@@ -203,7 +203,7 @@ function ts_proportional_check()
     L = 4
     U = 250
     f_ts(J) = 5/3*(L - 1) * 1 / (2 * (J/U)^2)
-    plot!(pl, t_time_xs, f_ts, label = "5/3(L-1)U/(2J^2)")
+    plot!(pl, t_time_xs[3:end], f_ts, label = "5/3(L-1)U/(2J^2)")
     return pl
 end
 

@@ -29,6 +29,16 @@ function make_loss_comparison(path)
 
     savefig(pl, joinpath(@__DIR__, "plot.png"))
     savefig(pl, joinpath(@__DIR__, "plot.svg"))
+
+    function_of_ts_perf(T1_loss, T2_loss, Ts_perf)
+end
+
+function function_of_ts_perf(t1, t2, ts_perf)
+    i = sortperm(ts_perf)
+    t1_line = LineInfo(ts_perf[i], t1[i], 0, "T1 loss %")
+    t2_line = LineInfo(ts_perf[i], t2[i], 0, "T2 loss %")
+    
+    makeplot(joinpath(@__DIR__, "f_ts_perf"), t1_line, t2_line; xlabel = "Ts / T2", copy_code = false)
 end
 
 make_loss_comparison(joinpath(dirname(@__DIR__), "paper_plots", "data.jld2"))
