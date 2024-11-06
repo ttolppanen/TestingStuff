@@ -1,10 +1,377 @@
 /homedir02/htolppan/Documents/TestingStuff
-lehmus-cn1.oulu.fi
-Mon Nov  4 21:26:24 EET 2024
+lehmus-cn5.oulu.fi
+Tue Nov  5 13:28:04 EET 2024
     Updating registry at `~/.julia/registries/Private_ttolppanen`
     Updating git-repo `http://github.com/ttolppanen/ttolppanen_JuliaRegistry`
     Updating registry at `~/.julia/registries/General.toml`
   Activating project at `~/Documents/TestingStuff`
+Precompiling project...
+  ✓ IteratorInterfaceExtensions
+  ✓ TensorCore
+  ✓ RangeArrays
+  ✓ LaTeXStrings
+  ✓ IndirectArrays
+  ✓ ExprTools
+  ✓ StatsAPI
+  ✓ Contour
+  ✓ CEnum
+  ✓ HalfIntegers
+  ✓ AbstractFFTs
+  ✓ InitialValues
+  ✓ ConcurrentUtilities
+  ✓ OffsetArrays
+  ✓ Format
+  ✓ Pipe
+  ✓ TableTraits
+  ✓ ArgCheck
+  ✓ UnPack
+  ✓ CompilerSupportLibraries_jll
+  ✓ InverseFunctions
+  ✓ SerializedElementArrays
+  ✓ Measures
+  ✓ Preferences
+  ✓ LinearMaps
+  ✓ PkgVersion
+  ✓ IterTools
+  ✓ ExternalDocstrings
+  ✓ FillArrays
+  ✓ Compat
+  ✓ DataValueInterfaces
+  ✓ MbedTLS
+  ✓ RealDot
+  ✓ GenericSchur
+  ✓ SIMDTypes
+  ✓ Reexport
+  ✓ OrderedCollections
+  ✓ Unzip
+  ✓ CustomUnitRanges
+  ✓ TimerOutputs
+  ✓ InlineStrings
+  ✓ ThreadedScans
+  ✓ DocStringExtensions
+  ✓ Compat → CompatLinearAlgebraExt
+  ✓ URIs
+  ✓ IntervalSets
+  ✓ CompositionsBase
+  ✓ IrrationalConstants
+  ✓ DefineSingletons
+  ✓ BitIntegers
+  ✓ MacroTools
+  ✓ ExceptionUnwrapping
+  ✓ Parameters
+  ✓ LazyModules
+  ✓ NaNMath
+  ✓ ProgressMeter
+  ✓ DelimitedFiles
+  ✓ IfElse
+  ✓ Inflate
+  ✓ Zeros
+  ✓ CommonWorldInvalidations
+  ✓ VectorInterface
+  ✓ CpuId
+  ✓ DataAPI
+  ✓ FastClosures
+  ✓ PackageExtensionCompat
+  ✓ ConstructionBase
+  ✓ UnicodeFun
+  ✓ BitFlags
+  ✓ Indexing
+  ✓ ComputationalResources
+  ✓ Scratch
+  ✓ ChunkSplitters
+  ✓ LoggingExtras
+  ✓ StaticArraysCore
+  ✓ TupleTools
+  ✓ MappedArrays
+  ✓ Missings
+  ✓ Functors
+  ✓ InverseFunctions → InverseFunctionsDatesExt
+  ✓ ManualMemory
+  ✓ Requires
+  ✓ SimpleBufferStream
+  ✓ PrecompileTools
+  ✓ Grisu
+  ✓ Baselet
+  ✓ JLLWrappers
+  ✓ Tables
+  ✓ Statistics
+  ✓ IntervalSets → IntervalSetsRandomExt
+  ✓ Quaternions
+  ✓ FillArrays → FillArraysSparseArraysExt
+  ✓ LogExpFunctions
+  ✓ LinearMaps → LinearMapsSparseArraysExt
+  ✓ ConstructionBase → ConstructionBaseLinearAlgebraExt
+  ✓ TranscodingStreams
+  ✓ RelocatableFolders
+  ✓ SimpleTraits
+  ✓ WoodburyMatrices
+  ✓ ChainRulesCore
+  ✓ InverseFunctions → InverseFunctionsTestExt
+  ✓ Ratios
+  ✓ Adapt
+  ✓ IntervalSets → IntervalSetsStatisticsExt
+  ✓ AbstractFFTs → AbstractFFTsTestExt
+  ✓ LinearMaps → LinearMapsStatisticsExt
+  ✓ ThreadingUtilities
+  ✓ Showoff
+  ✓ Dictionaries
+  ✓ StridedViews
+  ✓ OpenSSL_jll
+  ✓ DataStructures
+  ✓ Graphite2_jll
+  ✓ Libmount_jll
+  ✓ Static
+  ✓ EpollShim_jll
+  ✓ LLVMOpenMP_jll
+  ✓ RecipesBase
+  ✓ Xorg_libICE_jll
+  ✓ Xorg_libXau_jll
+  ✓ libfdk_aac_jll
+  ✓ libpng_jll
+  ✓ Imath_jll
+  ✓ Bzip2_jll
+  ✓ BitTwiddlingConvenienceFunctions
+  ✓ IntelOpenMP_jll
+  ✓ Ghostscript_jll
+  ✓ LERC_jll
+  ✓ IntervalSets → IntervalSetsRecipesBaseExt
+  ✓ Ogg_jll
+  ✓ fzf_jll
+  ✓ mtdev_jll
+  ✓ gperf_jll
+  ✓ x265_jll
+  ✓ oneTBB_jll
+  ✓ OpenEXR_jll
+  ✓ Latexify
+  ✓ x264_jll
+  ✓ libaom_jll
+  ✓ Zstd_jll
+  ✓ Xorg_xtrans_jll
+  ✓ LZO_jll
+  ✓ Expat_jll
+  ✓ Libiconv_jll
+  ✓ JLFzf
+  ✓ libevdev_jll
+  ✓ Libffi_jll
+  ✓ Wayland_protocols_jll
+  ✓ Libgpg_error_jll
+  ✓ FFTW_jll
+  ✓ Libuuid_jll
+  ✓ CompositionsBase → CompositionsBaseInverseFunctionsExt
+  ✓ FriBidi_jll
+  ✓ Xorg_libpthread_stubs_jll
+  ✓ OpenSpecFun_jll
+  ✓ ConstructionBase → ConstructionBaseIntervalSetsExt
+  ✓ LogExpFunctions → LogExpFunctionsInverseFunctionsExt
+  ✓ FillArrays → FillArraysStatisticsExt
+  ✓ XML2_jll
+  ✓ CodecZlib
+  ✓ AbstractFFTs → AbstractFFTsChainRulesCoreExt
+  ✓ AxisAlgorithms
+  ✓ LinearMaps → LinearMapsChainRulesCoreExt
+  ✓ ChainRulesCore → ChainRulesCoreSparseArraysExt
+  ✓ OffsetArrays → OffsetArraysAdaptExt
+  ✓ SplitApplyCombine
+  ✓ SortingAlgorithms
+  ✓ LogExpFunctions → LogExpFunctionsChainRulesCoreExt
+  ✓ Strided
+  ✓ LAME_jll
+  ✓ Pixman_jll
+  ✓ CPUSummary
+  ✓ JpegTurbo_jll
+  ✓ FixedPointNumbers
+  ✓ Xorg_libSM_jll
+  ✓ StaticArrays
+  ✓ XZ_jll
+  ✓ Xorg_libXdmcp_jll
+  ✓ FileIO
+  ✓ HostCPUFeatures
+  ✓ OpenSSL
+  ✓ AxisArrays
+  ✓ libvorbis_jll
+  ✓ Opus_jll
+  ✓ libsixel_jll
+  ✓ eudev_jll
+  ✓ StaticArrays → StaticArraysChainRulesCoreExt
+  ✓ MKL_jll
+  ✓ StackViews
+  ✓ CatIndices
+  ✓ PaddedViews
+  ✓ Distances
+  ✓ Gettext_jll
+  ✓ Wayland_jll
+  ✓ FreeType2_jll
+  ✓ SpecialFunctions
+  ✓ PolyesterWeave
+  ✓ Ratios → RatiosFixedPointNumbersExt
+  ✓ ConstructionBase → ConstructionBaseStaticArraysExt
+  ✓ Adapt → AdaptStaticArraysExt
+  ✓ StaticArrays → StaticArraysStatisticsExt
+  ✓ Latexify → SparseArraysExt
+  ✓ Dbus_jll
+  ✓ Libgcrypt_jll
+  ✓ Libtiff_jll
+  ✓ SIMD
+  ✓ MosaicViews
+  ✓ Distances → DistancesSparseArraysExt
+  ✓ StatsBase
+  ✓ Glib_jll
+  ✓ Fontconfig_jll
+  ✓ ColorTypes
+  ✓ ArrayInterface
+  ✓ Referenceables
+  ✓ libinput_jll
+  ✓ GPUArraysCore
+  ✓ Accessors
+  ✓ SpecialFunctions → SpecialFunctionsChainRulesCoreExt
+  ✓ Setfield
+  ✓ RegionTrees
+  ✓ ArnoldiMethod
+  ✓ CoordinateTransformations
+  ✓ XSLT_jll
+  ✓ Distances → DistancesChainRulesCoreExt
+  ✓ HTTP
+  ✓ IntegralArrays
+  ✓ Rotations
+  ✓ ArrayInterface → ArrayInterfaceSparseArraysExt
+  ✓ KrylovKit
+  ✓ ArrayInterface → ArrayInterfaceStaticArraysCoreExt
+  ✓ ArrayInterface → ArrayInterfaceGPUArraysCoreExt
+  ✓ QOI
+  ✓ Accessors → AccessorsDatesExt
+  ✓ Interpolations
+  ✓ Rotations → RotationsRecipesBaseExt
+  ✓ Parsers
+  ✓ SplittablesBase
+  ✓ BangBang
+  ✓ FFTW
+  ✓ KrylovKit → KrylovKitChainRulesCoreExt
+  ✓ LittleCMS_jll
+  ✓ Xorg_libxcb_jll
+  ✓ Accessors → AccessorsIntervalSetsExt
+  ✓ Accessors → AccessorsTestExt
+  ✓ FFTViews
+  ✓ ColorVectorSpace
+  ✓ IsApprox
+  ✓ StaticArrayInterface
+  ✓ InlineStrings → ParsersExt
+  ✓ BangBang → BangBangChainRulesCoreExt
+  ✓ NearestNeighbors
+  ✓ Colors
+  ✓ Unitful
+  ✓ BangBang → BangBangStaticArraysExt
+  ✓ JSON
+  ✓ Accessors → AccessorsStaticArraysExt
+  ✓ OpenJpeg_jll
+  ✓ Graphs
+  ✓ StaticArrayInterface → StaticArrayInterfaceOffsetArraysExt
+  ✓ Xorg_xcb_util_jll
+  ✓ Xorg_libX11_jll
+  ✓ StaticArrayInterface → StaticArrayInterfaceStaticArraysExt
+  ✓ Polynomials
+  ✓ Unitful → ConstructionBaseUnitfulExt
+  ✓ Graphics
+  ✓ Xorg_xcb_util_image_jll
+  ✓ Unitful → InverseFunctionsUnitfulExt
+  ✓ MicroCollections
+  ✓ Xorg_xcb_util_renderutil_jll
+  ✓ OpenEXR
+  ✓ Xorg_xcb_util_keysyms_jll
+  ✓ Interpolations → InterpolationsUnitfulExt
+  ✓ Polynomials → PolynomialsChainRulesCoreExt
+  ✓ Clustering
+  ✓ Xorg_libXext_jll
+  ✓ Xorg_libXrender_jll
+  ✓ EllipsisNotation
+  ✓ ImageMagick_jll
+  ✓ Xorg_libXfixes_jll
+  ✓ Xorg_libxkbfile_jll
+  ✓ SimpleWeightedGraphs
+  ✓ CloseOpenIntervals
+  ✓ TiledIteration
+  ✓ LayoutPointers
+  ✓ Xorg_xcb_util_wm_jll
+  ✓ Xorg_xcb_util_cursor_jll
+  ✓ Xorg_libXinerama_jll
+  ✓ Xorg_libXi_jll
+  ✓ Xorg_libXcursor_jll
+  ✓ Xorg_libXrandr_jll
+  ✓ Cairo_jll
+  ✓ Accessors → AccessorsUnitfulExt
+  ✓ Xorg_xkbcomp_jll
+  ✓ Libglvnd_jll
+  ✓ UnitfulLatexify
+  ✓ HarfBuzz_jll
+  ✓ Xorg_xkeyboard_config_jll
+  ✓ ArrayLayouts
+  ✓ Transducers
+  ✓ ColorSchemes
+  ✓ libass_jll
+  ✓ Pango_jll
+  ✓ xkbcommon_jll
+  ✓ ArrayLayouts → ArrayLayoutsSparseArraysExt
+  ✓ Transducers → TransducersReferenceablesExt
+  ✓ Vulkan_Loader_jll
+  ✓ DSP
+  ✓ libdecor_jll
+  ✓ FFMPEG_jll
+  ✓ BlockArrays
+  ✓ Qt6Base_jll
+  ✓ GLFW_jll
+  ✓ Transducers → TransducersBlockArraysExt
+  ✓ FFMPEG
+  ✓ Qt6ShaderTools_jll
+  ✓ GR_jll
+  ✓ VectorizationBase
+  ✓ SLEEFPirates
+  ✓ Folds
+  ✓ Qt6Declarative_jll
+  ✓ PlotUtils
+  ✓ Qt6Wayland_jll
+  ✓ JLD2
+  ✓ PlotThemes
+  ✓ RecipesPipeline
+  ✓ MetaGraphs
+  ✓ NDTensors
+  ✓ ExponentialUtilities
+  ✓ GR
+  ✓ NDTensors → NDTensorsGPUArraysCoreExt
+  ✓ NDTensors → NDTensorsMappedArraysExt
+  ✓ ImageCore
+  ✓ LoopVectorization
+  ✓ LoopVectorization → SpecialFunctionsExt
+  ✓ JpegTurbo
+  ✓ ImageBase
+  ✓ Sixel
+  ✓ PNGFiles
+  ✓ ITensors
+  ✓ ImageMagick
+  ✓ HistogramThresholding
+  ✓ ImageShow
+  ✓ ImageAxes
+  ✓ ImageTransformations
+  ✓ ImageMorphology
+  ✓ ImageBinarization
+  ✓ ITensors → ITensorsVectorInterfaceExt
+  ✓ ImageMetadata
+  ✓ ImageDistances
+  ✓ ImageContrastAdjustment
+  ✓ Netpbm
+  ✓ QuantumStates
+  ✓ QuantumOperators
+  ✓ TiffImages
+  ✓ ImageIO
+  ✓ QuantumTimeEvolution
+  ✓ Plots
+  ✓ Plots → UnitfulExt
+  ✓ ImageFiltering
+  ✓ Plots → FileIOExt
+  ✓ PlotAndSave
+  ✓ ImageSegmentation
+  ✓ ImageCorners
+  ✓ ImageQualityIndexes
+  ✓ Images
+  365 dependencies successfully precompiled in 90 seconds. 9 already precompiled.
   No Changes to `~/Documents/TestingStuff/Project.toml`
   No Changes to `~/Documents/TestingStuff/Manifest.toml`
 
@@ -12,17 +379,17 @@ Threads used by julia = 40
 
 Started!
 
-3356.608870 seconds (1.30 G allocations: 271.754 GiB, 2.30% gc time, 7.38% compilation time)
-2988.395255 seconds (1.31 G allocations: 251.850 GiB, 2.42% gc time)
-1951.203752 seconds (1.35 G allocations: 205.673 GiB, 3.02% gc time)
-1527.996712 seconds (1.37 G allocations: 184.401 GiB, 3.44% gc time)
-1311.810001 seconds (1.38 G allocations: 176.747 GiB, 3.83% gc time)
-1222.368405 seconds (1.38 G allocations: 173.666 GiB, 4.02% gc time)
-1197.710283 seconds (1.39 G allocations: 173.685 GiB, 4.13% gc time)
-1285.906398 seconds (1.38 G allocations: 176.971 GiB, 3.91% gc time)
-1297.735429 seconds (1.38 G allocations: 178.975 GiB, 3.90% gc time)
-1364.775315 seconds (1.38 G allocations: 182.716 GiB, 3.84% gc time)
-17521.447633 seconds (13.66 G allocations: 1.934 TiB, 3.22% gc time, 1.52% compilation time: 2% of which was recompilation)
+1696.259274 seconds (1.30 G allocations: 271.285 GiB, 3.20% gc time, 14.95% compilation time)
+1447.684696 seconds (1.31 G allocations: 251.055 GiB, 3.40% gc time)
+912.230487 seconds (1.35 G allocations: 206.537 GiB, 4.60% gc time)
+655.700387 seconds (1.37 G allocations: 186.042 GiB, 5.42% gc time)
+561.430846 seconds (1.38 G allocations: 176.376 GiB, 6.22% gc time)
+508.201368 seconds (1.39 G allocations: 172.413 GiB, 7.01% gc time)
+498.333079 seconds (1.39 G allocations: 171.828 GiB, 6.89% gc time)
+527.595687 seconds (1.39 G allocations: 176.086 GiB, 6.50% gc time)
+550.803856 seconds (1.38 G allocations: 179.079 GiB, 6.56% gc time)
+617.634281 seconds (1.38 G allocations: 182.857 GiB, 6.14% gc time)
+7986.539181 seconds (13.66 G allocations: 1.932 TiB, 4.94% gc time, 3.35% compilation time: 1% of which was recompilation)
 
 Ended!
-Tue Nov  5 02:19:29 EET 2024
+Tue Nov  5 15:43:08 EET 2024
