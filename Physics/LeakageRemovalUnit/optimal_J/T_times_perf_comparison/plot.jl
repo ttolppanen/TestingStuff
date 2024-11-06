@@ -24,6 +24,7 @@ function f()
     L3.lines["T2 loss %"].y,
     label = "L=3, T2 loss %"
     )
+    savefig(joinpath(@__DIR__, "comparison_plot.png"))
 end
 
 f()
