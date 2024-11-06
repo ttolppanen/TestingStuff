@@ -35,6 +35,10 @@ end
 
 function function_of_ts_perf(t1, t2, ts_perf)
     i = sortperm(ts_perf)
+    display(i)
+    i_i = 8
+    display(ts_perf[i[i_i]])
+    display((1:2:20)[i[i_i]])
     t1_line = LineInfo(ts_perf[i], t1[i], 0, "T1 loss %")
     t2_line = LineInfo(ts_perf[i], t2[i], 0, "T2 loss %")
     
