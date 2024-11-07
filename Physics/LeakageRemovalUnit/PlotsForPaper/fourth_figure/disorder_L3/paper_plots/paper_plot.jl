@@ -231,6 +231,14 @@ function combine_fit_plot()
     plot!(pl, t_time_x2, T2, label = "T₂")
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
+
+    J = 5 * 2 * pi #5MHz
+    Ts_best = Ts[end] / J # microseconds
+    T1_best = T1[end] / J
+    T2_best = T2[end] / J
+    println("Ts = $(round(Ts_best, digits = 2))μs")
+    println("T1 = $(round(T1_best, digits = 2))μs")
+    println("T2 = $(round(T2_best, digits = 2))μs")
     return pl
 end
 
