@@ -13,7 +13,12 @@ function T1(x, y)
     return x -> exp.(slope * x .+ c), -1 / slope 
 end
 
-function T_fit(dir_name, start_cut; end_cut = 1.0)
+function T1(x, y, c)
+    slope = sum(x .* (log.(y) .- log(c))) / sum(x.^2) # from least squares
+    return x -> exp.(slope * x .+ log(c)), -1 / slope 
+end 
+
+function T_fit(dir_name, start_cut)
     path = @__DIR__
     plotinfo = load(joinpath(dirname(path), dir_name, "data.jld2"), "plotinfo")
     lines = OrderedDict()
@@ -21,11 +26,31 @@ function T_fit(dir_name, start_cut; end_cut = 1.0)
     for (key, line) in plotinfo.lines
         f_s = floor(Int, length(line.x) * start_cut)
         smaller_than = findfirst(x -> x < 0.05, line.y)
-        f_e = isnothing(smaller_than) ? Int(floor(length(line.x) * end_cut)) : smaller_than
+        f_e = isnothing(smaller_than) ? Int(floor(length(line.x))) : smaller_than
 
         x = line.x[f_s:f_e]
         y = line.y[f_s:f_e]
         lines[line.tag] = T1(x, y)
+    end
+    return lines
+end
+function T_fit(dir_name, start_cut, end_cut, J_ratio, c)
+    path = @__DIR__
+    plotinfo = load(joinpath(dirname(path), dir_name, "data.jld2"), "plotinfo")
+    lines = OrderedDict()
+
+    for (key, line) in plotinfo.lines
+        J = parse(Int64, key[5:end])
+        println(key)
+        end_cut_J = end_cut - J_ratio * (J - 1)
+        println(end_cut_J) 
+        f_s = floor(Int, length(line.x) * start_cut)
+        smaller_than = findfirst(x -> x < 0.05, line.y)
+        f_e = isnothing(smaller_than) ? Int(floor(length(line.x) * end_cut_J)) : smaller_than
+
+        x = line.x[1:f_e]
+        y = line.y[1:f_e]
+        lines[line.tag] = T1(x, y, c)
     end
     return lines
 end
@@ -44,13 +69,13 @@ function find_TS_from_less_than(less_than = 0.01)
 end
 
 function TS_fit()
-    T_fit("Ts", 0.01)
+    T_fit("Ts", 0.0001, 1.0, 0.8 / 18, 2)
 end
 function T1_fit()
-    T_fit("T1", 0.05)
+    T_fit("T1", 0.01)
 end
 function T2_fit()
-    T_fit("T2", 0.05)
+    T_fit("T2", 0.01)
 end
 
 function ts_plot()
@@ -68,6 +93,7 @@ function ts_plot()
         plot!(pl, line.x, f, label = "", lc = :grey, ls = :dash)
     end
     plot!(pl, [0], [0], label = "fit", lc = :grey)
+    plot!(pl, [0.001, 0.5, 0.1] .* 50000,st = :vline)
     
     savefig(pl, joinpath(path, "Ts.png"))
     savefig(pl, joinpath(path, "Ts.svg"))
@@ -122,8 +148,6 @@ function t2_plot()
     savefig(pl, joinpath(path, "T2.svg"))
     return pl
 end
-
-
 
 function make_fit_line(dir, cut_size)
     path = joinpath(dirname(@__DIR__), dir)
@@ -213,4 +237,4 @@ t1_plot()
 t2_plot()
 combine_fit_plot();
 Plots.scalefontsizes();
-ts_proportional_check()
+ts_proportional_check();
