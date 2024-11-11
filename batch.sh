@@ -6,7 +6,7 @@
 #SBATCH --ntasks=1                              # Run a single task		
 #SBATCH --cpus-per-task=40                      # Number of CPU cores per task
 #SBATCH --mem=40gb                               # Job memory request
-#SBATCH --time=6:00:00                         # Time limit hrs:min:sec
+#SBATCH --time=24:00:00                         # Time limit hrs:min:sec
 #SBATCH --output=batch_run.log                  # Standard output and error log
 pwd; hostname; date
 
