@@ -59,8 +59,8 @@ function initial_parameters()
     J = 5 * 10^6 * 2 * pi
     param[:J_value] = ValueInfo(J, "5MHz * 2pi")
     param[:T_scale] = ValueInfo(kb / (hbar * J), "kb/hbarJ")
-    param[:diss] = 0.000106 # 300 mikrosecond
-    param[:deco] = 0.000318 # 100 mikrosecond
+    param[:diss] = 0.000159 # 200 mikrosecond
+    param[:deco] = 0.000159 # 200 mikrosecond
 
     param[:alg] = "krylov sbspc"
     param[:k] = 6
@@ -131,8 +131,8 @@ function f()
         push!(lines, LineInfo(0:dt:t, r, traj, "dw = $dw_i"))
     end
     path = joinpath(@__DIR__)
-    # makeplot(path, lines...; xlabel = "t", ylabel = "sigma_x1 env", copy_code = false, param...)
-    addtrajectories(path, lines...)
+    makeplot(path, lines...; xlabel = "t", ylabel = "sigma_x1 env", copy_code = false, param...)
+    # addtrajectories(path, lines...)
 end
 
 @time f()
