@@ -1,10 +1,377 @@
 /homedir02/htolppan/Documents/TestingStuff
-lehmus-cn10
-Tue Nov 12 11:19:58 EET 2024
+lehmus-cn5.oulu.fi
+Fri Nov 15 14:05:04 EET 2024
     Updating registry at `~/.julia/registries/Private_ttolppanen`
     Updating git-repo `http://github.com/ttolppanen/ttolppanen_JuliaRegistry`
     Updating registry at `~/.julia/registries/General.toml`
   Activating project at `~/Documents/TestingStuff`
+Precompiling project...
+  ✓ IteratorInterfaceExtensions
+  ✓ RangeArrays
+  ✓ LaTeXStrings
+  ✓ ExprTools
+  ✓ TensorCore
+  ✓ Contour
+  ✓ CEnum
+  ✓ StatsAPI
+  ✓ IndirectArrays
+  ✓ HalfIntegers
+  ✓ AbstractFFTs
+  ✓ ConcurrentUtilities
+  ✓ InitialValues
+  ✓ Format
+  ✓ OffsetArrays
+  ✓ Pipe
+  ✓ TableTraits
+  ✓ CompilerSupportLibraries_jll
+  ✓ UnPack
+  ✓ ArgCheck
+  ✓ IterTools
+  ✓ LinearMaps
+  ✓ InverseFunctions
+  ✓ ManualMemory
+  ✓ Measures
+  ✓ Grisu
+  ✓ SerializedElementArrays
+  ✓ Preferences
+  ✓ ExternalDocstrings
+  ✓ GenericSchur
+  ✓ RealDot
+  ✓ DataValueInterfaces
+  ✓ OrderedCollections
+  ✓ Reexport
+  ✓ InverseFunctions → InverseFunctionsDatesExt
+  ✓ Requires
+  ✓ Unzip
+  ✓ Compat
+  ✓ FillArrays
+  ✓ MbedTLS
+  ✓ SimpleBufferStream
+  ✓ DocStringExtensions
+  ✓ IntervalSets
+  ✓ CustomUnitRanges
+  ✓ CompositionsBase
+  ✓ InlineStrings
+  ✓ URIs
+  ✓ Quaternions
+  ✓ IrrationalConstants
+  ✓ DefineSingletons
+  ✓ LazyModules
+  ✓ InverseFunctions → InverseFunctionsTestExt
+  ✓ NaNMath
+  ✓ DelimitedFiles
+  ✓ TranscodingStreams
+  ✓ CpuId
+  ✓ Zeros
+  ✓ ProgressMeter
+  ✓ VectorInterface
+  ✓ TimerOutputs
+  ✓ Inflate
+  ✓ CommonWorldInvalidations
+  ✓ ConstructionBase
+  ✓ IfElse
+  ✓ UnicodeFun
+  ✓ DataAPI
+  ✓ FastClosures
+  ✓ PackageExtensionCompat
+  ✓ BitFlags
+  ✓ Indexing
+  ✓ ComputationalResources
+  ✓ StaticArraysCore
+  ✓ ConstructionBase → ConstructionBaseLinearAlgebraExt
+  ✓ CodecZlib
+  ✓ Scratch
+  ✓ ChunkSplitters
+  ✓ TupleTools
+  ✓ MappedArrays
+  ✓ LoggingExtras
+  ✓ Missings
+  ✓ WoodburyMatrices
+  ✓ SIMDTypes
+  ✓ Statistics
+  ✓ Showoff
+  ✓ Tables
+  ✓ RelocatableFolders
+  ✓ Parameters
+  ✓ ThreadedScans
+  ✓ AbstractFFTs → AbstractFFTsTestExt
+  ✓ BitIntegers
+  ✓ JLLWrappers
+  ✓ Ratios
+  ✓ LinearMaps → LinearMapsSparseArraysExt
+  ✓ ExceptionUnwrapping
+  ✓ Adapt
+  ✓ Compat → CompatLinearAlgebraExt
+  ✓ ThreadingUtilities
+  ✓ IntervalSets → IntervalSetsRandomExt
+  ✓ CompositionsBase → CompositionsBaseInverseFunctionsExt
+  ✓ LogExpFunctions
+  ✓ FillArrays → FillArraysSparseArraysExt
+  ✓ PkgVersion
+  ✓ StridedViews
+  ✓ AxisAlgorithms
+  ✓ PrecompileTools
+  ✓ Functors
+  ✓ OpenSSL_jll
+  ✓ Graphite2_jll
+  ✓ Libmount_jll
+  ✓ Baselet
+  ✓ EpollShim_jll
+  ✓ Dictionaries
+  ✓ LLVMOpenMP_jll
+  ✓ Bzip2_jll
+  ✓ Xorg_libICE_jll
+  ✓ Distances
+  ✓ Xorg_libXau_jll
+  ✓ libpng_jll
+  ✓ libfdk_aac_jll
+  ✓ Imath_jll
+  ✓ Ghostscript_jll
+  ✓ LAME_jll
+  ✓ IntelOpenMP_jll
+  ✓ LERC_jll
+  ✓ JpegTurbo_jll
+  ✓ XZ_jll
+  ✓ FileIO
+  ✓ SplitApplyCombine
+  ✓ MacroTools
+  ✓ Ogg_jll
+  ✓ mtdev_jll
+  ✓ gperf_jll
+  ✓ oneTBB_jll
+  ✓ OpenEXR_jll
+  ✓ FixedPointNumbers
+  ✓ x264_jll
+  ✓ Zstd_jll
+  ✓ Xorg_libXdmcp_jll
+  ✓ libaom_jll
+  ✓ Expat_jll
+  ✓ LZO_jll
+  ✓ Xorg_xtrans_jll
+  ✓ Opus_jll
+  ✓ libevdev_jll
+  ✓ Libffi_jll
+  ✓ SimpleTraits
+  ✓ Libgpg_error_jll
+  ✓ eudev_jll
+  ✓ FriBidi_jll
+  ✓ Xorg_libpthread_stubs_jll
+  ✓ OffsetArrays → OffsetArraysAdaptExt
+  ✓ Libuuid_jll
+  ✓ FFTW_jll
+  ✓ ConstructionBase → ConstructionBaseIntervalSetsExt
+  ✓ OpenSpecFun_jll
+  ✓ LogExpFunctions → LogExpFunctionsInverseFunctionsExt
+  ✓ IntervalSets → IntervalSetsStatisticsExt
+  ✓ FillArrays → FillArraysStatisticsExt
+  ✓ Strided
+  ✓ fzf_jll
+  ✓ ChainRulesCore
+  ✓ Pixman_jll
+  ✓ FreeType2_jll
+  ✓ Static
+  ✓ Xorg_libSM_jll
+  ✓ DataStructures
+  ✓ x265_jll
+  ✓ Distances → DistancesSparseArraysExt
+  ✓ RecipesBase
+  ✓ libsixel_jll
+  ✓ ColorTypes
+  ✓ libvorbis_jll
+  ✓ Fontconfig_jll
+  ✓ Wayland_protocols_jll
+  ✓ Ratios → RatiosFixedPointNumbersExt
+  ✓ OpenSSL
+  ✓ Libtiff_jll
+  ✓ LinearMaps → LinearMapsStatisticsExt
+  ✓ Dbus_jll
+  ✓ MKL_jll
+  ✓ StackViews
+  ✓ libinput_jll
+  ✓ PaddedViews
+  ✓ CatIndices
+  ✓ JLFzf
+  ✓ LinearMaps → LinearMapsChainRulesCoreExt
+  ✓ AbstractFFTs → AbstractFFTsChainRulesCoreExt
+  ✓ BitTwiddlingConvenienceFunctions
+  ✓ Libiconv_jll
+  ✓ ChainRulesCore → ChainRulesCoreSparseArraysExt
+  ✓ Latexify
+  ✓ SortingAlgorithms
+  ✓ IntervalSets → IntervalSetsRecipesBaseExt
+  ✓ Libgcrypt_jll
+  ✓ LogExpFunctions → LogExpFunctionsChainRulesCoreExt
+  ✓ CPUSummary
+  ✓ MosaicViews
+  ✓ QOI
+  ✓ LittleCMS_jll
+  ✓ XML2_jll
+  ✓ HostCPUFeatures
+  ✓ Distances → DistancesChainRulesCoreExt
+  ✓ Latexify → SparseArraysExt
+  ✓ AxisArrays
+  ✓ Colors
+  ✓ XSLT_jll
+  ✓ IntegralArrays
+  ✓ PolyesterWeave
+  ✓ StaticArrays
+  ✓ OpenJpeg_jll
+  ✓ Gettext_jll
+  ✓ Graphics
+  ✓ HTTP
+  ✓ Wayland_jll
+  ✓ StaticArrays → StaticArraysChainRulesCoreExt
+  ✓ OpenEXR
+  ✓ Xorg_libxcb_jll
+  ✓ SIMD
+  ✓ StaticArrays → StaticArraysStatisticsExt
+  ✓ ConstructionBase → ConstructionBaseStaticArraysExt
+  ✓ Adapt → AdaptStaticArraysExt
+  ✓ StatsBase
+  ✓ Glib_jll
+  ✓ Xorg_xcb_util_jll
+  ✓ Xorg_libX11_jll
+  ✓ ImageMagick_jll
+  ✓ SpecialFunctions
+  ✓ RegionTrees
+  ✓ ArnoldiMethod
+  ✓ ArrayInterface
+  ✓ GPUArraysCore
+  ✓ Referenceables
+  ✓ Setfield
+  ✓ CoordinateTransformations
+  ✓ Accessors
+  ✓ IsApprox
+  ✓ FFTW
+  ✓ Rotations
+  ✓ Xorg_xcb_util_image_jll
+  ✓ Xorg_xcb_util_wm_jll
+  ✓ Xorg_xcb_util_keysyms_jll
+  ✓ Xorg_xcb_util_renderutil_jll
+  ✓ Xorg_libXrender_jll
+  ✓ NearestNeighbors
+  ✓ Xorg_libXext_jll
+  ✓ Xorg_libXfixes_jll
+  ✓ ArrayInterface → ArrayInterfaceStaticArraysCoreExt
+  ✓ Xorg_libxkbfile_jll
+  ✓ ArrayInterface → ArrayInterfaceGPUArraysCoreExt
+  ✓ ArrayInterface → ArrayInterfaceSparseArraysExt
+  ✓ Unitful
+  ✓ SplittablesBase
+  ✓ Xorg_xcb_util_cursor_jll
+  ✓ Xorg_libXcursor_jll
+  ✓ BangBang
+  ✓ FFTViews
+  ✓ Rotations → RotationsRecipesBaseExt
+  ✓ SpecialFunctions → SpecialFunctionsChainRulesCoreExt
+  ✓ Interpolations
+  ✓ KrylovKit
+  ✓ Xorg_libXinerama_jll
+  ✓ Xorg_libXrandr_jll
+  ✓ Libglvnd_jll
+  ✓ Parsers
+  ✓ Accessors → AccessorsDatesExt
+  ✓ Xorg_libXi_jll
+  ✓ Xorg_xkbcomp_jll
+  ✓ Cairo_jll
+  ✓ BangBang → BangBangChainRulesCoreExt
+  ✓ Clustering
+  ✓ BangBang → BangBangStaticArraysExt
+  ✓ Unitful → ConstructionBaseUnitfulExt
+  ✓ Accessors → AccessorsTestExt
+  ✓ Unitful → InverseFunctionsUnitfulExt
+  ✓ KrylovKit → KrylovKitChainRulesCoreExt
+  ✓ InlineStrings → ParsersExt
+  ✓ StaticArrayInterface
+  ✓ Accessors → AccessorsIntervalSetsExt
+  ✓ Xorg_xkeyboard_config_jll
+  ✓ Accessors → AccessorsStaticArraysExt
+  ✓ HarfBuzz_jll
+  ✓ MicroCollections
+  ✓ JSON
+  ✓ StaticArrayInterface → StaticArrayInterfaceOffsetArraysExt
+  ✓ Accessors → AccessorsUnitfulExt
+  ✓ Interpolations → InterpolationsUnitfulExt
+  ✓ StaticArrayInterface → StaticArrayInterfaceStaticArraysExt
+  ✓ xkbcommon_jll
+  ✓ libass_jll
+  ✓ Graphs
+  ✓ ColorVectorSpace
+  ✓ Pango_jll
+  ✓ UnitfulLatexify
+  ✓ EllipsisNotation
+  ✓ CloseOpenIntervals
+  ✓ LayoutPointers
+  ✓ TiledIteration
+  ✓ Polynomials
+  ✓ Vulkan_Loader_jll
+  ✓ ArrayLayouts
+  ✓ FFMPEG_jll
+  ✓ SimpleWeightedGraphs
+  ✓ Polynomials → PolynomialsChainRulesCoreExt
+  ✓ libdecor_jll
+  ✓ ArrayLayouts → ArrayLayoutsSparseArraysExt
+  ✓ Transducers
+  ✓ Qt6Base_jll
+  ✓ FFMPEG
+  ✓ Transducers → TransducersReferenceablesExt
+  ✓ GLFW_jll
+  ✓ Qt6ShaderTools_jll
+  ✓ BlockArrays
+  ✓ GR_jll
+  ✓ ColorSchemes
+  ✓ Transducers → TransducersBlockArraysExt
+  ✓ DSP
+  ✓ Qt6Declarative_jll
+  ✓ Folds
+  ✓ VectorizationBase
+  ✓ SLEEFPirates
+  ✓ Qt6Wayland_jll
+  ✓ PlotUtils
+  ✓ JLD2
+  ✓ GR
+  ✓ MetaGraphs
+  ✓ PlotThemes
+  ✓ RecipesPipeline
+  ✓ NDTensors
+  ✓ NDTensors → NDTensorsGPUArraysCoreExt
+  ✓ NDTensors → NDTensorsMappedArraysExt
+  ✓ ExponentialUtilities
+  ✓ LoopVectorization
+  ✓ LoopVectorization → SpecialFunctionsExt
+  ✓ ImageCore
+  ✓ ITensors
+  ✓ Sixel
+  ✓ JpegTurbo
+  ✓ ImageBase
+  ✓ ImageMorphology
+  ✓ ImageMagick
+  ✓ PNGFiles
+  ✓ HistogramThresholding
+  ✓ ITensors → ITensorsVectorInterfaceExt
+  ✓ ImageShow
+  ✓ ImageTransformations
+  ✓ ImageAxes
+  ✓ ImageDistances
+  ✓ ImageBinarization
+  ✓ QuantumStates
+  ✓ ImageMetadata
+  ✓ QuantumOperators
+  ✓ ImageContrastAdjustment
+  ✓ Netpbm
+  ✓ TiffImages
+  ✓ QuantumTimeEvolution
+  ✓ ImageIO
+  ✓ Plots
+  ✓ Plots → UnitfulExt
+  ✓ Plots → FileIOExt
+  ✓ ImageFiltering
+  ✓ PlotAndSave
+  ✓ ImageSegmentation
+  ✓ ImageCorners
+  ✓ ImageQualityIndexes
+  ✓ Images
+  365 dependencies successfully precompiled in 89 seconds. 9 already precompiled.
   No Changes to `~/Documents/TestingStuff/Project.toml`
   No Changes to `~/Documents/TestingStuff/Manifest.toml`
 
@@ -12,211 +379,21 @@ Threads used by julia = 40
 
 Started!
 
-L = 2
- 40.997075 seconds (1.42 G allocations: 136.733 GiB, 50.64% gc time, 540.67% compilation time)
- 34.884499 seconds (1.42 G allocations: 136.508 GiB, 59.71% gc time)
- 34.635966 seconds (1.42 G allocations: 136.559 GiB, 59.86% gc time)
- 34.033686 seconds (1.42 G allocations: 136.611 GiB, 60.82% gc time)
- 34.989277 seconds (1.42 G allocations: 136.665 GiB, 61.19% gc time)
- 34.903304 seconds (1.42 G allocations: 136.720 GiB, 60.88% gc time)
- 35.044847 seconds (1.42 G allocations: 136.776 GiB, 61.05% gc time)
- 34.813118 seconds (1.42 G allocations: 136.833 GiB, 61.18% gc time)
- 35.005978 seconds (1.42 G allocations: 136.892 GiB, 60.79% gc time)
- 35.021290 seconds (1.42 G allocations: 136.952 GiB, 61.12% gc time)
- 35.170094 seconds (1.42 G allocations: 137.014 GiB, 61.14% gc time)
- 35.006746 seconds (1.42 G allocations: 137.077 GiB, 61.04% gc time)
- 34.968284 seconds (1.42 G allocations: 137.141 GiB, 61.06% gc time)
- 35.148249 seconds (1.42 G allocations: 137.207 GiB, 61.20% gc time)
- 34.794512 seconds (1.42 G allocations: 137.274 GiB, 61.15% gc time)
- 35.094822 seconds (1.42 G allocations: 137.343 GiB, 61.15% gc time)
- 35.303007 seconds (1.42 G allocations: 137.414 GiB, 60.92% gc time)
- 35.023945 seconds (1.42 G allocations: 137.486 GiB, 61.12% gc time)
- 35.001267 seconds (1.42 G allocations: 137.560 GiB, 60.81% gc time)
- 35.135136 seconds (1.42 G allocations: 137.636 GiB, 60.77% gc time)
- 35.433525 seconds (1.43 G allocations: 137.713 GiB, 61.29% gc time)
- 35.235007 seconds (1.43 G allocations: 137.792 GiB, 60.90% gc time)
- 35.321668 seconds (1.43 G allocations: 137.873 GiB, 61.16% gc time)
- 35.491729 seconds (1.43 G allocations: 137.956 GiB, 60.96% gc time)
- 35.184218 seconds (1.43 G allocations: 138.041 GiB, 60.87% gc time)
- 35.247368 seconds (1.43 G allocations: 138.128 GiB, 60.81% gc time)
- 34.479805 seconds (1.43 G allocations: 138.217 GiB, 60.76% gc time)
- 34.534981 seconds (1.43 G allocations: 138.308 GiB, 60.49% gc time)
- 33.833779 seconds (1.43 G allocations: 138.401 GiB, 61.55% gc time)
- 33.849500 seconds (1.43 G allocations: 138.496 GiB, 61.62% gc time)
- 33.733370 seconds (1.43 G allocations: 138.594 GiB, 61.59% gc time)
- 34.042429 seconds (1.43 G allocations: 138.693 GiB, 61.45% gc time)
- 33.748233 seconds (1.43 G allocations: 138.795 GiB, 61.60% gc time)
- 33.923142 seconds (1.43 G allocations: 138.900 GiB, 61.74% gc time)
- 33.953189 seconds (1.43 G allocations: 139.007 GiB, 61.75% gc time)
- 34.037995 seconds (1.43 G allocations: 139.116 GiB, 61.45% gc time)
- 33.937793 seconds (1.43 G allocations: 139.228 GiB, 61.73% gc time)
- 33.830723 seconds (1.44 G allocations: 139.342 GiB, 61.33% gc time)
- 34.187574 seconds (1.44 G allocations: 139.460 GiB, 61.66% gc time)
- 34.232665 seconds (1.44 G allocations: 139.579 GiB, 61.45% gc time)
- 34.235026 seconds (1.44 G allocations: 139.702 GiB, 61.26% gc time)
- 34.243529 seconds (1.44 G allocations: 139.828 GiB, 61.37% gc time)
- 33.967346 seconds (1.44 G allocations: 139.956 GiB, 61.44% gc time)
- 34.612809 seconds (1.44 G allocations: 140.088 GiB, 61.40% gc time)
- 34.306663 seconds (1.44 G allocations: 140.222 GiB, 61.33% gc time)
- 34.445121 seconds (1.44 G allocations: 140.360 GiB, 61.22% gc time)
- 34.340617 seconds (1.44 G allocations: 140.501 GiB, 61.51% gc time)
- 34.450666 seconds (1.44 G allocations: 140.645 GiB, 61.42% gc time)
- 34.395166 seconds (1.45 G allocations: 140.792 GiB, 61.40% gc time)
- 34.732777 seconds (1.45 G allocations: 140.943 GiB, 61.30% gc time)
- 34.438155 seconds (1.45 G allocations: 141.098 GiB, 61.36% gc time)
- 34.590447 seconds (1.45 G allocations: 141.256 GiB, 61.16% gc time)
- 34.767894 seconds (1.45 G allocations: 141.418 GiB, 60.90% gc time)
- 34.707156 seconds (1.45 G allocations: 141.583 GiB, 61.20% gc time)
- 34.699462 seconds (1.45 G allocations: 141.752 GiB, 61.26% gc time)
- 34.638913 seconds (1.45 G allocations: 141.926 GiB, 61.09% gc time)
- 34.901098 seconds (1.45 G allocations: 142.103 GiB, 61.30% gc time)
- 34.928920 seconds (1.45 G allocations: 142.285 GiB, 61.16% gc time)
- 34.818446 seconds (1.46 G allocations: 142.470 GiB, 61.11% gc time)
- 34.956678 seconds (1.46 G allocations: 142.660 GiB, 61.17% gc time)
- 35.325782 seconds (1.46 G allocations: 142.855 GiB, 60.92% gc time)
- 35.039260 seconds (1.46 G allocations: 143.054 GiB, 60.97% gc time)
- 35.193701 seconds (1.46 G allocations: 143.257 GiB, 61.09% gc time)
- 35.259645 seconds (1.46 G allocations: 143.466 GiB, 60.99% gc time)
- 35.235472 seconds (1.46 G allocations: 143.679 GiB, 60.88% gc time)
- 35.472972 seconds (1.47 G allocations: 143.897 GiB, 60.94% gc time)
- 35.522472 seconds (1.47 G allocations: 144.120 GiB, 61.04% gc time)
- 35.544412 seconds (1.47 G allocations: 144.349 GiB, 61.06% gc time)
- 35.563898 seconds (1.47 G allocations: 144.583 GiB, 60.81% gc time)
- 35.750840 seconds (1.47 G allocations: 144.822 GiB, 60.92% gc time)
- 35.649306 seconds (1.47 G allocations: 145.067 GiB, 60.92% gc time)
- 35.754166 seconds (1.47 G allocations: 145.317 GiB, 60.79% gc time)
- 35.820032 seconds (1.48 G allocations: 145.574 GiB, 60.77% gc time)
- 35.798919 seconds (1.48 G allocations: 145.836 GiB, 60.90% gc time)
- 36.056862 seconds (1.48 G allocations: 146.104 GiB, 60.68% gc time)
- 35.956889 seconds (1.48 G allocations: 146.379 GiB, 60.80% gc time)
- 36.142914 seconds (1.48 G allocations: 146.660 GiB, 60.76% gc time)
- 36.160785 seconds (1.49 G allocations: 146.947 GiB, 60.83% gc time)
- 36.142273 seconds (1.49 G allocations: 147.242 GiB, 60.70% gc time)
- 36.257649 seconds (1.49 G allocations: 147.543 GiB, 60.63% gc time)
- 36.278046 seconds (1.49 G allocations: 147.851 GiB, 60.72% gc time)
- 36.248693 seconds (1.49 G allocations: 148.166 GiB, 60.57% gc time)
- 36.372151 seconds (1.50 G allocations: 148.489 GiB, 60.83% gc time)
- 36.711380 seconds (1.50 G allocations: 148.819 GiB, 60.70% gc time)
- 36.605253 seconds (1.50 G allocations: 149.157 GiB, 60.59% gc time)
- 36.653080 seconds (1.50 G allocations: 149.503 GiB, 60.54% gc time)
- 36.844417 seconds (1.50 G allocations: 149.857 GiB, 60.42% gc time)
- 36.981997 seconds (1.51 G allocations: 150.219 GiB, 60.68% gc time)
- 36.987556 seconds (1.51 G allocations: 150.590 GiB, 60.44% gc time)
- 37.243371 seconds (1.51 G allocations: 150.969 GiB, 60.48% gc time)
- 37.246914 seconds (1.51 G allocations: 151.357 GiB, 60.54% gc time)
- 37.312549 seconds (1.52 G allocations: 151.754 GiB, 60.33% gc time)
- 37.660903 seconds (1.52 G allocations: 152.160 GiB, 60.17% gc time)
- 37.509898 seconds (1.52 G allocations: 152.576 GiB, 60.34% gc time)
- 37.795728 seconds (1.52 G allocations: 153.001 GiB, 60.43% gc time)
- 37.673776 seconds (1.53 G allocations: 153.436 GiB, 60.32% gc time)
- 38.049978 seconds (1.53 G allocations: 153.882 GiB, 60.18% gc time)
- 38.092056 seconds (1.53 G allocations: 154.338 GiB, 60.17% gc time)
- 38.322983 seconds (1.54 G allocations: 154.804 GiB, 60.16% gc time)
- 38.306143 seconds (1.54 G allocations: 155.281 GiB, 60.03% gc time)
- 38.427551 seconds (1.54 G allocations: 155.770 GiB, 60.15% gc time)
-L = 3
-135.229413 seconds (1.82 G allocations: 381.148 GiB, 48.83% gc time)
-132.862431 seconds (1.82 G allocations: 381.271 GiB, 48.29% gc time)
-130.952511 seconds (1.82 G allocations: 381.392 GiB, 48.09% gc time)
-130.295135 seconds (1.82 G allocations: 381.517 GiB, 47.52% gc time)
-130.195409 seconds (1.83 G allocations: 381.651 GiB, 47.45% gc time)
-131.351303 seconds (1.83 G allocations: 381.789 GiB, 46.46% gc time)
-132.183383 seconds (1.83 G allocations: 381.926 GiB, 46.27% gc time)
-130.749079 seconds (1.83 G allocations: 382.063 GiB, 45.91% gc time)
-129.127000 seconds (1.83 G allocations: 382.203 GiB, 46.54% gc time)
-130.614556 seconds (1.83 G allocations: 382.344 GiB, 45.96% gc time)
-131.192277 seconds (1.83 G allocations: 382.493 GiB, 46.04% gc time)
-130.905397 seconds (1.83 G allocations: 382.642 GiB, 45.87% gc time)
-130.075636 seconds (1.83 G allocations: 382.801 GiB, 45.83% gc time)
-129.739085 seconds (1.83 G allocations: 382.953 GiB, 45.96% gc time)
-129.242669 seconds (1.83 G allocations: 383.112 GiB, 46.08% gc time)
-129.243749 seconds (1.83 G allocations: 383.275 GiB, 45.82% gc time)
-128.690881 seconds (1.83 G allocations: 383.441 GiB, 46.06% gc time)
-129.495932 seconds (1.83 G allocations: 383.612 GiB, 45.74% gc time)
-129.238977 seconds (1.83 G allocations: 383.783 GiB, 45.82% gc time)
-130.189232 seconds (1.83 G allocations: 383.961 GiB, 45.43% gc time)
-128.380100 seconds (1.83 G allocations: 384.142 GiB, 45.83% gc time)
-129.979360 seconds (1.83 G allocations: 384.331 GiB, 45.15% gc time)
-130.147968 seconds (1.83 G allocations: 384.518 GiB, 44.96% gc time)
-130.248502 seconds (1.83 G allocations: 384.709 GiB, 45.26% gc time)
-129.514567 seconds (1.83 G allocations: 384.910 GiB, 45.88% gc time)
-132.031544 seconds (1.83 G allocations: 385.110 GiB, 45.47% gc time)
-132.273014 seconds (1.84 G allocations: 385.314 GiB, 45.59% gc time)
-130.134556 seconds (1.84 G allocations: 385.526 GiB, 45.60% gc time)
-130.556770 seconds (1.84 G allocations: 385.743 GiB, 45.15% gc time)
-129.007878 seconds (1.84 G allocations: 385.962 GiB, 45.41% gc time)
-128.772990 seconds (1.84 G allocations: 386.188 GiB, 45.86% gc time)
-129.297817 seconds (1.84 G allocations: 386.417 GiB, 45.72% gc time)
-128.378630 seconds (1.84 G allocations: 386.650 GiB, 45.61% gc time)
-130.619232 seconds (1.84 G allocations: 386.891 GiB, 44.74% gc time)
-131.289518 seconds (1.84 G allocations: 387.136 GiB, 44.36% gc time)
-129.579760 seconds (1.84 G allocations: 387.390 GiB, 45.17% gc time)
-129.337131 seconds (1.84 G allocations: 387.644 GiB, 45.23% gc time)
-130.348154 seconds (1.84 G allocations: 387.905 GiB, 45.00% gc time)
-129.552485 seconds (1.84 G allocations: 388.176 GiB, 45.86% gc time)
-128.654120 seconds (1.84 G allocations: 388.449 GiB, 45.63% gc time)
-130.459482 seconds (1.85 G allocations: 388.728 GiB, 45.06% gc time)
-129.870100 seconds (1.85 G allocations: 389.014 GiB, 45.18% gc time)
-130.648655 seconds (1.85 G allocations: 389.310 GiB, 44.76% gc time)
-132.424716 seconds (1.85 G allocations: 389.609 GiB, 44.41% gc time)
-130.642402 seconds (1.85 G allocations: 389.915 GiB, 44.96% gc time)
-129.071607 seconds (1.85 G allocations: 390.229 GiB, 45.31% gc time)
-129.854391 seconds (1.85 G allocations: 390.550 GiB, 45.17% gc time)
-131.319872 seconds (1.85 G allocations: 390.877 GiB, 44.71% gc time)
-132.282541 seconds (1.85 G allocations: 391.214 GiB, 44.56% gc time)
-131.937238 seconds (1.85 G allocations: 391.557 GiB, 44.53% gc time)
-130.943271 seconds (1.85 G allocations: 391.907 GiB, 44.86% gc time)
-128.416623 seconds (1.86 G allocations: 392.266 GiB, 45.39% gc time)
-130.318995 seconds (1.86 G allocations: 392.633 GiB, 44.99% gc time)
-132.701532 seconds (1.86 G allocations: 393.010 GiB, 44.56% gc time)
-131.747648 seconds (1.86 G allocations: 393.393 GiB, 44.62% gc time)
-129.811522 seconds (1.86 G allocations: 393.787 GiB, 45.18% gc time)
-131.655481 seconds (1.86 G allocations: 394.188 GiB, 44.70% gc time)
-129.465027 seconds (1.86 G allocations: 394.600 GiB, 45.31% gc time)
-132.439312 seconds (1.86 G allocations: 395.021 GiB, 44.69% gc time)
-130.827258 seconds (1.86 G allocations: 395.451 GiB, 45.09% gc time)
-133.224996 seconds (1.87 G allocations: 395.891 GiB, 44.31% gc time)
-131.807881 seconds (1.87 G allocations: 396.342 GiB, 44.55% gc time)
-130.982379 seconds (1.87 G allocations: 396.803 GiB, 45.00% gc time)
-131.442937 seconds (1.87 G allocations: 397.273 GiB, 44.99% gc time)
-131.238320 seconds (1.87 G allocations: 397.755 GiB, 45.14% gc time)
-133.517471 seconds (1.87 G allocations: 398.250 GiB, 44.53% gc time)
-130.353882 seconds (1.87 G allocations: 398.754 GiB, 45.35% gc time)
-130.934929 seconds (1.88 G allocations: 399.271 GiB, 45.17% gc time)
-132.735423 seconds (1.88 G allocations: 399.799 GiB, 44.64% gc time)
-133.501830 seconds (1.88 G allocations: 400.339 GiB, 44.60% gc time)
-134.900941 seconds (1.88 G allocations: 400.893 GiB, 44.21% gc time)
-131.545166 seconds (1.88 G allocations: 401.458 GiB, 45.23% gc time)
-132.470645 seconds (1.88 G allocations: 402.038 GiB, 45.21% gc time)
-132.923848 seconds (1.89 G allocations: 402.628 GiB, 45.08% gc time)
-133.416216 seconds (1.89 G allocations: 403.236 GiB, 44.70% gc time)
-135.120142 seconds (1.89 G allocations: 403.855 GiB, 44.40% gc time)
-133.128228 seconds (1.89 G allocations: 404.490 GiB, 44.92% gc time)
-136.825218 seconds (1.89 G allocations: 405.138 GiB, 43.85% gc time)
-135.506159 seconds (1.89 G allocations: 405.802 GiB, 44.45% gc time)
-134.135765 seconds (1.90 G allocations: 406.481 GiB, 44.74% gc time)
-135.863827 seconds (1.90 G allocations: 407.177 GiB, 44.45% gc time)
-133.867498 seconds (1.90 G allocations: 407.888 GiB, 45.30% gc time)
-138.336309 seconds (1.90 G allocations: 408.615 GiB, 43.92% gc time)
-137.275515 seconds (1.91 G allocations: 409.360 GiB, 44.25% gc time)
-135.034424 seconds (1.91 G allocations: 410.122 GiB, 45.08% gc time)
-137.370233 seconds (1.91 G allocations: 410.902 GiB, 44.08% gc time)
-137.845215 seconds (1.91 G allocations: 411.700 GiB, 43.98% gc time)
-136.898969 seconds (1.91 G allocations: 412.515 GiB, 44.37% gc time)
-136.490527 seconds (1.92 G allocations: 413.350 GiB, 44.69% gc time)
-139.329609 seconds (1.92 G allocations: 414.206 GiB, 43.75% gc time)
-137.258068 seconds (1.92 G allocations: 415.079 GiB, 44.64% gc time)
-138.052663 seconds (1.92 G allocations: 415.974 GiB, 44.38% gc time)
-139.944756 seconds (1.93 G allocations: 416.890 GiB, 44.19% gc time)
-138.272233 seconds (1.93 G allocations: 417.826 GiB, 44.72% gc time)
-137.455443 seconds (1.93 G allocations: 418.784 GiB, 44.80% gc time)
-140.318916 seconds (1.94 G allocations: 419.765 GiB, 44.22% gc time)
-139.147638 seconds (1.94 G allocations: 420.769 GiB, 44.66% gc time)
-140.834375 seconds (1.94 G allocations: 421.796 GiB, 44.15% gc time)
-142.576719 seconds (1.94 G allocations: 422.846 GiB, 44.33% gc time)
-144.831214 seconds (1.95 G allocations: 423.922 GiB, 44.58% gc time)
-144.650485 seconds (1.95 G allocations: 425.022 GiB, 44.64% gc time)
-16986.918427 seconds (335.64 G allocations: 53.093 TiB, 48.45% gc time, 1.37% compilation time: 1% of which was recompilation)
+177.912560 seconds (703.14 M allocations: 57.485 GiB, 6.33% gc time, 5.10% compilation time)
+184.496112 seconds (702.47 M allocations: 57.718 GiB, 6.50% gc time)
+184.782957 seconds (701.78 M allocations: 57.875 GiB, 6.47% gc time)
+189.506893 seconds (701.78 M allocations: 58.358 GiB, 6.32% gc time)
+751.887652 seconds (2.83 G allocations: 233.304 GiB, 6.32% gc time, 3.76% compilation time: 9% of which was recompilation)
+ 40.030908 seconds (649.87 M allocations: 49.244 GiB, 25.16% gc time, 4.76% compilation time)
+ 52.550492 seconds (624.50 M allocations: 50.741 GiB, 21.03% gc time)
+ 60.415891 seconds (606.26 M allocations: 51.848 GiB, 18.94% gc time)
+ 68.862325 seconds (599.31 M allocations: 52.465 GiB, 16.92% gc time)
+223.230259 seconds (2.48 G allocations: 204.678 GiB, 19.84% gc time, 1.02% compilation time)
+618.306067 seconds (514.35 M allocations: 94.128 GiB, 3.18% gc time, 1.00% compilation time)
+709.252145 seconds (507.48 M allocations: 101.421 GiB, 3.02% gc time)
+729.599296 seconds (506.06 M allocations: 102.948 GiB, 3.12% gc time)
+744.425559 seconds (504.26 M allocations: 104.888 GiB, 3.09% gc time)
+2812.696868 seconds (2.04 G allocations: 406.498 GiB, 3.10% gc time, 0.26% compilation time)
 
 Ended!
-Tue Nov 12 16:03:39 EET 2024
+Fri Nov 15 15:10:14 EET 2024
