@@ -1,6 +1,7 @@
 using JLD2
 using Plots
 using OrderedCollections
+using PlotAndSave
 
 function TS_fit()
     path = @__DIR__
@@ -216,17 +217,23 @@ function combine_fit_plot()
     t_time_x2 = [parse(Int64, key[5:end]) for key in keys(lines)]
     T2 = [val[2] for val in values(lines)]
 
+    colors = theme_palette(:auto)
     pl = plot(t_time_xs, Ts,
     xlabel = "Disorder",
     ylabel = "Survival Times",
     label = "Tₛ",
+    color = colors[1],
     legend = :topleft,
     dpi = 300,
     titlefontsize = 9,
     yaxis = :log10
     )
-    plot!(pl, t_time_x1, T1, label = "T₁")
-    plot!(pl, t_time_x2, T2, label = "T₂")
+    plot!(pl, t_time_x1, T1, color = colors[2], label = "T₁")
+    plot!(pl, t_time_x2, T2, color = colors[3], label = "T₂")
+
+    t200 = 5 * 10^6 * 2 * pi * 200 * 10^(-6)
+    hline!(pl, [t200], color = colors[3], linestyle = :dash, label = "t = 200μs")
+
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
     return pl
@@ -237,4 +244,4 @@ ts_plot()
 t1_plot()
 t2_plot()
 combine_fit_plot();
-Plots.scalefontsizes();
+Plots.default()
