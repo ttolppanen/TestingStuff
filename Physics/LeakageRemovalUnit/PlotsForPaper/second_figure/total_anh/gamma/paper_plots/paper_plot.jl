@@ -11,7 +11,7 @@ function make_plot()
     ylabel = "Leakage Population in the Array", 
     # ylims = (10^-5, 1)
     )
-    line = plotinfo.lines["L = 5"]
+    line = plotinfo.lines["L = 3"]
     plot!(pl, line.x, line.y, label = "")
     savefig(pl, joinpath(path, "paper_plot.png"))
     savefig(pl, joinpath(path, "paper_plot.svg"))

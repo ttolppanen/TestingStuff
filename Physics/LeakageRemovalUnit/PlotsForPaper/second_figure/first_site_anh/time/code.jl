@@ -19,50 +19,19 @@ function traj_mean(result)
     return out ./ length(result)
 end
 
-function measure_ends_effect!(msr_op::Vector, 
-    dt, msr_rate, feedback::Vector; skip_subspaces = [])
-    time = [rand() / msr_rate]
-    out(state, subspace_id) = begin
-        time[1] += dt
-
-        if msr_rate == 0 || time[1] < 1.0 / msr_rate
-            return state, subspace_id::Int64
-        end
-        time[1] -= 1 / msr_rate
-
-        if in(subspace_id, skip_subspaces)
-            return state, subspace_id::Int64
-        end
-        current_subspace_id = subspace_id
-        for site in [length(msr_op[current_subspace_id])]
-            msr_outcome = measuresite!(state[current_subspace_id], msr_op[current_subspace_id], site)
-            new_id, op = feedback[current_subspace_id][site][msr_outcome]
-            if new_id == current_subspace_id
-                state[new_id] .= op * state[current_subspace_id]
-            else
-                mul!(state[new_id], op, state[current_subspace_id])
-            end
-            normalize!(state[new_id])
-            current_subspace_id = new_id
-        end
-        return state, current_subspace_id::Int64
-    end
-    return out
-end
-
 function initial_parameters()
     param = OrderedDict()
     param[:dt] = 0.02
     param[:t] = 400
     param[:d] = 3
-    param[:L] = 5
+    param[:L] = 3
     param[:state] = ValueInfo(bosonstack(2, param[:L], 1), "|200...>")
     param[:alg] = "exact sbspc"
     param[:H] = "BH, d_w, fixed |2> energy"
-    param[:w] = 1000
-    param[:dw] = 10
-    param[:U] = 50
-    param[:J] = 1
+    param[:J] = ValueInfo(5, "5MHz")
+    param[:w] = ValueInfo(7500 / param[:J].val, "7.5GHz")
+    param[:dw] = ValueInfo(100 / param[:J].val, "100MHz")
+    param[:U] = ValueInfo(250 / param[:J].val, "250MHz")
 
     d = param[:d]
     msrop = measurementoperators(nop(d), param[:L])
@@ -77,7 +46,7 @@ function f()
     param = initial_parameters()
     # -----------
     traj = 1000
-    gammas = [0.0, 0.03, 50]
+    gammas = [0.03, 50]
     # -----------
 
     d = param[:d]; L = param[:L]
@@ -98,11 +67,11 @@ function f()
     lines = []
     for gamma in gammas
         r_f(out, work_vector) = begin
-            dw = param[:w] .+ (rand(L) .- 0.5) * param[:dw]
-            dU = 2 * dw .- (2 * param[:w] - param[:U])
-            H = bosehubbard(d, L; w = dw, U = dU, J = param[:J])
+            dw = param[:w].val .+ (rand(L) .- 0.5) * param[:dw].val
+            dU = 2 * dw .- (2 * param[:w].val - param[:U].val)
+            H = bosehubbard(d, L; w = dw, U = dU, J = 1)
             Uop = subspace_split(exp(-1im * dt * Matrix(H)), ranges, perm_mat)
-            effect! = measure_ends_effect!(msrop, param[:dt], gamma, feedback)
+            effect! = periodic_sbspc_msr_feedback!_function(msrop, param[:dt], gamma, feedback, [L])
             exactevolve(state, work_vector, initial_id, Uop, dt, t, obs; effect!, out)
         end
         @time solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)

@@ -16,50 +16,18 @@ function traj_mean(result)
     return out ./ length(result)
 end
 
-function measure_ends_effect!(msr_op::Vector, 
-    dt, msr_rate, feedback::Vector; skip_subspaces = [])
-    time = [rand() / msr_rate]
-    out(state, subspace_id) = begin
-        time[1] += dt
-
-        if time[1] < 1 / msr_rate
-            return state, subspace_id::Int64
-        end
-        time[1] -= 1 / msr_rate
-
-        if in(subspace_id, skip_subspaces)
-            return state, subspace_id::Int64
-        end
-        current_subspace_id = subspace_id
-        for site in [length(msr_op[current_subspace_id])]
-            msr_outcome = measuresite!(state[current_subspace_id], msr_op[current_subspace_id], site)
-            new_id, op = feedback[current_subspace_id][site][msr_outcome]
-            if new_id == current_subspace_id
-                state[new_id] .= op * state[current_subspace_id]
-            else
-                mul!(state[new_id], op, state[current_subspace_id])
-            end
-            normalize!(state[new_id])
-            current_subspace_id = new_id
-        end
-        return state, current_subspace_id::Int64
-    end
-    return out
-end
-
 function initial_parameters(L)
     param = OrderedDict()
     param[:dt] = 0.01
     param[:t] = 200
     param[:d] = 3
     param[:state] = ValueInfo(bosonstack(2, L, 1), "|200...>")
-    param[:alg] = "krylov sbspc"
-    param[:k] = 6
+    param[:alg] = "exact sbspc"
     param[:H] = "BH, d_w, fixed |2> energy"
-    param[:w] = 1000
-    param[:dw] = 10
-    param[:U] = 50
-    param[:J] = 1
+    param[:J] = ValueInfo(5, "5MHz")
+    param[:w] = ValueInfo(7500 / param[:J].val, "7.5GHz")
+    param[:dw] = ValueInfo(100 / param[:J].val, "100MHz")
+    param[:U] = ValueInfo(250 / param[:J].val, "250MHz")
 
     d = param[:d]
     msrop = measurementoperators(nop(d), L)
@@ -73,9 +41,9 @@ end
 function f()
     param = initial_parameters(2)
     # -----------
-    traj = 2000
-    Ls = [5]
-    gammas = exp.(range(log(0.01), log(100), length = 101))
+    traj = 20000
+    Ls = [3]
+    gammas = exp.(range(log(0.0001), log(100), length = 250))
     # -----------
     lines = []
     for L in Ls
@@ -92,18 +60,18 @@ function f()
         anh = subspace_split(anhall(d, L), ranges, perm_mat)
         obs = (state, id) -> expval(state[id], anh[id])
 
-        dt = param[:dt]; t = param[:t]; k = param[:k]
-        pa_k = PA_krylov_sub(state, k)
-        pa_args, pa_out = pre_alloc_threads(zeros(1, 1), traj, pa_k)
+        dt = param[:dt]; t = param[:t];
+        pa_args, pa_out = pre_alloc_threads(zeros(1, 1), traj, deepcopy(state))
 
         out = []
         for gamma in gammas
-            r_f(out, pa_k) = begin
-                dw = param[:w] .+ (rand(L) .- 0.5) * param[:dw]
-                dU = 2 * dw .- (2 * param[:w] - param[:U])
-                H = subspace_split(bosehubbard(d, L; w = dw, U = dU, J = param[:J]), ranges, perm_mat)
-                effect! = measure_ends_effect!(msrop, param[:dt], gamma, feedback)
-                krylovevolve(state, initial_id, H, dt, t, k, pa_k, obs; effect!, out, save_only_last = true)
+            r_f(out, work_vector) = begin
+                dw = param[:w].val .+ (rand(L) .- 0.5) * param[:dw].val
+                dU = 2 * dw .- (2 * param[:w].val - param[:U].val)
+                H = bosehubbard(d, L; w = dw, U = dU, J = 1)
+                Uop = subspace_split(exp(-1im * dt * Matrix(H)), ranges, perm_mat)
+                effect! = periodic_sbspc_msr_feedback!_function(msrop, param[:dt], gamma, feedback, [L])
+                exactevolve(state, work_vector, initial_id, Uop, dt, t, obs; effect!, out, save_only_last = true)
             end
             @time solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
             r = traj_mean(pa_out)
@@ -112,15 +80,14 @@ function f()
         push!(lines, LineInfo(gammas, out, traj, "L = $L"))
     end
     path = joinpath(@__DIR__)
-    # makeplot(path, lines...; xlabel = "gamma", ylabel = "anh", copy_code = false, param...)
+    makeplot(path, lines...; xlabel = "gamma", ylabel = "anh", copy_code = false, param...)
     # addtrajectories(path, lines...)
-    # xlog_plot(@__DIR__)
+    xlog_plot(@__DIR__)
 end
 
 function xlog_plot(path)
     plotinfo = load(joinpath(path, "data.jld2"), "plotinfo")
     pl = plot(xaxis = :log10,
-    xticks = ([0.01, 0.03, 0.1, 5, 10, 20, 50], [0.01, 0.03, 0.1, 5, 10, 20, 50]),
     title = plotinfo.title, 
     xlabel = plotinfo.xlabel, 
     ylabel = plotinfo.ylabel, 
@@ -138,3 +105,4 @@ function xlog_plot(path)
 end
 
 @time f()
+# xlog_plot(@__DIR__)
