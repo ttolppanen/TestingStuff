@@ -45,7 +45,7 @@ end
 function f()
     param = initial_parameters()
     # -----------
-    traj = 1000
+    traj = 20000
     gammas = [0.03, 50]
     # -----------
 
