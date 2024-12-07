@@ -43,7 +43,7 @@ function f()
     # -----------
     traj = 20000
     Ls = [3]
-    gammas = exp.(range(log(0.0001), log(100), length = 250))
+    gammas = exp.(range(log(10^-5), log(100), length = 400))
     # -----------
     lines = []
     for L in Ls
