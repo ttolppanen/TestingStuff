@@ -1,5 +1,6 @@
 using JLD2
 using Plots
+using PlotAndSave
 
 function make_plot()
     path = @__DIR__
@@ -11,6 +12,7 @@ function make_plot()
     ylabel = "Leakage Population in the Array", 
     # ylims = (10^-5, 1)
     )
+    vline!(pl, [0.009, 0.04, 3, 10])
     line = plotinfo.lines["L = 3"]
     plot!(pl, line.x, line.y, label = "")
     savefig(pl, joinpath(path, "paper_plot.png"))

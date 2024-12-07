@@ -43,7 +43,10 @@ function f()
     # -----------
     traj = 20000
     Ls = [3]
-    gammas = exp.(range(log(10^-5), log(100), length = 400))
+    gammas = exp.(x_ticks(log(10^-5), log(100), 200, 
+        (log(0.009), log(0.04), 4), # more points between 0.009 and 0.04
+        (log(3), log(10), 4))
+        )
     # -----------
     lines = []
     for L in Ls
