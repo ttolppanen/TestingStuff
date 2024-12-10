@@ -1519,9 +1519,9 @@ version = "6.7.1+1"
 
 [[deps.QuantumOperators]]
 deps = ["DataStructures", "ITensors", "KrylovKit", "LinearAlgebra", "SparseArrays"]
-git-tree-sha1 = "46837d6bb78ed5cd6c01cd9ba6dc39d530e1d1b2"
+git-tree-sha1 = "28df368f4a84656721fa872766bb28d6d043035a"
 uuid = "c0e07f3f-1bc3-43ad-95cf-312e5bf06829"
-version = "0.1.30"
+version = "0.1.31"
 
 [[deps.QuantumStates]]
 deps = ["ITensors", "LinearAlgebra", "SparseArrays"]
