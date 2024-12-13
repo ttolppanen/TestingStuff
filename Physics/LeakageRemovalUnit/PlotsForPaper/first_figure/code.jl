@@ -1,6 +1,7 @@
 using Distributed
 using JLD2
 using Plots
+using Plots.PlotMeasures
 using LinearAlgebra
 @everywhere using QuantumStates
 @everywhere using QuantumOperators
@@ -53,16 +54,15 @@ function initial_parameters(L)
     param[:dt] = 0.02
     param[:gamma] = 0.03
     param[:d] = 3
-    n = 1
+    n = 2
     param[:state] = ValueInfo(bosonstack(n, L, 1; d = 3), "|$(n)00...>")
     param[:alg] = "krylov BN-subspace"
     param[:k] = 6
     param[:H] = "BH d_w fixed |2> energy"
-    param[:w] = 1500
-    param[:dw] = ValueInfo(param[:w] .+ (rand(L) .- 0.5) * 10, "10")
-    param[:U] = 50
-    param[:dU] = ValueInfo(2 * param[:dw].val .- (2 * param[:w] - param[:U]), "10")
-    param[:J] = 1
+    param[:J] = ValueInfo(5, "5MHz")
+    param[:w] = ValueInfo(7500 / param[:J].val, "7.5GHz")
+    param[:dw] = ValueInfo(100 / param[:J].val, "100MHz")
+    param[:U] = ValueInfo(250 / param[:J].val, "250MHz")
 
     d = param[:d]
     msrop = measurementoperators(nop(d), L)
@@ -100,30 +100,37 @@ function f()
         pa_k = PA_krylov_sub(state, k)
         pa_args, pa_out = pre_alloc_threads(zeros(length(obs), length(0:dt:t)), traj, pa_k)
 
-        H = subspace_split(bosehubbard(d, L; w = param[:dw].val, U = param[:dU].val, J = param[:J]), ranges, perm_mat)
+        dw = param[:w].val .+ (rand(L) .- 0.5) * param[:dw].val
+        dU = 2 * dw .- (2 * param[:w].val - param[:U].val)
+        H = subspace_split(bosehubbard(d, L; w = dw, U = dU, J = 1), ranges, perm_mat)
         
         r_f(out, pa_k) = begin 
             effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
             krylovevolve(state, initial_id, H, dt, t, k, pa_k, obs...; effect!, out)
         end
 
-    
         solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
         r = traj_mean(pa_out)
         map = heatmap(1:L, 0:dt:t, transpose(r), 
-        xlabel = "site", 
-        ylabel = "t",
+        xlabel = "sites", 
+        ylabel = "time",
         clim = (0, 2),
-        title = PlotAndSave.parameters_to_title(; L, param...),
-        titlefont = 11)
+        #colorbar_ticks = ([0.0, 1.0, 2.0], ["0", "1", "2"]),
+        #title = PlotAndSave.parameters_to_title(; L, param...)
+        ) # blue #0472BE
         push!(plots, map)
     end
 
     # title = PlotAndSave.parameters_to_title(; param...)
-    pl = plot(plots..., layout = (1, length(Ls)), size = (1500, 1500))
+    pl = plot(plots..., layout = (1, length(Ls)), size = (1500, 1500), margin = 20mm, 
+    title = "Stack of excitations",
+    titlecolor = :grey)
     savefig(pl, joinpath(@__DIR__, "heatmap.png"))
     savefig(pl, joinpath(@__DIR__, "heatmap.svg"))
     return pl
 end
 
-@time f()
+Plots.scalefontsizes(3)
+@time pl = f()
+Plots.scalefontsizes()
+pl
