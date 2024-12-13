@@ -1,10 +1,617 @@
 /homedir02/htolppan/Documents/TestingStuff
-lehmus-cn3.oulu.fi
-Sat Aug 31 23:16:09 EEST 2024
+lehmus-cn12
+Fri Dec 13 18:36:51 EET 2024
     Updating registry at `~/.julia/registries/Private_ttolppanen`
     Updating git-repo `http://github.com/ttolppanen/ttolppanen_JuliaRegistry`
     Updating registry at `~/.julia/registries/General.toml`
   Activating project at `~/Documents/TestingStuff`
+Precompiling project...
+  ✓ IteratorInterfaceExtensions
+  ✓ IndirectArrays
+  ✓ StatsAPI
+  ✓ RangeArrays
+  ✓ CEnum
+  ✓ LaTeXStrings
+  ✓ ExprTools
+  ✓ TensorCore
+  ✓ Contour
+  ✓ HalfIntegers
+  ✓ AbstractFFTs
+  ✓ ConcurrentUtilities
+  ✓ InitialValues
+  ✓ OffsetArrays
+  ✓ Format
+  ✓ Pipe
+  ✓ TableTraits
+  ✓ UnPack
+  ✓ Measures
+  ✓ ArgCheck
+  ✓ InverseFunctions
+  ✓ LinearMaps
+  ✓ PkgVersion
+  ✓ SerializedElementArrays
+  ✓ Grisu
+  ✓ GenericSchur
+  ✓ FillArrays
+  ✓ Compat
+  ✓ ExternalDocstrings
+  ✓ Preferences
+  ✓ OrderedCollections
+  ✓ Requires
+  ✓ InverseFunctions → InverseFunctionsDatesExt
+  ✓ DataValueInterfaces
+  ✓ AbstractFFTs → AbstractFFTsTestExt
+  ✓ MbedTLS
+  ✓ Unzip
+  ✓ SIMDTypes
+  ✓ Reexport
+  ✓ Showoff
+  ✓ DocStringExtensions
+  ✓ Compat → CompatLinearAlgebraExt
+  ✓ TimerOutputs
+  ✓ JLLWrappers
+  ✓ IntervalSets
+  ✓ CustomUnitRanges
+  ✓ URIs
+  ✓ InverseFunctions → InverseFunctionsTestExt
+  ✓ CompositionsBase
+  ✓ DefineSingletons
+  ✓ MacroTools
+  ✓ ExceptionUnwrapping
+  ✓ IrrationalConstants
+  ✓ LazyModules
+  ✓ TranscodingStreams
+  ✓ DelimitedFiles
+  ✓ ProgressMeter
+  ✓ IfElse
+  ✓ VectorInterface
+  ✓ CpuId
+  ✓ Inflate
+  ✓ UnicodeFun
+  ✓ CommonWorldInvalidations
+  ✓ CompositionsBase → CompositionsBaseInverseFunctionsExt
+  ✓ DataAPI
+  ✓ ConstructionBase
+  ✓ PackageExtensionCompat
+  ✓ BitFlags
+  ✓ ChainRulesCore
+  ✓ Scratch
+  ✓ CodecZlib
+  ✓ ChunkSplitters
+  ✓ SimpleTraits
+  ✓ Indexing
+  ✓ LoggingExtras
+  ✓ TupleTools
+  ✓ MappedArrays
+  ✓ Missings
+  ✓ ManualMemory
+  ✓ Functors
+  ✓ RealDot
+  ✓ IterTools
+  ✓ Statistics
+  ✓ ChainRulesCore → ChainRulesCoreSparseArraysExt
+  ✓ Tables
+  ✓ InlineStrings
+  ✓ SimpleBufferStream
+  ✓ FillArrays → FillArraysSparseArraysExt
+  ✓ Baselet
+  ✓ Parameters
+  ✓ Ratios
+  ✓ Adapt
+  ✓ NaNMath
+  ✓ BitIntegers
+  ✓ LinearMaps → LinearMapsSparseArraysExt
+  ✓ Dictionaries
+  ✓ ThreadingUtilities
+  ✓ FillArrays → FillArraysStatisticsExt
+  ✓ DataStructures
+  ✓ EpollShim_jll
+  ✓ FixedPointNumbers
+  ✓ fzf_jll
+  ✓ JpegTurbo_jll
+  ✓ XZ_jll
+  ✓ Ogg_jll
+  ✓ mtdev_jll
+  ✓ gperf_jll
+  ✓ oneTBB_jll
+  ✓ Xorg_libXdmcp_jll
+  ✓ x265_jll
+  ✓ x264_jll
+  ✓ Zstd_jll
+  ✓ libaom_jll
+  ✓ Expat_jll
+  ✓ LZO_jll
+  ✓ Opus_jll
+  ✓ Xorg_xtrans_jll
+  ✓ libevdev_jll
+  ✓ Libiconv_jll
+  ✓ Libffi_jll
+  ✓ Wayland_protocols_jll
+  ✓ Libgpg_error_jll
+  ✓ FFTW_jll
+  ✓ Xorg_libpthread_stubs_jll
+  ✓ FriBidi_jll
+  ✓ Libuuid_jll
+  ✓ IntervalSets → IntervalSetsRandomExt
+  ✓ Zeros
+  ✓ FastClosures
+  ✓ ComputationalResources
+  ✓ LogExpFunctions
+  ✓ StaticArraysCore
+  ✓ ConstructionBase → ConstructionBaseLinearAlgebraExt
+  ✓ WoodburyMatrices
+  ✓ Latexify
+  ✓ CompilerSupportLibraries_jll
+  ✓ StridedViews
+  ✓ AbstractFFTs → AbstractFFTsChainRulesCoreExt
+  ✓ LinearMaps → LinearMapsChainRulesCoreExt
+  ✓ RelocatableFolders
+  ✓ PrecompileTools
+  ✓ ThreadedScans
+Libmount_jll Waiting for background task / IO / timer.
+[pid 886130] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x13d08f0->0x7fecaa1f6380
+ timer              0x149a0d0->0x7fecaa1f63b0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+Graphite2_jll Waiting for background task / IO / timer.
+[pid 886115] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x2750830->0x7fb65ddd6380
+ timer              0x268a830->0x7fb65ddd63b0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+LLVMOpenMP_jll Waiting for background task / IO / timer.
+[pid 886250] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0xefa660->0x7fb4b3bc2380
+ timer              0xf059d0->0x7fb4b3bc23b0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+Bzip2_jll Waiting for background task / IO / timer.
+[pid 886336] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x18afd10->0x7f3c15c22380
+ timer              0x193d150->0x7f3c15c223b0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+Xorg_libICE_jll Waiting for background task / IO / timer.
+[pid 886425] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x1e60df0->0x7f3bc124e380
+ timer              0x1e81c30->0x7f3bc124e3b0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+libpng_jll Waiting for background task / IO / timer.
+[pid 886474] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x221f140->0x7fed977de380
+ timer              0x2283b10->0x7fed977de3b0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+Imath_jll Waiting for background task / IO / timer.
+[pid 886483] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x18deac0->0x7f3135c12380
+ timer              0x1918ae0->0x7f3135c123b0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+IntelOpenMP_jll Waiting for background task / IO / timer.
+[pid 886529] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x1583640->0x7ff48bd76b60
+ timer              0x15e46d0->0x7ff48bd76b90
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ Quaternions
+LAME_jll Waiting for background task / IO / timer.
+[pid 886577] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x278d630->0x7fb7fbb26380
+ timer              0x2666360->0x7fb7fbb263b0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+LERC_jll Waiting for background task / IO / timer.
+[pid 886622] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x11a5190->0x7fad78b4e380
+ timer              0x1237b60->0x7fad78b4e3b0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ OpenSSL_jll
+  ✓ Distances
+  ✓ OffsetArrays → OffsetArraysAdaptExt
+  ✓ Ghostscript_jll
+  ✓ LinearMaps → LinearMapsStatisticsExt
+  ✓ FileIO
+  ✓ SplitApplyCombine
+  ✓ SortingAlgorithms
+  ✓ Unitful
+  ✓ Ratios → RatiosFixedPointNumbersExt
+  ✓ JLFzf
+  ✓ libvorbis_jll
+  ✓ Dbus_jll
+  ✓ eudev_jll
+  ✓ ColorTypes
+  ✓ Libgcrypt_jll
+  ✓ XML2_jll
+  ✓ IntervalSets → IntervalSetsStatisticsExt
+  ✓ LogExpFunctions → LogExpFunctionsInverseFunctionsExt
+  ✓ ConstructionBase → ConstructionBaseIntervalSetsExt
+  ✓ AxisAlgorithms
+  ✓ LogExpFunctions → LogExpFunctionsChainRulesCoreExt
+  ✓ Latexify → SparseArraysExt
+  ✓ OpenSpecFun_jll
+  ✓ Strided
+  ✓ RecipesBase
+  ✓ Graphite2_jll
+  ✓ Libmount_jll
+Xorg_libXau_jll Waiting for background task / IO / timer.
+[pid 886470] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0xf8b2f0->0x7f29559c2410
+ timer              0xf8e980->0x7f29559c2440
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ Bzip2_jll
+  ✓ LLVMOpenMP_jll
+libfdk_aac_jll Waiting for background task / IO / timer.
+[pid 886478] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x59de70->0x7fcff284a410
+ timer              0x884300->0x7fcff284a440
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ Xorg_libICE_jll
+  ✓ libpng_jll
+  ✓ Imath_jll
+  ✓ IntelOpenMP_jll
+  ✓ LAME_jll
+  ✓ StackViews
+  ✓ FreeType2_jll
+  ✓ LERC_jll
+  ✓ PaddedViews
+  ✓ Static
+  ✓ libsixel_jll
+  ✓ Unitful → ConstructionBaseUnitfulExt
+  ✓ libinput_jll
+  ✓ Unitful → InverseFunctionsUnitfulExt
+  ✓ Wayland_jll
+  ✓ Fontconfig_jll
+  ✓ XSLT_jll
+  ✓ OpenSSL
+  ✓ QOI
+  ✓ Gettext_jll
+  ✓ IntervalSets → IntervalSetsRecipesBaseExt
+  ✓ Distances → DistancesSparseArraysExt
+  ✓ CatIndices
+  ✓ Pixman_jll
+  ✓ StaticArrays
+  ✓ OpenEXR_jll
+  ✓ MKL_jll
+  ✓ Libtiff_jll
+  ✓ BitTwiddlingConvenienceFunctions
+  ✓ MosaicViews
+  ✓ StatsBase
+  ✓ ArrayLayouts
+  ✓ CPUSummary
+  ✓ SpecialFunctions
+  ✓ Xorg_libSM_jll
+  ✓ HostCPUFeatures
+  ✓ AxisArrays
+  ✓ IntegralArrays
+  ✓ UnitfulLatexify
+  ✓ PolyesterWeave
+  ✓ Distances → DistancesChainRulesCoreExt
+  ✓ HTTP
+  ✓ StaticArrays → StaticArraysChainRulesCoreExt
+  ✓ ConstructionBase → ConstructionBaseStaticArraysExt
+  ✓ Adapt → AdaptStaticArraysExt
+  ✓ LittleCMS_jll
+  ✓ Glib_jll
+  ✓ ArrayLayouts → ArrayLayoutsSparseArraysExt
+  ✓ ArrayInterface
+  ✓ StaticArrays → StaticArraysStatisticsExt
+  ✓ Referenceables
+  ✓ Setfield
+  ✓ GPUArraysCore
+  ✓ SpecialFunctions → SpecialFunctionsChainRulesCoreExt
+  ✓ Colors
+  ✓ OpenJpeg_jll
+    ColorVectorSpace Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1186792, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ColorVectorSpace/7uC4N_OUQmK.ji.pidfile)
+  ✓ ArrayInterface → ArrayInterfaceSparseArraysExt
+  ✓ Accessors
+  ✓ ArrayInterface → ArrayInterfaceStaticArraysCoreExt
+  ✓ SIMD
+  ✓ Accessors → AccessorsDatesExt
+  ✓ CoordinateTransformations
+  ✓ BlockArrays
+  ✓ ArnoldiMethod
+  ✓ ArrayInterface → ArrayInterfaceGPUArraysCoreExt
+  ✓ BangBang
+  ✓ Rotations
+  ✓ Graphics
+  ✓ Xorg_libXau_jll
+  ✓ RegionTrees
+  ✓ ImageMagick_jll
+  ✓ KrylovKit
+  ✓ OpenEXR
+  ✓ libfdk_aac_jll
+  ✓ Interpolations
+  ✓ IsApprox
+  ✓ FFTW
+  ✓ NearestNeighbors
+  ✓ Accessors → AccessorsTestExt
+  ✓ Accessors → AccessorsIntervalSetsExt
+  ✓ SplittablesBase
+  ✓ Accessors → AccessorsStaticArraysExt
+  ✓ BangBang → BangBangChainRulesCoreExt
+  ✓ KrylovKit → KrylovKitChainRulesCoreExt
+  ✓ Accessors → AccessorsUnitfulExt
+  ✓ BangBang → BangBangStaticArraysExt
+  ✓ Rotations → RotationsRecipesBaseExt
+  ✓ FFTViews
+  ✓ MicroCollections
+  ✓ Xorg_libxcb_jll
+  ✓ Interpolations → InterpolationsUnitfulExt
+  ✓ Parsers
+  ✓ StaticArrayInterface
+  ✓ Xorg_xcb_util_jll
+  ✓ Xorg_libX11_jll
+  ✓ InlineStrings → ParsersExt
+  ✓ StaticArrayInterface → StaticArrayInterfaceOffsetArraysExt
+  ✓ Xorg_xcb_util_keysyms_jll
+  ✓ Xorg_xcb_util_image_jll
+  ✓ StaticArrayInterface → StaticArrayInterfaceStaticArraysExt
+  ✓ Xorg_xcb_util_renderutil_jll
+  ✓ Xorg_xcb_util_wm_jll
+  ✓ Xorg_libXrender_jll
+  ✓ Xorg_libXext_jll
+  ✓ JSON
+  ✓ EllipsisNotation
+  ✓ Xorg_libxkbfile_jll
+  ✓ Xorg_libXfixes_jll
+  ✓ CloseOpenIntervals
+  ✓ TiledIteration
+  ✓ LayoutPointers
+  ✓ Transducers
+  ✓ Xorg_xcb_util_cursor_jll
+  ✓ Xorg_libXinerama_jll
+  ✓ Xorg_libXrandr_jll
+  ✓ Libglvnd_jll
+  ✓ Xorg_xkbcomp_jll
+  ✓ Graphs
+  ✓ Xorg_libXcursor_jll
+  ✓ Transducers → TransducersReferenceablesExt
+  ✓ Xorg_libXi_jll
+  ✓ Xorg_xkeyboard_config_jll
+  ✓ xkbcommon_jll
+  ✓ Transducers → TransducersBlockArraysExt
+  ✓ Polynomials
+  ✓ SimpleWeightedGraphs
+  ✓ Vulkan_Loader_jll
+  ✓ Clustering
+  ✓ Polynomials → PolynomialsChainRulesCoreExt
+  ✓ Cairo_jll
+  ✓ Qt6Base_jll
+  ✓ HarfBuzz_jll
+  ✓ Qt6ShaderTools_jll
+  ✓ Folds
+  ✓ libass_jll
+  ✓ Pango_jll
+  ✓ libdecor_jll
+  ✓ FFMPEG_jll
+  ✓ Qt6Declarative_jll
+  ✓ GLFW_jll
+  ✓ FFMPEG
+  ✓ Qt6Wayland_jll
+  ✓ VectorizationBase
+  ✓ GR_jll
+  ✓ ColorVectorSpace
+  ✓ SLEEFPirates
+  ✓ GR
+  ✓ ColorSchemes
+  ✓ NDTensors
+DSP Waiting for background task / IO / timer.
+[pid 896689] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x205ac80->0x7f5181404610
+ timer              0x219c520->0x7f5181404640
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ? NDTensors → NDTensorsMappedArraysExt
+  ✓ ExponentialUtilities
+  ✓ PlotUtils
+  ✓ JLD2
+  ✓ PlotThemes
+  ✓ RecipesPipeline
+  ✓ DSP
+  ✓ LoopVectorization
+  ✓ ImageCore
+  ✓ ImageBase
+  ✓ PNGFiles
+  ✓ TiffImages
+  ✓ HistogramThresholding
+MetaGraphs Waiting for background task / IO / timer.
+[pid 898478] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0xcbfe00->0x7fb097f15870
+ timer              0x8e7220->0x7fb097f158a0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ ImageShow
+  ✓ ImageAxes
+  ✓ ImageMagick
+  ✓ ImageBinarization
+  ✓ ImageMetadata
+  ✓ Netpbm
+JpegTurbo Waiting for background task / IO / timer.
+[pid 899543] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x289f030->0x7f6f3fde8df0
+ timer              0x2212c70->0x7f6f3fde8e20
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+Sixel Waiting for background task / IO / timer.
+[pid 899552] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x1ef5db0->0x7f15edda6290
+ timer              0x1e36d80->0x7f15edda62c0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ ImageTransformations
+  ✓ NDTensors → NDTensorsGPUArraysCoreExt
+  ✓ ImageContrastAdjustment
+  ✓ LoopVectorization → SpecialFunctionsExt
+  ✓ JpegTurbo
+  ✓ Sixel
+  ✓ ImageIO
+  ✓ ITensors
+  ✓ ImageMorphology
+  ✓ ITensors → ITensorsVectorInterfaceExt
+  ✓ ImageDistances
+  ✓ QuantumStates
+  ✓ QuantumOperators
+  ✓ QuantumTimeEvolution
+  ✓ ImageFiltering
+  ✓ MetaGraphs
+  ✓ Plots
+  ✓ ImageCorners
+  ✓ ImageQualityIndexes
+  ? Plots → UnitfulExt
+  ✓ Plots → FileIOExt
+  ✓ PlotAndSave
+ImageSegmentation Waiting for background task / IO / timer.
+[pid 903668] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x28310f0->0x7fb555919e70
+ timer              0x20b9c60->0x7fb555919ea0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+┌ Warning: Module Graphs with build ID fafbfcfd-6c87-4b4a-0000-b52007262bcc is missing from the cache.
+│ This may mean Graphs [86223c79-3864-5bf0-83f7-82e725a168b6] does not support precompilation but is imported by a module that does.
+└ @ Base loading.jl:1948
+  ? ImageSegmentation
+  ✓ Images
+  362 dependencies successfully precompiled in 316 seconds. 9 already precompiled.
+  3 dependencies failed but may be precompilable after restarting julia
+  19 dependencies had output during precompilation:
+┌ Imath_jll
+│  [pid 886483] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x18deac0->0x7f3135c12380
+│   timer              0x1918ae0->0x7f3135c123b0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ JpegTurbo
+│  [pid 899543] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x289f030->0x7f6f3fde8df0
+│   timer              0x2212c70->0x7f6f3fde8e20
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ IntelOpenMP_jll
+│  [pid 886529] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x1583640->0x7ff48bd76b60
+│   timer              0x15e46d0->0x7ff48bd76b90
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Xorg_libXau_jll
+│  [pid 886470] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0xf8b2f0->0x7f29559c2410
+│   timer              0xf8e980->0x7f29559c2440
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ LLVMOpenMP_jll
+│  [pid 886250] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0xefa660->0x7fb4b3bc2380
+│   timer              0xf059d0->0x7fb4b3bc23b0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Plots → UnitfulExt
+│  ┌ Warning: Module Latexify with build ID fafbfcfd-6e9c-6381-0000-b51f54562875 is missing from the cache.
+│  │ This may mean Latexify [23fbe1c1-3f47-55db-b15f-69d7ec21a316] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ libpng_jll
+│  [pid 886474] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x221f140->0x7fed977de380
+│   timer              0x2283b10->0x7fed977de3b0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Bzip2_jll
+│  [pid 886336] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x18afd10->0x7f3c15c22380
+│   timer              0x193d150->0x7f3c15c223b0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Sixel
+│  [pid 899552] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x1ef5db0->0x7f15edda6290
+│   timer              0x1e36d80->0x7f15edda62c0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ MetaGraphs
+│  [pid 898478] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0xcbfe00->0x7fb097f15870
+│   timer              0x8e7220->0x7fb097f158a0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ libfdk_aac_jll
+│  [pid 886478] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x59de70->0x7fcff284a410
+│   timer              0x884300->0x7fcff284a440
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ ImageSegmentation
+│  [pid 903668] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x28310f0->0x7fb555919e70
+│   timer              0x20b9c60->0x7fb555919ea0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+│  ┌ Warning: Module Graphs with build ID fafbfcfd-6c87-4b4a-0000-b52007262bcc is missing from the cache.
+│  │ This may mean Graphs [86223c79-3864-5bf0-83f7-82e725a168b6] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ NDTensors → NDTensorsMappedArraysExt
+│  ┌ Warning: Module Compat with build ID fafbfcfd-dc9c-5b0a-0000-b50eaf4b740b is missing from the cache.
+│  │ This may mean Compat [34da2185-b29b-5c13-b0c7-acf172513d20] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ LAME_jll
+│  [pid 886577] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x278d630->0x7fb7fbb26380
+│   timer              0x2666360->0x7fb7fbb263b0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Xorg_libICE_jll
+│  [pid 886425] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x1e60df0->0x7f3bc124e380
+│   timer              0x1e81c30->0x7f3bc124e3b0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ LERC_jll
+│  [pid 886622] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x11a5190->0x7fad78b4e380
+│   timer              0x1237b60->0x7fad78b4e3b0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Graphite2_jll
+│  [pid 886115] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x2750830->0x7fb65ddd6380
+│   timer              0x268a830->0x7fb65ddd63b0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ DSP
+│  [pid 896689] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x205ac80->0x7f5181404610
+│   timer              0x219c520->0x7f5181404640
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Libmount_jll
+│  [pid 886130] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x13d08f0->0x7fecaa1f6380
+│   timer              0x149a0d0->0x7fecaa1f63b0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
   No Changes to `~/Documents/TestingStuff/Project.toml`
   No Changes to `~/Documents/TestingStuff/Manifest.toml`
 
@@ -12,108 +619,205 @@ Threads used by julia = 40
 
 Started!
 
-197.964876 seconds (155.44 M allocations: 25.093 GiB, 2.94% gc time, 167.81% compilation time)
-186.669886 seconds (138.26 M allocations: 23.906 GiB, 3.10% gc time)
-173.752318 seconds (138.51 M allocations: 23.616 GiB, 3.17% gc time)
-170.562092 seconds (138.96 M allocations: 23.371 GiB, 3.24% gc time)
-180.667131 seconds (139.20 M allocations: 23.319 GiB, 3.17% gc time)
-172.848793 seconds (139.46 M allocations: 22.847 GiB, 3.22% gc time)
-179.158495 seconds (139.50 M allocations: 22.980 GiB, 3.04% gc time)
-170.278374 seconds (140.08 M allocations: 22.342 GiB, 3.26% gc time)
-173.636517 seconds (140.15 M allocations: 22.467 GiB, 3.10% gc time)
-172.553892 seconds (140.10 M allocations: 22.432 GiB, 3.25% gc time)
-165.495401 seconds (140.44 M allocations: 22.070 GiB, 3.23% gc time)
-156.293689 seconds (141.28 M allocations: 21.534 GiB, 3.29% gc time)
-160.248034 seconds (141.17 M allocations: 21.692 GiB, 3.32% gc time)
-156.164487 seconds (141.69 M allocations: 21.328 GiB, 3.29% gc time)
-158.267731 seconds (141.64 M allocations: 21.403 GiB, 3.20% gc time)
-157.409338 seconds (142.06 M allocations: 21.273 GiB, 3.28% gc time)
-155.189845 seconds (142.35 M allocations: 21.097 GiB, 3.17% gc time)
-150.194825 seconds (142.72 M allocations: 20.788 GiB, 3.52% gc time)
-149.980955 seconds (142.56 M allocations: 20.970 GiB, 3.22% gc time)
-154.454091 seconds (142.96 M allocations: 20.835 GiB, 3.31% gc time)
-159.227878 seconds (143.05 M allocations: 20.866 GiB, 3.21% gc time)
-154.996434 seconds (142.87 M allocations: 21.001 GiB, 3.15% gc time)
-155.047716 seconds (143.18 M allocations: 20.895 GiB, 3.27% gc time)
-155.057673 seconds (142.98 M allocations: 21.051 GiB, 3.19% gc time)
-159.765916 seconds (143.10 M allocations: 21.108 GiB, 3.14% gc time)
-162.678528 seconds (143.08 M allocations: 21.153 GiB, 3.04% gc time)
-164.862674 seconds (142.66 M allocations: 21.500 GiB, 3.16% gc time)
-163.944929 seconds (142.92 M allocations: 21.372 GiB, 3.18% gc time)
-172.080552 seconds (142.49 M allocations: 21.776 GiB, 3.00% gc time)
-166.027922 seconds (142.62 M allocations: 21.625 GiB, 3.01% gc time)
-165.527477 seconds (142.60 M allocations: 21.735 GiB, 3.21% gc time)
-177.221401 seconds (141.75 M allocations: 22.515 GiB, 2.92% gc time)
-174.986276 seconds (141.78 M allocations: 22.443 GiB, 2.98% gc time)
-190.211784 seconds (141.35 M allocations: 22.864 GiB, 2.78% gc time)
-197.477767 seconds (141.25 M allocations: 22.985 GiB, 2.82% gc time)
-199.509358 seconds (141.39 M allocations: 22.901 GiB, 2.82% gc time)
-208.645267 seconds (140.76 M allocations: 23.421 GiB, 2.66% gc time)
-203.614426 seconds (141.07 M allocations: 23.175 GiB, 2.79% gc time)
-206.153809 seconds (140.69 M allocations: 23.525 GiB, 2.62% gc time)
-212.943692 seconds (140.33 M allocations: 23.797 GiB, 2.78% gc time)
-210.668371 seconds (140.63 M allocations: 23.562 GiB, 2.70% gc time)
-207.802321 seconds (140.26 M allocations: 23.893 GiB, 2.68% gc time)
-201.950739 seconds (139.82 M allocations: 24.293 GiB, 2.84% gc time)
-200.627293 seconds (139.85 M allocations: 24.239 GiB, 2.80% gc time)
-211.685492 seconds (139.69 M allocations: 24.338 GiB, 2.83% gc time)
-213.028652 seconds (139.60 M allocations: 24.475 GiB, 2.80% gc time)
-218.519560 seconds (139.48 M allocations: 24.547 GiB, 2.74% gc time)
-218.419772 seconds (139.52 M allocations: 24.533 GiB, 2.66% gc time)
-222.739502 seconds (139.03 M allocations: 24.942 GiB, 2.82% gc time)
-213.749957 seconds (138.94 M allocations: 25.002 GiB, 2.81% gc time)
-207.409180 seconds (139.33 M allocations: 24.669 GiB, 2.89% gc time)
-215.290502 seconds (139.01 M allocations: 24.973 GiB, 2.82% gc time)
-218.583916 seconds (138.91 M allocations: 25.051 GiB, 2.71% gc time)
-219.372858 seconds (139.04 M allocations: 24.947 GiB, 2.81% gc time)
-229.864632 seconds (138.72 M allocations: 25.191 GiB, 2.69% gc time)
-217.194575 seconds (138.99 M allocations: 24.987 GiB, 2.64% gc time)
-225.751698 seconds (138.93 M allocations: 25.025 GiB, 2.71% gc time)
-227.637997 seconds (138.78 M allocations: 25.140 GiB, 2.55% gc time)
-230.649877 seconds (138.72 M allocations: 25.170 GiB, 2.75% gc time)
-234.034916 seconds (138.62 M allocations: 25.268 GiB, 2.62% gc time)
-233.865220 seconds (138.53 M allocations: 25.354 GiB, 2.71% gc time)
-225.235768 seconds (138.89 M allocations: 25.061 GiB, 2.65% gc time)
-224.985831 seconds (138.75 M allocations: 25.165 GiB, 2.68% gc time)
-225.441777 seconds (138.91 M allocations: 25.040 GiB, 2.67% gc time)
-230.407558 seconds (139.03 M allocations: 24.933 GiB, 2.58% gc time)
-226.434224 seconds (139.35 M allocations: 24.675 GiB, 2.54% gc time)
-223.465106 seconds (139.18 M allocations: 24.811 GiB, 2.84% gc time)
-226.879473 seconds (139.11 M allocations: 24.852 GiB, 2.74% gc time)
-221.324649 seconds (139.54 M allocations: 24.494 GiB, 2.66% gc time)
-224.131919 seconds (139.37 M allocations: 24.619 GiB, 2.71% gc time)
-223.312771 seconds (139.39 M allocations: 24.586 GiB, 2.59% gc time)
-213.095326 seconds (139.51 M allocations: 24.528 GiB, 2.85% gc time)
-211.063408 seconds (139.92 M allocations: 24.150 GiB, 2.70% gc time)
-209.922337 seconds (140.22 M allocations: 23.861 GiB, 2.82% gc time)
-207.658707 seconds (140.42 M allocations: 23.765 GiB, 2.72% gc time)
-198.421625 seconds (140.35 M allocations: 23.777 GiB, 3.03% gc time)
-201.738994 seconds (140.36 M allocations: 23.739 GiB, 2.85% gc time)
-199.503651 seconds (140.91 M allocations: 23.298 GiB, 2.79% gc time)
-197.389353 seconds (140.71 M allocations: 23.489 GiB, 2.96% gc time)
-199.775914 seconds (140.98 M allocations: 23.224 GiB, 2.76% gc time)
-200.614753 seconds (141.10 M allocations: 23.169 GiB, 2.82% gc time)
-193.294861 seconds (141.26 M allocations: 22.887 GiB, 2.91% gc time)
-189.640884 seconds (141.51 M allocations: 22.702 GiB, 2.91% gc time)
-180.986807 seconds (141.95 M allocations: 22.311 GiB, 2.91% gc time)
-170.622360 seconds (142.52 M allocations: 21.871 GiB, 3.04% gc time)
-175.597013 seconds (142.22 M allocations: 22.046 GiB, 2.93% gc time)
-168.390252 seconds (142.57 M allocations: 21.727 GiB, 3.07% gc time)
-167.958542 seconds (142.58 M allocations: 21.664 GiB, 2.95% gc time)
-166.389356 seconds (142.98 M allocations: 21.323 GiB, 3.24% gc time)
-163.707910 seconds (143.25 M allocations: 21.086 GiB, 3.15% gc time)
-156.266667 seconds (143.26 M allocations: 20.926 GiB, 3.16% gc time)
-162.053337 seconds (143.14 M allocations: 21.041 GiB, 3.22% gc time)
-151.144316 seconds (143.78 M allocations: 20.437 GiB, 3.29% gc time)
-160.681298 seconds (142.75 M allocations: 21.158 GiB, 3.19% gc time)
-140.876022 seconds (143.87 M allocations: 20.178 GiB, 3.41% gc time)
-141.849908 seconds (143.49 M allocations: 20.438 GiB, 3.37% gc time)
-138.624726 seconds (143.37 M allocations: 20.413 GiB, 3.52% gc time)
-141.248145 seconds (143.33 M allocations: 20.366 GiB, 3.49% gc time)
-146.316289 seconds (142.75 M allocations: 20.709 GiB, 3.46% gc time)
-152.207151 seconds (142.50 M allocations: 20.889 GiB, 3.29% gc time)
-139.609770 seconds (142.84 M allocations: 20.352 GiB, 3.52% gc time)
-18977.610068 seconds (14.26 G allocations: 2.263 TiB, 2.94% gc time, 1.79% compilation time: <1% of which was recompilation)
-
-Ended!
-Sun Sep  1 04:32:58 EEST 2024
+ 37.917536 seconds (76.63 M allocations: 12.325 GiB, 4.67% gc time, 687.13% compilation time)
+ 27.976147 seconds (70.58 M allocations: 11.925 GiB, 6.31% gc time)
+ 29.449668 seconds (70.58 M allocations: 11.925 GiB, 6.78% gc time)
+ 29.393588 seconds (70.58 M allocations: 11.925 GiB, 6.28% gc time)
+ 31.064616 seconds (70.58 M allocations: 11.925 GiB, 6.19% gc time)
+ 28.055358 seconds (70.58 M allocations: 11.925 GiB, 6.46% gc time)
+ 30.404974 seconds (70.58 M allocations: 11.925 GiB, 6.15% gc time)
+ 30.395308 seconds (70.58 M allocations: 11.925 GiB, 5.73% gc time)
+ 30.130132 seconds (70.58 M allocations: 11.925 GiB, 7.33% gc time)
+ 28.634171 seconds (70.58 M allocations: 11.925 GiB, 6.35% gc time)
+ 88.431626 seconds (70.58 M allocations: 11.925 GiB, 2.13% gc time)
+ 29.174733 seconds (70.58 M allocations: 11.925 GiB, 6.95% gc time)
+ 29.371553 seconds (70.58 M allocations: 11.925 GiB, 6.40% gc time)
+ 29.203709 seconds (70.58 M allocations: 11.925 GiB, 6.71% gc time)
+ 30.151100 seconds (70.58 M allocations: 11.925 GiB, 6.02% gc time)
+ 29.869949 seconds (70.58 M allocations: 11.925 GiB, 5.98% gc time)
+ 30.304992 seconds (70.58 M allocations: 11.925 GiB, 6.25% gc time)
+ 28.644275 seconds (70.58 M allocations: 11.925 GiB, 6.53% gc time)
+ 29.067290 seconds (70.58 M allocations: 11.925 GiB, 6.45% gc time)
+ 29.802885 seconds (70.58 M allocations: 11.925 GiB, 6.23% gc time)
+ 30.529711 seconds (70.58 M allocations: 11.925 GiB, 7.33% gc time)
+ 31.229878 seconds (70.58 M allocations: 11.925 GiB, 5.92% gc time)
+ 30.428995 seconds (70.58 M allocations: 11.925 GiB, 5.97% gc time)
+ 30.618854 seconds (70.58 M allocations: 11.925 GiB, 6.03% gc time)
+ 30.289640 seconds (70.58 M allocations: 11.925 GiB, 6.22% gc time)
+ 30.092423 seconds (70.58 M allocations: 11.925 GiB, 7.59% gc time)
+ 29.357418 seconds (70.58 M allocations: 11.925 GiB, 6.50% gc time)
+ 30.638986 seconds (70.58 M allocations: 11.926 GiB, 6.02% gc time)
+ 29.904658 seconds (70.58 M allocations: 11.926 GiB, 6.04% gc time)
+ 30.185883 seconds (70.58 M allocations: 11.926 GiB, 6.20% gc time)
+ 28.754492 seconds (70.58 M allocations: 11.926 GiB, 6.77% gc time)
+ 30.516538 seconds (70.58 M allocations: 11.926 GiB, 5.93% gc time)
+ 30.686749 seconds (70.58 M allocations: 11.926 GiB, 6.12% gc time)
+ 29.825713 seconds (70.58 M allocations: 11.926 GiB, 6.42% gc time)
+ 29.626360 seconds (70.58 M allocations: 11.926 GiB, 6.11% gc time)
+ 29.495177 seconds (70.58 M allocations: 11.926 GiB, 7.74% gc time)
+ 28.873920 seconds (70.58 M allocations: 11.926 GiB, 6.14% gc time)
+ 29.531536 seconds (70.58 M allocations: 11.926 GiB, 6.56% gc time)
+ 29.753399 seconds (70.58 M allocations: 11.926 GiB, 6.14% gc time)
+ 30.074617 seconds (70.58 M allocations: 11.926 GiB, 6.13% gc time)
+ 28.702575 seconds (70.58 M allocations: 11.926 GiB, 6.48% gc time)
+ 28.115539 seconds (70.58 M allocations: 11.926 GiB, 6.86% gc time)
+ 30.797666 seconds (70.58 M allocations: 11.926 GiB, 7.29% gc time)
+ 30.046902 seconds (70.58 M allocations: 11.926 GiB, 5.84% gc time)
+ 30.538180 seconds (70.58 M allocations: 11.926 GiB, 6.16% gc time)
+ 29.831560 seconds (70.58 M allocations: 11.926 GiB, 6.33% gc time)
+ 29.490488 seconds (70.58 M allocations: 11.926 GiB, 6.42% gc time)
+ 29.762717 seconds (70.58 M allocations: 11.926 GiB, 6.32% gc time)
+ 30.217370 seconds (70.58 M allocations: 11.926 GiB, 6.13% gc time)
+ 29.364186 seconds (70.58 M allocations: 11.926 GiB, 6.42% gc time)
+ 29.236520 seconds (70.58 M allocations: 11.926 GiB, 7.67% gc time)
+ 30.192931 seconds (70.58 M allocations: 11.926 GiB, 5.97% gc time)
+ 29.173950 seconds (70.58 M allocations: 11.926 GiB, 6.42% gc time)
+ 29.625633 seconds (70.58 M allocations: 11.926 GiB, 6.52% gc time)
+ 29.670057 seconds (70.58 M allocations: 11.926 GiB, 6.42% gc time)
+ 29.180060 seconds (70.59 M allocations: 11.926 GiB, 6.50% gc time)
+ 28.786298 seconds (70.59 M allocations: 11.926 GiB, 6.82% gc time)
+ 29.960152 seconds (70.59 M allocations: 11.926 GiB, 6.01% gc time)
+ 29.726205 seconds (70.59 M allocations: 11.926 GiB, 6.16% gc time)
+ 30.097031 seconds (70.59 M allocations: 11.926 GiB, 6.45% gc time)
+ 29.955933 seconds (70.59 M allocations: 11.927 GiB, 6.07% gc time)
+ 31.239544 seconds (70.59 M allocations: 11.927 GiB, 6.07% gc time)
+ 29.963785 seconds (70.59 M allocations: 11.927 GiB, 6.25% gc time)
+ 30.382665 seconds (70.59 M allocations: 11.927 GiB, 6.19% gc time)
+ 30.393568 seconds (70.59 M allocations: 11.927 GiB, 6.12% gc time)
+ 45.958474 seconds (70.59 M allocations: 11.927 GiB, 4.90% gc time)
+ 29.893029 seconds (70.59 M allocations: 11.927 GiB, 6.25% gc time)
+ 29.572399 seconds (70.59 M allocations: 11.927 GiB, 6.00% gc time)
+ 28.443511 seconds (70.59 M allocations: 11.927 GiB, 6.68% gc time)
+ 29.763859 seconds (70.60 M allocations: 11.928 GiB, 6.44% gc time)
+ 30.460014 seconds (70.60 M allocations: 11.928 GiB, 6.13% gc time)
+ 29.832873 seconds (70.60 M allocations: 11.928 GiB, 6.50% gc time)
+ 29.917973 seconds (70.60 M allocations: 11.928 GiB, 6.37% gc time)
+ 30.401017 seconds (70.60 M allocations: 11.928 GiB, 6.26% gc time)
+ 29.617095 seconds (70.60 M allocations: 11.929 GiB, 6.07% gc time)
+ 30.250468 seconds (70.60 M allocations: 11.929 GiB, 6.36% gc time)
+ 31.031734 seconds (70.61 M allocations: 11.929 GiB, 6.05% gc time)
+ 30.532313 seconds (70.61 M allocations: 11.929 GiB, 6.19% gc time)
+ 30.395300 seconds (70.61 M allocations: 11.930 GiB, 6.22% gc time)
+ 29.287180 seconds (70.61 M allocations: 11.930 GiB, 6.48% gc time)
+ 30.684339 seconds (70.61 M allocations: 11.930 GiB, 6.31% gc time)
+ 30.384471 seconds (70.62 M allocations: 11.931 GiB, 6.01% gc time)
+ 30.599875 seconds (70.62 M allocations: 11.931 GiB, 6.22% gc time)
+ 29.020223 seconds (70.62 M allocations: 11.931 GiB, 6.45% gc time)
+ 29.130995 seconds (70.62 M allocations: 11.932 GiB, 6.50% gc time)
+ 30.671117 seconds (70.63 M allocations: 11.932 GiB, 6.21% gc time)
+ 28.568912 seconds (70.63 M allocations: 11.932 GiB, 6.58% gc time)
+ 29.522066 seconds (70.63 M allocations: 11.933 GiB, 6.51% gc time)
+ 30.730415 seconds (70.63 M allocations: 11.933 GiB, 6.03% gc time)
+ 30.175803 seconds (70.64 M allocations: 11.933 GiB, 6.23% gc time)
+ 29.861000 seconds (70.64 M allocations: 11.934 GiB, 6.27% gc time)
+ 29.563513 seconds (70.64 M allocations: 11.934 GiB, 6.55% gc time)
+ 30.350830 seconds (70.64 M allocations: 11.934 GiB, 6.36% gc time)
+ 29.585313 seconds (70.64 M allocations: 11.934 GiB, 6.31% gc time)
+ 29.667444 seconds (70.65 M allocations: 11.935 GiB, 6.35% gc time)
+ 30.265720 seconds (70.65 M allocations: 11.935 GiB, 6.30% gc time)
+ 30.366588 seconds (70.65 M allocations: 11.935 GiB, 6.27% gc time)
+ 29.705532 seconds (70.65 M allocations: 11.935 GiB, 6.26% gc time)
+ 30.095546 seconds (70.65 M allocations: 11.936 GiB, 6.51% gc time)
+ 30.044189 seconds (70.65 M allocations: 11.936 GiB, 6.25% gc time)
+ 29.851463 seconds (70.65 M allocations: 11.936 GiB, 6.48% gc time)
+ 30.063673 seconds (70.65 M allocations: 11.936 GiB, 6.03% gc time)
+ 29.883966 seconds (70.65 M allocations: 11.936 GiB, 6.14% gc time)
+ 30.845615 seconds (70.65 M allocations: 11.936 GiB, 6.25% gc time)
+ 28.605061 seconds (70.65 M allocations: 11.936 GiB, 6.76% gc time)
+ 30.621423 seconds (70.65 M allocations: 11.936 GiB, 6.31% gc time)
+ 29.348535 seconds (70.65 M allocations: 11.936 GiB, 6.16% gc time)
+ 29.424703 seconds (70.65 M allocations: 11.936 GiB, 6.45% gc time)
+ 38.673931 seconds (70.65 M allocations: 11.936 GiB, 4.86% gc time)
+ 30.675593 seconds (70.65 M allocations: 11.936 GiB, 6.39% gc time)
+ 29.609046 seconds (70.65 M allocations: 11.935 GiB, 6.56% gc time)
+ 29.402566 seconds (70.65 M allocations: 11.935 GiB, 6.56% gc time)
+ 29.472283 seconds (70.65 M allocations: 11.935 GiB, 6.50% gc time)
+ 28.826515 seconds (70.65 M allocations: 11.935 GiB, 6.49% gc time)
+ 28.850946 seconds (70.65 M allocations: 11.935 GiB, 6.26% gc time)
+ 29.496064 seconds (70.65 M allocations: 11.935 GiB, 6.26% gc time)
+ 31.044298 seconds (70.64 M allocations: 11.934 GiB, 5.86% gc time)
+ 29.031484 seconds (70.64 M allocations: 11.934 GiB, 6.40% gc time)
+ 29.921863 seconds (70.64 M allocations: 11.934 GiB, 6.19% gc time)
+ 31.499029 seconds (70.64 M allocations: 11.934 GiB, 7.19% gc time)
+ 29.260577 seconds (70.64 M allocations: 11.933 GiB, 6.30% gc time)
+ 30.126916 seconds (70.64 M allocations: 11.933 GiB, 6.29% gc time)
+ 30.529007 seconds (70.63 M allocations: 11.933 GiB, 6.39% gc time)
+ 28.069684 seconds (70.63 M allocations: 11.933 GiB, 6.25% gc time)
+ 30.201525 seconds (70.63 M allocations: 11.932 GiB, 6.30% gc time)
+ 29.279537 seconds (70.63 M allocations: 11.932 GiB, 6.38% gc time)
+ 30.276417 seconds (70.63 M allocations: 11.932 GiB, 6.27% gc time)
+ 30.673220 seconds (70.62 M allocations: 11.931 GiB, 6.25% gc time)
+ 29.285974 seconds (70.62 M allocations: 11.931 GiB, 6.44% gc time)
+ 30.261587 seconds (70.62 M allocations: 11.931 GiB, 6.37% gc time)
+ 28.761354 seconds (70.62 M allocations: 11.931 GiB, 6.47% gc time)
+ 30.350804 seconds (70.62 M allocations: 11.931 GiB, 6.25% gc time)
+ 30.360404 seconds (70.61 M allocations: 11.930 GiB, 6.05% gc time)
+ 29.455813 seconds (70.61 M allocations: 11.930 GiB, 6.37% gc time)
+ 30.213964 seconds (70.61 M allocations: 11.930 GiB, 6.71% gc time)
+ 30.589757 seconds (70.61 M allocations: 11.930 GiB, 5.97% gc time)
+ 30.587435 seconds (70.61 M allocations: 11.929 GiB, 5.86% gc time)
+ 30.678506 seconds (70.61 M allocations: 11.929 GiB, 7.21% gc time)
+ 29.961957 seconds (70.61 M allocations: 11.929 GiB, 5.94% gc time)
+ 29.748326 seconds (70.61 M allocations: 11.929 GiB, 6.30% gc time)
+ 29.715892 seconds (70.60 M allocations: 11.929 GiB, 6.15% gc time)
+ 29.925815 seconds (70.60 M allocations: 11.928 GiB, 6.52% gc time)
+ 29.755179 seconds (70.60 M allocations: 11.928 GiB, 6.59% gc time)
+ 30.184263 seconds (74.89 M allocations: 12.695 GiB, 6.23% gc time)
+ 30.493565 seconds (80.32 M allocations: 13.666 GiB, 7.73% gc time)
+ 29.963568 seconds (86.20 M allocations: 14.718 GiB, 7.06% gc time)
+ 32.515394 seconds (92.59 M allocations: 15.860 GiB, 8.51% gc time)
+ 32.254121 seconds (99.52 M allocations: 17.099 GiB, 8.26% gc time)
+ 33.598931 seconds (107.02 M allocations: 18.440 GiB, 9.56% gc time)
+ 33.974630 seconds (115.15 M allocations: 19.894 GiB, 9.67% gc time)
+ 33.860312 seconds (123.97 M allocations: 21.471 GiB, 10.57% gc time)
+ 35.755862 seconds (133.54 M allocations: 23.182 GiB, 10.62% gc time)
+ 35.340469 seconds (143.89 M allocations: 25.033 GiB, 10.97% gc time)
+ 36.475148 seconds (155.14 M allocations: 27.045 GiB, 12.64% gc time)
+ 37.307963 seconds (167.35 M allocations: 29.228 GiB, 13.04% gc time)
+ 39.669050 seconds (180.58 M allocations: 31.594 GiB, 13.21% gc time)
+ 38.971312 seconds (194.92 M allocations: 34.158 GiB, 14.51% gc time)
+ 40.806110 seconds (210.46 M allocations: 36.937 GiB, 14.89% gc time)
+ 42.266073 seconds (227.32 M allocations: 39.952 GiB, 15.38% gc time)
+ 45.259705 seconds (245.62 M allocations: 43.224 GiB, 15.91% gc time)
+ 46.716331 seconds (265.45 M allocations: 46.771 GiB, 16.45% gc time)
+ 48.527453 seconds (286.93 M allocations: 50.611 GiB, 17.64% gc time)
+ 50.729562 seconds (310.27 M allocations: 54.785 GiB, 17.85% gc time)
+ 52.947550 seconds (335.53 M allocations: 59.302 GiB, 18.67% gc time)
+ 55.515034 seconds (362.96 M allocations: 64.205 GiB, 19.24% gc time)
+ 56.934172 seconds (392.69 M allocations: 69.522 GiB, 20.34% gc time)
+ 60.877339 seconds (424.94 M allocations: 75.289 GiB, 20.45% gc time)
+ 64.302029 seconds (459.89 M allocations: 81.539 GiB, 21.01% gc time)
+ 68.140683 seconds (497.78 M allocations: 88.314 GiB, 21.67% gc time)
+ 71.811040 seconds (538.88 M allocations: 95.663 GiB, 22.27% gc time)
+ 76.757152 seconds (583.47 M allocations: 103.635 GiB, 22.33% gc time)
+ 81.294278 seconds (631.80 M allocations: 112.277 GiB, 22.99% gc time)
+ 85.323143 seconds (684.21 M allocations: 121.649 GiB, 23.34% gc time)
+ 89.970612 seconds (741.03 M allocations: 131.810 GiB, 24.21% gc time)
+ 96.088712 seconds (802.65 M allocations: 142.829 GiB, 24.62% gc time)
+102.965145 seconds (869.49 M allocations: 154.781 GiB, 24.79% gc time)
+110.135387 seconds (941.95 M allocations: 167.736 GiB, 25.04% gc time)
+115.358810 seconds (1.02 G allocations: 181.786 GiB, 25.88% gc time)
+123.859368 seconds (1.11 G allocations: 197.021 GiB, 26.17% gc time)
+133.748483 seconds (1.20 G allocations: 213.544 GiB, 26.30% gc time)
+142.752574 seconds (1.30 G allocations: 231.456 GiB, 26.45% gc time)
+151.914729 seconds (1.41 G allocations: 250.886 GiB, 27.16% gc time)
+162.143171 seconds (1.52 G allocations: 271.947 GiB, 27.36% gc time)
+173.170238 seconds (1.65 G allocations: 294.789 GiB, 27.91% gc time)
+186.847098 seconds (1.79 G allocations: 319.562 GiB, 27.90% gc time)
+199.397707 seconds (1.94 G allocations: 346.416 GiB, 28.17% gc time)
+214.279822 seconds (2.10 G allocations: 375.546 GiB, 28.51% gc time)
+229.171937 seconds (2.28 G allocations: 407.126 GiB, 29.05% gc time)
+246.822459 seconds (2.47 G allocations: 441.373 GiB, 29.15% gc time)
+264.967935 seconds (2.68 G allocations: 478.505 GiB, 29.26% gc time)
+283.033102 seconds (2.91 G allocations: 518.776 GiB, 29.48% gc time)
+303.664413 seconds (3.15 G allocations: 562.437 GiB, 29.68% gc time)
+331.301228 seconds (3.41 G allocations: 609.789 GiB, 31.53% gc time)
+352.807604 seconds (3.70 G allocations: 661.132 GiB, 30.58% gc time)
+377.139407 seconds (4.01 G allocations: 716.810 GiB, 30.20% gc time)
+402.900262 seconds (4.35 G allocations: 777.181 GiB, 29.97% gc time)
+431.349650 seconds (4.72 G allocations: 842.648 GiB, 29.84% gc time)
+460.303504 seconds (5.11 G allocations: 913.636 GiB, 29.78% gc time)
+497.572782 seconds (5.54 G allocations: 990.615 GiB, 31.49% gc time)
+535.875960 seconds (6.01 G allocations: 1.049 TiB, 31.50% gc time)
+12516.284955 seconds (87.07 G allocations: 15.067 TiB, 19.78% gc time, 2.14% compilation time: 1% of which was recompilation)
+Fri Dec 13 22:13:06 EET 2024

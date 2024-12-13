@@ -34,12 +34,13 @@ end
 function f()
     param = initial_parameters(2)
     # -----------
-    traj = 100
-    Ls = [3]
+    traj = 5000
+    scalings = [1, 10]
     gammas = exp.(x_ticks(log(10^-5), log(100), 150))
     # -----------
     lines = []
-    for L in Ls
+    for sc in scalings
+        L = 3
         param = initial_parameters(L)
         d = param[:d]
         state = param[:state].val
@@ -55,7 +56,7 @@ function f()
             diss_op = [sqrt(gamma) * singlesite_a(d, L, L)]
             H_dd = -1.0im / 2 * diss_op[1]' * diss_op[1]
 
-            t_dt = min(t / 100, 1 / (gamma))
+            t_dt = min(t / 100, 1 / (sc * gamma))
             r_f(out, pa) = begin
                 dw = param[:w].val .+ (rand(L) .- 0.5) * param[:dw].val
                 dU = 2 * dw .- (2 * param[:w].val - param[:U].val)
@@ -67,7 +68,7 @@ function f()
             r = traj_mean(pa_out)
             push!(out, r[1, 1])
         end
-        push!(lines, LineInfo(gammas, out, traj, "L = $L"))
+        push!(lines, LineInfo(gammas, out, traj, "sc = $(round(sc, digits = 3))"))
     end
     path = joinpath(@__DIR__)
     makeplot(path, lines...; xlabel = "diss", ylabel = "anh", copy_code = false, param...)

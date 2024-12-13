@@ -18,8 +18,8 @@ end
 
 function initial_parameters(L)
     param = OrderedDict()
-    param[:dt] = 0.01
     param[:t] = 200
+    param[:dt] = ValueInfo(0.1, "min(0.1, 1/10Γ)")
     param[:d] = 3
     param[:state] = ValueInfo(bosonstack(2, L, 1), "|200...>")
     param[:alg] = "exact sbspc"
@@ -34,7 +34,7 @@ end
 function f()
     param = initial_parameters(2)
     # -----------
-    traj = 3000
+    traj = 10000
     Ls = [3]
     gammas = exp.(x_ticks(log(10^-5), log(100), 200))
     # -----------
@@ -47,7 +47,7 @@ function f()
         anh = anhall(d, L)
         obs = (state) -> expval(state, anh)
 
-        dt = param[:dt]; t = param[:t];
+        t = param[:t]
         pa_args, pa_out = pre_alloc_threads(zeros(1, 1), traj, PA_exact_dd(state))
 
         out = []
@@ -55,7 +55,7 @@ function f()
             diss_op = [sqrt(gamma) * singlesite_a(d, L, L)]
             H_dd = -1.0im / 2 * diss_op[1]' * diss_op[1]
 
-            t_dt = min(t / 100, 1 / (10 * gamma * 2 * pi))
+            t_dt = min(param[:dt].val, 1 / (gamma * 10))
             r_f(out, pa) = begin
                 dw = param[:w].val .+ (rand(L) .- 0.5) * param[:dw].val
                 dU = 2 * dw .- (2 * param[:w].val - param[:U].val)
