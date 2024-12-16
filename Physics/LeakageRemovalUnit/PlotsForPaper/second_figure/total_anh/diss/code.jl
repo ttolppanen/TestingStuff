@@ -34,7 +34,7 @@ end
 function f()
     param = initial_parameters(2)
     # -----------
-    traj = 20000
+    traj = 10000
     Ls = [3]
     gammas = exp.(x_ticks(log(10^-5), log(100), 200))
     # -----------
