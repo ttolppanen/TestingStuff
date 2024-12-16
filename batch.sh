@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=40                      # Number of CPU cores per task
 #SBATCH --mem=12gb                              # Job memory request
 #SBATCH --time=18:00:00                         # Time limit hrs:min:sec
-#SBATCH --output=batch_run.log                  # Standard output and error log
+#SBATCH --output=batch_.log                  # Standard output and error log
 pwd; hostname; date
 
 /homedir02/htolppan/.julia/juliaup/julia-1.10.5+0.x64.linux.gnu/bin/julia -t 40 -e 'include("LehmusJulia.jl");
