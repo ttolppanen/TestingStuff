@@ -34,7 +34,7 @@ end
 function f()
     param = initial_parameters(2)
     # -----------
-    traj = 10000
+    traj = 20000
     Ls = [3]
     gammas = exp.(x_ticks(log(10^-5), log(100), 200))
     # -----------
@@ -70,8 +70,8 @@ function f()
         push!(lines, LineInfo(gammas, out, traj, "L = $L"))
     end
     path = joinpath(@__DIR__)
-    makeplot(path, lines...; xlabel = "diss", ylabel = "anh", copy_code = false, param...)
-    # addtrajectories(path, lines...)
+    #makeplot(path, lines...; xlabel = "diss", ylabel = "anh", copy_code = false, param...)
+    addtrajectories(path, lines...)
     xlog_plot(@__DIR__)
 end
 
