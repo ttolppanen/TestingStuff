@@ -1,3 +1,35 @@
 /homedir02/htolppan/Documents/TestingStuff
 lehmus-cn4.oulu.fi
 Tue Dec 17 14:39:49 EET 2024
+    Updating registry at `~/.julia/registries/Private_ttolppanen`
+    Updating git-repo `http://github.com/ttolppanen/ttolppanen_JuliaRegistry`
+    Updating registry at `~/.julia/registries/General.toml`
+  Activating project at `~/Documents/TestingStuff`
+  No Changes to `~/Documents/TestingStuff/Project.toml`
+  No Changes to `~/Documents/TestingStuff/Manifest.toml`
+
+Threads used by julia = 40
+
+Started!
+
+ 41.778854 seconds (2.04 G allocations: 117.969 GiB, 56.29% gc time, 664.27% compilation time)
+384.085547 seconds (1.98 G allocations: 145.042 GiB, 8.15% gc time)
+962.832311 seconds (1.93 G allocations: 186.225 GiB, 4.50% gc time)
+1434.470147 seconds (1.91 G allocations: 232.630 GiB, 3.83% gc time, 0.03% compilation time)
+1938.588783 seconds (1.93 G allocations: 281.211 GiB, 3.43% gc time)
+4778.963665 seconds (9.81 G allocations: 965.766 GiB, 4.61% gc time, 6.16% compilation time: <1% of which was recompilation)
+T1
+ 38.983463 seconds (739.76 M allocations: 45.751 GiB, 24.75% gc time, 16.77% compilation time)
+485.278354 seconds (743.78 M allocations: 83.637 GiB, 4.08% gc time)
+718.456870 seconds (746.31 M allocations: 101.491 GiB, 3.48% gc time)
+816.588210 seconds (757.62 M allocations: 111.888 GiB, 3.32% gc time)
+892.534319 seconds (798.41 M allocations: 126.172 GiB, 3.33% gc time)
+2952.941971 seconds (3.79 G allocations: 469.779 GiB, 3.78% gc time, 0.23% compilation time)
+T2
+665.457192 seconds (515.27 M allocations: 91.632 GiB, 3.26% gc time, 6.25% compilation time)
+871.354455 seconds (500.87 M allocations: 108.746 GiB, 3.04% gc time)
+896.404893 seconds (503.88 M allocations: 117.319 GiB, 3.03% gc time)
+939.038065 seconds (515.14 M allocations: 141.990 GiB, 3.43% gc time)
+1175.575391 seconds (554.80 M allocations: 218.042 GiB, 2.29% gc time)
+4560.779101 seconds (2.59 G allocations: 681.489 GiB, 3.01% gc time, 0.92% compilation time: <1% of which was recompilation)
+Tue Dec 17 18:06:26 EET 2024
