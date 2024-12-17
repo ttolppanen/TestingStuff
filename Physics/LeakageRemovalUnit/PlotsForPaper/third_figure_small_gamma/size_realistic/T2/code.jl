@@ -52,9 +52,6 @@ function initial_parameters(L)
     state[2] = 1.0
     normalize!(state)
     param[:state] = ValueInfo(state, "|0>+|1> + thermal state")
-    param[:T] = 0.1
-    param[:diss] = 0.001
-    param[:deco] = 0.01
 
     param[:alg] = "krylov sbspc"
     param[:k] = 6
@@ -63,6 +60,9 @@ function initial_parameters(L)
     param[:w] = ValueInfo(7500 / param[:J].val, "7.5GHz")
     param[:dw] = ValueInfo(100 / param[:J].val, "100MHz")
     param[:U] = ValueInfo(250 / param[:J].val, "250MHz")
+    param[:T] = ValueInfo(0.1, "0.1K")
+    param[:diss] = ValueInfo(0.001, "5kHz")
+    param[:deco] = ValueInfo(0.01, "50kHz")
 
     d = param[:d]; L = param[:L]
     msrop = measurementoperators(nop(d), L)
@@ -93,11 +93,9 @@ function f()
         obs = (state) -> expval(state, ops)
 
         dt = param[:dt]; t = param[:t]; k = param[:k]
-        pa_k = PA_krylov_dd(allzero(d, L), k)
-        pa_args, pa_out = pre_alloc_threads(zeros(1, length(0:dt:t)), traj, pa_k)
         
-        diss_op = [sqrt(param[:diss]) * singlesite_a(d, L, i) for i in 1:L]
-        deco_op = [sqrt(param[:deco]) * singlesite_n(d, L, i) for i in 1:L]
+        diss_op = [sqrt(param[:diss].val) * singlesite_a(d, L, i) for i in 1:L]
+        deco_op = [sqrt(param[:deco].val) * singlesite_n(d, L, i) for i in 1:L]
         dd_op = vcat(diss_op, deco_op)
         H_dd = complex(spzeros(d^L, d^L))
         for op in dd_op
@@ -105,29 +103,28 @@ function f()
         end
 
         out = []
-        r_f(out, pa_k) = begin
+        r_f() = begin
             dw = param[:w].val .+ (rand(L) .- 0.5) * param[:dw].val
             dU = 2 * dw .- (2 * param[:w].val - param[:U].val)
             H = bosehubbard(d, L; w = dw, U = dU, J = 1) .+ H_dd
 
-            t_T = param[:T]
+            t_T = param[:T].val
             t_w = param[:w].val * param[:J].val * 2 * pi
             t_U = param[:U].val * param[:J].val * 2 * pi
             ts_sample = sample_transmon_thermal_state(d, L-1, t_T, t_w, t_U)
             state = kron(param[:state].val, ts_sample)
 
             effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
-            krylovevolve(state, H, dd_op, dt, t, k, pa_k, obs; effect!, out)
+            krylovevolve(state, H, dd_op, dt, t, k, obs; effect!)
         end
-        @time solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
+        @time pa_out = solvetrajectories(r_f, traj; paral = :threads)
         r = map(x -> abs.(hilbert(x[1,:])), pa_out)
         r = traj_mean(r)
 
         push!(lines, LineInfo(0:dt:t, r, traj, "L = $L"))
     end
     path = joinpath(@__DIR__)
-    # makeplot(path, lines...; xlabel = "t", ylabel = "sigma_x1 env", copy_code = false, param...)
-    addtrajectories(path, lines...)
+    makeplot(path, lines...; xlabel = "t", ylabel = "sigma_x1 env", copy_code = false, add_traj = true, param...)
 end
 
 @time f()
