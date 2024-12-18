@@ -1,4 +1,0 @@
-/homedir02/htolppan/Documents/TestingStuff
-lehmus-cn6.oulu.fi
-Wed Dec 18 14:16:25 EET 2024
-slurmstepd-lehmus-cn6: error: *** JOB 2270751 ON lehmus-cn6 CANCELLED AT 2024-12-18T14:18:44 ***

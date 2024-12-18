@@ -75,7 +75,7 @@ end
 function f()
     param = initial_parameters(1)
     # -----------
-    traj = 1000
+    traj = 2000
     Js = range(1, 20, length = 100) .* (10^6 * 2 * pi)
     # -----------
     lines = []
