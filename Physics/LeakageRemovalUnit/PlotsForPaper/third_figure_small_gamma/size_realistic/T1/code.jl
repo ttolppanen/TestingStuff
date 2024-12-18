@@ -32,13 +32,14 @@ function initial_parameters(L)
     param[:alg] = "krylov sbspc"
     param[:H] = "BH, d_w, fixed |2> energy"
     param[:k] = 6
-    param[:J] = ValueInfo(5, "5MHz")
-    param[:w] = ValueInfo(7500 / param[:J].val, "7.5GHz")
-    param[:dw] = ValueInfo(100 / param[:J].val, "100MHz")
-    param[:U] = ValueInfo(250 / param[:J].val, "250MHz")
+    mega_const = 10^6 * 2 * pi
+    param[:J] = ValueInfo(5 * mega_const, "5MHz")
+    param[:w] = ValueInfo(7500 * mega_const / param[:J].val, "7.5GHz")
+    param[:dw] = ValueInfo(100 * mega_const / param[:J].val, "100MHz")
+    param[:U] = ValueInfo(250 * mega_const / param[:J].val, "250MHz")
     param[:T] = ValueInfo(0.1, "0.1K")
-    param[:diss] = ValueInfo(0.001, "5kHz")
-    param[:deco] = ValueInfo(0.01, "50kHz")
+    param[:diss] = ValueInfo(0.001 * mega_const, "5kHz")
+    param[:deco] = ValueInfo(0.01 * mega_const, "50kHz")
 
     d = param[:d]; L = param[:L]
     msrop = measurementoperators(nop(d), L)
@@ -89,8 +90,8 @@ function f()
             H = bosehubbard(d, L; w = dw, U = dU, J = 1)
 
             t_T = param[:T].val
-            t_w = param[:w].val * param[:J].val * 2 * pi 
-            t_U = param[:U].val * param[:J].val * 2 * pi
+            t_w = param[:w].val * param[:J].val
+            t_U = param[:U].val * param[:J].val
             ts_sample = sample_transmon_thermal_state(d, L-1, t_T, t_w, t_U)
             state = kron(param[:state].val, ts_sample)
 
