@@ -1,0 +1,1672 @@
+/homedir02/htolppan/Documents/TestingStuff
+lehmus-cn15
+Wed Dec 18 14:29:21 EET 2024
+    Updating registry at `~/.julia/registries/Private_ttolppanen`
+    Updating git-repo `http://github.com/ttolppanen/ttolppanen_JuliaRegistry`
+    Updating registry at `~/.julia/registries/General.toml`
+  Activating project at `~/Documents/TestingStuff`
+Precompiling project...
+    PrecompileTools Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/PrecompileTools/AQ9Mk_OUQmK.ji.pidfile)
+    FileIO Being precompiled by another machine (hostname: lehmus-cn14, pid: 422057, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/FileIO/6iKRU_OUQmK.ji.pidfile)
+    DataStructures Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/DataStructures/xKiwJ_OUQmK.ji.pidfile)
+    SparseArraysExt Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/SparseArraysExt/h5qXK_OUQmK.ji.pidfile)
+    OpenSSL_jll Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1515631, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/OpenSSL_jll/M3X35_OUQmK.ji.pidfile)
+    Libmount_jll Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Libmount_jll/04u4y_OUQmK.ji.pidfile)
+    EpollShim_jll Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/EpollShim_jll/9JxHH_OUQmK.ji.pidfile)
+  ✓ ConstructionBase
+  ✓ Parameters
+  ✓ Adapt
+  ✓ CodecZlib
+    Bzip2_jll Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Bzip2_jll/biC9V_OUQmK.ji.pidfile)
+  ✓ Strided
+  ✓ ConstructionBase → ConstructionBaseLinearAlgebraExt
+  ✓ Tables
+  ✓ FillArrays → FillArraysSparseArraysExt
+  ✓ ChainRulesCore
+    LAME_jll Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/LAME_jll/SFEUf_OUQmK.ji.pidfile)
+  ✓ IntelOpenMP_jll
+    LERC_jll Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/LERC_jll/0PXNr_OUQmK.ji.pidfile)
+  ✓ FileIO
+  ✓ fzf_jll
+    x264_jll Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/x264_jll/XmaTp_OUQmK.ji.pidfile)
+  ✓ OpenSSL_jll
+    libaom_jll Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/libaom_jll/i2i8X_OUQmK.ji.pidfile)
+  ✓ Bzip2_jll
+    Zstd_jll Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Zstd_jll/cFDJB_OUQmK.ji.pidfile)
+  ✓ DataStructures
+    Expat_jll Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Expat_jll/4P57b_OUQmK.ji.pidfile)
+Imath_jll Waiting for background task / IO / timer.
+[pid 1515680] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0xad09b0->0x7feb02be20e0
+ timer              0xad1080->0x7feb02be2110
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ LERC_jll
+    LZO_jll Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/LZO_jll/dUj3l_OUQmK.ji.pidfile)
+  ✓ Libmount_jll
+    libvorbis_jll Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/libvorbis_jll/X4qYa_OUQmK.ji.pidfile)
+  ✓ PrecompileTools
+Graphite2_jll Waiting for background task / IO / timer.
+[pid 1515262] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x1557890->0x7f58f969a5f0
+ timer              0x156c280->0x7f58f969a620
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+LLVMOpenMP_jll Waiting for background task / IO / timer.
+[pid 1515482] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x1369300->0x7fd89cf961a0
+ timer              0x12e1c10->0x7fd89cf961d0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+Ghostscript_jll Waiting for background task / IO / timer.
+[pid 1515486] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x23fc620->0x7f22b9e5a1a0
+ timer              0x23eaff0->0x7f22b9e5a1d0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ Opus_jll
+libpng_jll Waiting for background task / IO / timer.
+[pid 1515583] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0xcf2980->0x7f50c900e1a0
+ timer              0xd04a60->0x7f50c900e1d0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+libfdk_aac_jll Waiting for background task / IO / timer.
+[pid 1515629] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x22e93f0->0x7f53e214a1a0
+ timer              0x2245ec0->0x7f53e214a1d0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ Xorg_xtrans_jll
+  ✓ Imath_jll
+  ✓ Expat_jll
+  ✓ Zstd_jll
+    LinearMapsStatisticsExt Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/LinearMapsStatisticsExt/7zyol_OUQmK.ji.pidfile)
+  ✓ LZO_jll
+  ✓ Libuuid_jll
+  ✓ Distances
+  ✓ Graphite2_jll
+  ✓ LLVMOpenMP_jll
+  ✓ Ghostscript_jll
+  ✓ libpng_jll
+    Xorg_libXau_jll Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Xorg_libXau_jll/S8Fsv_OUQmK.ji.pidfile)
+  ✓ libfdk_aac_jll
+  ✓ OffsetArrays → OffsetArraysAdaptExt
+  ✓ ConstructionBase → ConstructionBaseIntervalSetsExt
+  ✓ Unitful → ConstructionBaseUnitfulExt
+  ✓ FillArrays → FillArraysStatisticsExt
+    AbstractFFTsChainRulesCoreExt Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/AbstractFFTsChainRulesCoreExt/g4vnt_OUQmK.ji.pidfile)
+  ✓ LinearMaps → LinearMapsStatisticsExt
+    LinearMapsChainRulesCoreExt Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/LinearMapsChainRulesCoreExt/GYf8E_OUQmK.ji.pidfile)
+  ✓ Ratios → RatiosFixedPointNumbersExt
+  ? XML2_jll
+    MKL_jll Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/MKL_jll/DHEix_OUQmK.ji.pidfile)
+Libgcrypt_jll Waiting for background task / IO / timer.
+[pid 1518567] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x192b130->0x7f7207652110
+ timer              0x190e440->0x7f7207652140
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+SparseArraysExt Waiting for background task / IO / timer.
+[pid 1516357] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x2307ee0->0x7fc217fdebf0
+ timer              0x23b9f30->0x7fc217fdec20
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ Libgcrypt_jll
+    QOI Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/QOI/tWxmQ_OUQmK.ji.pidfile)
+ChainRulesCoreSparseArraysExt Waiting for background task / IO / timer.
+[pid 1519116] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x21bf590->0x7feaa5a162c0
+ timer              0x21933c0->0x7feaa5a162f0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ Latexify → SparseArraysExt
+  ✓ ChainRulesCore → ChainRulesCoreSparseArraysExt
+    OpenSSL Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/OpenSSL/B4VRP_OUQmK.ji.pidfile)
+Colors Waiting for background task / IO / timer.
+[pid 1518753] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x2363360->0x7ff09e2cf3a0
+ timer              0x2409880->0x7ff09e2cf3d0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ QOI
+    FreeType2_jll Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/FreeType2_jll/AzWNe_OUQmK.ji.pidfile)
+LogExpFunctionsChainRulesCoreExt Waiting for background task / IO / timer.
+[pid 1519397] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0xa62ad0->0x7f2e56107e80
+ timer              0xad9030->0x7f2e56107eb0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ Colors
+LAME_jll Waiting for background task / IO / timer.
+[pid 1516595] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x1408cd0->0x7f54568fe320
+ timer              0x179e950->0x7f54568fe350
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+x264_jll Waiting for background task / IO / timer.
+[pid 1518158] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x1c3b420->0x7effacd76680
+ timer              0x1eef6e0->0x7effacd766b0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+libaom_jll Waiting for background task / IO / timer.
+[pid 1519206] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0xd00520->0x7f18e092a5f0
+ timer              0xcca2b0->0x7f18e092a620
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ LogExpFunctions → LogExpFunctionsChainRulesCoreExt
+    StaticArrays Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/StaticArrays/yY9vm_OUQmK.ji.pidfile)
+  ✓ SortingAlgorithms
+    RecipesBase Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/RecipesBase/8e2Mm_OUQmK.ji.pidfile)
+  ✓ LAME_jll
+    Parsers Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1517440, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Parsers/833b9_OUQmK.ji.pidfile)
+JLFzf Waiting for background task / IO / timer.
+[pid 1520336] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x20f3050->0x7f7b8e9bfbe0
+ timer              0x1f7e2c0->0x7f7b8e9bfc10
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ x264_jll
+  ✓ libaom_jll
+    Static Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Static/4nGFz_OUQmK.ji.pidfile)
+AbstractFFTsChainRulesCoreExt Waiting for background task / IO / timer.
+[pid 1520449] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x19f5c70->0x7f73de82cc10
+ timer              0x1dc18c0->0x7f73de82cc40
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+MKL_jll Waiting for background task / IO / timer.
+[pid 1520019] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x9d1ff0->0x7faed255ee00
+ timer              0xaca8c0->0x7faed255ee30
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+FriBidi_jll Waiting for background task / IO / timer.
+[pid 1518107] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x229d700->0x7f5bfc0727a0
+ timer              0x22938e0->0x7f5bfc0727d0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ JLFzf
+    SIMD Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/SIMD/PRrUB_OUQmK.ji.pidfile)
+eudev_jll Waiting for background task / IO / timer.
+[pid 1518099] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x2748b80->0x7f300b2d2770
+ timer              0x27188a0->0x7f300b2d27a0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for ChainRulesCore [d360d2e6-b24c-11e9-a2a3-2a2ae2dbcce4]
+│   exception = Required dependency Compat [34da2185-b29b-5c13-b0c7-acf172513d20] failed to load from a cache file.
+└ @ Base loading.jl:1992
+  ✓ AbstractFFTs → AbstractFFTsChainRulesCoreExt
+    JLD2 Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/JLD2/O1EyT_OUQmK.ji.pidfile)
+  ✓ MKL_jll
+    OpenEXR_jll Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/OpenEXR_jll/i6VcV_OUQmK.ji.pidfile)
+  ✓ eudev_jll
+  ✓ FriBidi_jll
+    Libtiff_jll Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Libtiff_jll/f0w9B_OUQmK.ji.pidfile)
+IsApprox Waiting for background task / IO / timer.
+[pid 1520986] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x173c630->0x7fba8b852ad0
+ timer              0x1718f90->0x7fba8b852b00
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ EpollShim_jll
+Dbus_jll Waiting for background task / IO / timer.
+[pid 1521746] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x2234b80->0x7f08759661d0
+ timer              0x25f59b0->0x7f0875966200
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ Distances → DistancesSparseArraysExt
+  ✓ Pixman_jll
+    libsixel_jll Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/libsixel_jll/M5wDa_OUQmK.ji.pidfile)
+LinearMapsChainRulesCoreExt Waiting for background task / IO / timer.
+[pid 1520542] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x170a1f0->0x7f52ac62f9d0
+ timer              0x1701c60->0x7f52ac62fa00
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ IsApprox
+  ✓ CatIndices
+  ✓ MosaicViews
+  ✓ Dbus_jll
+  ✓ LinearMaps → LinearMapsChainRulesCoreExt
+    XSLT_jll Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/XSLT_jll/HNSqD_OUQmK.ji.pidfile)
+  ✓ Xorg_libXau_jll
+OpenSSL Waiting for background task / IO / timer.
+[pid 1522734] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x1c7b7b0->0x7f20114579d0
+ timer              0x1c05d80->0x7f2011457a00
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ Gettext_jll
+    Graphics Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Graphics/DwlUf_OUQmK.ji.pidfile)
+  ✓ OpenEXR_jll
+    SpecialFunctions Being precompiled by another machine (hostname: lehmus-cn14, pid: 431510, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/SpecialFunctions/78gOt_OUQmK.ji.pidfile)
+  ✓ UnitfulLatexify
+    StatsBase Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/StatsBase/EZjIG_OUQmK.ji.pidfile)
+  ✓ ArrayLayouts → ArrayLayoutsSparseArraysExt
+    FFTW Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/FFTW/PvIn2_OUQmK.ji.pidfile)
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for OpenSSL_jll [458c3c95-2e84-50aa-8efc-19380b2a3a95]
+│   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+└ @ Base loading.jl:1992
+  ✓ OpenSSL
+  ✓ Graphics
+  ✓ Distances → DistancesChainRulesCoreExt
+  ✓ libinput_jll
+  ✓ libvorbis_jll
+    BlockArrays Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/BlockArrays/Ebz77_OUQmK.ji.pidfile)
+  ✓ Glib_jll
+    HTTP Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/HTTP/zXWya_OUQmK.ji.pidfile)
+  ✓ StatsBase
+RecipesBase Waiting for background task / IO / timer.
+[pid 1523767] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x17bba40->0x7fce5ad17a30
+ timer              0x1845580->0x7fce5ad17a60
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ libsixel_jll
+  ✓ BlockArrays
+  ✓ SIMD
+    TiffImages Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/TiffImages/FH9XA_OUQmK.ji.pidfile)
+Static Waiting for background task / IO / timer.
+[pid 1523574] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x1151aa0->0x7f0afd0417b0
+ timer              0x1130810->0x7f0afd0417e0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ FFTW
+  ✓ RecipesBase
+    Polynomials Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1521550, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Polynomials/OaK78_OUQmK.ji.pidfile)
+    IntervalSetsRecipesBaseExt Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/IntervalSetsRecipesBaseExt/wAeAb_OUQmK.ji.pidfile)
+  ✓ FFTViews
+  ✓ HTTP
+  ✓ Libtiff_jll
+    LittleCMS_jll Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/LittleCMS_jll/kuCy0_OUQmK.ji.pidfile)
+OpenEXR Waiting for background task / IO / timer.
+[pid 1524952] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x16d42c0->0x7f3eabf69900
+ timer              0x16ac990->0x7f3eabf69930
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ StaticArrays
+    StaticArraysChainRulesCoreExt Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/StaticArraysChainRulesCoreExt/ETade_OUQmK.ji.pidfile)
+    ConstructionBaseStaticArraysExt Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ConstructionBaseStaticArraysExt/MmdaU_OUQmK.ji.pidfile)
+    AdaptStaticArraysExt Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/AdaptStaticArraysExt/9bCdf_OUQmK.ji.pidfile)
+  ✓ Static
+    BitTwiddlingConvenienceFunctions Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1522711, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/BitTwiddlingConvenienceFunctions/fzQ1O_OUQmK.ji.pidfile)
+    CPUSummary Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/CPUSummary/3IE2Z_OUQmK.ji.pidfile)
+  ✓ FreeType2_jll
+    Fontconfig_jll Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Fontconfig_jll/xsKJT_OUQmK.ji.pidfile)
+  ✓ OpenEXR
+  ✓ SpecialFunctions
+  ? StaticArrays → StaticArraysStatisticsExt
+    SpecialFunctionsChainRulesCoreExt Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/SpecialFunctionsChainRulesCoreExt/wr3Ok_OUQmK.ji.pidfile)
+  ✓ JLD2
+Fontconfig_jll Waiting for background task / IO / timer.
+[pid 1527442] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x277afd0->0x7fbcefc660e0
+ timer              0x27ddf50->0x7fbcefc66110
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ LittleCMS_jll
+    OpenJpeg_jll Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/OpenJpeg_jll/ZhiPc_OUQmK.ji.pidfile)
+  ✓ Fontconfig_jll
+  ✓ SpecialFunctions → SpecialFunctionsChainRulesCoreExt
+    ColorVectorSpace Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ColorVectorSpace/7uC4N_OUQmK.ji.pidfile)
+Polynomials Waiting for background task / IO / timer.
+[pid 1527675] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x97b640->0x7fe03b045960
+ timer              0x9a6ec0->0x7fe03b045990
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+IntervalSetsRecipesBaseExt Waiting for background task / IO / timer.
+[pid 1528114] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x1cd7840->0x7f227eb29270
+ timer              0x1787b40->0x7f227eb292a0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ Polynomials
+  ✓ Parsers
+    JSON Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/JSON/uf6oy_OUQmK.ji.pidfile)
+    ParsersExt Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ParsersExt/cULGY_OUQmK.ji.pidfile)
+BitTwiddlingConvenienceFunctions Waiting for background task / IO / timer.
+[pid 1527949] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x175f1b0->0x7f7ef605b820
+ timer              0x1775a50->0x7f7ef605b850
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ IntervalSets → IntervalSetsRecipesBaseExt
+  ✓ IntegralArrays
+  ✓ AxisArrays
+  ? Polynomials → PolynomialsChainRulesCoreExt
+  ✓ BitTwiddlingConvenienceFunctions
+    HostCPUFeatures Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/HostCPUFeatures/xhuQ4_OUQmK.ji.pidfile)
+CPUSummary Waiting for background task / IO / timer.
+[pid 1527951] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x2479740->0x7f279e2fce50
+ timer              0x21bd4a0->0x7f279e2fce80
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ JSON
+    Conda Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Conda/WZE3U_OUQmK.ji.pidfile)
+  ✓ XSLT_jll
+    Xorg_libxcb_jll Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1527717, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Xorg_libxcb_jll/n4mZf_OUQmK.ji.pidfile)
+  ✓ CPUSummary
+  ✓ HostCPUFeatures
+  ✓ Xorg_libxcb_jll
+    Xorg_xcb_util_jll Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1530115, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Xorg_xcb_util_jll/oHgey_OUQmK.ji.pidfile)
+    Xorg_libX11_jll Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Xorg_libX11_jll/KzQhU_OUQmK.ji.pidfile)
+  ✓ OpenJpeg_jll
+  ✓ ColorVectorSpace
+    ImageCore Being precompiled by another process (pid: 1531410, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageCore/cqNLm_OUQmK.ji.pidfile)
+    ColorSchemes Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1531280, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ColorSchemes/EO5fj_OUQmK.ji.pidfile)
+PolyesterWeave Waiting for background task / IO / timer.
+[pid 1531697] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x1e960c0->0x7f740db182e0
+ timer              0x1ee7d50->0x7f740db18310
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ? ImageMagick_jll
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for Static [aedffcd0-7271-4cad-89d0-dc628f76c6d3]
+│   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+└ @ Base loading.jl:1992
+  ? PolyesterWeave
+  ? DSP
+  ✓ Xorg_libX11_jll
+  ✓ Xorg_libXext_jll
+  ✓ Xorg_libxkbfile_jll
+  ✓ Xorg_libXrender_jll
+  ✓ Xorg_libXfixes_jll
+  ✓ Xorg_libXinerama_jll
+  ✓ Libglvnd_jll
+  ✓ Xorg_xkbcomp_jll
+  ✓ Xorg_libXrandr_jll
+  ✓ Xorg_libXi_jll
+  ✓ Xorg_libXcursor_jll
+  ? Cairo_jll
+  ✓ StaticArrays → StaticArraysChainRulesCoreExt
+    ArnoldiMethod Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1532867, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ArnoldiMethod/zP00S_OUQmK.ji.pidfile)
+    CoordinateTransformations Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/CoordinateTransformations/5md09_OUQmK.ji.pidfile)
+    NearestNeighbors Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/NearestNeighbors/Yj1kF_OUQmK.ji.pidfile)
+    RegionTrees Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/RegionTrees/YEbAm_OUQmK.ji.pidfile)
+    Rotations Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Rotations/SJ1Dh_OUQmK.ji.pidfile)
+ParsersExt Waiting for background task / IO / timer.
+[pid 1532504] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x25b01f0->0x7fd5661089a0
+ timer              0x21aba90->0x7fd5661089d0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for Parsers [69de0a69-1ddd-5017-9359-2bf0b02dc9f0]
+│   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+└ @ Base loading.jl:1992
+  ✓ InlineStrings → ParsersExt
+ColorSchemes Waiting for background task / IO / timer.
+[pid 1534724] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x1f691f0->0x7f0c0fad0af0
+ timer              0x1f61ec0->0x7f0c0fad0b20
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for OpenSpecFun_jll [efe28fd5-8261-553b-a9e1-b2916fc3738e]
+│   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+└ @ Base loading.jl:1992
+  ✓ ColorSchemes
+    PlotUtils Being precompiled by another process (pid: 1531998, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/PlotUtils/YveHG_OUQmK.ji.pidfile)
+  ? HarfBuzz_jll
+  ? libass_jll
+  ✓ Xorg_xcb_util_jll
+    Xorg_xcb_util_image_jll Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Xorg_xcb_util_image_jll/dYB7z_OUQmK.ji.pidfile)
+    Xorg_xcb_util_keysyms_jll Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Xorg_xcb_util_keysyms_jll/J2ZCX_OUQmK.ji.pidfile)
+  ✓ TiffImages
+    Xorg_xcb_util_renderutil_jll Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Xorg_xcb_util_renderutil_jll/3elYg_OUQmK.ji.pidfile)
+  ? Pango_jll
+    Xorg_xcb_util_wm_jll Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Xorg_xcb_util_wm_jll/WgWW8_OUQmK.ji.pidfile)
+  ? FFMPEG_jll
+  ✓ Xorg_xcb_util_renderutil_jll
+FFMPEG Waiting for background task / IO / timer.
+[pid 1537051] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x23a9680->0x7fb11f7367a0
+ timer              0x214ae80->0x7fb11f7367d0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+Rotations Waiting for background task / IO / timer.
+[pid 1537060] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x1eac120->0x7f8888bec610
+ timer              0x1e18610->0x7f8888bec640
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+ConstructionBaseStaticArraysExt Waiting for background task / IO / timer.
+[pid 1531950] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x168aad0->0x7fe1db3162c0
+ timer              0x1656ed0->0x7fe1db3162f0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+CoordinateTransformations Waiting for background task / IO / timer.
+[pid 1535156] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0xbd38e0->0x7f305e767400
+ timer              0xc926b0->0x7f305e767430
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+AdaptStaticArraysExt Waiting for background task / IO / timer.
+[pid 1537054] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x2627700->0x7f2fbfce0310
+ timer              0x2651ca0->0x7f2fbfce0340
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+ArnoldiMethod Waiting for background task / IO / timer.
+[pid 1536450] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0xe305e0->0x7efdc5e6d960
+ timer              0xdcfbd0->0x7efdc5e6d990
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ Conda
+    PyCall Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/PyCall/GkzkC_OUQmK.ji.pidfile)
+  ✓ Rotations
+  ? Rotations → RotationsRecipesBaseExt
+  ✓ ConstructionBase → ConstructionBaseStaticArraysExt
+  ✓ CoordinateTransformations
+  ✓ ArnoldiMethod
+    Graphs Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1538269, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Graphs/VJ6vx_OUQmK.ji.pidfile)
+  ✓ Adapt → AdaptStaticArraysExt
+  ✓ Accessors → AccessorsDatesExt
+  ✓ Setfield
+  ✓ Accessors → AccessorsTestExt
+┌ Warning: Module JLLWrappers with build ID fafbfcfd-5e1d-6ea4-0002-31679efc79cc is missing from the cache.
+│ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+└ @ Base loading.jl:1948
+  ? FFMPEG
+    AccessorsStaticArraysExt Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/AccessorsStaticArraysExt/l4BXL_OUQmK.ji.pidfile)
+  ✓ Accessors → AccessorsIntervalSetsExt
+  ✓ SplittablesBase
+  ✓ BangBang
+StaticArrayInterface Waiting for background task / IO / timer.
+[pid 1537874] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0xa885f0->0x7f2c544001c0
+ timer              0xebf140->0x7f2c544001f0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+NearestNeighbors Waiting for background task / IO / timer.
+[pid 1536724] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0xe04550->0x7f2d6a314040
+ timer              0xdd49e0->0x7f2d6a314070
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+Interpolations Waiting for background task / IO / timer.
+[pid 1537925] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x150adc0->0x7f854d3f2830
+ timer              0x14925a0->0x7f854d3f2860
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+Xorg_xcb_util_wm_jll Waiting for background task / IO / timer.
+[pid 1537072] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x2336520->0x7f2a313be6e0
+ timer              0x238c380->0x7f2a313be710
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ Accessors → AccessorsUnitfulExt
+  ✓ BangBang → BangBangChainRulesCoreExt
+  ✓ Xorg_xcb_util_wm_jll
+  ✓ NearestNeighbors
+    Clustering Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Clustering/Ovl2Q_OUQmK.ji.pidfile)
+  ✓ StaticArrayInterface
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for StaticArrays [90137ffa-7385-5640-81b9-e52037218182]
+│   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+└ @ Base loading.jl:1992
+  ? Interpolations
+  ✓ Xorg_xcb_util_keysyms_jll
+RegionTrees Waiting for background task / IO / timer.
+[pid 1535714] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x16d40a0->0x7fe481edb9a0
+ timer              0x13aed10->0x7fe481edb9d0
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ ExponentialUtilities
+StaticArrayInterfaceOffsetArraysExt Waiting for background task / IO / timer.
+[pid 1539867] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x1e12a80->0x7f54bac5a050
+ timer              0x1e971f0->0x7f54bac5a080
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ Xorg_xcb_util_image_jll
+    Xorg_xcb_util_cursor_jll Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Xorg_xcb_util_cursor_jll/XVAgT_OUQmK.ji.pidfile)
+  ✓ RegionTrees
+  ✓ StaticArrayInterface → StaticArrayInterfaceOffsetArraysExt
+  ✓ ImageCore
+    ImageBase Being precompiled by another process (pid: 1529628, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageBase/kFbbd_OUQmK.ji.pidfile)
+    PNGFiles Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/PNGFiles/yIZEc_OUQmK.ji.pidfile)
+    JpegTurbo Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/JpegTurbo/Ea2JL_OUQmK.ji.pidfile)
+    ImageMagick Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageMagick/0LbNX_OUQmK.ji.pidfile)
+    Sixel Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Sixel/KtGle_OUQmK.ji.pidfile)
+  ? Xorg_xkeyboard_config_jll
+  ✓ Xorg_xcb_util_cursor_jll
+  ? StaticArrayInterface → StaticArrayInterfaceStaticArraysExt
+CloseOpenIntervals Waiting for background task / IO / timer.
+[pid 1542581] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x2729680->0x7faf06bda920
+ timer              0x26ce7e0->0x7faf06bda950
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ PlotUtils
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for Static [aedffcd0-7271-4cad-89d0-dc628f76c6d3]
+│   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+└ @ Base loading.jl:1992
+  ? CloseOpenIntervals
+    PlotThemes Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/PlotThemes/QxsMm_OUQmK.ji.pidfile)
+  ✓ PyCall
+    RecipesPipeline Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/RecipesPipeline/QQIne_OUQmK.ji.pidfile)
+BangBangStaticArraysExt Waiting for background task / IO / timer.
+[pid 1538675] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x13968f0->0x7ff733b2fd60
+ timer              0x145ce60->0x7ff733b2fd90
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ BangBang → BangBangStaticArraysExt
+    PyPlot Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/PyPlot/oatAj_OUQmK.ji.pidfile)
+  ? xkbcommon_jll
+  ✓ MicroCollections
+Vulkan_Loader_jll Waiting for background task / IO / timer.
+[pid 1544744] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x8e7fe0->0x7fbf949f1210
+ timer              0x8c5430->0x7fbf949f1240
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210]
+│   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+└ @ Base loading.jl:1992
+  ? Vulkan_Loader_jll
+  ? EllipsisNotation
+  ✓ Transducers
+  ? Qt6Base_jll
+  ✓ Transducers → TransducersReferenceablesExt
+    TransducersBlockArraysExt Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/TransducersBlockArraysExt/tfAhP_OUQmK.ji.pidfile)
+LayoutPointers Waiting for background task / IO / timer.
+[pid 1545431] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x9b2c90->0x7f72adfce920
+ timer              0xa45fe0->0x7f72adfce950
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ Transducers → TransducersBlockArraysExt
+Clustering Waiting for background task / IO / timer.
+[pid 1545572] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x13d41b0->0x7fd8ac232ad0
+ timer              0xffd4c0->0x7fd8ac232b00
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ? TiledIteration
+  ✓ Accessors → AccessorsStaticArraysExt
+  ✓ PyPlot
+┌ Warning: Module PrecompileTools with build ID fafbfcfd-de82-7d4e-003e-8eb0a1cc69e9 is missing from the cache.
+│ This may mean PrecompileTools [aea7be01-6a6a-4083-8856-8a6e6704d82a] does not support precompilation but is imported by a module that does.
+└ @ Base loading.jl:1948
+  ? LayoutPointers
+InterpolationsUnitfulExt Waiting for background task / IO / timer.
+[pid 1540079] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x1f7f700->0x7f4763937130
+ timer              0x236c570->0x7f4763937160
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+
+[pid 1546465] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x14b9640->0x7f5efef3d300
+ timer              0x147e2a0->0x7f5efef3d330
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ VectorizationBase
+  ✓ SLEEFPirates
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for Interpolations [a98d9a8b-a2ab-59e6-89dd-64a1c18fca59]
+│   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+└ @ Base loading.jl:1992
+  ? Interpolations → InterpolationsUnitfulExt
+  ? Qt6ShaderTools_jll
+  ✓ Clustering
+  ✓ LoopVectorization
+    SpecialFunctionsExt Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/SpecialFunctionsExt/alAky_OUQmK.ji.pidfile)
+  ? Qt6Declarative_jll
+  ✓ NDTensors
+  ? NDTensors → NDTensorsGPUArraysCoreExt
+Qt6Wayland_jll Waiting for background task / IO / timer.
+[pid 1550817] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x2175e80->0x7fda4bb91f60
+ timer              0x2464750->0x7fda4bb91f90
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ? libdecor_jll
+  ? GLFW_jll
+┌ Warning: Module JLLWrappers with build ID fafbfcfd-38ab-89ac-0002-31a4b836ffb9 is missing from the cache.
+│ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+└ @ Base loading.jl:1948
+  ? Qt6Wayland_jll
+  ✓ LoopVectorization → SpecialFunctionsExt
+    ImageMorphology Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageMorphology/TCrac_OUQmK.ji.pidfile)
+  ✓ PlotThemes
+  ✓ Graphs
+    SimpleWeightedGraphs Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/SimpleWeightedGraphs/iIsRI_OUQmK.ji.pidfile)
+  ? GR_jll
+  ✓ RecipesPipeline
+  ✓ MetaGraphs
+  ✓ JpegTurbo
+  ✓ SimpleWeightedGraphs
+  ? GR
+  ? Plots
+UnitfulExt Waiting for background task / IO / timer.
+[pid 1557884] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x1cf8350->0x7fe260cdf640
+ timer              0x1c640a0->0x7fe260cdf670
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ NDTensors → NDTensorsMappedArraysExt
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for ColorSchemes [35d6a980-a343-548e-a6ea-1d62b119f2f4]
+│   exception = Required dependency Statistics [10745b16-79ce-11e8-11f9-7d13ad32a3b2] failed to load from a cache file.
+└ @ Base loading.jl:1992
+  ? Plots → UnitfulExt
+  ? ITensors
+  ? Plots → FileIOExt
+  ✓ ImageBase
+    ImageAxes Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1550905, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageAxes/5b2UE_OUQmK.ji.pidfile)
+    ImageShow Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageShow/76qZM_OUQmK.ji.pidfile)
+    ImageFiltering Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageFiltering/MN5uU_OUQmK.ji.pidfile)
+  ✓ ITensors → ITensorsVectorInterfaceExt
+  ✓ HistogramThresholding
+  ✓ QuantumStates
+  ✓ QuantumOperators
+  ? PlotAndSave
+  ✓ ImageTransformations
+  ✓ QuantumTimeEvolution
+  ✓ ImageMagick
+  ? ImageContrastAdjustment
+  ? ImageBinarization
+  ✓ PNGFiles
+  ✓ ImageFiltering
+    ImageCorners Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageCorners/GlayX_OUQmK.ji.pidfile)
+  ✓ Sixel
+  ✓ ImageMorphology
+    ImageSegmentation Being precompiled by another machine (hostname: lehmus-cn14, pid: 413782, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageSegmentation/khx7z_OUQmK.ji.pidfile)
+    ImageDistances Being precompiled by another process (pid: 1513053, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageDistances/lg0Xg_OUQmK.ji.pidfile)
+  ✓ ImageAxes
+ImageMetadata Waiting for background task / IO / timer.
+[pid 1574364] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x28e78e0->0x7f743d90c640
+ timer              0x281ee30->0x7f743d90c670
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ ImageDistances
+    ImageQualityIndexes Being precompiled by another machine (hostname: lehmus-cn6.oulu.fi, pid: 1506755, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageQualityIndexes/r7w33_OUQmK.ji.pidfile)
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for ImageAxes [2803e5a7-5153-5ecf-9a86-9b4c37f5f5ac]
+│   exception = Required dependency Reexport [189a3867-3050-52da-a836-e630ba90ab69] failed to load from a cache file.
+└ @ Base loading.jl:1992
+  ? ImageMetadata
+  ✓ ImageSegmentation
+  ✓ ImageCorners
+Netpbm Waiting for background task / IO / timer.
+[pid 1576411] waiting for IO to finish:
+ Handle type        uv_handle_t->data
+ fs_event           0x22a00c0->0x7f9297f1d0f0
+ timer              0x2572a60->0x7f9297f1d120
+This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+  ✓ ImageShow
+┌ Warning: Module Reexport with build ID fafbfcfd-eba8-5202-0002-326a4daf09d3 is missing from the cache.
+│ This may mean Reexport [189a3867-3050-52da-a836-e630ba90ab69] does not support precompilation but is imported by a module that does.
+└ @ Base loading.jl:1948
+  ? Netpbm
+  ✓ ImageIO
+  ✓ ImageQualityIndexes
+    Images Being precompiled by another machine (hostname: lehmus-cn14, pid: 413786, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Images/H8Vxc_OUQmK.ji.pidfile)
+  ✓ Images
+  185 dependencies successfully precompiled in 1968 seconds. 152 already precompiled.
+  41 dependencies failed but may be precompilable after restarting julia
+  111 dependencies had output during precompilation:
+┌ Netpbm
+│  [pid 1576411] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x22a00c0->0x7f9297f1d0f0
+│   timer              0x2572a60->0x7f9297f1d120
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+│  ┌ Warning: Module Reexport with build ID fafbfcfd-eba8-5202-0002-326a4daf09d3 is missing from the cache.
+│  │ This may mean Reexport [189a3867-3050-52da-a836-e630ba90ab69] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ Xorg_xcb_util_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-25f5-9e14-0002-315e78f725ab is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ libass_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-dde6-fcef-003e-8e780adb8f9f is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ Qt6Declarative_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-0a33-d3bd-0002-319ceb0f58b2 is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ Xorg_xcb_util_image_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-e3d1-f21f-0002-3170f168b750 is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ ChainRulesCore → ChainRulesCoreSparseArraysExt
+│  [pid 1519116] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x21bf590->0x7feaa5a162c0
+│   timer              0x21933c0->0x7feaa5a162f0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ EllipsisNotation
+│  ┌ Warning: Module PrecompileTools with build ID fafbfcfd-a19f-2365-003e-8e9c1ae92565 is missing from the cache.
+│  │ This may mean PrecompileTools [aea7be01-6a6a-4083-8856-8a6e6704d82a] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ Libgcrypt_jll
+│  [pid 1518567] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x192b130->0x7f7207652110
+│   timer              0x190e440->0x7f7207652140
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Plots → UnitfulExt
+│  [pid 1557884] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x1cf8350->0x7fe260cdf640
+│   timer              0x1c640a0->0x7fe260cdf670
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for ColorSchemes [35d6a980-a343-548e-a6ea-1d62b119f2f4]
+│  │   exception = Required dependency Statistics [10745b16-79ce-11e8-11f9-7d13ad32a3b2] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ PolyesterWeave
+│  [pid 1531697] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x1e960c0->0x7f740db182e0
+│   timer              0x1ee7d50->0x7f740db18310
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for Static [aedffcd0-7271-4cad-89d0-dc628f76c6d3]
+│  │   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ Interpolations
+│  [pid 1537925] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x150adc0->0x7f854d3f2830
+│   timer              0x14925a0->0x7f854d3f2860
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for StaticArrays [90137ffa-7385-5640-81b9-e52037218182]
+│  │   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ ImageCore
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for ColorVectorSpace [c3611d14-8923-5661-9e6a-0046d554d3a4]
+│  │   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ Images
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for ImageFiltering [6a3955dd-da59-5b1f-98d4-e7296123deb5]
+│  │   exception = Required dependency ArrayInterface [4fba245c-0d91-5ea0-9b3e-6abc04ee57a9] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ RegionTrees
+│  [pid 1535714] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x16d40a0->0x7fe481edb9a0
+│   timer              0x13aed10->0x7fe481edb9d0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Rotations → RotationsRecipesBaseExt
+│  ┌ Warning: Module PrecompileTools with build ID fafbfcfd-1d47-4099-003e-8e890edcb6e6 is missing from the cache.
+│  │ This may mean PrecompileTools [aea7be01-6a6a-4083-8856-8a6e6704d82a] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ StaticArrays → StaticArraysChainRulesCoreExt
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for StaticArrays [90137ffa-7385-5640-81b9-e52037218182]
+│  │   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ GR_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-232c-9dd0-0002-31aabfffd150 is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ Xorg_xcb_util_renderutil_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-4d2b-f824-0002-31673ef674f5 is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ ImageShow
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for ImageCore [a09fc81d-aa75-5fe9-8630-4744c3626534]
+│  │   exception = Required dependency IrrationalConstants [92d709cd-6900-40b7-9082-c6be49f344b6] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ StaticArrayInterface → StaticArrayInterfaceOffsetArraysExt
+│  [pid 1539867] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x1e12a80->0x7f54bac5a050
+│   timer              0x1e971f0->0x7f54bac5a080
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ ImageContrastAdjustment
+│  ┌ Warning: Module ImageCore with build ID fafbfcfd-e63c-4c98-003e-8f0a8c28bdd3 is missing from the cache.
+│  │ This may mean ImageCore [a09fc81d-aa75-5fe9-8630-4744c3626534] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ Polynomials → PolynomialsChainRulesCoreExt
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for Polynomials [f27b6e38-b328-58d1-80ce-0feddd5e7a45]
+│  │   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ Polynomials
+│  [pid 1527675] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x97b640->0x7fe03b045960
+│   timer              0x9a6ec0->0x7fe03b045990
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ FFMPEG
+│  [pid 1537051] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x23a9680->0x7fb11f7367a0
+│   timer              0x214ae80->0x7fb11f7367d0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-5e1d-6ea4-0002-31679efc79cc is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ LayoutPointers
+│  [pid 1545431] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x9b2c90->0x7f72adfce920
+│   timer              0xa45fe0->0x7f72adfce950
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+│  ┌ Warning: Module PrecompileTools with build ID fafbfcfd-de82-7d4e-003e-8eb0a1cc69e9 is missing from the cache.
+│  │ This may mean PrecompileTools [aea7be01-6a6a-4083-8856-8a6e6704d82a] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ Pango_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-dde6-fcef-003e-8e780adb8f9f is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ PyCall
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for Parsers [69de0a69-1ddd-5017-9359-2bf0b02dc9f0]
+│  │   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ ColorSchemes
+│  [pid 1534724] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x1f691f0->0x7f0c0fad0af0
+│   timer              0x1f61ec0->0x7f0c0fad0b20
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for OpenSpecFun_jll [efe28fd5-8261-553b-a9e1-b2916fc3738e]
+│  │   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ Xorg_xcb_util_cursor_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-3633-ce1a-0002-317a5068089b is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ CPUSummary
+│  [pid 1527951] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x2479740->0x7f279e2fce50
+│   timer              0x21bd4a0->0x7f279e2fce80
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ InlineStrings → ParsersExt
+│  [pid 1532504] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x25b01f0->0x7fd5661089a0
+│   timer              0x21aba90->0x7fd5661089d0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for Parsers [69de0a69-1ddd-5017-9359-2bf0b02dc9f0]
+│  │   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ LinearMaps → LinearMapsChainRulesCoreExt
+│  [pid 1520542] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x170a1f0->0x7f52ac62f9d0
+│   timer              0x1701c60->0x7f52ac62fa00
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ JpegTurbo
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for ImageCore [a09fc81d-aa75-5fe9-8630-4744c3626534]
+│  │   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ Qt6ShaderTools_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-22e2-b1b5-003e-8eb0bbf33a9f is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ Rotations
+│  [pid 1537060] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x1eac120->0x7f8888bec610
+│   timer              0x1e18610->0x7f8888bec640
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ libpng_jll
+│  [pid 1515583] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0xcf2980->0x7f50c900e1a0
+│   timer              0xd04a60->0x7f50c900e1d0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ libfdk_aac_jll
+│  [pid 1515629] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x22e93f0->0x7f53e214a1a0
+│   timer              0x2245ec0->0x7f53e214a1d0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Adapt → AdaptStaticArraysExt
+│  [pid 1537054] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x2627700->0x7f2fbfce0310
+│   timer              0x2651ca0->0x7f2fbfce0340
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ ImageTransformations
+│  ┌ Warning: Module FixedPointNumbers with build ID fafbfcfd-f739-483b-0002-31d3cd765436 is missing from the cache.
+│  │ This may mean FixedPointNumbers [53c48c17-4a7d-5ca2-90c5-79b7896eea93] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+│  ┌ Error: Error during loading of extension RatiosFixedPointNumbersExt of Ratios, use `Base.retry_load_extensions()` to retry.
+│  │   exception =
+│  │    1-element ExceptionStack:
+│  │    Declaring __precompile__(false) is not allowed in files that are being precompiled.
+│  │    Stacktrace:
+│  │      [1] _require(pkg::Base.PkgId, env::Nothing)
+│  │        @ Base ./loading.jl:1999
+│  │      [2] __require_prelocked(uuidkey::Base.PkgId, env::Nothing)
+│  │        @ Base ./loading.jl:1812
+│  │      [3] #invoke_in_world#3
+│  │        @ ./essentials.jl:926 [inlined]
+│  │      [4] invoke_in_world
+│  │        @ ./essentials.jl:923 [inlined]
+│  │      [5] _require_prelocked
+│  │        @ ./loading.jl:1803 [inlined]
+│  │      [6] _require_prelocked
+│  │        @ ./loading.jl:1802 [inlined]
+│  │      [7] run_extension_callbacks(extid::Base.ExtensionId)
+│  │        @ Base ./loading.jl:1295
+│  │      [8] run_extension_callbacks(pkgid::Base.PkgId)
+│  │        @ Base ./loading.jl:1330
+│  │      [9] run_package_callbacks(modkey::Base.PkgId)
+│  │        @ Base ./loading.jl:1164
+│  │     [10] _tryrequire_from_serialized(modkey::Base.PkgId, build_id::UInt128)
+│  │        @ Base ./loading.jl:1451
+│  │     [11] _tryrequire_from_serialized(pkg::Base.PkgId, path::String, ocachepath::String)
+│  │        @ Base ./loading.jl:1524
+│  │     [12] _require(pkg::Base.PkgId, env::String)
+│  │        @ Base ./loading.jl:1990
+│  │     [13] __require_prelocked(uuidkey::Base.PkgId, env::String)
+│  │        @ Base ./loading.jl:1812
+│  │     [14] #invoke_in_world#3
+│  │        @ ./essentials.jl:926 [inlined]
+│  │     [15] invoke_in_world
+│  │        @ ./essentials.jl:923 [inlined]
+│  │     [16] _require_prelocked(uuidkey::Base.PkgId, env::String)
+│  │        @ Base ./loading.jl:1803
+│  │     [17] macro expansion
+│  │        @ ./loading.jl:1790 [inlined]
+│  │     [18] macro expansion
+│  │        @ ./lock.jl:267 [inlined]
+│  │     [19] __require(into::Module, mod::Symbol)
+│  │        @ Base ./loading.jl:1753
+│  │     [20] #invoke_in_world#3
+│  │        @ ./essentials.jl:926 [inlined]
+│  │     [21] invoke_in_world
+│  │        @ ./essentials.jl:923 [inlined]
+│  │     [22] require(into::Module, mod::Symbol)
+│  │        @ Base ./loading.jl:1746
+│  │     [23] include
+│  │        @ ./Base.jl:495 [inlined]
+│  │     [24] include_package_for_output(pkg::Base.PkgId, input::String, depot_path::Vector{String}, dl_load_path::Vector{String}, load_path::Vector{String}, concrete_deps::Vector{Pair{Base.PkgId, UInt128}}, source::Nothing)
+│  │        @ Base ./loading.jl:2222
+│  │     [25] top-level scope
+│  │        @ stdin:3
+│  │     [26] eval
+│  │        @ ./boot.jl:385 [inlined]
+│  │     [27] include_string(mapexpr::typeof(identity), mod::Module, code::String, filename::String)
+│  │        @ Base ./loading.jl:2076
+│  │     [28] include_string
+│  │        @ ./loading.jl:2086 [inlined]
+│  │     [29] exec_options(opts::Base.JLOptions)
+│  │        @ Base ./client.jl:316
+│  │     [30] _start()
+│  │        @ Base ./client.jl:552
+│  └ @ Base loading.jl:1301
+└  
+┌ JLFzf
+│  [pid 1520336] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x20f3050->0x7f7b8e9bfbe0
+│   timer              0x1f7e2c0->0x7f7b8e9bfc10
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ NearestNeighbors
+│  ┌ Warning: Module Statistics with build ID fafbfcfd-94ec-f5c1-0002-315c6d07b3d9 is missing from the cache.
+│  │ This may mean Statistics [10745b16-79ce-11e8-11f9-7d13ad32a3b2] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+│  ┌ Error: Error during loading of extension StaticArraysStatisticsExt of StaticArrays, use `Base.retry_load_extensions()` to retry.
+│  │   exception =
+│  │    1-element ExceptionStack:
+│  │    Declaring __precompile__(false) is not allowed in files that are being precompiled.
+│  │    Stacktrace:
+│  │      [1] _require(pkg::Base.PkgId, env::Nothing)
+│  │        @ Base ./loading.jl:1999
+│  │      [2] __require_prelocked(uuidkey::Base.PkgId, env::Nothing)
+│  │        @ Base ./loading.jl:1812
+│  │      [3] #invoke_in_world#3
+│  │        @ ./essentials.jl:926 [inlined]
+│  │      [4] invoke_in_world
+│  │        @ ./essentials.jl:923 [inlined]
+│  │      [5] _require_prelocked
+│  │        @ ./loading.jl:1803 [inlined]
+│  │      [6] _require_prelocked
+│  │        @ ./loading.jl:1802 [inlined]
+│  │      [7] run_extension_callbacks(extid::Base.ExtensionId)
+│  │        @ Base ./loading.jl:1295
+│  │      [8] run_extension_callbacks(pkgid::Base.PkgId)
+│  │        @ Base ./loading.jl:1330
+│  │      [9] run_package_callbacks(modkey::Base.PkgId)
+│  │        @ Base ./loading.jl:1164
+│  │     [10] __require_prelocked(uuidkey::Base.PkgId, env::String)
+│  │        @ Base ./loading.jl:1819
+│  │     [11] #invoke_in_world#3
+│  │        @ ./essentials.jl:926 [inlined]
+│  │     [12] invoke_in_world
+│  │        @ ./essentials.jl:923 [inlined]
+│  │     [13] _require_prelocked(uuidkey::Base.PkgId, env::String)
+│  │        @ Base ./loading.jl:1803
+│  │     [14] macro expansion
+│  │        @ ./loading.jl:1790 [inlined]
+│  │     [15] macro expansion
+│  │        @ ./lock.jl:267 [inlined]
+│  │     [16] __require(into::Module, mod::Symbol)
+│  │        @ Base ./loading.jl:1753
+│  │     [17] #invoke_in_world#3
+│  │        @ ./essentials.jl:926 [inlined]
+│  │     [18] invoke_in_world
+│  │        @ ./essentials.jl:923 [inlined]
+│  │     [19] require(into::Module, mod::Symbol)
+│  │        @ Base ./loading.jl:1746
+│  │     [20] include
+│  │        @ ./Base.jl:495 [inlined]
+│  │     [21] include_package_for_output(pkg::Base.PkgId, input::String, depot_path::Vector{String}, dl_load_path::Vector{String}, load_path::Vector{String}, concrete_deps::Vector{Pair{Base.PkgId, UInt128}}, source::Nothing)
+│  │        @ Base ./loading.jl:2222
+│  │     [22] top-level scope
+│  │        @ stdin:3
+│  │     [23] eval
+│  │        @ ./boot.jl:385 [inlined]
+│  │     [24] include_string(mapexpr::typeof(identity), mod::Module, code::String, filename::String)
+│  │        @ Base ./loading.jl:2076
+│  │     [25] include_string
+│  │        @ ./loading.jl:2086 [inlined]
+│  │     [26] exec_options(opts::Base.JLOptions)
+│  │        @ Base ./client.jl:316
+│  │     [27] _start()
+│  │        @ Base ./client.jl:552
+│  └ @ Base loading.jl:1301
+│  
+│  [pid 1536724] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0xe04550->0x7f2d6a314040
+│   timer              0xdd49e0->0x7f2d6a314070
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ TiledIteration
+│  ┌ Warning: Module PrecompileTools with build ID fafbfcfd-a930-bb60-0002-319433e05ff5 is missing from the cache.
+│  │ This may mean PrecompileTools [aea7be01-6a6a-4083-8856-8a6e6704d82a] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ x264_jll
+│  [pid 1518158] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x1c3b420->0x7effacd76680
+│   timer              0x1eef6e0->0x7effacd766b0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Interpolations → InterpolationsUnitfulExt
+│  ┌ Warning: Module Adapt with build ID fafbfcfd-7255-a2ac-003e-8e81e24b8d3f is missing from the cache.
+│  │ This may mean Adapt [79e6a3ab-5dfb-504d-930d-738a2a938a0e] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+│  ┌ Error: Error during loading of extension AdaptStaticArraysExt of Adapt, use `Base.retry_load_extensions()` to retry.
+│  │   exception =
+│  │    1-element ExceptionStack:
+│  │    Declaring __precompile__(false) is not allowed in files that are being precompiled.
+│  │    Stacktrace:
+│  │      [1] _require(pkg::Base.PkgId, env::Nothing)
+│  │        @ Base ./loading.jl:1999
+│  │      [2] __require_prelocked(uuidkey::Base.PkgId, env::Nothing)
+│  │        @ Base ./loading.jl:1812
+│  │      [3] #invoke_in_world#3
+│  │        @ ./essentials.jl:926 [inlined]
+│  │      [4] invoke_in_world
+│  │        @ ./essentials.jl:923 [inlined]
+│  │      [5] _require_prelocked
+│  │        @ ./loading.jl:1803 [inlined]
+│  │      [6] _require_prelocked
+│  │        @ ./loading.jl:1802 [inlined]
+│  │      [7] run_extension_callbacks(extid::Base.ExtensionId)
+│  │        @ Base ./loading.jl:1295
+│  │      [8] run_extension_callbacks(pkgid::Base.PkgId)
+│  │        @ Base ./loading.jl:1330
+│  │      [9] run_package_callbacks(modkey::Base.PkgId)
+│  │        @ Base ./loading.jl:1164
+│  │     [10] __require_prelocked(uuidkey::Base.PkgId, env::String)
+│  │        @ Base ./loading.jl:1819
+│  │     [11] #invoke_in_world#3
+│  │        @ ./essentials.jl:926 [inlined]
+│  │     [12] invoke_in_world
+│  │        @ ./essentials.jl:923 [inlined]
+│  │     [13] _require_prelocked(uuidkey::Base.PkgId, env::String)
+│  │        @ Base ./loading.jl:1803
+│  │     [14] macro expansion
+│  │        @ ./loading.jl:1790 [inlined]
+│  │     [15] macro expansion
+│  │        @ ./lock.jl:267 [inlined]
+│  │     [16] __require(into::Module, mod::Symbol)
+│  │        @ Base ./loading.jl:1753
+│  │     [17] #invoke_in_world#3
+│  │        @ ./essentials.jl:926 [inlined]
+│  │     [18] invoke_in_world
+│  │        @ ./essentials.jl:923 [inlined]
+│  │     [19] require(into::Module, mod::Symbol)
+│  │        @ Base ./loading.jl:1746
+│  │     [20] include(mod::Module, _path::String)
+│  │        @ Base ./Base.jl:495
+│  │     [21] include(x::String)
+│  │        @ Interpolations ~/.julia/packages/Interpolations/91PhN/src/Interpolations.jl:1
+│  │     [22] top-level scope
+│  │        @ ~/.julia/packages/Interpolations/91PhN/src/Interpolations.jl:467
+│  │     [23] include
+│  │        @ ./Base.jl:495 [inlined]
+│  │     [24] include_package_for_output(pkg::Base.PkgId, input::String, depot_path::Vector{String}, dl_load_path::Vector{String}, load_path::Vector{String}, concrete_deps::Vector{Pair{Base.PkgId, UInt128}}, source::String)
+│  │        @ Base ./loading.jl:2222
+│  │     [25] top-level scope
+│  │        @ stdin:3
+│  │     [26] eval
+│  │        @ ./boot.jl:385 [inlined]
+│  │     [27] include_string(mapexpr::typeof(identity), mod::Module, code::String, filename::String)
+│  │        @ Base ./loading.jl:2076
+│  │     [28] include_string
+│  │        @ ./loading.jl:2086 [inlined]
+│  │     [29] exec_options(opts::Base.JLOptions)
+│  │        @ Base ./client.jl:316
+│  │     [30] _start()
+│  │        @ Base ./client.jl:552
+│  └ @ Base loading.jl:1301
+│  
+│  [pid 1540079] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x1f7f700->0x7f4763937130
+│   timer              0x236c570->0x7f4763937160
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for Interpolations [a98d9a8b-a2ab-59e6-89dd-64a1c18fca59]
+│  │   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ Plots
+│  ┌ Warning: Module PrecompileTools with build ID fafbfcfd-d226-43ba-003e-8edf78ffd5e9 is missing from the cache.
+│  │ This may mean PrecompileTools [aea7be01-6a6a-4083-8856-8a6e6704d82a] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ XML2_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-06d4-9a09-003e-8e2ea475f931 is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ ImageCorners
+│  ┌ Warning: Module Reexport with build ID fafbfcfd-16bc-2d1e-003e-8f53ba281a82 is missing from the cache.
+│  │ This may mean Reexport [189a3867-3050-52da-a836-e630ba90ab69] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ StaticArrayInterface
+│  [pid 1537874] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0xa885f0->0x7f2c544001c0
+│   timer              0xebf140->0x7f2c544001f0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ BangBang → BangBangStaticArraysExt
+│  [pid 1538675] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x13968f0->0x7ff733b2fd60
+│   timer              0x145ce60->0x7ff733b2fd90
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ libaom_jll
+│  [pid 1519206] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0xd00520->0x7f18e092a5f0
+│   timer              0xcca2b0->0x7f18e092a620
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Graphite2_jll
+│  [pid 1515262] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x1557890->0x7f58f969a5f0
+│   timer              0x156c280->0x7f58f969a620
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ HarfBuzz_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-eaf2-30eb-0002-315ab5873dbe is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ LogExpFunctions → LogExpFunctionsChainRulesCoreExt
+│  [pid 1519397] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0xa62ad0->0x7f2e56107e80
+│   timer              0xad9030->0x7f2e56107eb0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ GR
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-b83b-bef7-0002-31b3a8525a23 is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+│  ┌ Error: import GR_jll failed.
+│  │ Consider using `GR.GRPreferences.use_jll_binary()` or
+│  │ `GR.GRPreferences.use_upstream_binary()` to repair.
+│  │ Importing GR a second time will allow use of these functions.
+│  └ @ GR.GRPreferences ~/.julia/packages/GR/nDZgF/src/preferences.jl:8
+└  
+┌ ConstructionBase → ConstructionBaseStaticArraysExt
+│  [pid 1531950] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x168aad0->0x7fe1db3162c0
+│   timer              0x1656ed0->0x7fe1db3162f0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ CloseOpenIntervals
+│  [pid 1542581] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x2729680->0x7faf06bda920
+│   timer              0x26ce7e0->0x7faf06bda950
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for Static [aedffcd0-7271-4cad-89d0-dc628f76c6d3]
+│  │   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ IsApprox
+│  [pid 1520986] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x173c630->0x7fba8b852ad0
+│   timer              0x1718f90->0x7fba8b852b00
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ ImageMagick_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-8458-3170-0002-31473a48987c is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ PlotUtils
+│  ┌ Warning: Module Preferences with build ID fafbfcfd-96f3-1340-0002-317d660f794d is missing from the cache.
+│  │ This may mean Preferences [21216c6a-2e73-6563-6e65-726566657250] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ ImageAxes
+│  ┌ Warning: Module Reexport with build ID fafbfcfd-ce65-1eac-0002-325505fa7986 is missing from the cache.
+│  │ This may mean Reexport [189a3867-3050-52da-a836-e630ba90ab69] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ Qt6Wayland_jll
+│  [pid 1550817] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x2175e80->0x7fda4bb91f60
+│   timer              0x2464750->0x7fda4bb91f90
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-38ab-89ac-0002-31a4b836ffb9 is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ Clustering
+│  [pid 1545572] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x13d41b0->0x7fd8ac232ad0
+│   timer              0xffd4c0->0x7fd8ac232b00
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+│  
+│  [pid 1546465] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x14b9640->0x7f5efef3d300
+│   timer              0x147e2a0->0x7f5efef3d330
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Imath_jll
+│  [pid 1515680] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0xad09b0->0x7feb02be20e0
+│   timer              0xad1080->0x7feb02be2110
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Dbus_jll
+│  [pid 1521746] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x2234b80->0x7f08759661d0
+│   timer              0x25f59b0->0x7f0875966200
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ RecipesBase
+│  [pid 1523767] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x17bba40->0x7fce5ad17a30
+│   timer              0x1845580->0x7fce5ad17a60
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ GLFW_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-38ab-89ac-0002-31a4b836ffb9 is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ LLVMOpenMP_jll
+│  [pid 1515482] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x1369300->0x7fd89cf961a0
+│   timer              0x12e1c10->0x7fd89cf961d0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ PlotAndSave
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for ColorSchemes [35d6a980-a343-548e-a6ea-1d62b119f2f4]
+│  │   exception = Required dependency Reexport [189a3867-3050-52da-a836-e630ba90ab69] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ AbstractFFTs → AbstractFFTsChainRulesCoreExt
+│  [pid 1520449] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x19f5c70->0x7f73de82cc10
+│   timer              0x1dc18c0->0x7f73de82cc40
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for ChainRulesCore [d360d2e6-b24c-11e9-a2a3-2a2ae2dbcce4]
+│  │   exception = Required dependency Compat [34da2185-b29b-5c13-b0c7-acf172513d20] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ Qt6Base_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-f0a1-cd97-003e-8ead20ca7979 is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ PlotThemes
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for Colors [5ae59095-9a9b-59fe-a467-6f913c188581]
+│  │   exception = Required dependency Statistics [10745b16-79ce-11e8-11f9-7d13ad32a3b2] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ Ghostscript_jll
+│  [pid 1515486] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x23fc620->0x7f22b9e5a1a0
+│   timer              0x23eaff0->0x7f22b9e5a1d0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Static
+│  [pid 1523574] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x1151aa0->0x7f0afd0417b0
+│   timer              0x1130810->0x7f0afd0417e0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ OpenJpeg_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-fec1-23c2-0002-3144096d5c25 is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ LoopVectorization → SpecialFunctionsExt
+│  ┌ Warning: Module Preferences with build ID fafbfcfd-6207-4790-0002-31a4c9b32076 is missing from the cache.
+│  │ This may mean Preferences [21216c6a-2e73-6563-6e65-726566657250] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ MKL_jll
+│  [pid 1520019] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x9d1ff0->0x7faed255ee00
+│   timer              0xaca8c0->0x7faed255ee30
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ XSLT_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-a3aa-cfe2-003e-8e5463d6741f is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ CoordinateTransformations
+│  [pid 1535156] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0xbd38e0->0x7f305e767400
+│   timer              0xc926b0->0x7f305e767430
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ eudev_jll
+│  [pid 1518099] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x2748b80->0x7f300b2d2770
+│   timer              0x27188a0->0x7f300b2d27a0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Xorg_libxcb_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-c3d2-2f32-003e-8e5bfeda0dfe is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ ITensors
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for IsApprox [28f27b66-4bd8-47e7-9110-e2746eb8bed7]
+│  │   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ Vulkan_Loader_jll
+│  [pid 1544744] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x8e7fe0->0x7fbf949f1210
+│   timer              0x8c5430->0x7fbf949f1240
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210]
+│  │   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ RecipesPipeline
+│  ┌ Warning: Module PrecompileTools with build ID fafbfcfd-7312-ce47-0002-31b2f6b7c196 is missing from the cache.
+│  │ This may mean PrecompileTools [aea7be01-6a6a-4083-8856-8a6e6704d82a] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ xkbcommon_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-3633-ce1a-0002-317a5068089b is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ NDTensors → NDTensorsGPUArraysCoreExt
+│  ┌ Warning: Module Compat with build ID fafbfcfd-8d47-49ff-003e-8eb05e501112 is missing from the cache.
+│  │ This may mean Compat [34da2185-b29b-5c13-b0c7-acf172513d20] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ libdecor_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-be79-a829-0002-319193c958b1 is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ Xorg_xkeyboard_config_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-eaf2-30eb-0002-315ab5873dbe is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ Latexify → SparseArraysExt
+│  [pid 1516357] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x2307ee0->0x7fc217fdebf0
+│   timer              0x23b9f30->0x7fc217fdec20
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ OpenSSL
+│  [pid 1522734] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x1c7b7b0->0x7f20114579d0
+│   timer              0x1c05d80->0x7f2011457a00
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for OpenSSL_jll [458c3c95-2e84-50aa-8efc-19380b2a3a95]
+│  │   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ OpenEXR
+│  [pid 1524952] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x16d42c0->0x7f3eabf69900
+│   timer              0x16ac990->0x7f3eabf69930
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ FFMPEG_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-25f5-9e14-0002-315e78f725ab is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ IntervalSets → IntervalSetsRecipesBaseExt
+│  [pid 1528114] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x1cd7840->0x7f227eb29270
+│   timer              0x1787b40->0x7f227eb292a0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ ImageSegmentation
+│  ┌ Warning: Module StaticArrays with build ID fafbfcfd-52e0-71d2-0002-325a13b4d11c is missing from the cache.
+│  │ This may mean StaticArrays [90137ffa-7385-5640-81b9-e52037218182] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ ImageBinarization
+│  ┌ Warning: Module Reexport with build ID fafbfcfd-371a-6c6c-0002-31e17f3a6302 is missing from the cache.
+│  │ This may mean Reexport [189a3867-3050-52da-a836-e630ba90ab69] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ BitTwiddlingConvenienceFunctions
+│  [pid 1527949] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x175f1b0->0x7f7ef605b820
+│   timer              0x1775a50->0x7f7ef605b850
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Plots → FileIOExt
+│  ┌ Warning: Module Preferences with build ID fafbfcfd-a431-96b8-0002-31c9318fdad8 is missing from the cache.
+│  │ This may mean Preferences [21216c6a-2e73-6563-6e65-726566657250] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ StaticArrays → StaticArraysStatisticsExt
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for StaticArrays [90137ffa-7385-5640-81b9-e52037218182]
+│  │   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ LAME_jll
+│  [pid 1516595] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x1408cd0->0x7f54568fe320
+│   timer              0x179e950->0x7f54568fe350
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Xorg_xcb_util_wm_jll
+│  [pid 1537072] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x2336520->0x7f2a313be6e0
+│   timer              0x238c380->0x7f2a313be710
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ ImageDistances
+│  ┌ Warning: Module OffsetArrays with build ID fafbfcfd-40f7-a54c-003e-8f76ca0fd6c2 is missing from the cache.
+│  │ This may mean OffsetArrays [6fe1bfb0-de20-5000-8ca7-80f57d26f881] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ TiffImages
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for SIMD [fdea26ae-647d-5447-a871-4b548cad5224]
+│  │   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ DSP
+│  ┌ Warning: Module Preferences with build ID fafbfcfd-7d89-69a5-0002-3145447f8da5 is missing from the cache.
+│  │ This may mean Preferences [21216c6a-2e73-6563-6e65-726566657250] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ Fontconfig_jll
+│  [pid 1527442] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x277afd0->0x7fbcefc660e0
+│   timer              0x27ddf50->0x7fbcefc66110
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ FriBidi_jll
+│  [pid 1518107] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x229d700->0x7f5bfc0727a0
+│   timer              0x22938e0->0x7f5bfc0727d0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Colors
+│  [pid 1518753] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x2363360->0x7ff09e2cf3a0
+│   timer              0x2409880->0x7ff09e2cf3d0
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ Cairo_jll
+│  ┌ Warning: Module JLLWrappers with build ID fafbfcfd-cf0b-f8e4-0002-314f1a8e8393 is missing from the cache.
+│  │ This may mean JLLWrappers [692b3bcd-3c85-4b1f-b108-f13ce0eb3210] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ ArnoldiMethod
+│  [pid 1536450] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0xe305e0->0x7efdc5e6d960
+│   timer              0xdcfbd0->0x7efdc5e6d990
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+└  
+┌ StaticArrayInterface → StaticArrayInterfaceStaticArraysExt
+│  ┌ Warning: Module PrecompileTools with build ID fafbfcfd-4282-b098-0002-3173a9537048 is missing from the cache.
+│  │ This may mean PrecompileTools [aea7be01-6a6a-4083-8856-8a6e6704d82a] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ ColorVectorSpace
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for OpenSpecFun_jll [efe28fd5-8261-553b-a9e1-b2916fc3738e]
+│  │   exception = Required dependency Preferences [21216c6a-2e73-6563-6e65-726566657250] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+┌ ImageFiltering
+│  ┌ Warning: Module Reexport with build ID fafbfcfd-a503-0433-003e-8f44df161a2e is missing from the cache.
+│  │ This may mean Reexport [189a3867-3050-52da-a836-e630ba90ab69] does not support precompilation but is imported by a module that does.
+│  └ @ Base loading.jl:1948
+└  
+┌ ImageMetadata
+│  [pid 1574364] waiting for IO to finish:
+│   Handle type        uv_handle_t->data
+│   fs_event           0x28e78e0->0x7f743d90c640
+│   timer              0x281ee30->0x7f743d90c670
+│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.
+│  ┌ Warning: The call to compilecache failed to create a usable precompiled cache file for ImageAxes [2803e5a7-5153-5ecf-9a86-9b4c37f5f5ac]
+│  │   exception = Required dependency Reexport [189a3867-3050-52da-a836-e630ba90ab69] failed to load from a cache file.
+│  └ @ Base loading.jl:1992
+└  
+  No Changes to `~/Documents/TestingStuff/Project.toml`
+  No Changes to `~/Documents/TestingStuff/Manifest.toml`
+
+Threads used by julia = 40
+
+Started!
+
+ 37.818416 seconds (2.04 G allocations: 118.295 GiB, 37.69% gc time, 1020.33% compilation time)
+131.491595 seconds (2.01 G allocations: 130.780 GiB, 11.27% gc time)
+324.170321 seconds (1.99 G allocations: 143.247 GiB, 4.93% gc time, 0.14% compilation time)
+424.795825 seconds (1.99 G allocations: 159.918 GiB, 4.18% gc time, 0.10% compilation time)
+489.906762 seconds (2.03 G allocations: 177.294 GiB, 4.07% gc time, 0.15% compilation time)
+1419.201191 seconds (10.08 G allocations: 730.285 GiB, 5.84% gc time, 28.21% compilation time: <1% of which was recompilation)
+T1
+ 21.999164 seconds (745.62 M allocations: 45.725 GiB, 18.45% gc time, 26.84% compilation time)
+ 39.507234 seconds (734.55 M allocations: 52.296 GiB, 18.39% gc time)
+316.020063 seconds (742.02 M allocations: 64.655 GiB, 2.34% gc time)
+329.475871 seconds (765.49 M allocations: 78.377 GiB, 2.71% gc time, 0.12% compilation time)
+372.615665 seconds (818.13 M allocations: 94.096 GiB, 2.88% gc time)
+1080.472429 seconds (3.81 G allocations: 335.228 GiB, 3.55% gc time, 0.60% compilation time)
+T2
+380.589488 seconds (517.15 M allocations: 87.318 GiB, 2.61% gc time, 3.82% compilation time)
+431.232408 seconds (511.28 M allocations: 97.534 GiB, 2.63% gc time)
+437.075925 seconds (513.89 M allocations: 106.460 GiB, 2.86% gc time)
+498.558399 seconds (523.34 M allocations: 132.787 GiB, 3.06% gc time)
+503.568825 seconds (562.37 M allocations: 208.818 GiB, 3.09% gc time)
+2265.576365 seconds (2.63 G allocations: 636.042 GiB, 2.89% gc time, 0.69% compilation time: <1% of which was recompilation)
+Wed Dec 18 16:25:34 EET 2024

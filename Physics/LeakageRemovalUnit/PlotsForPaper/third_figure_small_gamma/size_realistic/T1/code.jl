@@ -38,8 +38,8 @@ function initial_parameters(L)
     param[:dw] = ValueInfo(100 * mega_const / param[:J].val, "100MHz")
     param[:U] = ValueInfo(250 * mega_const / param[:J].val, "250MHz")
     param[:T] = ValueInfo(0.1, "0.1K")
-    param[:diss] = ValueInfo(0.001 * mega_const, "5kHz")
-    param[:deco] = ValueInfo(0.01 * mega_const, "50kHz")
+    param[:diss] = ValueInfo(1 / (16.7 * 10^(-6) * param[:J].val), "16.7µs")
+    param[:deco] = ValueInfo(1 / (10.0 * 10^(-6) * param[:J].val), "10.0µs")
 
     d = param[:d]; L = param[:L]
     msrop = measurementoperators(nop(d), L)
