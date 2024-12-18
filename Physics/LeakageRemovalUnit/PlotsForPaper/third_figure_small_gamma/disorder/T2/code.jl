@@ -48,8 +48,8 @@ end
 function f()
     param = initial_parameters()
     # -----------
-    traj = 2500
-    dws = range(0, 20, length = 100)
+    traj = 5000
+    dws = range(1, 20, length = 100)
     # -----------
     lines = []
     d = param[:d]; L = param[:L]
@@ -62,7 +62,7 @@ function f()
     ops = singlesite(sigma_x, L, 1)
     obs = (state) -> expval(state, ops)
 
-    dt = param[:dt]; t = param[:t]; k = param[:k]
+    dt = param[:dt]; t = param[:t];
     
     for dw_i in dws
         out = []
@@ -87,4 +87,3 @@ function f()
 end
 
 @time f()
-exit()

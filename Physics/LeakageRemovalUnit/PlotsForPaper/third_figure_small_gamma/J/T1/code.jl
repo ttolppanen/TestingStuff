@@ -92,7 +92,7 @@ function f()
             H = bosehubbard(d, L; w = dw, U = dU, J = J_i / param[:U].val)
             effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
             U = exp(-1.0im * Matrix(H) * param[:dt])
-            exactevolve(param[:state], U, dt, t, obs; effect!)
+            exactevolve(param[:state].val, U, dt, t, obs; effect!)
         end
         @time pa_out = solvetrajectories(r_f, traj; paral = :threads)
         r = traj_mean(pa_out)

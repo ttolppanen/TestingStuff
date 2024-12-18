@@ -44,7 +44,6 @@ function initial_parameters(J)
     mega_const = 10^6 * 2 * pi
     param[:U] = ValueInfo(250 * mega_const, "250MHz")
     U = param[:U].val
-    param[:T] = ValueInfo(0.1, "0.1K")
     param[:w] = ValueInfo(7500 * mega_const / U, "7.5GHz")
     param[:dw] = ValueInfo(100 * mega_const / U, "100MHz")
     param[:gamma] = 3/2 * (J / U)^2 # this is 3/2 J^2/U, in units of U
@@ -95,12 +94,6 @@ function f()
             dw = param[:w].val .+ (rand(L) .- 0.5) * param[:dw].val
             dU = 2 * dw .- (2 * param[:w].val - 1)
             H = bosehubbard(d, L; w = dw, U = dU, J = J_i / param[:U].val)
-
-            t_T = param[:T].val
-            t_w = param[:w].val * param[:U].val
-            t_U = param[:U].val
-            ts_sample = sample_transmon_thermal_state(d, L-1, t_T, t_w, t_U)
-            state = kron(param[:state].val, ts_sample)
 
             effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
             U = exp(-1.0im * Matrix(H) * param[:dt])

@@ -45,8 +45,8 @@ end
 function f()
     param = initial_parameters()
     # -----------
-    traj = 2500
-    dws = range(0, 20, length = 100)
+    traj = 5000
+    dws = range(1, 20, length = 100)
     # -----------
     lines = []
     d = param[:d]; L = param[:L]
