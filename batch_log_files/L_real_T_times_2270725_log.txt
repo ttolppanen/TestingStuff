@@ -1,0 +1,51 @@
+/homedir02/htolppan/Documents/TestingStuff
+lehmus-cn14
+Tue Dec 17 21:04:53 EET 2024
+    Updating registry at `~/.julia/registries/Private_ttolppanen`
+    Updating git-repo `http://github.com/ttolppanen/ttolppanen_JuliaRegistry`
+    Updating registry at `~/.julia/registries/General.toml`
+  Activating project at `~/Documents/TestingStuff`
+Precompiling project...
+    ImageFiltering Being precompiled by another machine (hostname: lehmus-cn12, pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageFiltering/MN5uU_OUQmK.ji.pidfile)
+    QuantumTimeEvolution Being precompiled by another machine (hostname: lehmus-cn12, pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/QuantumTimeEvolution/Vv3bA_OUQmK.ji.pidfile)
+    Plots Being precompiled by another machine (hostname: lehmus-cn12, pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Plots/ld3vC_OUQmK.ji.pidfile)
+  ✓ QuantumTimeEvolution
+  ✓ ImageFiltering
+    ImageCorners Being precompiled by another machine (hostname: lehmus-cn12, pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageCorners/GlayX_OUQmK.ji.pidfile)
+    ImageSegmentation Being precompiled by another machine (hostname: lehmus-cn12, pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageSegmentation/khx7z_OUQmK.ji.pidfile)
+    ImageQualityIndexes Being precompiled by another machine (hostname: lehmus-cn12, pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageQualityIndexes/r7w33_OUQmK.ji.pidfile)
+  ✓ ImageQualityIndexes
+  ✓ ImageSegmentation
+  ✓ ImageCorners
+    Images Being precompiled by another machine (hostname: lehmus-cn12, pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Images/H8Vxc_OUQmK.ji.pidfile)
+  ✓ Plots
+  ✓ Images
+  7 dependencies successfully precompiled in 56 seconds. 371 already precompiled.
+  No Changes to `~/Documents/TestingStuff/Project.toml`
+  No Changes to `~/Documents/TestingStuff/Manifest.toml`
+
+Threads used by julia = 40
+
+Started!
+
+ 37.361326 seconds (2.04 G allocations: 118.388 GiB, 34.99% gc time, 995.88% compilation time)
+269.861167 seconds (1.99 G allocations: 146.425 GiB, 6.10% gc time)
+726.364715 seconds (1.94 G allocations: 185.660 GiB, 2.87% gc time, 0.01% compilation time)
+1054.362899 seconds (1.91 G allocations: 231.623 GiB, 2.51% gc time, 0.01% compilation time)
+1335.149439 seconds (1.93 G allocations: 281.055 GiB, 2.44% gc time, 0.04% compilation time)
+3436.704991 seconds (9.82 G allocations: 963.894 GiB, 3.19% gc time, 11.22% compilation time: <1% of which was recompilation)
+T1
+ 24.857747 seconds (738.38 M allocations: 45.890 GiB, 21.12% gc time, 23.76% compilation time)
+344.936963 seconds (744.11 M allocations: 85.195 GiB, 2.70% gc time)
+548.700182 seconds (744.51 M allocations: 102.059 GiB, 2.14% gc time)
+591.358367 seconds (757.85 M allocations: 112.599 GiB, 2.31% gc time, 0.03% compilation time)
+639.985471 seconds (798.51 M allocations: 126.258 GiB, 2.26% gc time)
+2150.763864 seconds (3.78 G allocations: 472.087 GiB, 2.53% gc time, 0.29% compilation time)
+T2
+428.291203 seconds (516.19 M allocations: 91.014 GiB, 2.60% gc time, 3.54% compilation time)
+602.381349 seconds (500.89 M allocations: 108.899 GiB, 2.08% gc time)
+643.013749 seconds (503.92 M allocations: 117.483 GiB, 2.03% gc time)
+691.829780 seconds (515.16 M allocations: 142.173 GiB, 2.39% gc time)
+702.021649 seconds (554.84 M allocations: 218.314 GiB, 2.26% gc time)
+3082.723516 seconds (2.59 G allocations: 681.007 GiB, 2.29% gc time, 0.53% compilation time: <1% of which was recompilation)
+Tue Dec 17 23:31:34 EET 2024

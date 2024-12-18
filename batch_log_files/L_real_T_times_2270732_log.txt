@@ -1,0 +1,35 @@
+/homedir02/htolppan/Documents/TestingStuff
+lehmus-cn14
+Tue Dec 17 23:37:16 EET 2024
+    Updating registry at `~/.julia/registries/Private_ttolppanen`
+    Updating git-repo `http://github.com/ttolppanen/ttolppanen_JuliaRegistry`
+    Updating registry at `~/.julia/registries/General.toml`
+  Activating project at `~/Documents/TestingStuff`
+  No Changes to `~/Documents/TestingStuff/Project.toml`
+  No Changes to `~/Documents/TestingStuff/Manifest.toml`
+
+Threads used by julia = 40
+
+Started!
+
+ 37.573994 seconds (2.04 G allocations: 118.376 GiB, 34.78% gc time, 980.87% compilation time)
+251.687689 seconds (1.99 G allocations: 144.205 GiB, 6.32% gc time)
+724.457096 seconds (1.94 G allocations: 185.398 GiB, 2.92% gc time, 0.01% compilation time)
+1046.898362 seconds (1.91 G allocations: 231.526 GiB, 2.54% gc time, 0.01% compilation time)
+1310.559059 seconds (1.94 G allocations: 278.921 GiB, 2.46% gc time, 0.04% compilation time)
+3382.322736 seconds (9.82 G allocations: 959.173 GiB, 3.23% gc time, 11.31% compilation time: <1% of which was recompilation)
+T1
+ 24.271165 seconds (737.97 M allocations: 45.879 GiB, 19.44% gc time, 23.73% compilation time)
+326.499742 seconds (744.47 M allocations: 83.270 GiB, 3.17% gc time)
+538.880565 seconds (745.53 M allocations: 101.535 GiB, 2.20% gc time)
+583.551928 seconds (757.63 M allocations: 112.135 GiB, 2.09% gc time, 0.04% compilation time)
+637.112581 seconds (798.47 M allocations: 126.487 GiB, 2.24% gc time)
+2111.333420 seconds (3.78 G allocations: 469.391 GiB, 2.53% gc time, 0.29% compilation time)
+T2
+449.113926 seconds (513.67 M allocations: 93.709 GiB, 2.78% gc time, 3.59% compilation time)
+598.368927 seconds (500.96 M allocations: 108.834 GiB, 2.00% gc time)
+639.572626 seconds (503.90 M allocations: 117.480 GiB, 2.09% gc time)
+687.968942 seconds (515.16 M allocations: 142.175 GiB, 2.41% gc time)
+698.108074 seconds (554.84 M allocations: 218.312 GiB, 2.41% gc time)
+3088.748104 seconds (2.59 G allocations: 683.635 GiB, 2.36% gc time, 0.56% compilation time: <1% of which was recompilation)
+Wed Dec 18 02:01:07 EET 2024

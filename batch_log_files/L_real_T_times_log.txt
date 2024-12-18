@@ -1,10 +1,365 @@
 /homedir02/htolppan/Documents/TestingStuff
-lehmus-cn4.oulu.fi
-Tue Dec 17 14:39:49 EET 2024
+lehmus-cn12
+Tue Dec 17 21:03:53 EET 2024
     Updating registry at `~/.julia/registries/Private_ttolppanen`
     Updating git-repo `http://github.com/ttolppanen/ttolppanen_JuliaRegistry`
     Updating registry at `~/.julia/registries/General.toml`
   Activating project at `~/Documents/TestingStuff`
+   Installed PlotAndSave ─ v0.2.13
+Precompiling project...
+  ✓ IteratorInterfaceExtensions
+  ✓ IndirectArrays
+  ✓ LaTeXStrings
+  ✓ StatsAPI
+  ✓ CEnum
+  ✓ TensorCore
+  ✓ ExprTools
+  ✓ RangeArrays
+  ✓ Contour
+  ✓ AbstractFFTs
+  ✓ VersionParsing
+  ✓ InitialValues
+  ✓ ConcurrentUtilities
+  ✓ OffsetArrays
+  ✓ Format
+  ✓ TableTraits
+  ✓ LinearMaps
+  ✓ Pipe
+  ✓ UnPack
+  ✓ HalfIntegers
+  ✓ ArgCheck
+  ✓ Measures
+  ✓ InverseFunctions
+  ✓ ManualMemory
+  ✓ PkgVersion
+  ✓ FillArrays
+  ✓ GenericSchur
+  ✓ Preferences
+  ✓ Grisu
+  ✓ SerializedElementArrays
+  ✓ Compat
+  ✓ DataValueInterfaces
+  ✓ OrderedCollections
+  ✓ Requires
+  ✓ SIMDTypes
+  ✓ Unzip
+  ✓ MbedTLS
+  ✓ LinearMaps → LinearMapsSparseArraysExt
+  ✓ ThreadedScans
+  ✓ Reexport
+  ✓ TimerOutputs
+  ✓ DocStringExtensions
+  ✓ JLLWrappers
+  ✓ Compat → CompatLinearAlgebraExt
+  ✓ SimpleBufferStream
+  ✓ InlineStrings
+  ✓ FillArrays → FillArraysSparseArraysExt
+  ✓ URIs
+  ✓ BitIntegers
+  ✓ CompositionsBase
+  ✓ ExceptionUnwrapping
+  ✓ DefineSingletons
+  ✓ MacroTools
+  ✓ TranscodingStreams
+  ✓ ProgressMeter
+  ✓ NaNMath
+  ✓ LazyModules
+  ✓ DelimitedFiles
+  ✓ CpuId
+  ✓ UnicodeFun
+  ✓ VectorInterface
+  ✓ IfElse
+  ✓ ConstructionBase
+  ✓ CommonWorldInvalidations
+  ✓ PackageExtensionCompat
+  ✓ DataAPI
+  ✓ FastClosures
+  ✓ CodecZlib
+  ✓ ComputationalResources
+  ✓ Scratch
+  ✓ Indexing
+  ✓ StaticArraysCore
+  ✓ ChainRulesCore
+  ✓ ConstructionBase → ConstructionBaseLinearAlgebraExt
+  ✓ SimpleTraits
+  ✓ LoggingExtras
+  ✓ TupleTools
+  ✓ Functors
+  ✓ CompilerSupportLibraries_jll
+  ✓ DataStructures
+  ✓ Statistics
+  ✓ RelocatableFolders
+  ✓ Tables
+  ✓ IterTools
+  ✓ RealDot
+  ✓ Baselet
+  ✓ InverseFunctions → InverseFunctionsDatesExt
+  ✓ AbstractFFTs → AbstractFFTsChainRulesCoreExt
+  ✓ LinearMaps → LinearMapsChainRulesCoreExt
+  ✓ ChainRulesCore → ChainRulesCoreSparseArraysExt
+  ✓ CustomUnitRanges
+  ✓ Parameters
+  ✓ IntervalSets
+  ✓ OpenSpecFun_jll
+  ✓ ThreadingUtilities
+  ✓ AbstractFFTs → AbstractFFTsTestExt
+  ✓ Adapt
+  ✓ EpollShim_jll
+  ✓ Graphite2_jll
+  ✓ Quaternions
+  ✓ Libmount_jll
+  ✓ OpenSSL_jll
+  ✓ InverseFunctions → InverseFunctionsTestExt
+  ✓ IntervalSets → IntervalSetsRandomExt
+  ✓ Xorg_libICE_jll
+  ✓ Xorg_libXau_jll
+  ✓ libpng_jll
+  ✓ Imath_jll
+  ✓ LAME_jll
+  ✓ IntelOpenMP_jll
+  ✓ Ghostscript_jll
+  ✓ LERC_jll
+  ✓ fzf_jll
+  ✓ JpegTurbo_jll
+  ✓ XZ_jll
+  ✓ gperf_jll
+  ✓ mtdev_jll
+  ✓ Ogg_jll
+  ✓ oneTBB_jll
+  ✓ Xorg_libSM_jll
+  ✓ Xorg_libXdmcp_jll
+  ✓ x264_jll
+  ✓ libaom_jll
+  ✓ OpenEXR_jll
+  ✓ Expat_jll
+  ✓ LZO_jll
+  ✓ Opus_jll
+  ✓ Xorg_xtrans_jll
+  ✓ libevdev_jll
+  ✓ Libiconv_jll
+  ✓ libsixel_jll
+  ✓ Wayland_protocols_jll
+  ✓ FFTW_jll
+  ✓ MKL_jll
+  ✓ eudev_jll
+  ✓ FileIO
+  ✓ FriBidi_jll
+  ✓ Libuuid_jll
+  ✓ Zeros
+  ✓ Inflate
+  ✓ BitFlags
+  ✓ ChunkSplitters
+  ✓ MappedArrays
+  ✓ ExternalDocstrings
+  ✓ PrecompileTools
+  ✓ StridedViews
+  ✓ Showoff
+  ✓ Missings
+  ✓ XML2_jll
+  ✓ SortingAlgorithms
+  ✓ WoodburyMatrices
+  ✓ libinput_jll
+  ✓ CompositionsBase → CompositionsBaseInverseFunctionsExt
+  ✓ LinearMaps → LinearMapsStatisticsExt
+  ✓ FillArrays → FillArraysStatisticsExt
+  ✓ Dictionaries
+  ✓ IrrationalConstants
+  ✓ LLVMOpenMP_jll
+  ✓ OffsetArrays → OffsetArraysAdaptExt
+  ✓ Latexify
+  ✓ ConstructionBase → ConstructionBaseIntervalSetsExt
+  ✓ x265_jll
+  ✓ Gettext_jll
+  ✓ IntervalSets → IntervalSetsStatisticsExt
+  ✓ JLFzf
+  ✓ Libffi_jll
+  ✓ Libgpg_error_jll
+  ✓ libvorbis_jll
+  ✓ Dbus_jll
+  ✓ Ratios
+  ✓ StackViews
+  ✓ SplitApplyCombine
+  ✓ RecipesBase
+  ✓ Wayland_jll
+  ✓ Distances
+  ✓ libfdk_aac_jll
+  ✓ Static
+  ✓ Strided
+  ✓ Zstd_jll
+  ✓ AxisAlgorithms
+  ✓ Xorg_libpthread_stubs_jll
+  ✓ BitTwiddlingConvenienceFunctions
+  ✓ LogExpFunctions
+  ✓ PaddedViews
+  ✓ Pixman_jll
+  ✓ OpenSSL
+  ✓ Latexify → SparseArraysExt
+  ✓ Bzip2_jll
+  ✓ Libgcrypt_jll
+  ✓ Glib_jll
+  ✓ IntervalSets → IntervalSetsRecipesBaseExt
+  ✓ HostCPUFeatures
+  ✓ Distances → DistancesSparseArraysExt
+  ✓ FFTW
+  ✓ CatIndices
+  ✓ FreeType2_jll
+  ✓ CPUSummary
+  ✓ XSLT_jll
+  ✓ Libtiff_jll
+  ✓ MosaicViews
+  ✓ FixedPointNumbers
+  ✓ LogExpFunctions → LogExpFunctionsInverseFunctionsExt
+  ✓ Fontconfig_jll
+  ✓ FFTViews
+  ✓ Distances → DistancesChainRulesCoreExt
+  ✓ PolyesterWeave
+  ✓ LittleCMS_jll
+  ✓ LogExpFunctions → LogExpFunctionsChainRulesCoreExt
+  ✓ Xorg_libxcb_jll
+  ✓ Ratios → RatiosFixedPointNumbersExt
+  ✓ AxisArrays
+  ✓ OpenJpeg_jll
+  ✓ Xorg_xcb_util_jll
+  ✓ Xorg_libX11_jll
+  ✓ ImageMagick_jll
+  ✓ StaticArrays
+  ✓ Xorg_xcb_util_image_jll
+  ✓ Xorg_xcb_util_keysyms_jll
+  ✓ HTTP
+  ✓ Xorg_xcb_util_renderutil_jll
+  ✓ ColorTypes
+  ✓ Xorg_libXrender_jll
+  ✓ Xorg_xcb_util_wm_jll
+  ✓ Xorg_libXext_jll
+  ✓ Xorg_libXfixes_jll
+  ✓ Xorg_libxkbfile_jll
+  ✓ StatsBase
+  ✓ StaticArrays → StaticArraysChainRulesCoreExt
+  ✓ SpecialFunctions
+  ✓ Xorg_xcb_util_cursor_jll
+  ✓ IntegralArrays
+  ✓ Xorg_xkbcomp_jll
+    ConstructionBaseStaticArraysExt Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ConstructionBaseStaticArraysExt/MmdaU_OUQmK.ji.pidfile)
+  ✓ Xorg_libXi_jll
+  ✓ Libglvnd_jll
+  ✓ QOI
+  ✓ SIMD
+    AdaptStaticArraysExt Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/AdaptStaticArraysExt/9bCdf_OUQmK.ji.pidfile)
+  ✓ StaticArrays → StaticArraysStatisticsExt
+  ✓ Cairo_jll
+    SpecialFunctionsChainRulesCoreExt Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/SpecialFunctionsChainRulesCoreExt/wr3Ok_OUQmK.ji.pidfile)
+  ✓ Xorg_libXinerama_jll
+  ✓ Xorg_libXrandr_jll
+  ✓ Xorg_libXcursor_jll
+  ✓ Xorg_xkeyboard_config_jll
+  ✓ CoordinateTransformations
+  ✓ RegionTrees
+  ✓ ArnoldiMethod
+  ✓ xkbcommon_jll
+  ✓ Unitful
+  ✓ HarfBuzz_jll
+  ✓ Colors
+  ✓ NearestNeighbors
+  ✓ Rotations
+  ✓ Vulkan_Loader_jll
+  ✓ Unitful → ConstructionBaseUnitfulExt
+  ✓ Unitful → InverseFunctionsUnitfulExt
+  ✓ libass_jll
+  ✓ IsApprox
+  ✓ Pango_jll
+  ✓ Graphics
+  ✓ OpenEXR
+  ✓ Qt6Base_jll
+  ✓ Rotations → RotationsRecipesBaseExt
+  ✓ UnitfulLatexify
+  ✓ libdecor_jll
+  ✓ FFMPEG_jll
+  ✓ Clustering
+  ✓ Qt6ShaderTools_jll
+  ✓ ArrayLayouts
+  ✓ FFMPEG
+  ✓ GLFW_jll
+  ✓ Parsers
+  ✓ Graphs
+  ✓ ArrayLayouts → ArrayLayoutsSparseArraysExt
+  ✓ InlineStrings → ParsersExt
+  ✓ JSON
+  ✓ SimpleWeightedGraphs
+  ✓ Conda
+  ✓ Polynomials
+  ✓ BlockArrays
+  ✓ ConstructionBase → ConstructionBaseStaticArraysExt
+    AccessorsIntervalSetsExt Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/AccessorsIntervalSetsExt/JQpVc_OUQmK.ji.pidfile)
+    AccessorsStaticArraysExt Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/AccessorsStaticArraysExt/l4BXL_OUQmK.ji.pidfile)
+    BangBangStaticArraysExt Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/BangBangStaticArraysExt/I8ZlX_OUQmK.ji.pidfile)
+  ✓ GR_jll
+  ✓ Adapt → AdaptStaticArraysExt
+  ✓ SpecialFunctions → SpecialFunctionsChainRulesCoreExt
+    ExponentialUtilities Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ExponentialUtilities/gINTF_OUQmK.ji.pidfile)
+    StaticArrayInterfaceStaticArraysExt Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/StaticArrayInterfaceStaticArraysExt/Nww1z_OUQmK.ji.pidfile)
+    StaticArrayInterfaceOffsetArraysExt Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/StaticArrayInterfaceOffsetArraysExt/LOVcL_OUQmK.ji.pidfile)
+    ImageCore Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageCore/cqNLm_OUQmK.ji.pidfile)
+  ✓ Polynomials → PolynomialsChainRulesCoreExt
+  ✓ BangBang → BangBangChainRulesCoreExt
+  ✓ Accessors → AccessorsUnitfulExt
+  ✓ Qt6Declarative_jll
+  ✓ Interpolations
+  ✓ Qt6Wayland_jll
+  ✓ Interpolations → InterpolationsUnitfulExt
+  ✓ DSP
+  ✓ ColorSchemes
+  ✓ GR
+  ✓ PyCall
+  ✓ PyPlot
+  ✓ Accessors → AccessorsStaticArraysExt
+  ✓ Accessors → AccessorsIntervalSetsExt
+  ✓ BangBang → BangBangStaticArraysExt
+  ✓ StaticArrayInterface → StaticArrayInterfaceStaticArraysExt
+  ✓ StaticArrayInterface → StaticArrayInterfaceOffsetArraysExt
+    LoopVectorization Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/LoopVectorization/4TogI_OUQmK.ji.pidfile)
+  ✓ MicroCollections
+  ✓ PlotUtils
+  ✓ Transducers
+  ✓ Transducers → TransducersReferenceablesExt
+  ✓ Transducers → TransducersBlockArraysExt
+  ✓ PlotThemes
+  ✓ RecipesPipeline
+  ✓ Folds
+  ✓ JLD2
+  ✓ MetaGraphs
+  ✓ NDTensors
+  ✓ ImageCore
+    ImageFiltering Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageFiltering/MN5uU_OUQmK.ji.pidfile)
+    ImageContrastAdjustment Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageContrastAdjustment/JckzS_OUQmK.ji.pidfile)
+    ImageBinarization Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageBinarization/NNne1_OUQmK.ji.pidfile)
+    ImageMetadata Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageMetadata/dSTEq_OUQmK.ji.pidfile)
+  ✓ NDTensors → NDTensorsGPUArraysCoreExt
+  ✓ NDTensors → NDTensorsMappedArraysExt
+  ✓ ExponentialUtilities
+  ✓ TiffImages
+  ✓ LoopVectorization
+    ImageDistances Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageDistances/lg0Xg_OUQmK.ji.pidfile)
+  ✓ ITensors
+  ✓ ImageMetadata
+  ✓ ImageBinarization
+  ✓ ImageContrastAdjustment
+    ImageIO Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageIO/aYC4e_OUQmK.ji.pidfile)
+  ✓ ITensors → ITensorsVectorInterfaceExt
+  ✓ QuantumStates
+  ✓ QuantumOperators
+  ✓ ImageDistances
+  ✓ QuantumTimeEvolution
+  ✓ ImageIO
+  ✓ Plots
+  ✓ Plots → UnitfulExt
+  ✓ Plots → FileIOExt
+  ✓ ImageFiltering
+    ImageCorners Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageCorners/GlayX_OUQmK.ji.pidfile)
+    ImageQualityIndexes Being precompiled by another process (pid: 3158203, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ImageQualityIndexes/r7w33_OUQmK.ji.pidfile)
+  ✓ PlotAndSave
+  ✓ ImageQualityIndexes
+  ✓ ImageCorners
+  333 dependencies successfully precompiled in 108 seconds. 45 already precompiled.
   No Changes to `~/Documents/TestingStuff/Project.toml`
   No Changes to `~/Documents/TestingStuff/Manifest.toml`
 
@@ -12,24 +367,24 @@ Threads used by julia = 40
 
 Started!
 
- 41.778854 seconds (2.04 G allocations: 117.969 GiB, 56.29% gc time, 664.27% compilation time)
-384.085547 seconds (1.98 G allocations: 145.042 GiB, 8.15% gc time)
-962.832311 seconds (1.93 G allocations: 186.225 GiB, 4.50% gc time)
-1434.470147 seconds (1.91 G allocations: 232.630 GiB, 3.83% gc time, 0.03% compilation time)
-1938.588783 seconds (1.93 G allocations: 281.211 GiB, 3.43% gc time)
-4778.963665 seconds (9.81 G allocations: 965.766 GiB, 4.61% gc time, 6.16% compilation time: <1% of which was recompilation)
+ 41.780663 seconds (2.04 G allocations: 118.385 GiB, 43.52% gc time, 886.68% compilation time)
+249.828377 seconds (1.99 G allocations: 143.993 GiB, 7.03% gc time)
+714.052474 seconds (1.94 G allocations: 183.702 GiB, 3.09% gc time, 0.02% compilation time)
+1082.841715 seconds (1.91 G allocations: 234.574 GiB, 2.70% gc time, 0.02% compilation time)
+1326.159641 seconds (1.94 G allocations: 279.809 GiB, 2.66% gc time, 0.07% compilation time)
+3424.414658 seconds (9.82 G allocations: 961.132 GiB, 3.57% gc time, 11.20% compilation time: <1% of which was recompilation)
 T1
- 38.983463 seconds (739.76 M allocations: 45.751 GiB, 24.75% gc time, 16.77% compilation time)
-485.278354 seconds (743.78 M allocations: 83.637 GiB, 4.08% gc time)
-718.456870 seconds (746.31 M allocations: 101.491 GiB, 3.48% gc time)
-816.588210 seconds (757.62 M allocations: 111.888 GiB, 3.32% gc time)
-892.534319 seconds (798.41 M allocations: 126.172 GiB, 3.33% gc time)
-2952.941971 seconds (3.79 G allocations: 469.779 GiB, 3.78% gc time, 0.23% compilation time)
+ 23.927343 seconds (741.47 M allocations: 45.932 GiB, 21.39% gc time, 26.69% compilation time)
+337.246920 seconds (744.13 M allocations: 84.293 GiB, 3.17% gc time)
+545.017944 seconds (745.25 M allocations: 102.013 GiB, 2.28% gc time)
+589.844400 seconds (757.54 M allocations: 112.591 GiB, 2.11% gc time, 0.01% compilation time)
+641.484970 seconds (798.73 M allocations: 126.246 GiB, 2.75% gc time)
+2138.437111 seconds (3.79 G allocations: 471.158 GiB, 2.73% gc time, 0.31% compilation time)
 T2
-665.457192 seconds (515.27 M allocations: 91.632 GiB, 3.26% gc time, 6.25% compilation time)
-871.354455 seconds (500.87 M allocations: 108.746 GiB, 3.04% gc time)
-896.404893 seconds (503.88 M allocations: 117.319 GiB, 3.03% gc time)
-939.038065 seconds (515.14 M allocations: 141.990 GiB, 3.43% gc time)
-1175.575391 seconds (554.80 M allocations: 218.042 GiB, 2.29% gc time)
-4560.779101 seconds (2.59 G allocations: 681.489 GiB, 3.01% gc time, 0.92% compilation time: <1% of which was recompilation)
-Tue Dec 17 18:06:26 EET 2024
+437.165422 seconds (515.44 M allocations: 91.912 GiB, 3.26% gc time, 3.47% compilation time)
+602.430729 seconds (500.87 M allocations: 108.921 GiB, 2.08% gc time)
+643.949034 seconds (503.91 M allocations: 117.482 GiB, 2.21% gc time)
+691.287931 seconds (515.17 M allocations: 142.177 GiB, 2.47% gc time)
+704.050254 seconds (554.85 M allocations: 218.344 GiB, 2.34% gc time)
+3094.347877 seconds (2.59 G allocations: 681.953 GiB, 2.47% gc time, 0.52% compilation time)
+Tue Dec 17 23:30:45 EET 2024

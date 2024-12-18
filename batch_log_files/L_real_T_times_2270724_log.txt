@@ -1,0 +1,148 @@
+/homedir02/htolppan/Documents/TestingStuff
+lehmus-cn12
+Tue Dec 17 21:04:23 EET 2024
+    Updating registry at `~/.julia/registries/Private_ttolppanen`
+    Updating git-repo `http://github.com/ttolppanen/ttolppanen_JuliaRegistry`
+    Updating registry at `~/.julia/registries/General.toml`
+  Activating project at `~/Documents/TestingStuff`
+Precompiling project...
+    Unitful Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Unitful/5WYj5_OUQmK.ji.pidfile)
+    Parsers Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Parsers/833b9_OUQmK.ji.pidfile)
+    SIMD Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/SIMD/PRrUB_OUQmK.ji.pidfile)
+    JLD2 Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/JLD2/O1EyT_OUQmK.ji.pidfile)
+    ArrayLayouts Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ArrayLayouts/QloHc_OUQmK.ji.pidfile)
+    StaticArraysStatisticsExt Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/StaticArraysStatisticsExt/EfhbW_OUQmK.ji.pidfile)
+    Polynomials Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Polynomials/OaK78_OUQmK.ji.pidfile)
+    IsApprox Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/IsApprox/OVBjC_OUQmK.ji.pidfile)
+    Colors Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Colors/NKjaT_OUQmK.ji.pidfile)
+    QOI Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/QOI/tWxmQ_OUQmK.ji.pidfile)
+    Cairo_jll Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Cairo_jll/ouRHo_OUQmK.ji.pidfile)
+    Xorg_libXinerama_jll Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Xorg_libXinerama_jll/IG7Gi_OUQmK.ji.pidfile)
+    Xorg_libXrandr_jll Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Xorg_libXrandr_jll/UlKyO_OUQmK.ji.pidfile)
+  ✓ Adapt → AdaptStaticArraysExt
+  ✓ ConstructionBase → ConstructionBaseStaticArraysExt
+    Xorg_libXcursor_jll Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Xorg_libXcursor_jll/iyuAX_OUQmK.ji.pidfile)
+  ✓ ArrayInterface
+  ✓ SpecialFunctions → SpecialFunctionsChainRulesCoreExt
+  ✓ Referenceables
+  ✓ GPUArraysCore
+  ✓ Xorg_xkeyboard_config_jll
+  ✓ Setfield
+  ✓ Accessors
+  ✓ ArrayInterface → ArrayInterfaceSparseArraysExt
+  ✓ ArrayInterface → ArrayInterfaceStaticArraysCoreExt
+  ✓ KrylovKit
+  ✓ ColorVectorSpace
+  ✓ ArrayInterface → ArrayInterfaceGPUArraysCoreExt
+  ✓ xkbcommon_jll
+  ✓ SplittablesBase
+  ✓ Accessors → AccessorsDatesExt
+  ✓ BangBang
+  ✓ KrylovKit → KrylovKitChainRulesCoreExt
+  ✓ StaticArrayInterface
+  ✓ Accessors → AccessorsTestExt
+  ✓ SIMD
+  ✓ StaticArrays → StaticArraysStatisticsExt
+  ✓ Unitful
+  ✓ QOI
+  ✓ Colors
+    BangBangChainRulesCoreExt Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/BangBangChainRulesCoreExt/xvvNO_OUQmK.ji.pidfile)
+    AccessorsUnitfulExt Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/AccessorsUnitfulExt/oGRBE_OUQmK.ji.pidfile)
+  ✓ Xorg_libXrandr_jll
+  ✓ Xorg_libXinerama_jll
+  ✓ Cairo_jll
+  ✓ Accessors → AccessorsIntervalSetsExt
+    TiffImages Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/TiffImages/FH9XA_OUQmK.ji.pidfile)
+    Interpolations Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Interpolations/VpKVx_OUQmK.ji.pidfile)
+  ✓ Accessors → AccessorsStaticArraysExt
+  ✓ Xorg_libXcursor_jll
+    ColorSchemes Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ColorSchemes/EO5fj_OUQmK.ji.pidfile)
+    Qt6Declarative_jll Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Qt6Declarative_jll/rB4FL_OUQmK.ji.pidfile)
+  ✓ BangBang → BangBangStaticArraysExt
+  ✓ StaticArrayInterface → StaticArrayInterfaceStaticArraysExt
+  ✓ StaticArrayInterface → StaticArrayInterfaceOffsetArraysExt
+  ✓ EllipsisNotation
+  ✓ CloseOpenIntervals
+  ✓ TiledIteration
+  ✓ IsApprox
+  ✓ ArrayLayouts
+  ✓ LayoutPointers
+  ✓ Parsers
+    PyCall Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/PyCall/GkzkC_OUQmK.ji.pidfile)
+  ✓ VectorizationBase
+  ✓ SLEEFPirates
+  ✓ Polynomials
+  ✓ BangBang → BangBangChainRulesCoreExt
+    MicroCollections Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/MicroCollections/UymYM_OUQmK.ji.pidfile)
+  ✓ Accessors → AccessorsUnitfulExt
+  ✓ Interpolations
+  ✓ ColorSchemes
+    PlotUtils Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/PlotUtils/YveHG_OUQmK.ji.pidfile)
+  ✓ Qt6Declarative_jll
+  ✓ PyCall
+  ✓ ImageCore
+  ✓ MicroCollections
+    NDTensors Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/NDTensors/MfkwS_OUQmK.ji.pidfile)
+  ✓ PlotUtils
+    Plots Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/Plots/ld3vC_OUQmK.ji.pidfile)
+  ✓ ExponentialUtilities
+  ✓ JpegTurbo
+  ✓ Sixel
+  ✓ ImageBase
+  ✓ LoopVectorization
+  ✓ ImageMagick
+  ✓ LoopVectorization → SpecialFunctionsExt
+  ✓ PNGFiles
+  ✓ HistogramThresholding
+  ✓ ImageShow
+  ✓ ImageAxes
+  ✓ ImageTransformations
+  ✓ JLD2
+  ✓ ImageBinarization
+  ✓ ImageMetadata
+  ✓ ImageMorphology
+  ✓ ImageContrastAdjustment
+  ✓ Netpbm
+  ✓ ImageDistances
+  ✓ NDTensors
+    ITensors Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/ITensors/P3pqL_OUQmK.ji.pidfile)
+  ✓ TiffImages
+  ✓ ImageIO
+  ✓ ITensors
+  ✓ ImageFiltering
+  ✓ Plots
+  ✓ ImageSegmentation
+    FileIOExt Being precompiled by another process (pid: 3149483, pidfile: /homedir02/htolppan/.julia/compiled/v1.10/FileIOExt/uE6Zh_OUQmK.ji.pidfile)
+  ✓ ImageCorners
+  ✓ ImageQualityIndexes
+  ✓ Images
+  ✓ Plots → FileIOExt
+  84 dependencies successfully precompiled in 85 seconds. 294 already precompiled.
+  No Changes to `~/Documents/TestingStuff/Project.toml`
+  No Changes to `~/Documents/TestingStuff/Manifest.toml`
+
+Threads used by julia = 40
+
+Started!
+
+ 45.089831 seconds (2.04 G allocations: 118.384 GiB, 51.75% gc time, 798.36% compilation time)
+360.096715 seconds (1.99 G allocations: 144.151 GiB, 6.56% gc time)
+1053.801360 seconds (1.93 G allocations: 186.920 GiB, 2.81% gc time, 0.00% compilation time)
+1535.647067 seconds (1.91 G allocations: 233.402 GiB, 2.47% gc time, 0.01% compilation time)
+1879.632099 seconds (1.93 G allocations: 279.584 GiB, 2.44% gc time, 0.03% compilation time)
+4885.659409 seconds (9.81 G allocations: 963.188 GiB, 3.28% gc time, 7.65% compilation time: <1% of which was recompilation)
+T1
+ 33.937085 seconds (739.89 M allocations: 45.910 GiB, 15.33% gc time, 16.39% compilation time: <1% of which was recompilation)
+487.069031 seconds (744.30 M allocations: 84.126 GiB, 3.83% gc time)
+765.069442 seconds (746.39 M allocations: 101.125 GiB, 2.12% gc time)
+844.129968 seconds (757.44 M allocations: 112.702 GiB, 2.04% gc time, 0.03% compilation time)
+921.213212 seconds (798.74 M allocations: 126.524 GiB, 2.02% gc time)
+3052.620971 seconds (3.79 G allocations: 470.473 GiB, 2.49% gc time, 0.20% compilation time: <1% of which was recompilation)
+T2
+643.759147 seconds (514.92 M allocations: 92.427 GiB, 2.50% gc time, 2.31% compilation time)
+869.955162 seconds (500.83 M allocations: 108.974 GiB, 1.79% gc time)
+925.774865 seconds (503.91 M allocations: 117.481 GiB, 1.82% gc time)
+999.636836 seconds (515.15 M allocations: 142.170 GiB, 2.17% gc time)
+1014.220616 seconds (554.82 M allocations: 218.278 GiB, 2.01% gc time)
+4474.221893 seconds (2.59 G allocations: 682.454 GiB, 2.12% gc time, 0.36% compilation time: <1% of which was recompilation)
+Wed Dec 18 00:33:08 EET 2024
