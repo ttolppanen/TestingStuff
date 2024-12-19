@@ -11,6 +11,6 @@
 pwd; hostname; date
 
 /homedir02/htolppan/.julia/juliaup/julia-1.10.5+0.x64.linux.gnu/bin/julia -t 40 -e 'include("LehmusThreads.jl");
-include("Physics/LeakageRemovalUnit/PlotsForPaper/third_figure_small_gamma/size_realistic/make_T_comparisons.jl")'
+include("Physics/LeakageRemovalUnit/PlotsForPaper/3_figure/size_realistic/make_T_comparisons.jl")'
 
 date
