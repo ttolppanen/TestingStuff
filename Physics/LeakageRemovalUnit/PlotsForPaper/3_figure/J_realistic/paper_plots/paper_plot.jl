@@ -159,8 +159,9 @@ function combine_fit_plot()
     U = to_flt(plotinfo.parameters[:U])
     t1 = to_flt(plotinfo.parameters[:diss]) * 10^(-6) * U * 2 * pi * 10^6
     hline!(pl, [t1], ls = :dash, label = "inherit dissipation")
-    t2 = to_flt(plotinfo.parameters[:deco]) * 10^(-6) * U * 2 * pi * 10^6
-    hline!(pl, [2*t2], ls = :dash, label = "inherit decoherence")
+    pure_t2 = to_flt(plotinfo.parameters[:deco]) * 10^(-6) * U * 2 * pi * 10^6
+    t2 = 1 / ((1/(2 * pure_t2)) + 1/t1)
+    hline!(pl, [t2], ls = :dash, label = "inherit decoherence")
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
@@ -198,6 +199,6 @@ end
 ts_plot()
 t1_plot()
 t2_plot()
-combine_fit_plot();
-Plots.scalefontsizes();
-ts_proportional_check()
+combine_fit_plot()
+# Plots.scalefontsizes();
+# ts_proportional_check()
