@@ -39,7 +39,7 @@ function initial_parameters(L)
     param[:U] = ValueInfo(250 * mega_const / param[:J].val, "250MHz")
     param[:T] = ValueInfo(0.1, "0.1K")
     param[:diss] = ValueInfo(1 / (16.7 * 10^(-6) * param[:J].val), "16.7µs")
-    param[:deco] = ValueInfo(1 / (10.0 * 10^(-6) * param[:J].val), "10.0µs")
+    param[:deco] = ValueInfo(2 / (10.0 * 10^(-6) * U), "10.0µs") # 2 due to qubit-n op equivalence
 
     d = param[:d]; L = param[:L]
     msrop = measurementoperators(nop(d), L)
