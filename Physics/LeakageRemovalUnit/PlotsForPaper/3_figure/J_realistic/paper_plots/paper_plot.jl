@@ -143,23 +143,27 @@ function combine_fit_plot()
     t_time_x2 = [parse(Float64, key[5:end]) for key in keys(lines)]
     T2 = [val[2] for val in values(lines)]
 
-    pl = plot(t_time_xs, Ts,
-    xlabel = "J",
-    ylabel = "Survival Times",
+    plotinfo = load(joinpath(dirname(@__DIR__), "T1", "data.jld2"), "plotinfo")
+    mega_cons = (10^6 * 2 * pi)
+    to_flt(x) = parse(Float64, match(r"\d+(\.\d+)?", x).match)
+    U = to_flt(plotinfo.parameters[:U]) * 2*pi
+    pl = plot(t_time_xs / mega_cons, Ts / U,
+    xlabel = "J [MHz]",
+    ylabel = "Survival Times [us]",
     label = "Ts",
-    legend = :topleft,
+    legend = :topright,
     dpi = 300,
     titlefontsize = 9
     )
-    plot!(pl, t_time_x1, T1, label = "T1")
-    plot!(pl, t_time_x2, T2, label = "T2")
+    plot!(pl, t_time_x1 / mega_cons, T1 / U, label = "T1")
+    plot!(pl, t_time_x2 / mega_cons, T2 / U, label = "T2")
 
-    plotinfo = load(joinpath(dirname(@__DIR__), "T1", "data.jld2"), "plotinfo")
-    to_flt(x) = parse(Float64, match(r"\d+", x).match)
     U = to_flt(plotinfo.parameters[:U])
-    t1 = to_flt(plotinfo.parameters[:diss]) * 10^(-6) * U * 2 * pi * 10^6
+    t1 = to_flt(plotinfo.parameters[:diss])
+    println(t1)
     hline!(pl, [t1], ls = :dash, label = "inherit dissipation")
-    pure_t2 = to_flt(plotinfo.parameters[:deco]) * 10^(-6) * U * 2 * pi * 10^6
+    pure_t2 = to_flt(plotinfo.parameters[:deco])
+    println(pure_t2)
     t2 = 1 / ((1/(2 * pure_t2)) + 1/t1)
     hline!(pl, [t2], ls = :dash, label = "inherit decoherence")
 
