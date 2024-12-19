@@ -44,8 +44,8 @@ function initial_parameters(J)
     param[:U] = ValueInfo(250 * mega_const, "250MHz")
     U = param[:U].val
     param[:T] = ValueInfo(0.1, "0.1K")
-    param[:deco] = ValueInfo(1 / (10.0 * 10^(-6) * U), "10.0µs")
     param[:diss] = ValueInfo(1 / (16.7 * 10^(-6) * U), "16.7µs")
+    param[:deco] = ValueInfo(2 / (10.0 * 10^(-6) * U), "10.0µs") # 2 due to qubit-n op equivalence
     param[:w] = ValueInfo(7500 * mega_const / U, "7.5GHz")
     param[:dw] = ValueInfo(100 * mega_const / U, "100MHz")
     param[:gamma] = 3/2 * (J / U)^2 # this is 3/2 J^2/U, in units of U
