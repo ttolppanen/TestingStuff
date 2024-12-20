@@ -122,7 +122,7 @@ function f()
     end
     path = joinpath(@__DIR__)
     makeplot(path, lines...; xlabel = "t", ylabel = "n_1", copy_code = false, add_traj = true, param...)
-    # addtrajectories(path, lines...)
+    #addtrajectories(path, lines...)
 end
 
 @time f()

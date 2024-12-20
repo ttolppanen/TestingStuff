@@ -1,92 +1,33 @@
 using JLD2
 using Plots
 using OrderedCollections
+using PlotAndSave
+
+function T_fit(dir_name, start_cut)
+    path = @__DIR__
+    plotinfo = load(joinpath(dirname(path), dir_name, "data.jld2"), "plotinfo")
+    lines = OrderedDict()
+
+    for (key, line) in plotinfo.lines
+        f_s = floor(Int, length(line.x) * start_cut)
+        smaller_than = findfirst(x -> x < 0.05, line.y)
+        f_e = isnothing(smaller_than) ? length(line.x) : smaller_than
+
+        x = line.x[f_s:f_e]
+        y = line.y[f_s:f_e]
+        lines[line.tag] = T1(x, y)
+    end
+    return lines
+end
 
 function TS_fit()
-    path = @__DIR__
-    plotinfo = load(joinpath(dirname(path), "Ts", "data.jld2"), "plotinfo")
-    lines = OrderedDict()
-
-    line = plotinfo.lines["L = 2"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 0.1)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["L = 3"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 0.5)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["L = 4"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 0.5)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-    
-    return lines
+    T_fit("Ts", 0.001)
 end
-
 function T1_fit()
-    path = @__DIR__
-    plotinfo = load(joinpath(dirname(path), "T1", "data.jld2"), "plotinfo")
-    lines = OrderedDict()
-
-    line = plotinfo.lines["L = 2"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["L = 3"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["L = 4"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-    
-    return lines
+    T_fit("T1", 0.05)
 end
-
 function T2_fit()
-    path = @__DIR__
-    plotinfo = load(joinpath(dirname(path), "T2", "data.jld2"), "plotinfo")
-    lines = OrderedDict()
-
-    line = plotinfo.lines["L = 2"]
-    f_s = floor(Int, length(line.x) * 0.15)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["L = 3"]
-    f_s = floor(Int, length(line.x) * 0.15)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["L = 4"]
-    f_s = floor(Int, length(line.x) * 0.15)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-    
-    return lines
+    T_fit("T2", 0.05)
 end
 
 function ts_plot()
@@ -214,7 +155,7 @@ function combine_fit_plot()
     return pl
 end
 
-Plots.scalefontsizes(1.5)
+Plots.scalefontsizes()
 ts_plot()
 t1_plot()
 t2_plot()
