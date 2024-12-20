@@ -1413,9 +1413,9 @@ version = "0.3.3"
 
 [[deps.PlotAndSave]]
 deps = ["JLD2", "OrderedCollections", "Plots"]
-git-tree-sha1 = "2299fc27f8513c997dd495b1ddda55443603c1a9"
+git-tree-sha1 = "ebc93075844069638eddbf89aaec9fca8dc8736d"
 uuid = "17f9de49-761f-4084-9189-3237cc0765fb"
-version = "0.2.13"
+version = "0.2.14"
 
 [[deps.PlotThemes]]
 deps = ["PlotUtils", "Statistics"]
