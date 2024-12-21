@@ -141,7 +141,8 @@ function combine_fit_plot()
     label = "Ts",
     legend = :topleft,
     dpi = 300,
-    titlefontsize = 9
+    titlefontsize = 9,
+    yaxis = :log10
     )
     plot!(pl, t_time_x1, T1 / J, label = "T1")
     plot!(pl, t_time_x2, T2 / J, label = "T2")

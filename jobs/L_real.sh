@@ -11,6 +11,7 @@
 
 file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/3_figure/size_realistic/make_T_comparisons.jl"
 traj="5000"
+# 2500 traj took ~6h
 
 echo "$file_to_run"; hostname; date
 

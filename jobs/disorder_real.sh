@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=40                      # Number of CPU cores per task
 #SBATCH --mem=20gb                              # Job memory request
 #SBATCH --time=3:00:00                          # Time limit hrs:min:sec
-#SBATCH --output=jobs/logs/%x_%j_log.txt        # Standard output and error log
+#SBATCH --output=jobs/logs/%x_%j_log.txt        # Standard output and error logs
 
 file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/3_figure/disorder_realistic/make_T_comparisons.jl"
 traj="5000"
