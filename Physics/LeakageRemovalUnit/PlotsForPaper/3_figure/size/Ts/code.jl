@@ -2,6 +2,7 @@ using Distributed
 using JLD2
 using Plots
 using LinearAlgebra
+using SparseArrays
 @everywhere using QuantumStates
 @everywhere using QuantumOperators
 using PlotAndSave
@@ -16,37 +17,6 @@ function traj_mean(result)
     return out ./ length(result)
 end
 
-function measure_ends_effect!(msr_op::Vector, 
-    dt, msr_rate, feedback::Vector; skip_subspaces = [])
-    time = [rand() / msr_rate]
-    out(state, subspace_id) = begin
-        time[1] += dt
-
-        if time[1] < 1 / msr_rate
-            return state, subspace_id::Int64
-        end
-        time[1] -= 1 / msr_rate
-
-        if in(subspace_id, skip_subspaces)
-            return state, subspace_id::Int64
-        end
-        current_subspace_id = subspace_id
-        for site in [length(msr_op[current_subspace_id])]
-            msr_outcome = measuresite!(state[current_subspace_id], msr_op[current_subspace_id], site)
-            new_id, op = feedback[current_subspace_id][site][msr_outcome]
-            if new_id == current_subspace_id
-                state[new_id] .= op * state[current_subspace_id]
-            else
-                mul!(state[new_id], op, state[current_subspace_id])
-            end
-            normalize!(state[new_id])
-            current_subspace_id = new_id
-        end
-        return state, current_subspace_id::Int64
-    end
-    return out
-end
-
 function initial_parameters(L)
     param = OrderedDict()
     param[:dt] = 0.02
@@ -54,14 +24,17 @@ function initial_parameters(L)
     param[:t] = 1000
     param[:d] = 3
     param[:L] = L
-    param[:state] = ValueInfo(bosonstack(2, L, 1), "|200...>")
+    
+    param[:state] = ValueInfo(bosonstack(2, param[:L], 1), "|200...>")
+
     param[:alg] = "krylov sbspc"
     param[:H] = "BH, d_w, fixed |2> energy"
     param[:k] = 6
-    param[:w] = 1000
-    param[:dw] = 10
-    param[:U] = 50
-    param[:J] = 1
+    mega_const = 10^6 * 2 * pi
+    param[:J] = ValueInfo(5 * mega_const, "5MHz")
+    param[:w] = ValueInfo(7500 * mega_const / param[:J].val, "7.5GHz")
+    param[:dw] = ValueInfo(100 * mega_const / param[:J].val, "100MHz")
+    param[:U] = ValueInfo(250 * mega_const / param[:J].val, "250MHz")
 
     d = param[:d]
     msrop = measurementoperators(nop(d), L)
@@ -75,8 +48,9 @@ end
 function f()
     param = initial_parameters(3)
     # -----------
-    traj = 2000
-    Ls = 3:7
+    length(ARGS) > 0 ? traj = parse(Int, ARGS[1]) : traj = 100
+    println("Number of trajectories: $traj")
+    Ls = 2:6
     # -----------
     lines = []
     for L in Ls
@@ -84,6 +58,7 @@ function f()
         d = param[:d]; L = param[:L]
         indices = total_boson_number_subspace_indices(d, L)
         ranges, perm_mat = total_boson_number_subspace_tools(d, L)
+
         initial_id = find_subspace(param[:state].val, indices)
         state = subspace_split(param[:state].val, ranges, perm_mat)
 
@@ -94,25 +69,24 @@ function f()
         obs = (state, id) -> expval(state[id], op[id])
 
         dt = param[:dt]; t = param[:t]; k = param[:k]
-        pa_k = PA_krylov_sub(state, k)
-        pa_args, pa_out = pre_alloc_threads(zeros(1, length(0:dt:t)), traj, pa_k)
 
         out = []
-        r_f(out, pa_k) = begin
-            dw = param[:w] .+ (rand(L) .- 0.5) * param[:dw]
-            dU = 2 * dw .- (2 * param[:w] - param[:U])
-            H = subspace_split(bosehubbard(d, L; w = dw, U = dU, J = param[:J]), ranges, perm_mat)
-            effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
-            krylovevolve(state, initial_id, H, dt, t, k, pa_k, obs; effect!, out)
+        r_f() = begin
+            dw = param[:w].val .+ (rand(L) .- 0.5) * param[:dw].val
+            dU = 2 * dw .- (2 * param[:w].val - param[:U].val)
+            H = bosehubbard(d, L; w = dw, U = dU, J = 1)
+            H = subspace_split(H, ranges, perm_mat)
+
+            effect! = periodic_sbspc_msr_feedback!_function(msrop, param[:dt], param[:gamma], feedback, [L])
+            krylovevolve(state, initial_id, H, dt, t, k, obs; effect!)
         end
-        @time solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
+        @time pa_out = solvetrajectories(r_f, traj; paral = :threads)
         r = traj_mean(pa_out)
         y = r[1, :]
         push!(lines, LineInfo(0:dt:t, y, traj, "L = $L"))
     end
     path = joinpath(@__DIR__)
-    makeplot(path, lines...; xlabel = "t", ylabel = "anh_tot", copy_code = false, param...)
-    # addtrajectories(path, lines...)
+    makeplot(path, lines...; xlabel = "t", ylabel = "anh_tot", copy_code = false, add_traj = true, param...)
 end
 
 @time f()

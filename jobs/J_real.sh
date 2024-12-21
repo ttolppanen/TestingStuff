@@ -8,11 +8,14 @@
 #SBATCH --mem=20gb                              # Job memory request
 #SBATCH --time=3:00:00                         # Time limit hrs:min:sec
 #SBATCH --output=jobs/logs/%x_%j_log.txt     # Standard output and error log
-pwd; hostname; date
 
-/homedir02/htolppan/.julia/juliaup/julia-1.10.5+0.x64.linux.gnu/bin/julia -t 40 -e '
-include("LehmusThreads.jl");
-include("Physics/LeakageRemovalUnit/PlotsForPaper/3_figure/J_realistic/make_T_comparisons.jl")
-'
+file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/3_figure/J_realistic/make_T_comparisons.jl"
+
+echo "$file_to_run"; hostname; date
+
+julia -t 40 -e "
+include(\"LehmusThreads.jl\");
+include(\"$file_to_run\")
+"
 
 date

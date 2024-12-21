@@ -8,10 +8,14 @@
 #SBATCH --mem=2gb                               # Job memory request
 #SBATCH --time=0:10:00                          # Time limit hrs:min:sec
 #SBATCH --output=jobs/logs/%x_%j_log.txt        # Standard output and error log
-pwd; hostname; date
 
-julia -t 40 -e 'include("LehmusThreads.jl");
-include("Physics/LeakageRemovalUnit/PlotsForPaper/3_figure/size_realistic/paper_plots/paper_plot.jl")'
+file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/3_figure/size_realistic/paper_plots/paper_plot.jl"
+
+echo "$file_to_run"; hostname; date
+
+julia -t 40 -e "
+include(\"LehmusThreads.jl\");
+include(\"$file_to_run\")
+"
 
 date
-

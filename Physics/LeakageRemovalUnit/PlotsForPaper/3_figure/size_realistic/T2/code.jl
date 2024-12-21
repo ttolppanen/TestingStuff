@@ -18,27 +18,6 @@ function traj_mean(result)
     return out ./ length(result)
 end
 
-function measure_ends_effect!(msr_op::Vector, 
-    dt, msr_rate, feedback::Vector)
-    time = [rand() / msr_rate]
-    out(state) = begin
-        time[1] += dt
-
-        if time[1] < 1 / msr_rate
-            return state
-        end
-        time[1] -= 1 / msr_rate
-
-        for site in [length(msr_op)]
-            measuresite!(state, msr_op, site)
-            state .= feedback[site] * state
-            normalize!(state)
-        end
-        return state
-    end
-    return out
-end
-
 function initial_parameters(L)
     param = OrderedDict()
     param[:dt] = 0.02
@@ -77,7 +56,8 @@ end
 function f()
     param = initial_parameters(3)
     # -----------
-    traj = 2500
+    length(ARGS) > 0 ? traj = parse(Int, ARGS[1]) : traj = 100
+    println("Number of trajectories: $traj")
     Ls = 2:6
     # -----------
     lines = []
@@ -115,7 +95,7 @@ function f()
             ts_sample = sample_transmon_thermal_state(d, L-1, t_T, t_w, t_U)
             state = kron(param[:state].val, ts_sample)
 
-            effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
+            effect! = periodic_msr_feedback!_function(msrop, param[:dt], param[:gamma], feedback, [L])
             krylovevolve(state, H, dd_op, dt, t, k, obs; effect!)
         end
         @time pa_out = solvetrajectories(r_f, traj; paral = :threads)

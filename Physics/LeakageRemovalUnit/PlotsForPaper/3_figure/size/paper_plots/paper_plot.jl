@@ -3,119 +3,31 @@ using Plots
 using OrderedCollections
 using PlotAndSave
 
+function T_fit(dir_name, start_cut)
+    path = @__DIR__
+    plotinfo = load(joinpath(dirname(path), dir_name, "data.jld2"), "plotinfo")
+    lines = OrderedDict()
+
+    for (key, line) in plotinfo.lines
+        f_s = floor(Int, length(line.x) * start_cut)
+        smaller_than = findfirst(x -> x < 0.05, line.y)
+        f_e = isnothing(smaller_than) ? length(line.x) : smaller_than
+
+        x = line.x[f_s:f_e]
+        y = line.y[f_s:f_e]
+        lines[line.tag] = T1(x, y)
+    end
+    return lines
+end
+
 function TS_fit()
-    path = @__DIR__
-    plotinfo = load(joinpath(dirname(path), "Ts", "data.jld2"), "plotinfo")
-    lines = OrderedDict()
-
-    line = plotinfo.lines["L = 3"]
-    f_s = floor(Int, length(line.x) * 0.1)
-    f_e = floor(Int, length(line.x) * 0.25)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["L = 4"]
-    f_s = floor(Int, length(line.x) * 0.2)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["L = 5"]
-    f_s = floor(Int, length(line.x) * 0.25)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["L = 6"]
-    f_s = floor(Int, length(line.x) * 0.25)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["L = 7"]
-    f_s = floor(Int, length(line.x) * 0.15)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-    
-    return lines
+    T_fit("Ts", 0.01)
 end
-
 function T1_fit()
-    path = @__DIR__
-    plotinfo = load(joinpath(dirname(path), "T1", "data.jld2"), "plotinfo")
-    lines = OrderedDict()
-
-    line = plotinfo.lines["L = 3"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["L = 4"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["L = 5"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["L = 6"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["L = 7"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-    
-    return lines
+    T_fit("T1", 0.05)
 end
-
 function T2_fit()
-    path = @__DIR__
-    plotinfo = load(joinpath(dirname(path), "T2", "data.jld2"), "plotinfo")
-    lines = OrderedDict()
-
-    line = plotinfo.lines["L = 3"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["L = 4"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-
-    line = plotinfo.lines["L = 5"]
-    f_s = floor(Int, length(line.x) * 0.01)
-    f_e = floor(Int, length(line.x) * 1.0)
-    x = line.x[f_s:f_e]
-    y = line.y[f_s:f_e]
-    lines[line.tag] = T1(x, y)
-    
-    return lines
+    T_fit("T2", 0.05)
 end
 
 function ts_plot()
@@ -123,8 +35,7 @@ function ts_plot()
     plotinfo = load(joinpath(dirname(path), "Ts", "data.jld2"), "plotinfo")
     pl = plot(dpi = 300,
     xlabel = "time", 
-    ylabel = "Array Leakage Population",
-    ylims = [0.0, 2.0]
+    ylabel = "Array Leakage Population"
     )
     fit_lines = TS_fit()
     for line in values(plotinfo.lines)
@@ -145,8 +56,7 @@ function t1_plot()
     plotinfo = load(joinpath(dirname(path), "T1", "data.jld2"), "plotinfo")
     pl = plot(dpi = 300,
     xlabel = "time", 
-    ylabel = "First Site Population", 
-    ylims = (0.2, 1),
+    ylabel = "First Site Population",
     legend = :bottomleft
     )
     fit_lines = T1_fit()
@@ -167,8 +77,7 @@ function t2_plot()
     plotinfo = load(joinpath(dirname(path), "T2", "data.jld2"), "plotinfo")
     pl = plot(dpi = 300,
     xlabel = "time", 
-    ylabel = "<σₓ> envelope", 
-    ylims = (0.4, 1)
+    ylabel = "<σₓ> envelope"
     )
     fit_lines = T2_fit()
     for line in values(plotinfo.lines)
@@ -224,29 +133,25 @@ function combine_fit_plot()
     t_time_x2 = [parse(Int64, key[4:end]) for key in keys(lines)]
     T2 = [val[2] for val in values(lines)]
 
-    colors = theme_palette(:auto)
-    pl = plot(t_time_xs, Ts,
+    data_path = joinpath(dirname(@__DIR__), "T1")
+    J = get_param(data_path, :J) * 2 * pi
+    pl = plot(t_time_xs, Ts / J,
     xlabel = "L",
-    ylabel = "Survival Times",
-    label = "Tₛ",
-    color = colors[1],
+    ylabel = "Survival Times [us]",
+    label = "Ts",
     legend = :topleft,
     dpi = 300,
-    titlefontsize = 9,
-    yaxis = :log10
+    titlefontsize = 9
     )
-    plot!(pl, t_time_x1, T1, color = colors[2], label = "T₁")
-    plot!(pl, t_time_x2, T2, color = colors[3], label = "T₂")
-
-    t200 = 5 * 10^6 * 2 * pi * 200 * 10^(-6)
-    hline!(pl, [t200], color = colors[3], linestyle = :dash, label = "t = 200μs")
+    plot!(pl, t_time_x1, T1 / J, label = "T1")
+    plot!(pl, t_time_x2, T2 / J, label = "T2")
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
     return pl
 end
 
-Plots.scalefontsizes(1.5)
+Plots.scalefontsizes()
 ts_plot()
 t1_plot()
 t2_plot()
