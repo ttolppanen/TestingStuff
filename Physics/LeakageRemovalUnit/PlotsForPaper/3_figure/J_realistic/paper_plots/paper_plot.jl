@@ -143,10 +143,9 @@ function combine_fit_plot()
     t_time_x2 = [parse(Float64, key[5:end]) for key in keys(lines)]
     T2 = [val[2] for val in values(lines)]
 
-    plotinfo = load(joinpath(dirname(@__DIR__), "T1", "data.jld2"), "plotinfo")
     mega_cons = (10^6 * 2 * pi)
-    to_flt(x) = parse(Float64, match(r"\d+(\.\d+)?", x).match)
-    U = to_flt(plotinfo.parameters[:U]) * 2*pi
+    data_path = joinpath(dirname(@__DIR__), "T1")
+    U = get_param(data_path, :U) * 2 * pi
     pl = plot(t_time_xs / mega_cons, Ts / U,
     xlabel = "J [MHz]",
     ylabel = "Survival Times [us]",
@@ -158,23 +157,21 @@ function combine_fit_plot()
     plot!(pl, t_time_x1 / mega_cons, T1 / U, label = "T1")
     plot!(pl, t_time_x2 / mega_cons, T2 / U, label = "T2")
 
-    U = to_flt(plotinfo.parameters[:U])
-    t1 = to_flt(plotinfo.parameters[:diss])
-    println(t1)
+    t1 = get_param(data_path, :diss)
     hline!(pl, [t1], ls = :dash, label = "inherit dissipation")
-    pure_t2 = to_flt(plotinfo.parameters[:deco])
-    println(pure_t2)
-    t2 = 1 / ((1/(2 * pure_t2)) + 1/t1)
+    pure_t2 = get_param(data_path, :deco)
+    t2 = 1 / (1/pure_t2 + 1/(2*t1))
     hline!(pl, [t2], ls = :dash, label = "inherit decoherence")
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
 
     lines = []
-    traj = get_traj(plotinfo)
+    traj = get_traj(data_path)
     push!(lines, LineInfo(t_time_xs, Ts, traj, "Ts"))
     push!(lines, LineInfo(t_time_x1, T1, traj, "T1"))
     push!(lines, LineInfo(t_time_x2, T2, traj, "T2"))
+    plotinfo = loaddata(data_path)
     savedata(@__DIR__, lines...; xlabel = "J", ylabel = "Survival Times", copy_code = false, plotinfo.parameters...)
     return pl
 end

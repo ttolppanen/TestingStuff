@@ -146,10 +146,11 @@ function combine_fit_plot()
 
     path = joinpath(dirname(@__DIR__), "T1")
     J = get_param(path, :J) * 2 * pi
-    diss = 1 / (get_param(path, :diss) * J)
-    hline!(pl, [1 / diss], ls = :dash, label = "inherit dissipation")
-    deco = 1 / (get_param(path, :deco) * J)
-    hline!(pl, [2 / deco], ls = :dash, label = "inherit decoherence")
+    t1 = get_param(path, :diss) * J
+    hline!(pl, [t1], ls = :dash, label = "inherit dissipation")
+    pure_t2 = get_param(path, :deco) * J
+    t2 = 1 / (1/pure_t2 + 1/(2*t1))
+    hline!(pl, [t2], ls = :dash, label = "inherit decoherence")
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
