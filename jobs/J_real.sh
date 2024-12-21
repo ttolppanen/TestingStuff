@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=40                      # Number of CPU cores per task
 #SBATCH --mem=20gb                              # Job memory request
 #SBATCH --time=3:00:00                         # Time limit hrs:min:sec
-#SBATCH --output=batch_log_files/%x_%j_log.txt     # Standard output and error log
+#SBATCH --output=jobs/logs/%x_%j_log.txt     # Standard output and error log
 pwd; hostname; date
 
 /homedir02/htolppan/.julia/juliaup/julia-1.10.5+0.x64.linux.gnu/bin/julia -t 40 -e '
