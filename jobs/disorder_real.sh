@@ -14,10 +14,15 @@ traj="15000"
 
 echo "$file_to_run"; echo "trajectories = $traj"; hostname; date
 
+start_time=$(date +%s)  # Record start time
 julia -t 40 -e "
 ARGS = [\"$traj\"]
 include(\"LehmusThreads.jl\");
 include(\"$file_to_run\")
 "
+end_time=$(date +%s)    # Record end time
+elapsed_time=$((end_time - start_time))  # Calculate elapsed time
 
+echo "Trajectories: $traj"
+echo "Elapsed time: $((elapsed_time / 60)) minutes and $((elapsed_time % 60)) seconds"
 date
