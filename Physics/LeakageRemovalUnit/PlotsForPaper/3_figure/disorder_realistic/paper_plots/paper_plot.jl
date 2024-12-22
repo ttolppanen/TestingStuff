@@ -31,13 +31,13 @@ function T_fit(dir_name, start_cut)
 end
 
 function TS_fit()
-    T_fit("Ts", 0.01)
+    T_fit("Ts", 0.15)
 end
 function T1_fit()
-    T_fit("T1", 0.1)
+    T_fit("T1", 0.25)
 end
 function T2_fit()
-    T_fit("T2", 0.1)
+    T_fit("T2", 0.25)
 end
 
 function ts_plot()

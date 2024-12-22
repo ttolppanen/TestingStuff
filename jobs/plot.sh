@@ -4,12 +4,12 @@
 #SBATCH --mail-user=heikki.tolppanen@oulu.fi    # Where to send mail	
 #SBATCH --nodes=1                               # Run all processes on a single node	
 #SBATCH --ntasks=1                              # Run a single task		
-#SBATCH --cpus-per-task=4                       # Number of CPU cores per task
+#SBATCH --cpus-per-task=8                       # Number of CPU cores per task
 #SBATCH --mem=2gb                               # Job memory request
 #SBATCH --time=0:10:00                          # Time limit hrs:min:sec
 #SBATCH --output=jobs/logs/%x_%j_log.txt        # Standard output and error log
 
-file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/3_figure/disorder/paper_plots/paper_plot.jl"
+file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/3_figure/J/paper_plots/paper_plot.jl"
 
 echo "$file_to_run"; hostname; date; echo
 
@@ -22,6 +22,5 @@ end_time=$(date +%s)    # Record end time
 elapsed_time=$((end_time - start_time))  # Calculate elapsed time
 
 echo
-echo "Trajectories: $traj"
 echo "Elapsed time: $((elapsed_time / 60)) minutes and $((elapsed_time % 60)) seconds"
 date

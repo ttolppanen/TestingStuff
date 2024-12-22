@@ -3,10 +3,10 @@ using JLD2
 using Plots
 using LinearAlgebra
 using SparseArrays
-@everywhere using QuantumStates
-@everywhere using QuantumOperators
+using QuantumStates
+using QuantumOperators
 using PlotAndSave
-@everywhere using QuantumTimeEvolution
+using QuantumTimeEvolution
 using OrderedCollections
 
 function traj_mean(result)
@@ -15,27 +15,6 @@ function traj_mean(result)
         out .+= traj
     end
     return out ./ length(result)
-end
-
-function measure_ends_effect!(msr_op::Vector, 
-    dt, msr_rate, feedback::Vector)
-    time = [rand() / msr_rate]
-    out(state) = begin
-        time[1] += dt
-
-        if time[1] < 1 / msr_rate
-            return state
-        end
-        time[1] -= 1 / msr_rate
-
-        for site in [length(msr_op)]
-            measuresite!(state, msr_op, site)
-            state .= feedback[site] * state
-            normalize!(state)
-        end
-        return state
-    end
-    return out
 end
 
 function initial_parameters(J)
@@ -63,12 +42,7 @@ function initial_parameters(J)
     param[:H] = "BH, d_w, fixed |2> energy"
     param[:k] = 6
 
-    d = param[:d]; L = param[:L]
-    msrop = measurementoperators(nop(d), L)
-    feedback = [1 1 1; 0 0 0; 0 0 0]
-    fb_op = [singlesite(feedback, L, i) for i in 1:L]
-
-    param[:effect] = ValueInfo((msr = msrop, fb = fb_op), "rand start, msr_n last site -> fb -> 0")
+    param[:effect] = "rand start, msr_n last site -> fb -> 0"
     return param
 end
 
@@ -80,30 +54,32 @@ function f()
     Js = range(1, 20, length = 100) .* (10^6 * 2 * pi)
     # -----------
     lines = []
+
+    d = param[:d]; L = param[:L]
+    msrop = measurementoperators(nop(d), L)
+    fb_op = [1 1 1; 0 0 0; 0 0 0]
+    feedback = [singlesite(fb_op, L, i) for i in 1:L]
+
+    diss_op = [sqrt(param[:diss].val) * singlesite_a(d, L, i) for i in 1:L]
+    deco_op = [sqrt(param[:deco].val) * singlesite_n(d, L, i) for i in 1:L]
+    H_dd = complex(spzeros(d^L, d^L))
+    for op in vcat(diss_op, deco_op)
+        H_dd .+= -1.0im / 2 * op' * op
+    end
+
+    op = anhall(d, L)
+    obs = (state) -> expval(state, op)
+
     for J_i in Js
         param = initial_parameters(J_i)
         d = param[:d]; L = param[:L]
-        
-        msrop = param[:effect].val.msr
-        feedback = param[:effect].val.fb
-        
-        op = anhall(d, L)
-        obs = (state) -> expval(state, op)
+        dt = param[:dt]; t = param[:t]
 
-        dt = param[:dt]; t = param[:t];
-
-        diss_op = [sqrt(param[:diss].val) * singlesite_a(d, L, i) for i in 1:L]
-        deco_op = [sqrt(param[:deco].val) * singlesite_n(d, L, i) for i in 1:L]
-        H_dd = complex(spzeros(d^L, d^L))
-        for op in vcat(diss_op, deco_op)
-            H_dd .+= -1.0im / 2 * op' * op
-        end
-
-        out = []
         r_f() = begin
             dw = param[:w].val .+ (rand(L) .- 0.5) * param[:dw].val
             dU = 2 * dw .- (2 * param[:w].val - 1)
             H = bosehubbard(d, L; w = dw, U = dU, J = J_i / param[:U].val)
+            H .+= H_dd
 
             t_T = param[:T].val
             t_w = param[:w].val * param[:U].val
@@ -111,8 +87,7 @@ function f()
             ts_sample = sample_transmon_thermal_state(d, L-1, t_T, t_w, t_U)
             state = kron(param[:state].val, ts_sample)
 
-            H .+= H_dd
-            effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
+            effect! = periodic_msr_feedback!_function(msrop, param[:dt], param[:gamma], feedback, [param[:L]])
             U = exp(-1.0im * Matrix(H) * param[:dt])
             exactevolve(state, U, vcat(diss_op, deco_op), dt, t, obs; effect!)
         end
