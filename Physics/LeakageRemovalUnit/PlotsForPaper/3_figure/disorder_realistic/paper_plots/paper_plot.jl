@@ -2,16 +2,7 @@ using JLD2
 using Plots
 using OrderedCollections
 using PlotAndSave
-
-function T1(x, y) 
-    # linreg for slope
-    # https://jahoo.github.io/2021/01/11/simplest_linear_regression_example.html
-    A = hcat(x, ones(length(x)))
-    res = (A \ log.(y))
-    slope = res[1]
-    c = res[2]
-    return x -> exp.(slope * x .+ c), -1 / slope 
-end
+using QuantumTimes
 
 function T_fit(dir_name, start_cut)
     path = @__DIR__
@@ -25,19 +16,20 @@ function T_fit(dir_name, start_cut)
 
         x = line.x[f_s:f_e]
         y = line.y[f_s:f_e]
-        lines[line.tag] = T1(x, y)
+        int, slp, fit = exp_fit(x, y)
+        lines[line.tag] = fit, -1/slp
     end
     return lines
 end
 
 function TS_fit()
-    T_fit("Ts", 0.15)
+    T_fit("Ts", 0.01)
 end
 function T1_fit()
-    T_fit("T1", 0.25)
+    T_fit("T1", 0.1)
 end
 function T2_fit()
-    T_fit("T2", 0.25)
+    T_fit("T2", 0.15)
 end
 
 function ts_plot()

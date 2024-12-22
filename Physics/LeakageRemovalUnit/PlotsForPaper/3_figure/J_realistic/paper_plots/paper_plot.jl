@@ -1,17 +1,8 @@
 using JLD2
 using Plots
 using OrderedCollections
-using PlotAndSave
-
-function T1(x, y) 
-    # linreg for slope
-    # https://jahoo.github.io/2021/01/11/simplest_linear_regression_example.html
-    A = hcat(x, ones(length(x)))
-    res = (A \ log.(y))
-    slope = res[1]
-    c = res[2]
-    return x -> exp.(slope * x .+ c), -1 / slope 
-end
+using QuantumTimes
+using LaTeXStrings
 
 function T_fit(dir_name, start_cut)
     path = @__DIR__
@@ -25,7 +16,8 @@ function T_fit(dir_name, start_cut)
 
         x = line.x[f_s:f_e]
         y = line.y[f_s:f_e]
-        lines[line.tag] = T1(x, y)
+        int, slp, fit = exp_fit(x, y)
+        lines[line.tag] = fit, -1/slp
     end
     return lines
 end
@@ -87,7 +79,7 @@ function t2_plot()
     plotinfo = load(joinpath(dirname(path), "T2", "data.jld2"), "plotinfo")
     pl = plot(dpi = 300,
     xlabel = "time", 
-    ylabel = "<σx> envelope"
+    ylabel = L"$\langle \sigma_x \rangle \textrm{envelope}$"
     )
     fit_lines = T2_fit()
     for line in values(plotinfo.lines)
@@ -147,15 +139,15 @@ function combine_fit_plot()
     data_path = joinpath(dirname(@__DIR__), "T1")
     U = get_param(data_path, :U) * 2 * pi
     pl = plot(t_time_xs / mega_cons, Ts / U,
-    xlabel = "J [MHz]",
-    ylabel = "Survival Times [us]",
-    label = "Ts",
+    xlabel = L"$J [\textrm{MHz}]$",
+    ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
+    label = L"$T_s$",
     legend = :topright,
     dpi = 300,
     titlefontsize = 9
     )
-    plot!(pl, t_time_x1 / mega_cons, T1 / U, label = "T1")
-    plot!(pl, t_time_x2 / mega_cons, T2 / U, label = "T2")
+    plot!(pl, t_time_x1 / mega_cons, T1 / U, label = L"$T_1$")
+    plot!(pl, t_time_x2 / mega_cons, T2 / U, label = L"$T_2$")
 
     t1 = get_param(data_path, :diss)
     hline!(pl, [t1], ls = :dash, label = "inherit dissipation")
