@@ -9,8 +9,8 @@
 #SBATCH --time=24:00:00                         # Time limit hrs:min:sec
 #SBATCH --output=jobs/logs/%x_%j_log.txt        # Standard output and error logs
 
-file_to_run="Physics/LeakageRemovalUnit/optimal_gamma/full_gamma/two_qubit_msr/code.jl"
-traj="900"
+file_to_run="Physics/LeakageRemovalUnit/optimal_gamma/full_gamma/msr_in_middle/code.jl"
+traj="1000"
 
 echo "$file_to_run"; echo "trajectories = $traj"; hostname; date; echo
 
