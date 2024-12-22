@@ -49,7 +49,7 @@ function ts_plot()
     )
     fit_lines = TS_fit()
     for line in values(plotinfo.lines)
-        J = parse(Int64, line.tag[5:end])
+        J = parse(Float64, line.tag[5:end])
         plot!(pl, line.x, line.y, label = "J = " * string(J))
         f, T = fit_lines[line.tag]
         plot!(pl, line.x, f, label = "", lc = :grey, ls = :dash)
@@ -71,7 +71,7 @@ function t1_plot()
     )
     fit_lines = T1_fit()
     for line in values(plotinfo.lines)
-        J = parse(Int64, line.tag[5:end])
+        J = parse(Float64, line.tag[5:end])
         plot!(pl, line.x, line.y, label = "J = " * string(J))
         f, T = fit_lines[line.tag]
         plot!(pl, line.x, f, label = "", lc = :grey, ls = :dash)
@@ -91,18 +91,18 @@ function t2_plot()
     )
     fit_lines = T2_fit()
     for line in values(plotinfo.lines)
-        J = parse(Int64, line.tag[5:end])
+        J = parse(Float64, line.tag[5:end])
         plot!(pl, line.x, line.y, label = "J = " * string(J))
         f, T = fit_lines[line.tag]
         plot!(pl, line.x, f, label = "", lc = :grey, ls = :dash)
     end
 
     # normal decoherence
-    t = plotinfo.lines["J = 5"].x
-    deph_rate = parse(Float64, plotinfo.parameters[:deco][1:end - 3])
-    U = parse(Float64, plotinfo.parameters[:U][1:end - 3])
-    deph_rate = deph_rate / U
-    plot!(pl, t, x -> exp(-x * deph_rate * 0.5), label = "decoherence")
+    # t = plotinfo.lines["J = 5"].x
+    # deph_rate = parse(Float64, plotinfo.parameters[:deco][1:end - 3])
+    # U = parse(Float64, plotinfo.parameters[:U][1:end - 3])
+    # deph_rate = deph_rate / U
+    # plot!(pl, t, x -> exp(-x * deph_rate * 0.5), label = "decoherence")
 
     plot!(pl, [0], [0], label = "fit", lc = :grey)
     savefig(pl, joinpath(path, "T2.png"))
@@ -120,7 +120,7 @@ function make_fit_line(dir, cut_size)
     t_times = []
     t_time_x = []
     for line in lines
-        t_x = parse(Int64, line.tag[5:end])
+        t_x = parse(Float64, line.tag[5:end])
         fit_line_start = floor(Int, length(line.x) * cut_size)
         t_line, t_time = T1(line.x[fit_line_start:end], line.y[fit_line_start:end])
 
@@ -132,40 +132,38 @@ end
 
 function combine_fit_plot()
     lines = TS_fit()
-    t_time_xs = [parse(Int64, key[5:end]) for key in keys(lines)]
+    t_time_xs = [parse(Float64, key[5:end]) for key in keys(lines)]
     Ts = [val[2] for val in values(lines)]
     
     lines = T1_fit()
-    t_time_x1 = [parse(Int64, key[5:end]) for key in keys(lines)]
+    t_time_x1 = [parse(Float64, key[5:end]) for key in keys(lines)]
     T1 = [val[2] for val in values(lines)]
 
     lines = T2_fit()
-    t_time_x2 = [parse(Int64, key[5:end]) for key in keys(lines)]
+    t_time_x2 = [parse(Float64, key[5:end]) for key in keys(lines)]
     T2 = [val[2] for val in values(lines)]
 
-    pl = plot(t_time_xs, Ts,
-    xlabel = "J",
-    ylabel = "Survival Times",
-    label = "Tₛ",
+    mega_cons = (10^6 * 2 * pi)
+    data_path = joinpath(dirname(@__DIR__), "T1")
+    U = get_param(data_path, :U) * 2 * pi
+
+    pl = plot(t_time_xs / mega_cons, Ts / U,
+    xlabel = "J [MHZ]",
+    ylabel = "Survival Times [us]",
+    label = "Ts",
     legend = :topleft,
     dpi = 300,
-    titlefontsize = 9
+    titlefontsize = 9,
+    yaxis = :log10
     )
-    plot!(pl, t_time_x1, T1, label = "T₁")
-    plot!(pl, t_time_x2, T2, label = "T₂")
-
-    plotinfo = load(joinpath(dirname(@__DIR__), "T1", "data.jld2"), "plotinfo")
-    to_flt(x) = parse(Float64, match(r"\d+", x).match)
-    U = to_flt(plotinfo.parameters[:U])
-    diss = to_flt(plotinfo.parameters[:diss]) * 10^(-3) / U
-    hline!(pl, [1 / diss], ls = :dash, label = "inherit dissipation")
-    deco = to_flt(plotinfo.parameters[:deco]) * 10^(-3) / U
-    hline!(pl, [2 / deco], ls = :dash, label = "inherit decoherence")
+    plot!(pl, t_time_x1 / mega_cons, T1 / U, label = "T1")
+    plot!(pl, t_time_x2 / mega_cons, T2 / U, label = "T2")
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
 
     lines = []
+    plotinfo = loaddata(data_path)
     traj = get_traj(plotinfo)
     push!(lines, LineInfo(t_time_xs, Ts, traj, "Ts"))
     push!(lines, LineInfo(t_time_x1, T1, traj, "T1"))
@@ -176,7 +174,7 @@ end
 
 function ts_proportional_check()
     lines = TS_fit()
-    t_time_xs = [parse(Int64, key[5:end]) for key in keys(lines)]
+    t_time_xs = [parse(Float64, key[5:end]) for key in keys(lines)]
     Ts = [val[2] for val in values(lines)]
     
     pl = plot(t_time_xs, Ts,
@@ -199,5 +197,5 @@ ts_plot()
 t1_plot()
 t2_plot()
 combine_fit_plot();
-Plots.scalefontsizes();
-ts_proportional_check()
+# Plots.scalefontsizes();
+# ts_proportional_check()

@@ -70,7 +70,8 @@ end
 function f()
     param = initial_parameters(1)
     # -----------
-    traj = 2000
+    length(ARGS) > 0 ? traj = parse(Int, ARGS[1]) : traj = 100
+    println("Number of trajectories: $traj")
     Js = range(1, 20, length = 100) .* (10^6 * 2 * pi)
     # -----------
     lines = []

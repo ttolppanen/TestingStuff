@@ -9,7 +9,7 @@
 #SBATCH --time=0:10:00                          # Time limit hrs:min:sec
 #SBATCH --output=jobs/logs/%x_%j_log.txt        # Standard output and error log
 
-file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/3_figure/size_realistic/paper_plots/paper_plot.jl"
+file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/3_figure/disorder/paper_plots/paper_plot.jl"
 
 echo "$file_to_run"; hostname; date
 

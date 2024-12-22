@@ -10,10 +10,12 @@
 #SBATCH --output=jobs/logs/%x_%j_log.txt     # Standard output and error log
 
 file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/3_figure/J/make_T_comparisons.jl"
+traj="6000"
 
 echo "$file_to_run"; hostname; date
 
 julia -t 40 -e "
+ARGS = [\"$traj\"]
 include(\"LehmusThreads.jl\");
 include(\"$file_to_run\")
 "

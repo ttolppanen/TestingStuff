@@ -34,10 +34,10 @@ function TS_fit()
     T_fit("Ts", 0.01)
 end
 function T1_fit()
-    T_fit("T1", 0.05)
+    T_fit("T1", 0.1)
 end
 function T2_fit()
-    T_fit("T2", 0.05)
+    T_fit("T2", 0.1)
 end
 
 function ts_plot()
