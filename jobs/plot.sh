@@ -11,7 +11,7 @@
 
 file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/3_figure/disorder/paper_plots/paper_plot.jl"
 
-echo "$file_to_run"; hostname; date
+echo "$file_to_run"; hostname; date; echo
 
 start_time=$(date +%s)  # Record start time
 julia -t 40 -e "
@@ -21,6 +21,7 @@ include(\"$file_to_run\")
 end_time=$(date +%s)    # Record end time
 elapsed_time=$((end_time - start_time))  # Calculate elapsed time
 
+echo
 echo "Trajectories: $traj"
 echo "Elapsed time: $((elapsed_time / 60)) minutes and $((elapsed_time % 60)) seconds"
 date

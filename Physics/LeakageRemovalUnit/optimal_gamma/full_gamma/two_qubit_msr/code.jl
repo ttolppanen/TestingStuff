@@ -22,7 +22,8 @@ function initial_parameters(L)
     param[:t] = 200
     param[:d] = 3
     param[:state] = ValueInfo(bosonstack(2, L, 1), "|200...>")
-    param[:alg] = "exact sbspc"
+    param[:alg] = "krylov sbspc"
+    param[:k] = 6
     param[:H] = "BH, d_w, fixed |2> energy"
     param[:J] = ValueInfo(5, "5MHz")
     param[:w] = ValueInfo(7500 / param[:J].val, "7.5GHz")
@@ -62,24 +63,22 @@ function f()
         obs = (state, id) -> expval(state[id], anh[id])
 
         dt = param[:dt]; t = param[:t];
-        pa_args, pa_out = pre_alloc_threads(zeros(1, 1), traj, deepcopy(state))
 
         out = []
         for gamma in gammas
-            r_f(out, work_vector) = begin
+            r_f() = begin
                 dw = param[:w].val .+ (rand(L) .- 0.5) * param[:dw].val
                 dU = 2 * dw .- (2 * param[:w].val - param[:U].val)
-                H = bosehubbard(d, L; w = dw, U = dU, J = 1)
-                Uop = subspace_split(exp(-1im * dt * Matrix(H)), ranges, perm_mat)
+                H = subspace_split(bosehubbard(d, L; w = dw, U = dU, J = 1), ranges, perm_mat)
                 msr1 = periodic_sbspc_msr_feedback!_function(msrop, param[:dt], gamma, feedback, [L])
                 msr2 = periodic_sbspc_msr_feedback!_function(msrop, param[:dt], gamma, feedback, [L-1])
                 function effect!(state, id)
                     state, id = msr1(state, id)
                     msr2(state, id)
                 end
-                exactevolve(state, work_vector, initial_id, Uop, dt, t, obs; effect!, out, save_only_last = true)
+                krylovevolve(state, initial_id, H, dt, t, param[:k], obs; effect!, save_only_last = true)
             end
-            @time solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
+            @time pa_out = solvetrajectories(r_f, traj; paral = :threads)
             r = traj_mean(pa_out)
             push!(out, r[1, 1])
         end

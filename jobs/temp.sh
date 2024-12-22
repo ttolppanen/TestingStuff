@@ -10,9 +10,9 @@
 #SBATCH --output=jobs/logs/%x_%j_log.txt        # Standard output and error logs
 
 file_to_run="Physics/LeakageRemovalUnit/optimal_gamma/full_gamma/two_qubit_msr/code.jl"
-traj="100"
+traj="900"
 
-echo "$file_to_run"; echo "trajectories = $traj"; hostname; date
+echo "$file_to_run"; echo "trajectories = $traj"; hostname; date; echo
 
 start_time=$(date +%s)  # Record start time
 julia -t 40 -e "
@@ -23,6 +23,7 @@ include(\"$file_to_run\")
 end_time=$(date +%s)    # Record end time
 elapsed_time=$((end_time - start_time))  # Calculate elapsed time
 
+echo
 echo "Trajectories: $traj"
 echo "Elapsed time: $((elapsed_time / 60)) minutes and $((elapsed_time % 60)) seconds"
 date
