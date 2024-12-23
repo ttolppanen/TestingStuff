@@ -10,7 +10,7 @@
 #SBATCH --output=jobs/logs/%x_%j_log.txt        # Standard output and error logs
 
 file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/3_figure/disorder_realistic/make_T_comparisons.jl"
-traj="60000"
+traj="100000"
 
 echo "$file_to_run"; echo "trajectories = $traj"; hostname; date; echo
 
