@@ -193,5 +193,6 @@ ts_plot()
 t1_plot()
 t2_plot()
 combine_fit_plot()
+println("Trajectories: $(get_traj(joinpath(dirname(@__DIR__), "T1")))")
 # Plots.scalefontsizes();
 # ts_proportional_check()

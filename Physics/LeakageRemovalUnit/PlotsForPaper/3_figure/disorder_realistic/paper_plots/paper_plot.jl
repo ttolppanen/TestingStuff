@@ -79,7 +79,7 @@ function t2_plot()
     plotinfo = load(joinpath(dirname(path), "T2", "data.jld2"), "plotinfo")
     pl = plot(dpi = 300,
     xlabel = "time", 
-    ylabel = "<σx> envelope"
+    ylabel = L"$\langle \sigma_x \rangle \textrm{envelope}$"
     )
     fit_lines = T2_fit()
     for line in values(plotinfo.lines)
@@ -140,15 +140,15 @@ function combine_fit_plot()
     J = get_param(data_path, :J) * mega_cons
 
     pl = plot(t_time_xs * J / mega_cons, Ts / J * 10^6,
-    xlabel = "Disorder [MHz]",
-    ylabel = "Survival Times [us]",
-    label = "Ts",
+    xlabel = L"$\textrm{Disorder}\ [\textrm{MHz}]$",
+    ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
+    label = L"$T_s$",
     legend = :topleft,
     dpi = 300,
     titlefontsize = 9
     )
-    plot!(pl, t_time_x1 * J / mega_cons, T1 / J * 10^6, label = "T1")
-    plot!(pl, t_time_x2 * J / mega_cons, T2 / J * 10^6, label = "T2")
+    plot!(pl, t_time_x1 * J / mega_cons, T1 / J * 10^6, label = L"$T_1$")
+    plot!(pl, t_time_x2 * J / mega_cons, T2 / J * 10^6, label = L"$T_2$")
 
     t1 = get_param(data_path, :diss)
     hline!(pl, [t1], ls = :dash, label = "inherit dissipation")
@@ -194,5 +194,6 @@ ts_plot()
 t1_plot()
 t2_plot()
 combine_fit_plot()
+println("Trajectories: $(get_traj(joinpath(dirname(@__DIR__), "T1")))")
 # Plots.scalefontsizes();
 # ts_proportional_check()

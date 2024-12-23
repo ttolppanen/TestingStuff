@@ -2,6 +2,8 @@ using JLD2
 using Plots
 using OrderedCollections
 using PlotAndSave
+using QuantumTimes
+using LaTeXStrings
 
 function T_fit(dir_name, start_cut)
     path = @__DIR__
@@ -10,12 +12,13 @@ function T_fit(dir_name, start_cut)
 
     for (key, line) in plotinfo.lines
         f_s = floor(Int, length(line.x) * start_cut)
-        smaller_than = findfirst(x -> x < 0.05, line.y)
+        smaller_than = findfirst(x -> x < 0.01, line.y)
         f_e = isnothing(smaller_than) ? length(line.x) : smaller_than
 
         x = line.x[f_s:f_e]
         y = line.y[f_s:f_e]
-        lines[line.tag] = T1(x, y)
+        int, slp, fit = exp_fit(x, y)
+        lines[line.tag] = fit, -1/slp
     end
     return lines
 end
@@ -77,7 +80,7 @@ function t2_plot()
     plotinfo = load(joinpath(dirname(path), "T2", "data.jld2"), "plotinfo")
     pl = plot(dpi = 300,
     xlabel = "time", 
-    ylabel = "<σₓ> envelope"
+    ylabel = L"$\langle \sigma_x \rangle \textrm{envelope}$"
     )
     fit_lines = T2_fit()
     for line in values(plotinfo.lines)
@@ -133,24 +136,25 @@ function combine_fit_plot()
     t_time_x2 = [parse(Int64, key[4:end]) for key in keys(lines)]
     T2 = [val[2] for val in values(lines)]
 
-    pl = plot(t_time_xs, Ts,
-    xlabel = "L",
-    ylabel = "Survival Times",
-    label = "Tₛ",
+    path = joinpath(dirname(@__DIR__), "T1")
+    J = get_param(path, :J) * 2 * pi
+    pl = plot(t_time_xs, Ts / J,
+    xlabel = L"$L$",
+    ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
+    label = L"$T_s$",
     legend = :topleft,
     dpi = 300,
     titlefontsize = 9
     )
-    plot!(pl, t_time_x1, T1, label = "T₁")
-    plot!(pl, t_time_x2, T2, label = "T₂")
+    plot!(pl, t_time_x1, T1 / J, label = L"$T_1$")
+    plot!(pl, t_time_x2, T2 / J, label = L"$T_2$")
 
-    path = joinpath(dirname(@__DIR__), "T1")
-    J = get_param(path, :J) * 2 * pi
-    t1 = get_param(path, :diss) * J
+    
+    t1 = get_param(path, :diss)
     hline!(pl, [t1], ls = :dash, label = "inherit dissipation")
-    pure_t2 = get_param(path, :deco) * J
-    t2 = 1 / (1/pure_t2 + 1/(2*t1))
-    hline!(pl, [t2], ls = :dash, label = "inherit decoherence")
+    pure_t2 = get_param(path, :deco)
+    t2_real = t2(t1, pure_t2)
+    hline!(pl, [t2_real], ls = :dash, label = "inherit decoherence")
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
@@ -162,4 +166,5 @@ ts_plot()
 t1_plot()
 t2_plot()
 combine_fit_plot();
+println("Trajectories: $(get_traj(joinpath(dirname(@__DIR__), "T1")))")
 Plots.scalefontsizes()
