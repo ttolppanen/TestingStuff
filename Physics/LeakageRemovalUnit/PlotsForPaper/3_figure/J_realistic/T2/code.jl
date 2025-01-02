@@ -30,8 +30,8 @@ function initial_parameters(J)
     param[:dw] = ValueInfo(100 * mega_const / U, "100MHz")
     param[:gamma] = 3/2 * (J / U)^2 # this is 3/2 J^2/U, in units of U
 
-    param[:t] = 1000 * U / (5 * mega_const) # J was 5Mhz
-    param[:dt] = param[:t] / 10000
+    param[:t] = 1000 * U / (5 * J) # J was 5Mhz
+    param[:dt] = 0.1
     param[:d] = 3
     param[:L] = 3
 
@@ -99,7 +99,7 @@ function f()
         r = map(x -> abs.(hilbert(x[1,:])), pa_out)
         r = traj_mean(r)
 
-        push!(lines, LineInfo(0:dt:t, r, traj, "J = $J_i"))
+        push!(lines, LineInfo(0:dt:t, r, traj, "J = $(J_i / (10^6 * 2 * pi))MHz"))
     end
     path = joinpath(@__DIR__)
     makeplot(path, lines...; xlabel = "t", ylabel = "sigma_x1 env", copy_code = false, add_traj = true,  param...)

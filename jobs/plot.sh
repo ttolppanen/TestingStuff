@@ -22,5 +22,5 @@ end_time=$(date +%s)    # Record end time
 elapsed_time=$((end_time - start_time))  # Calculate elapsed time
 
 echo
-echo "Elapsed time: $((elapsed_time / 60)) minutes and $((elapsed_time % 60)) seconds"
+./jobs/_elapsed_time.sh $elapsed_time
 date

@@ -10,7 +10,7 @@
 #SBATCH --output=jobs/logs/%x_%j_log.txt        # Standard output and error log
 
 file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/appendix/gamma_real/code.jl"
-traj="1000" # 1000 -> 
+traj="50000" # 1000 -> 20min
 
 echo "$file_to_run"; echo "trajectories = $traj"; hostname; date; echo
 
@@ -25,5 +25,5 @@ elapsed_time=$((end_time - start_time))  # Calculate elapsed time
 
 echo
 echo "Trajectories: $traj"
-echo "Elapsed time: $((elapsed_time / 60)) minutes and $((elapsed_time % 60)) seconds"
+./jobs/_elapsed_time.sh $elapsed_time
 date

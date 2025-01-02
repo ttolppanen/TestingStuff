@@ -19,7 +19,7 @@ end
 
 function initial_parameters(L)
     param = OrderedDict()
-    param[:dt] = 0.05
+    param[:dt] = 0.1
     param[:t] = 200
     param[:d] = 3
 
@@ -82,14 +82,14 @@ function f()
 
         out = []
         for gamma in gammas
-            dt = min(param[:dt], 1 / (2*gamma))
+            dt = min(param[:dt], 1 / (gamma))
             r_f() = begin
                 dw = param[:w].val .+ (rand(L) .- 0.5) * param[:dw].val
                 dU = 2 * dw .- (2 * param[:w].val - param[:U].val)
                 H = bosehubbard(d, L; w = dw, U = dU, J = 1)
                 H .+= H_dd
                 Uop = exp(-1im * dt * Matrix(H))
-                effect! = periodic_msr_feedback!_function(msrop, param[:dt], gamma, feedback, [L])
+                effect! = periodic_msr_feedback!_function(msrop, dt, gamma, feedback, [L])
 
                 t_T = param[:T].val
                 t_w = param[:w].val * param[:J].val

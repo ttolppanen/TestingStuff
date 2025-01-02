@@ -27,5 +27,5 @@ elapsed_time=$((end_time - start_time))  # Calculate elapsed time
 
 echo
 echo "Trajectories: $traj"
-echo "Elapsed time: $((elapsed_time / 60)) minutes and $((elapsed_time % 60)) seconds"
+./jobs/_elapsed_time.sh $elapsed_time
 date
