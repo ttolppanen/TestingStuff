@@ -10,7 +10,7 @@
 #SBATCH --output=jobs/logs/%x_%j_log.txt        # Standard output and error log
 
 file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/appendix/gamma_real/code.jl"
-traj="50000" # 1000 -> 20min
+traj="5000"
 
 echo "$file_to_run"; echo "trajectories = $traj"; hostname; date; echo
 

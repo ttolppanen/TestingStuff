@@ -19,7 +19,7 @@ end
 
 function initial_parameters(L)
     param = OrderedDict()
-    param[:dt] = 0.1
+    param[:dt] = 0.01
     param[:t] = 200
     param[:d] = 3
 
@@ -125,6 +125,7 @@ function xlog_plot(path)
     for line in values(plotinfo.lines)
         plot!(pl, line.x, line.y, label = line.tag)
     end
+    vline!(pl, [1 / plotinfo.parameters[:dt]])
     path = joinpath(path, "log plot.png")
     savefig(pl, path)
     return pl
