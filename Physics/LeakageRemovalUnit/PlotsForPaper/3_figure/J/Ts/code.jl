@@ -48,7 +48,7 @@ function initial_parameters(J)
     param[:gamma] = 3/2 * (J / U)^2 # this is 3/2 J^2/U, in units of U
 
     param[:t] = 1000 * U / (5 * J) # J was 5Mhz
-    param[:dt] = 0.1
+    param[:dt] = 0.1 * 20 * mega_const / J
     param[:d] = 3
     param[:L] = 3
 
