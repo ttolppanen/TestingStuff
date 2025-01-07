@@ -1,3 +1,4 @@
 .vscode/settings.json
 batch_log_files/
 jobs/logs/
+*.svg
