@@ -4,15 +4,18 @@ using OrderedCollections
 using QuantumTimes
 using LaTeXStrings
 
-function T_fit(dir_name, start_cut)
+function parser(text)
+    return parse(Float64, match(r"\d+(\.\d+)?", text).match)
+end
+function T_fit(dir_name, start_cut, end_cut = 1.0)
     path = @__DIR__
     plotinfo = load(joinpath(dirname(path), dir_name, "data.jld2"), "plotinfo")
     lines = OrderedDict()
 
     for (key, line) in plotinfo.lines
         f_s = floor(Int, length(line.x) * start_cut)
-        smaller_than = findfirst(x -> x < 0.05, line.y)
-        f_e = isnothing(smaller_than) ? length(line.x) : smaller_than
+        smaller_than = findfirst(x -> x < 0.01, line.y)
+        f_e = isnothing(smaller_than) ? floor(Int, length(line.x) * end_cut) : smaller_than
 
         x = line.x[f_s:f_e]
         y = line.y[f_s:f_e]
@@ -22,6 +25,7 @@ function T_fit(dir_name, start_cut)
     return lines
 end
 
+
 function TS_fit()
     T_fit("Ts", 0.01)
 end
@@ -29,7 +33,7 @@ function T1_fit()
     T_fit("T1", 0.05)
 end
 function T2_fit()
-    T_fit("T2", 0.05)
+    T_fit("T2", 0.05, 0.99)
 end
 
 function ts_plot()
@@ -41,8 +45,7 @@ function ts_plot()
     )
     fit_lines = TS_fit()
     for line in values(plotinfo.lines)
-        J = parse(Float64, line.tag[5:end])
-        plot!(pl, line.x, line.y, label = "J = " * string(J))
+        plot!(pl, line.x, line.y, label = line.tag)
         f, T = fit_lines[line.tag]
         plot!(pl, line.x, f, label = "", lc = :grey, ls = :dash)
     end
@@ -63,8 +66,7 @@ function t1_plot()
     )
     fit_lines = T1_fit()
     for line in values(plotinfo.lines)
-        J = parse(Float64, line.tag[5:end])
-        plot!(pl, line.x, line.y, label = "J = " * string(J))
+        plot!(pl, line.x, line.y, label = line.tag)
         f, T = fit_lines[line.tag]
         plot!(pl, line.x, f, label = "", lc = :grey, ls = :dash)
     end
@@ -83,18 +85,17 @@ function t2_plot()
     )
     fit_lines = T2_fit()
     for line in values(plotinfo.lines)
-        J = parse(Float64, line.tag[5:end])
-        plot!(pl, line.x, line.y, label = "J = " * string(J))
+        plot!(pl, line.x, line.y, label = line.tag)
         f, T = fit_lines[line.tag]
         plot!(pl, line.x, f, label = "", lc = :grey, ls = :dash)
     end
 
     # normal decoherence
-    t = collect(values(plotinfo.lines))[1].x
-    deph_rate = parse(Float64, plotinfo.parameters[:deco][1:end - 3])
-    U = parse(Float64, plotinfo.parameters[:U][1:end - 3])
-    deph_rate = deph_rate / U
-    plot!(pl, t, x -> exp(-x * deph_rate * 0.5), label = "decoherence")
+    # t = collect(values(plotinfo.lines))[1].x
+    # deph_rate = parse(Float64, plotinfo.parameters[:deco][1:end - 3])
+    # U = parse(Float64, plotinfo.parameters[:U][1:end - 3])
+    # deph_rate = deph_rate / U
+    # plot!(pl, t, x -> exp(-x * deph_rate * 0.5), label = "decoherence")
 
     plot!(pl, [0], [0], label = "fit", lc = :grey)
     savefig(pl, joinpath(path, "T2.png"))
@@ -124,21 +125,21 @@ end
 
 function combine_fit_plot()
     lines = TS_fit()
-    t_time_xs = [parse(Float64, key[5:end]) for key in keys(lines)]
+    t_time_xs = [parser(key) for key in keys(lines)]
     Ts = [val[2] for val in values(lines)]
     
     lines = T1_fit()
-    t_time_x1 = [parse(Float64, key[5:end]) for key in keys(lines)]
+    t_time_x1 = [parser(key) for key in keys(lines)]
     T1 = [val[2] for val in values(lines)]
 
     lines = T2_fit()
-    t_time_x2 = [parse(Float64, key[5:end]) for key in keys(lines)]
+    t_time_x2 = [parser(key) for key in keys(lines)]
     T2 = [val[2] for val in values(lines)]
 
-    mega_cons = (10^6 * 2 * pi)
     data_path = joinpath(dirname(@__DIR__), "T1")
     U = get_param(data_path, :U) * 2 * pi
-    pl = plot(t_time_xs / mega_cons, Ts / U,
+    
+    pl = plot(t_time_xs, Ts / U,
     xlabel = L"$J [\textrm{MHz}]$",
     ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
     label = L"$T_s$",
@@ -146,8 +147,8 @@ function combine_fit_plot()
     dpi = 300,
     titlefontsize = 9
     )
-    plot!(pl, t_time_x1 / mega_cons, T1 / U, label = L"$T_1$")
-    plot!(pl, t_time_x2 / mega_cons, T2 / U, label = L"$T_2$")
+    plot!(pl, t_time_x1, T1 / U, label = L"$T_1$")
+    plot!(pl, t_time_x2, T2 / U, label = L"$T_2$")
 
     t1 = get_param(data_path, :diss)
     hline!(pl, [t1], ls = :dash, label = "inherit dissipation")

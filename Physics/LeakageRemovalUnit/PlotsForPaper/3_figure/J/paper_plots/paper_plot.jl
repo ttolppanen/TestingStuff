@@ -126,7 +126,6 @@ end
 
 function combine_fit_plot()
     lines = TS_fit()
-    mega_cons = (10^6 * 2 * pi)
     t_time_xs = [parser(key)  for key in keys(lines)]
     Ts = [val[2] for val in values(lines)]
     
@@ -147,7 +146,8 @@ function combine_fit_plot()
     label = L"$T_s$",
     legend = :topleft,
     dpi = 300,
-    titlefontsize = 9
+    titlefontsize = 9,
+    yaxis = :log10
     )
     plot!(pl, t_time_x1, T1 / U, label = L"$T_1$")
     plot!(pl, t_time_x2, T2 / U, label = L"$T_2$")
