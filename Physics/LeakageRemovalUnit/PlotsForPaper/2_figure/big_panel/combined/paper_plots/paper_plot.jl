@@ -1,0 +1,32 @@
+using JLD2
+using Plots
+using PlotAndSave
+
+function make_plot()
+    path = @__DIR__
+    plotinfo = load(joinpath(dirname(path), "data.jld2"), "plotinfo")
+    pl = plot(xaxis = :log10,
+    xticks = ([0.04, 50, 100, 10^-3, 1], [0.04, "50", "100", "10-3", "10^0"]),
+    dpi = 300,
+    xlabel = "Dissipation Rate",
+    ylabel = "Leakage Population in the Array", 
+    ylims = (0, 1)
+    )
+    for line in values(plotinfo.lines)
+        if line.tag == "gamma"
+            tag = "Periodic Measurement"
+            plot!(pl, line.x, line.y / 2, label = tag, color = :deepskyblue3)
+        elseif line.tag == "diss"
+            tag = "Dissipation"
+            plot!(pl, line.x, line.y / 2, label = tag, color = :lightskyblue2)
+        end
+        
+    end
+    vline!(pl, [0.04], color = :green2, ls = :dash, label = "")
+    vline!(pl, [50], color = :pink2, ls = :dash, label = "")
+    savefig(pl, joinpath(path, "paper_plot.png"))
+    savefig(pl, joinpath(path, "paper_plot.svg"))
+    return pl
+end
+
+make_plot()
