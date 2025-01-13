@@ -5,7 +5,7 @@ using PlotAndSave
 using QuantumTimes
 using LaTeXStrings
 
-function T_fit(dir_name, start_cut)
+function T_fit(dir_name, start_cut, end_cut = 1.0)
     path = @__DIR__
     plotinfo = load(joinpath(dirname(path), dir_name, "data.jld2"), "plotinfo")
     lines = OrderedDict()
@@ -13,7 +13,7 @@ function T_fit(dir_name, start_cut)
     for (key, line) in plotinfo.lines
         f_s = floor(Int, length(line.x) * start_cut)
         smaller_than = findfirst(x -> x < 0.01, line.y)
-        f_e = isnothing(smaller_than) ? length(line.x) : smaller_than
+        f_e = isnothing(smaller_than) ? floor(Int, length(line.x) * end_cut) : smaller_than
 
         x = line.x[f_s:f_e]
         y = line.y[f_s:f_e]
@@ -24,13 +24,30 @@ function T_fit(dir_name, start_cut)
 end
 
 function TS_fit()
-    T_fit("Ts", 0.01)
+    path = @__DIR__
+    plotinfo = load(joinpath(dirname(path), "Ts", "data.jld2"), "plotinfo")
+    lines = OrderedDict()
+
+    for (key, line) in plotinfo.lines
+        size = parse(Int64, key[4:end])
+        f_s = 30 * (size - 1)
+        smaller_than = findfirst(x -> x < 0.01, line.y)
+        f_e = isnothing(smaller_than) ? floor(Int, length(line.x)) : smaller_than
+
+        x = line.x[f_s:f_e]
+        y = line.y[f_s:f_e]
+        int, slp, fit = exp_fit(x, y)
+        # T_i = findfirst(x -> x < (2 * exp(-1)), line.y)
+        # T_time = line.x[T_i]
+        lines[line.tag] = fit, -1/slp
+    end
+    return lines
 end
 function T1_fit()
     T_fit("T1", 0.05)
 end
 function T2_fit()
-    T_fit("T2", 0.05)
+    T_fit("T2", 0.05, 0.9)
 end
 
 function ts_plot()
@@ -44,6 +61,9 @@ function ts_plot()
     for line in values(plotinfo.lines)
         size = parse(Int64, line.tag[4:end])
         plot!(pl, line.x, line.y, label = "L = " * string(size))
+        # T_i = findfirst(x -> x < (2 * exp(-1)), line.y)
+        # T_time = line.x[T_i]
+        # vline!(pl, [T_time])
         f, T = fit_lines[line.tag]
         plot!(pl, line.x, f, label = "", lc = :grey, ls = :dash)
     end

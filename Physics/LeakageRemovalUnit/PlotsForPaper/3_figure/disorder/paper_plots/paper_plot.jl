@@ -5,7 +5,7 @@ using PlotAndSave
 using QuantumTimes
 using LaTeXStrings
 
-function T_fit(dir_name, start_cut)
+function T_fit(dir_name, start_cut, end_cut = 1.0)
     path = @__DIR__
     plotinfo = load(joinpath(dirname(path), dir_name, "data.jld2"), "plotinfo")
     lines = OrderedDict()
@@ -13,7 +13,7 @@ function T_fit(dir_name, start_cut)
     for (key, line) in plotinfo.lines
         f_s = floor(Int, length(line.x) * start_cut)
         smaller_than = findfirst(x -> x < 0.01, line.y)
-        f_e = isnothing(smaller_than) ? length(line.x) : smaller_than
+        f_e = isnothing(smaller_than) ? floor(Int, length(line.x) * end_cut) : smaller_than
 
         x = line.x[f_s:f_e]
         y = line.y[f_s:f_e]
@@ -30,7 +30,7 @@ function T1_fit()
     T_fit("T1", 0.2)
 end
 function T2_fit()
-    T_fit("T2", 0.1)
+    T_fit("T2", 0.1, 0.9)
 end
 
 function ts_plot()
@@ -80,7 +80,8 @@ function t2_plot()
     plotinfo = load(joinpath(dirname(path), "T2", "data.jld2"), "plotinfo")
     pl = plot(dpi = 300,
     xlabel = "time", 
-    ylabel = L"$\langle \sigma_x \rangle \textrm{envelope}$"
+    ylabel = L"$\langle \sigma_x \rangle \textrm{envelope}$",
+    legend = :none
     )
     fit_lines = T2_fit()
     for line in values(plotinfo.lines)

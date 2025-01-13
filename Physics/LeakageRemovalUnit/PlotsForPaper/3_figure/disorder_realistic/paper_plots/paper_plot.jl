@@ -4,15 +4,15 @@ using OrderedCollections
 using PlotAndSave
 using QuantumTimes
 
-function T_fit(dir_name, start_cut)
+function T_fit(dir_name, start_cut, end_cut = 1.0)
     path = @__DIR__
     plotinfo = load(joinpath(dirname(path), dir_name, "data.jld2"), "plotinfo")
     lines = OrderedDict()
 
     for (key, line) in plotinfo.lines
         f_s = floor(Int, length(line.x) * start_cut)
-        smaller_than = findfirst(x -> x < 0.05, line.y)
-        f_e = isnothing(smaller_than) ? length(line.x) : smaller_than
+        smaller_than = findfirst(x -> x < 0.01, line.y)
+        f_e = isnothing(smaller_than) ? floor(Int, length(line.x) * end_cut) : smaller_than
 
         x = line.x[f_s:f_e]
         y = line.y[f_s:f_e]
@@ -29,7 +29,7 @@ function T1_fit()
     T_fit("T1", 0.1)
 end
 function T2_fit()
-    T_fit("T2", 0.15)
+    T_fit("T2", 0.05, 0.7)
 end
 
 function ts_plot()
@@ -79,7 +79,8 @@ function t2_plot()
     plotinfo = load(joinpath(dirname(path), "T2", "data.jld2"), "plotinfo")
     pl = plot(dpi = 300,
     xlabel = "time", 
-    ylabel = L"$\langle \sigma_x \rangle \textrm{envelope}$"
+    ylabel = L"$\langle \sigma_x \rangle \textrm{envelope}$",
+    legend = :none
     )
     fit_lines = T2_fit()
     for line in values(plotinfo.lines)
@@ -96,6 +97,9 @@ function t2_plot()
     # deph_rate = deph_rate / U
     # plot!(pl, t, x -> exp(-x * deph_rate * 0.5), label = "decoherence")
 
+    line = collect(values(plotinfo.lines))[1]
+    vline!(pl, [line.x[end] * 0.9])
+    vline!(pl, [line.x[end] * 0.05])
     plot!(pl, [0], [0], label = "fit", lc = :grey)
     savefig(pl, joinpath(path, "T2.png"))
     savefig(pl, joinpath(path, "T2.svg"))
