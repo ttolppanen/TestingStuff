@@ -148,7 +148,12 @@ function combine_fit_plot()
     legend = :topleft,
     dpi = 300,
     titlefontsize = 9,
-    yaxis = :log10
+    yaxis = :log10,
+    ylims = [0.1, 10^5],
+    xlims = [5, 100],
+    xminorticks = 4,
+    yminorticks = 1,
+    minorgrid = true
     )
     plot!(pl, t_time_x1 * J / mega_cons, T1 / J * 10^6, label = L"$T_1$")
     plot!(pl, t_time_x2 * J / mega_cons, T2 / J * 10^6, label = L"$T_2$")

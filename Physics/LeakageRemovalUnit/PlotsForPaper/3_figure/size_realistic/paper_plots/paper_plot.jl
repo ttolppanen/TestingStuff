@@ -138,23 +138,28 @@ function combine_fit_plot()
 
     path = joinpath(dirname(@__DIR__), "T1")
     J = get_param(path, :J) * 2 * pi
-    pl = plot(t_time_xs, Ts / J,
+    pl = plot(t_time_xs, Ts / J, seriestype = :scatter,
     xlabel = L"$L$",
     ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
     label = L"$T_s$",
     legend = :topleft,
     dpi = 300,
-    titlefontsize = 9
+    titlefontsize = 9,
+    ylims = [0, 17],
+    yticks = 0:4:16,
+    yminorticks = 4,
+    xminorticks = 1,
+    minorgrid = true
     )
-    plot!(pl, t_time_x1, T1 / J, label = L"$T_1$")
-    plot!(pl, t_time_x2, T2 / J, label = L"$T_2$")
+    plot!(pl, t_time_x1, T1 / J, seriestype = :scatter, label = L"$T_1$")
+    plot!(pl, t_time_x2, T2 / J, seriestype = :scatter, label = L"$T_2$")
 
     
     t1 = get_param(path, :diss)
-    hline!(pl, [t1], ls = :dash, label = "inherit dissipation")
+    hline!(pl, [t1], ls = :dash, label = "d")
     pure_t2 = get_param(path, :deco)
     t2_real = t2(t1, pure_t2)
-    hline!(pl, [t2_real], ls = :dash, label = "inherit decoherence")
+    hline!(pl, [t2_real], ls = :dash, label = "de")
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))

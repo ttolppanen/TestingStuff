@@ -144,10 +144,15 @@ function combine_fit_plot()
     xlabel = L"$J [\textrm{MHz}]$",
     ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
     label = L"$T_s$",
-    legend = :topleft,
+    legend = :topright,
     dpi = 300,
     titlefontsize = 9,
-    yaxis = :log10
+    yaxis = :log10,
+    ylims = [0.1, 10^5],
+    xlims = [1, 20],
+    xminorticks = 5,
+    yminorticks = 1,
+    minorgrid = true
     )
     plot!(pl, t_time_x1, T1 / U, label = L"$T_1$")
     plot!(pl, t_time_x2, T2 / U, label = L"$T_2$")

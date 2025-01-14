@@ -145,7 +145,13 @@ function combine_fit_plot()
     label = L"$T_s$",
     legend = :topright,
     dpi = 300,
-    titlefontsize = 9
+    titlefontsize = 9,
+    ylims = [0, 17],
+    xlims = [1, 20],
+    yticks = 0:4:16,
+    xminorticks = 5,
+    yminorticks = 4,
+    minorgrid = true
     )
     plot!(pl, t_time_x1, T1 / U, label = L"$T_1$")
     plot!(pl, t_time_x2, T2 / U, label = L"$T_2$")

@@ -66,6 +66,13 @@ function ts_plot()
         # vline!(pl, [T_time])
         f, T = fit_lines[line.tag]
         plot!(pl, line.x, f, label = "", lc = :grey, ls = :dash)
+        function t_small_scale(J, U, L)
+            J = 2 * J^2 / U # 2 * J^2 / U
+            t_j = π / (2*J) * (L - 1) # π / (2*J)
+        end
+ 
+        col = pl.series_list[end - 1][:seriescolor]
+        vline!(pl, [t_j], c = RGB(col.r, col.g, col.b))
     end
     plot!(pl, [0], [0], label = "fit", lc = :grey)
     
@@ -148,17 +155,18 @@ function combine_fit_plot()
 
     data_path = joinpath(dirname(@__DIR__), "T1")
     J = get_param(data_path, :J) * 2 * pi
-    pl = plot(t_time_xs, Ts / J,
+    pl = plot(t_time_xs, Ts / J, seriestype = :scatter,
     xlabel = L"$L$",
     ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
     label = L"$T_s$",
     legend = :topleft,
     dpi = 300,
     titlefontsize = 9,
-    yaxis = :log10
+    yaxis = :log10,
+    ylims = [0.1, 10^5],
     )
-    plot!(pl, t_time_x1, T1 / J, label = L"$T_1$")
-    plot!(pl, t_time_x2, T2 / J, label = L"$T_2$")
+    plot!(pl, t_time_x1, T1 / J, seriestype = :scatter, label = L"$T_1$")
+    plot!(pl, t_time_x2, T2 / J, seriestype = :scatter, label = L"$T_2$")
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
