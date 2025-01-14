@@ -5,6 +5,11 @@ using PlotAndSave
 using QuantumTimes
 using LaTeXStrings
 
+function t_small_scale(J, U, L)
+    J = 2 * J^2 / U # 2 * J^2 / U
+    return π / (2*J) * (L - 1) # π / (2*J)
+end
+
 function T_fit(dir_name, start_cut, end_cut = 1.0)
     path = @__DIR__
     plotinfo = load(joinpath(dirname(path), dir_name, "data.jld2"), "plotinfo")
@@ -66,13 +71,10 @@ function ts_plot()
         # vline!(pl, [T_time])
         f, T = fit_lines[line.tag]
         plot!(pl, line.x, f, label = "", lc = :grey, ls = :dash)
-        function t_small_scale(J, U, L)
-            J = 2 * J^2 / U # 2 * J^2 / U
-            t_j = π / (2*J) * (L - 1) # π / (2*J)
-        end
- 
-        col = pl.series_list[end - 1][:seriescolor]
-        vline!(pl, [t_j], c = RGB(col.r, col.g, col.b))
+
+        # c = pl.series_list[end - 1][:seriescolor]
+        # t_j = t_small_scale(1, 50, size - 1)
+        # vline!(pl, [t_j], color = c)
     end
     plot!(pl, [0], [0], label = "fit", lc = :grey)
     
@@ -167,6 +169,12 @@ function combine_fit_plot()
     )
     plot!(pl, t_time_x1, T1 / J, seriestype = :scatter, label = L"$T_1$")
     plot!(pl, t_time_x2, T2 / J, seriestype = :scatter, label = L"$T_2$")
+
+    # J = 5 * 2 * π
+    # U = 250 * 2 * π
+    # short_scale(L) = t_small_scale(J, U, L)
+    # t_y = short_scale.(t_time_xs)
+    # scatter!(pl, t_time_xs, t_y)
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))

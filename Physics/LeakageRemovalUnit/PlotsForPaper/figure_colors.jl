@@ -10,7 +10,7 @@ using Plots
 color_small_msr = :green
 color_high_msr = :red
 color_periodic = :blue
-color_dissipation_removal = :blue
+color_dissipation_removal = :yellow
 color_t2 = :orange
 color_t1 = :yellow
 color_ts = color_periodic
