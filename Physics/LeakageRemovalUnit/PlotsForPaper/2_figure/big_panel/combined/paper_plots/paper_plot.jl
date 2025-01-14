@@ -1,6 +1,7 @@
 using JLD2
 using Plots
 using PlotAndSave
+include("/home/htolppan/Documents/Code/TestingStuff/Physics/LeakageRemovalUnit/PlotsForPaper/figure_colors.jl")
 
 function make_plot()
     path = @__DIR__
@@ -15,14 +16,14 @@ function make_plot()
     for line in values(plotinfo.lines)
         if line.tag == "gamma"
             tag = "Periodic Measurement"
-            plot!(pl, line.x, line.y / 2, label = tag, color = :deepskyblue3)
+            plot!(pl, line.x, line.y / 2, label = tag, color = color_periodic)
         elseif line.tag == "diss"
             tag = "Dissipation"
-            plot!(pl, line.x, line.y / 2, label = tag, color = :lightskyblue2)
+            plot!(pl, line.x, line.y / 2, label = tag, color = color_dissipation_removal)
         end
     end
-    vline!(pl, [0.03], color = :green2, ls = :dash, label = "")
-    vline!(pl, [30], color = :pink2, ls = :dash, label = "")
+    vline!(pl, [0.03], color = color_small_msr, ls = :dash, label = "")
+    vline!(pl, [30], color = color_high_msr, ls = :dash, label = "")
     savefig(pl, joinpath(path, "paper_plot.png"))
     savefig(pl, joinpath(path, "paper_plot.svg"))
     return pl
