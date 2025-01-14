@@ -1,6 +1,7 @@
 using JLD2
 using Plots
-include("/home/htolppan/Documents/Code/TestingStuff/Physics/LeakageRemovalUnit/PlotsForPaper/figure_colors.jl")
+using LRUFigureColors
+using PlotAndSave
 
 function make_plot()
     path = @__DIR__

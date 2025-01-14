@@ -4,6 +4,7 @@ using OrderedCollections
 using PlotAndSave
 using QuantumTimes
 using LaTeXStrings
+using LRUFigureColors
 
 function t_small_scale(J, U, L)
     J = 2 * J^2 / U # 2 * J^2 / U
@@ -161,14 +162,15 @@ function combine_fit_plot()
     xlabel = L"$L$",
     ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
     label = L"$T_s$",
+    color = color_ts,
     legend = :topleft,
     dpi = 300,
     titlefontsize = 9,
     yaxis = :log10,
     ylims = [0.1, 10^5],
     )
-    plot!(pl, t_time_x1, T1 / J, seriestype = :scatter, label = L"$T_1$")
-    plot!(pl, t_time_x2, T2 / J, seriestype = :scatter, label = L"$T_2$")
+    plot!(pl, t_time_x1, T1 / J, seriestype = :scatter, label = L"$T_1$", color = color_t1)
+    plot!(pl, t_time_x2, T2 / J, seriestype = :scatter, label = L"$T_2$", color = color_t2)
 
     # J = 5 * 2 * π
     # U = 250 * 2 * π

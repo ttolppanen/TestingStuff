@@ -2,7 +2,7 @@
 
 julia_version = "1.10.5"
 manifest_format = "2.0"
-project_hash = "4441e0189adcd37de74cf23edcd5b438acb0a198"
+project_hash = "6da409316b8106d23979826d525047ea5f07dfba"
 
 [[deps.AbstractFFTs]]
 deps = ["LinearAlgebra"]
@@ -1001,6 +1001,12 @@ deps = ["Artifacts", "JLLWrappers", "Libdl"]
 git-tree-sha1 = "78211fb6cbc872f77cad3fc0b6cf647d923f4929"
 uuid = "1d63c593-3942-5779-bab2-d838dc0a180e"
 version = "18.1.7+0"
+
+[[deps.LRUFigureColors]]
+deps = ["Plots"]
+path = "local_packages/LRUFigureColors"
+uuid = "b4808c66-03c3-4c12-84fb-73fbf0bdbb15"
+version = "0.1.0"
 
 [[deps.LZO_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl"]

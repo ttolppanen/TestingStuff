@@ -3,6 +3,7 @@ using Plots
 using OrderedCollections
 using PlotAndSave
 using QuantumTimes
+using LRUFigureColors
 
 function T_fit(dir_name, start_cut, end_cut = 1.0)
     path = @__DIR__
@@ -148,6 +149,7 @@ function combine_fit_plot()
     ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
     label = L"$T_s$",
     legend = :topleft,
+    color = color_ts,
     dpi = 300,
     titlefontsize = 9,
     ylims = [0, 17],
@@ -157,14 +159,14 @@ function combine_fit_plot()
     yminorticks = 4,
     minorgrid = true
     )
-    plot!(pl, t_time_x1 * J / mega_cons, T1 / J * 10^6, label = L"$T_1$")
-    plot!(pl, t_time_x2 * J / mega_cons, T2 / J * 10^6, label = L"$T_2$")
+    plot!(pl, t_time_x1 * J / mega_cons, T1 / J * 10^6, label = L"$T_1$", color = color_t1)
+    plot!(pl, t_time_x2 * J / mega_cons, T2 / J * 10^6, label = L"$T_2$", color = color_t2)
 
     t1 = get_param(data_path, :diss)
-    hline!(pl, [t1], ls = :dash, label = "inherit dissipation")
+    hline!(pl, [t1], ls = :dash, label = "inherit dissipation", color = color_t1)
     pure_t2 = get_param(data_path, :deco)
     t2 = 1 / (1/pure_t2 + 1/(2*t1))
-    hline!(pl, [t2], ls = :dash, label = "inherit decoherence")
+    hline!(pl, [t2], ls = :dash, label = "inherit decoherence", color = color_t2)
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))

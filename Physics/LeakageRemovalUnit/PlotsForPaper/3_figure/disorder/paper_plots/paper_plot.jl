@@ -4,6 +4,7 @@ using OrderedCollections
 using PlotAndSave
 using QuantumTimes
 using LaTeXStrings
+using LRUFigureColors
 
 function T_fit(dir_name, start_cut, end_cut = 1.0)
     path = @__DIR__
@@ -145,6 +146,7 @@ function combine_fit_plot()
     xlabel = L"$\textrm{Disorder}\ [\textrm{MHz}]$",
     ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
     label = L"$T_s$",
+    color = color_ts,
     legend = :topleft,
     dpi = 300,
     titlefontsize = 9,
@@ -155,8 +157,8 @@ function combine_fit_plot()
     yminorticks = 1,
     minorgrid = true
     )
-    plot!(pl, t_time_x1 * J / mega_cons, T1 / J * 10^6, label = L"$T_1$")
-    plot!(pl, t_time_x2 * J / mega_cons, T2 / J * 10^6, label = L"$T_2$")
+    plot!(pl, t_time_x1 * J / mega_cons, T1 / J * 10^6, label = L"$T_1$", color = color_t1)
+    plot!(pl, t_time_x2 * J / mega_cons, T2 / J * 10^6, label = L"$T_2$", color = color_t2)
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
