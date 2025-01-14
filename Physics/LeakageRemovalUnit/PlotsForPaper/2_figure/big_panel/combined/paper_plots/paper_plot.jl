@@ -19,7 +19,7 @@ function make_plot()
             plot!(pl, line.x, line.y / 2, label = tag, color = color_periodic)
         elseif line.tag == "diss"
             tag = "Dissipation"
-            plot!(pl, line.x, line.y / 2, label = tag, color = color_dissipation_removal)
+            plot!(pl, line.x, line.y / 2, label = tag, color = color_dissipation_removal, ls = :dash)
         end
     end
     vline!(pl, [0.03], color = color_small_msr, ls = :dash, label = "")
