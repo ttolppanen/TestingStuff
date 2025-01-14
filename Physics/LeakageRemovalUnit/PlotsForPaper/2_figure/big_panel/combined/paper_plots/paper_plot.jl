@@ -8,7 +8,7 @@ function make_plot()
     pl = plot(xaxis = :log10,
     xticks = ([0.04, 50, 100, 10^-3, 1], [0.04, "50", "100", "10-3", "10^0"]),
     dpi = 300,
-    xlabel = "Dissipation Rate",
+    xlabel = "Rate",
     ylabel = "Leakage Population in the Array", 
     ylims = (0, 1)
     )
@@ -20,10 +20,9 @@ function make_plot()
             tag = "Dissipation"
             plot!(pl, line.x, line.y / 2, label = tag, color = :lightskyblue2)
         end
-        
     end
-    vline!(pl, [0.04], color = :green2, ls = :dash, label = "")
-    vline!(pl, [50], color = :pink2, ls = :dash, label = "")
+    vline!(pl, [0.03], color = :green2, ls = :dash, label = "")
+    vline!(pl, [30], color = :pink2, ls = :dash, label = "")
     savefig(pl, joinpath(path, "paper_plot.png"))
     savefig(pl, joinpath(path, "paper_plot.svg"))
     return pl

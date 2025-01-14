@@ -12,8 +12,8 @@ function make_plot()
     Plots.scalefontsizes(1.5)
     l_low = plotinfo.lines["gamma = 0.03"]
     l_high = plotinfo.lines["gamma = 50.0"]
-    plot!(pl, l_low.x, l_low.y, label = "Measurement Rate = 0.03", color = :green2)
-    plot!(pl, l_high.x, l_high.y, label = "Measurement Rate = 50", color = :pink2)
+    plot!(pl, l_low.x, l_low.y / 2, label = "Measurement Rate = 0.03", color = :green2)
+    plot!(pl, l_high.x, l_high.y / 2, label = "Measurement Rate = 50", color = :pink2)
     savefig(pl, joinpath(path, "paper_plot.png"))
     savefig(pl, joinpath(path, "paper_plot.svg"))
     Plots.scalefontsizes()
