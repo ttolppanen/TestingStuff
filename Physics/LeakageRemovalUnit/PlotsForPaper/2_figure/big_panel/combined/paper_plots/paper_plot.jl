@@ -2,6 +2,7 @@ using JLD2
 using Plots
 using PlotAndSave
 using LRUFigureColors
+using LaTeXStrings
 
 function make_plot()
     path = @__DIR__
@@ -9,7 +10,7 @@ function make_plot()
     pl = plot(xaxis = :log10,
     xticks = ([0.04, 50, 100, 10^-3, 1], [0.04, "50", "100", "10-3", "10^0"]),
     dpi = 300,
-    xlabel = "Rate",
+    xlabel = L"$\textrm{Rates} \ \left(\frac{\Gamma}{J} \right)$",
     ylabel = "Leakage Population in the Array", 
     ylims = (0, 1)
     )
