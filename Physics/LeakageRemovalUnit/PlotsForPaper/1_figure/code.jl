@@ -3,11 +3,12 @@ using JLD2
 using Plots
 using Plots.PlotMeasures
 using LinearAlgebra
-@everywhere using QuantumStates
-@everywhere using QuantumOperators
+using QuantumStates
+using QuantumOperators
 using PlotAndSave
-@everywhere using QuantumTimeEvolution
+using QuantumTimeEvolution
 using OrderedCollections
+using LaTeXStrings
 
 function traj_mean(result)
     out = zeros(size(result[1]))
@@ -111,9 +112,10 @@ function f()
 
         solvetrajectories(r_f, traj, pa_args, pa_out; paral = :threads)
         r = traj_mean(pa_out)
-        map = heatmap(1:L, 0:dt:t, transpose(r), 
+        t_real = collect(0:dt:t) / (param[:J].val * 2 * π)
+        map = heatmap(1:L, t_real, transpose(r), 
         xlabel = "sites", 
-        ylabel = "time",
+        ylabel = L"$\textrm{Time} \ (t) \ [\textrm{\mu s}]$",
         clim = (0, 2),
         #colorbar_ticks = ([0.0, 1.0, 2.0], ["0", "1", "2"]),
         #title = PlotAndSave.parameters_to_title(; L, param...)
@@ -130,7 +132,7 @@ function f()
     return pl
 end
 
-Plots.scalefontsizes(3)
+Plots.scalefontsizes(6)
 @time pl = f()
 Plots.scalefontsizes()
 pl
