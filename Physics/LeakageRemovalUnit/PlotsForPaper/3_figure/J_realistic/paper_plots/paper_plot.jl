@@ -141,7 +141,7 @@ function combine_fit_plot()
     U = get_param(data_path, :U) * 2 * pi
     
     pl = plot(t_time_xs, Ts / U,
-    xlabel = L"$J [\textrm{MHz}]$",
+    xlabel = L"$J / 2 \pi  \ [\textrm{MHz}]$",
     ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
     label = L"$T_s$",
     color = color_ts,
@@ -159,10 +159,10 @@ function combine_fit_plot()
     plot!(pl, t_time_x2, T2 / U, label = L"$T_2$", color = color_t2)
 
     t1 = get_param(data_path, :diss)
-    hline!(pl, [t1], ls = :dash, label = "inherit dissipation", color = color_t1)
+    hline!(pl, [t1], ls = :dash, label = L"$T_1^{\textrm{qb}}$", color = color_t1)
     pure_t2 = get_param(data_path, :deco)
     t2 = 1 / (1/pure_t2 + 1/(2*t1))
-    hline!(pl, [t2], ls = :dash, label = "inherit decoherence", color = color_t2)
+    hline!(pl, [t2], ls = :dash, label =  L"$T_2^{\textrm{qb}}$", color = color_t2)
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))

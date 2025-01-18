@@ -158,10 +158,10 @@ function combine_fit_plot()
 
     
     t1 = get_param(path, :diss)
-    hline!(pl, [t1], ls = :dash, label = "d", color = color_t1)
+    hline!(pl, [t1], ls = :dash, label =  L"$T_1^{\textrm{qb}}$", color = color_t1)
     pure_t2 = get_param(path, :deco)
     t2_real = t2(t1, pure_t2)
-    hline!(pl, [t2_real], ls = :dash, label = "de", color = color_t2)
+    hline!(pl, [t2_real], ls = :dash, label =  L"$T_2^{\textrm{qb}}$", color = color_t2)
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))

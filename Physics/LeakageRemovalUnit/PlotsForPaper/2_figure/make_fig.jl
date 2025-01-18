@@ -1,3 +1,5 @@
+using Plots
+
 function f(plot1 , plot2, plotbottom)
     layout = @layout [
         a b;
@@ -12,9 +14,8 @@ function f(plot1 , plot2, plotbottom)
     layout = layout,
     size = (500, 500)
     )
-    path = dirname(@__FILE__)
-    savefig(pl, joinpath(path, "fig2.png"))
-    savefig(pl, joinpath(path, "fig2.svg"))
+    savefig(pl, joinpath(@__DIR__, "fig2.png"))
+    savefig(pl, joinpath(@__DIR__, "fig2.svg"))
     return pl
 end
 

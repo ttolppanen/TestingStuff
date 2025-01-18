@@ -143,7 +143,7 @@ function combine_fit_plot()
     J = get_param(data_path, :J) * mega_cons
 
     pl = plot(t_time_xs * J / mega_cons, Ts / J * 10^6,
-    xlabel = L"$\textrm{Disorder}\ [\textrm{MHz}]$",
+    xlabel = L"$W / 2 \pi \ [\textrm{MHz}]$",
     ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
     label = L"$T_s$",
     color = color_ts,
