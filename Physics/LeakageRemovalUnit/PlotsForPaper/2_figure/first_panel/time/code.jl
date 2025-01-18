@@ -46,7 +46,7 @@ function f()
     param = initial_parameters()
     # -----------
     traj = 20000
-    gammas = [0.03, 50]
+    gammas = [0.03, 30]
     # -----------
 
     d = param[:d]; L = param[:L]

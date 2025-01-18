@@ -3,11 +3,11 @@ function f(plot1 , plot2, plotbottom)
         a b;
         c{0.66h}
     ]
-    plot1 = plot(plot1, topmargin = 7Plots.mm)
-    plot2 = plot(plot2, topmargin = 7Plots.mm)
-    annotate!(plot1, ((-0.08, 1.22), "a)"))
-    annotate!(plot2, ((-0.08, 1.22), "b)"))
-    annotate!(plotbottom, ((-0.04, 1.15), "c)"))
+    plot1 = plot(plot1, topmargin = 6.1Plots.mm)
+    plot2 = plot(plot2, topmargin = 6.1Plots.mm)
+    annotate!(plot1, ((-0.1, 1.22), text("(a)", 10, "Computer Modern")))
+    annotate!(plot2, ((-0.1, 1.22), text("(b)", 10, "Computer Modern")))
+    annotate!(plotbottom, ((-0.05, 1.15), text("(c)", 10, "Computer Modern")))
     pl = plot(plot1, plot2, plotbottom,
     layout = layout,
     size = (500, 500)
