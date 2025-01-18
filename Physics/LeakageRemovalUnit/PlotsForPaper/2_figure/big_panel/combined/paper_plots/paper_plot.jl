@@ -8,10 +8,11 @@ function make_plot()
     path = @__DIR__
     plotinfo = load(joinpath(dirname(path), "data.jld2"), "plotinfo")
     pl = plot(xaxis = :log10,
-    xticks = ([0.04, 50, 100, 10^-3, 1], [0.04, "50", "100", "10-3", "10^0"]),
+    xticks = ([10^-5, 10^-4, 10^-3, 10^0, 10^1, 10^2, 0.03, 30], ["10^{-5}", "10^{-4}", "10^{-3}", "10^{0}", "10^{1}",  "10^{2}", "0.03", "30"]),
     dpi = 300,
     xlabel = L"$\textrm{Rates} \ \left(\frac{\Gamma}{J} \right)$",
-    ylabel = "Leakage Population in the Array", 
+    ylabel = L"$\sum_{\ell} \left\langle \hat{n}_\ell(\hat{n}_\ell-\hat{I})/2 \right\rangle$",
+    legend = :bottomleft,
     ylims = (0, 1)
     )
     for line in values(plotinfo.lines)
