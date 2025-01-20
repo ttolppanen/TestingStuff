@@ -1003,7 +1003,7 @@ uuid = "1d63c593-3942-5779-bab2-d838dc0a180e"
 version = "18.1.7+0"
 
 [[deps.LRUFigureColors]]
-deps = ["Plots"]
+deps = ["OrderedCollections", "PlotAndSave", "Plots", "QuantumTimes"]
 path = "local_packages/LRUFigureColors"
 uuid = "b4808c66-03c3-4c12-84fb-73fbf0bdbb15"
 version = "0.1.0"

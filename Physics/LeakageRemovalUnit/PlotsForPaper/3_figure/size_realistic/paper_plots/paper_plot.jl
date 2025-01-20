@@ -6,32 +6,18 @@ using QuantumTimes
 using LaTeXStrings
 using LRUFigureColors
 
-function T_fit(dir_name, start_cut, end_cut = 1.0)
-    path = @__DIR__
-    plotinfo = load(joinpath(dirname(path), dir_name, "data.jld2"), "plotinfo")
-    lines = OrderedDict()
-
-    for (key, line) in plotinfo.lines
-        f_s = floor(Int, length(line.x) * start_cut)
-        smaller_than = findfirst(x -> x < 0.01, line.y)
-        f_e = isnothing(smaller_than) ? floor(Int, length(line.x) * end_cut) : smaller_than
-
-        x = line.x[f_s:f_e]
-        y = line.y[f_s:f_e]
-        int, slp, fit = exp_fit(x, y)
-        lines[line.tag] = fit, -1/slp
-    end
-    return lines
-end
 
 function TS_fit()
-    T_fit("Ts", 0.001)
+    path = joinpath(dirname(@__DIR__), "Ts")
+    T_fit(path, 0.001)
 end
 function T1_fit()
-    T_fit("T1", 0.05)
+    path = joinpath(dirname(@__DIR__), "T1")
+    T_fit(path, 0.05)
 end
 function T2_fit()
-    T_fit("T2", 0.05, 0.9)
+    path = joinpath(dirname(@__DIR__), "T2")
+    T_fit(path, 0.05, 0.9)
 end
 
 function ts_plot()

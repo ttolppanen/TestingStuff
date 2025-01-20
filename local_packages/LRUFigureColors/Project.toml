@@ -4,4 +4,7 @@ authors = ["ttolppanen <taneli.tolppanen@gmail.com>"]
 version = "0.1.0"
 
 [deps]
+OrderedCollections = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
+PlotAndSave = "17f9de49-761f-4084-9189-3237cc0765fb"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+QuantumTimes = "8747772e-c7e0-4110-92c5-e6bdb4ce5b89"

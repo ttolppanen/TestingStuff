@@ -10,7 +10,7 @@ function make_plot()
     pl = plot(xaxis = :log10,
     xticks = ([10^-5, 10^-4, 10^-3, 10^0, 10^1, 10^2, 0.03, 30], ["10^{-5}", "10^{-4}", "10^{-3}", "10^{0}", "10^{1}",  "10^{2}", "0.03", "30"]),
     dpi = 300,
-    xlabel = L"$\frac{\Gamma}{J}$",
+    xlabel = L"$\Gamma / J$",
     ylabel = L"$\sum_{\ell} \left\langle \hat{n}_\ell(\hat{n}_\ell-\hat{I})/2 \right\rangle$",
     legend = :bottomleft,
     ylims = (0, 1)
