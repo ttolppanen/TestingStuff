@@ -9,7 +9,8 @@ function make_plot()
     plotinfo = load(joinpath(dirname(path), "data.jld2"), "plotinfo")
     pl = plot(dpi = 300,
     xlabel = L"$tJ$", 
-    ylabel = L"$\left\langle \hat{n}_1(\hat{n}_1 - \hat{I})/2 \right\rangle$"
+    # ylabel = L"$\left\langle \hat{n}_1(\hat{n}_1 - \hat{I})/2 \right\rangle$"
+    ylabel = L"$\textrm{Qubit \ Leakage} \ \left( P_2^{(1)} \right)$"
     # ylims = (10^-5, 1)
     )
     l_low = plotinfo.lines["gamma = 0.03"]

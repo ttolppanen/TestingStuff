@@ -11,7 +11,8 @@ function make_plot()
     xticks = ([10^-5, 10^-4, 10^-3, 10^0, 10^1, 10^2, 0.03, 30], ["10^{-5}", "10^{-4}", "10^{-3}", "10^{0}", "10^{1}",  "10^{2}", "0.03", "30"]),
     dpi = 300,
     xlabel = L"$\Gamma / J$",
-    ylabel = L"$\sum_{\ell} \left\langle \hat{n}_\ell(\hat{n}_\ell-\hat{I})/2 \right\rangle$",
+    # ylabel = L"$\sum_{\ell} \left\langle \hat{n}_\ell(\hat{n}_\ell-\hat{I})/2 \right\rangle$",
+    ylabel = L"$\textrm{Array \ Leakage} \ \left( P_2^{(\ell)} \right)$",
     legend = :bottomleft,
     ylims = (0, 1)
     )

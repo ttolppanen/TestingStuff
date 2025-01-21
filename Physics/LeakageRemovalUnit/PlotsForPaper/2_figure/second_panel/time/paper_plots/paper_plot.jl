@@ -9,7 +9,8 @@ function make_plot()
     plotinfo = load(joinpath(dirname(path), "data.jld2"), "plotinfo")
     pl = plot(dpi = 300,
     xlabel = L"$tJ$",
-    ylabel = L"$\sum_{\ell} \left\langle \hat{n}_\ell(\hat{n}_\ell-\hat{I})/2 \right\rangle$"
+    # ylabel = L"$\sum_{\ell} \left\langle \hat{n}_\ell(\hat{n}_\ell-\hat{I})/2 \right\rangle$"
+    ylabel = L"$\textrm{Array \ Leakage} \ \left( P_2^{(\ell)} \right)$"
     # margin = 6Plots.mm
     # ylims = (10^-5, 1)
     )
