@@ -154,6 +154,13 @@ function combine_fit_plot()
     t2 = 1 / (1/pure_t2 + 1/(2*t1))
     hline!(pl, [t2], ls = :dash, label =  L"$T_2^{\textrm{qb}}$", color = color_t2)
 
+    data_path = joinpath(dirname(@__DIR__), "T1")
+    J = get_param(data_path, :J) * 2 * pi
+    U = get_param(data_path, :U) * 2 * pi
+    L = get_param(data_path, :L)
+    t_y = t_small_scale(J, U, L)
+    hline!(pl, [t_y], label = "Short", ls = :dash, color = color_ts_short)
+
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
 
