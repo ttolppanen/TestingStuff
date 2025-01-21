@@ -43,9 +43,13 @@ function T_fit(path, start_cut, end_cut = 1.0, y_factor = 1)
     return lines
 end
 
-function t_small_scale(J, U, L)
+function t_small_scale(J, U)
     J = 2 * J^2 / U # 2 * J^2 / U
-    return π / (2*J) * (L - 1) # π / (2*J)
+    return π / (2*J) # π / (2*J)
+end
+function t_small_scale(J, U, L)
+    println("small scale time does not use L anymore")
+    return t_small_scale(J, U)
 end
 
 

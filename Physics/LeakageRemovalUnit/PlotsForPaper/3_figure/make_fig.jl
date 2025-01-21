@@ -12,10 +12,16 @@ function f(plots...)
     annonations = ["(a)", "(b)", "(c)", "(d)", "(e)", "(f)"]
     for i in 1:6
         plot!(plots[i], topmargin = 7Plots.mm, ytickfont = font_size - 1, xtickfont = font_size - 1)
-        annotate!(plots[i], ((-0.01, 1.15), text(annonations[i], font_size, "Computer Modern")))
+        annotate!(plots[i], ((-0.01, 1.15), text(latexstring("\\textbf{$(annonations[i])}"), font_size, "Computer Modern")))
 
         if !(i == 1 || i == 4)
             plot!(plots[i], legend = :none)
+        end
+        if i == 4
+            plot!(plots[i], 
+                background_color_legend = RGBA(1, 1, 1, 0.66),
+                foreground_color_legend = RGBA(0, 0, 0, 1)
+            )
         end
     end
     
@@ -37,11 +43,11 @@ pl_diss = combine_fit_plot()
 include(joinpath(@__DIR__, "disorder_realistic/paper_plots/paper_plot.jl"))
 pl_diss_real = combine_fit_plot()
 
-include(joinpath(@__DIR__, "J/paper_plots/paper_plot.jl"))
-pl_J = combine_fit_plot()
+# include(joinpath(@__DIR__, "J/paper_plots/paper_plot.jl"))
+# pl_J = combine_fit_plot()
 
-include(joinpath(@__DIR__, "J_realistic/paper_plots/paper_plot.jl"))
-pl_J_real = combine_fit_plot()
+# include(joinpath(@__DIR__, "J_realistic/paper_plots/paper_plot.jl"))
+# pl_J_real = combine_fit_plot()
 
 include(joinpath(@__DIR__, "size/paper_plots/paper_plot.jl"))
 pl_L = combine_fit_plot()

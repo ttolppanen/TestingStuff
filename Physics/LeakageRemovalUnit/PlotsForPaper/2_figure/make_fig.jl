@@ -7,9 +7,9 @@ function f(plot1 , plot2, plotbottom)
     ]
     plot1 = plot(plot1, topmargin = 6.3Plots.mm)
     plot2 = plot(plot2, topmargin = 6.3Plots.mm)
-    annotate!(plot1, ((-0.01, 1.17), text("(a)", 10, "Computer Modern")))
-    annotate!(plot2, ((-0.01, 1.17), text("(b)", 10, "Computer Modern")))
-    annotate!(plotbottom, ((-0.002, 1 + 0.1), text("(c)", 10, "Computer Modern")))
+    annotate!(plot1, ((-0.01, 1.17), text(L"$\textbf{(a)}$", 10, "Computer Modern")))
+    annotate!(plot2, ((-0.01, 1.17), text(L"$\textbf{(b)}$", 10, "Computer Modern")))
+    annotate!(plotbottom, ((-0.002, 1 + 0.1), text(L"$\textbf{(c)}$", 10, "Computer Modern")))
     pl = plot(plot1, plot2, plotbottom,
     layout = layout,
     size = (500, 500)

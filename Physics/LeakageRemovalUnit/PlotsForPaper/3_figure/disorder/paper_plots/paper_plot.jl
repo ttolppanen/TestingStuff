@@ -126,9 +126,14 @@ function combine_fit_plot()
 
     mega_cons = (10^6 * 2 * pi)
     data_path = joinpath(dirname(@__DIR__), "T1")
-    J = get_param(data_path, :J) * mega_cons
+    J = get_param(data_path, :J) * 2 * pi
 
-    pl = plot(t_time_xs * J / mega_cons, Ts / J * 10^6,
+    pl = plot()
+
+    plot!(pl, t_time_x1 * J / (2 * pi), T1 / J, label = L"$T_1$", color = color_t1)
+    plot!(pl, t_time_x2 * J / (2 * pi), T2 / J, label = L"$T_2$", color = color_t2)
+
+    plot!(t_time_xs * J / (2 * pi), Ts / J,
     xlabel = L"$W / 2 \pi \ [\textrm{MHz}]$",
     ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
     label = L"$T_s$",
@@ -143,15 +148,14 @@ function combine_fit_plot()
     yminorticks = 1,
     minorgrid = true
     )
-    plot!(pl, t_time_x1 * J / mega_cons, T1 / J * 10^6, label = L"$T_1$", color = color_t1)
-    plot!(pl, t_time_x2 * J / mega_cons, T2 / J * 10^6, label = L"$T_2$", color = color_t2)
 
     data_path = joinpath(dirname(@__DIR__), "T1")
     J = get_param(data_path, :J) * 2 * pi
     U = get_param(data_path, :U) * 2 * pi
     L = get_param(data_path, :L)
     t_y = t_small_scale(J, U, L)
-    hline!(pl, [t_y], label = "Short", ls = :dash, color = color_ts_short)
+    hline!(pl, [t_y], label = L"$t_{\textrm{prop}}$", ls = :dash, color = color_ts_short)
+
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))

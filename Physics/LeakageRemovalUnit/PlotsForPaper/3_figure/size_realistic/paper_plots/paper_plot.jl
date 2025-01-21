@@ -152,7 +152,7 @@ function combine_fit_plot()
     U = get_param(path, :U) * 2 * pi
     short_scale(L) = t_small_scale(J, U, L)
     t_y = short_scale.(t_time_xs)
-    scatter!(pl, t_time_xs, t_y, label = "Short", ls = :dash, color = color_ts_short)
+    plot!(pl, t_time_xs, t_y, label = "Short", ls = :dash, color = color_ts_short)
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
