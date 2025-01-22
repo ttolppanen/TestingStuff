@@ -43,11 +43,11 @@ pl_diss = combine_fit_plot()
 include(joinpath(@__DIR__, "disorder_realistic/paper_plots/paper_plot.jl"))
 pl_diss_real = combine_fit_plot()
 
-# include(joinpath(@__DIR__, "J/paper_plots/paper_plot.jl"))
-# pl_J = combine_fit_plot()
+include(joinpath(@__DIR__, "J/paper_plots/paper_plot.jl"))
+pl_J = combine_fit_plot()
 
-# include(joinpath(@__DIR__, "J_realistic/paper_plots/paper_plot.jl"))
-# pl_J_real = combine_fit_plot()
+include(joinpath(@__DIR__, "J_realistic/paper_plots/paper_plot.jl"))
+pl_J_real = combine_fit_plot()
 
 include(joinpath(@__DIR__, "size/paper_plots/paper_plot.jl"))
 pl_L = combine_fit_plot()
