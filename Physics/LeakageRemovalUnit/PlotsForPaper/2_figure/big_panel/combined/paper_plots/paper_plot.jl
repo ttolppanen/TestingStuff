@@ -12,7 +12,7 @@ function make_plot()
     dpi = 300,
     xlabel = L"$\Gamma / J$",
     # ylabel = L"$\sum_{\ell} \left\langle \hat{n}_\ell(\hat{n}_\ell-\hat{I})/2 \right\rangle$",
-    ylabel = L"$\textrm{Array \ Leakage} \ \left( P_2^{(\ell)} \right)$",
+    ylabel = L"$\textrm{Array \ Leakage} \ P_\star^{(L)}$",
     legend = :bottomleft,
     ylims = (0, 1)
     )

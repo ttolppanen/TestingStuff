@@ -1,4 +1,5 @@
 using Plots
+using LaTeXStrings
 
 function f(plot1 , plot2, plotbottom)
     layout = @layout [

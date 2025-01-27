@@ -143,9 +143,9 @@ function combine_fit_plot()
     color = color_ts,
     legend = :topleft,
     dpi = 300,
-    titlefontsize = 9,
     yaxis = :log10,
     ylims = [0.1, 10^5],
+    titlefontsize = 9
     )
     plot!(pl, t_time_x1, T1 / J, seriestype = :scatter, label = L"$T_1$", color = color_t1)
     plot!(pl, t_time_x2, T2 / J, seriestype = :scatter, label = L"$T_2$", color = color_t2)

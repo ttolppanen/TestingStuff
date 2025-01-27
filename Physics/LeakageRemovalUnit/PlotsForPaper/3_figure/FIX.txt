@@ -1,4 +1,0 @@
-
-FIX REALISTIC
-param[:deco] = ValueInfo(2 / (10.0 * 10^(-6) * U), "10.0µs") 
-2 due to qubit-n op equivalence

@@ -10,13 +10,19 @@ function make_plot()
     pl = plot(dpi = 300,
     xlabel = L"$tJ$", 
     # ylabel = L"$\left\langle \hat{n}_1(\hat{n}_1 - \hat{I})/2 \right\rangle$"
-    ylabel = L"$\textrm{Qubit \ Leakage} \ \left( P_2^{(1)} \right)$"
+    ylabel = L"$\textrm{Qubit \ Leakage} \ P_\star^{(1)}$"
     # ylims = (10^-5, 1)
     )
     l_low = plotinfo.lines["gamma = 0.03"]
     l_high = plotinfo.lines["gamma = 30.0"]
     plot!(pl, l_low.x, l_low.y / 2, label = L"$ \Gamma_{\textrm{fb}} = 0.03J$", color = color_small_msr)
     plot!(pl, l_high.x, l_high.y / 2, label = L"$\Gamma_{\textrm{fb}}  = 30J$", color = color_high_msr)
+    
+    J = get_param(joinpath(dirname(@__DIR__)), :J)
+    U = get_param(joinpath(dirname(@__DIR__)), :U)
+    t = t_small_scale(1, U / J)
+    vline!(pl, [t], ls = :dash, color = color_ts_short_fig2, label = L"T_{\textrm{prop}}")
+
     savefig(pl, joinpath(path, "paper_plot.png"))
     savefig(pl, joinpath(path, "paper_plot.svg"))
     return pl
