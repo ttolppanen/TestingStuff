@@ -19,7 +19,7 @@ function make_plot()
     for line in values(plotinfo.lines)
         if line.tag == "gamma"
             tag = "Periodic Measurement"
-            plot!(pl, line.x, line.y / 2, label = tag, color = color_periodic)
+            plot!(pl, line.x, line.y / 2, label = "Feedback measurement", color = color_periodic)
         elseif line.tag == "diss"
             tag = "Dissipation"
             plot!(pl, line.x, line.y / 2, label = tag, color = color_dissipation_removal, ls = :dash)
