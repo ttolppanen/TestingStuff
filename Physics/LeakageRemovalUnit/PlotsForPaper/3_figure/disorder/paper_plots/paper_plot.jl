@@ -136,25 +136,30 @@ function combine_fit_plot()
     plot!(t_time_xs * J / (2 * pi), Ts / J,
     xlabel = L"$W / 2 \pi \ [\textrm{MHz}]$",
     ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
-    label = L"$T_s$",
+    label = L"$T_\star$",
     color = color_ts,
     legend = :topleft,
     dpi = 300,
     titlefontsize = 9,
-    yaxis = :log10,
-    ylims = [0.1, 10^5],
+    # yaxis = :log10,
+    # ylims = [0.1, 10^5],
     xlims = [5, 100],
     xminorticks = 4,
     yminorticks = 1,
     minorgrid = true
     )
 
+    # x = t_time_x1 * J / (2 * pi)
+    # int, slp, fit = exp_fit(x, T1 / J)
+    # y = fit.(x)
+    # plot!(x, y, ls = :dash, label = "T_1 fit", color = color_t1)
+
     data_path = joinpath(dirname(@__DIR__), "T1")
     J = get_param(data_path, :J) * 2 * pi
     U = get_param(data_path, :U) * 2 * pi
     L = get_param(data_path, :L)
     t_y = t_small_scale(J, U, L)
-    hline!(pl, [t_y], label = L"$t_{\textrm{prop}}$", ls = :dash, color = color_ts_short)
+    hline!(pl, [t_y], label = L"T_{\textrm{prop}}", ls = :dash, color = color_ts_short)
 
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))

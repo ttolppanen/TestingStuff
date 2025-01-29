@@ -12,14 +12,14 @@ function make_plot()
     dpi = 300,
     xlabel = L"$\Gamma / J$",
     # ylabel = L"$\sum_{\ell} \left\langle \hat{n}_\ell(\hat{n}_\ell-\hat{I})/2 \right\rangle$",
-    ylabel = L"$\textrm{Array \ Leakage} \ \left( P_2^{(\ell)} \right)$",
+    ylabel = L"$\textrm{Array \ Leakage} \ P_\star^{(L)}$",
     legend = :bottomleft,
     ylims = (0, 1)
     )
     for line in values(plotinfo.lines)
         if line.tag == "gamma"
             tag = "Periodic Measurement"
-            plot!(pl, line.x, line.y / 2, label = tag, color = color_periodic)
+            plot!(pl, line.x, line.y / 2, label = "Feedback measurement", color = color_periodic)
         elseif line.tag == "diss"
             tag = "Dissipation"
             plot!(pl, line.x, line.y / 2, label = tag, color = color_dissipation_removal, ls = :dash)

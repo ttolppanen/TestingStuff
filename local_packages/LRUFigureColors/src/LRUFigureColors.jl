@@ -12,6 +12,7 @@ export color_dissipation_removal
 export color_t2
 export color_t1
 export color_ts
+export color_ts_short_fig2
 export color_ts_short
 
 export T_fit
@@ -24,6 +25,7 @@ color_dissipation_removal = colorant"#9ccea7" # light green
 color_t2 = colorant"#af58ba" # purple
 color_t1 = colorant"#ffc61e" # yellow
 color_ts = color_periodic
+color_ts_short_fig2 = :lightgrey
 color_ts_short = colorant"#06592A" # dark green
 
 function T_fit(path, start_cut, end_cut = 1.0, y_factor = 1)
