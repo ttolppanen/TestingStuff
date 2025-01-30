@@ -127,7 +127,7 @@ function combine_fit_plot()
     J = get_param(path, :J) * 2 * pi
     pl = plot(t_time_xs, Ts / J, seriestype = :scatter,
     xlabel = L"$L$",
-    ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
+    ylabel = L"$\textrm{Decay\ Times}\ [\mu \textrm{s}]$",
     label = L"$T_s$",
     color = color_ts,
     legend = :topleft,
@@ -144,10 +144,15 @@ function combine_fit_plot()
 
     
     t1 = get_param(path, :diss)
-    hline!(pl, [t1], ls = :dash, label =  L"$T_1^{\textrm{qb}}$", color = color_t1)
+    label1 = latexstring("T_1^{\\textrm{q}} = $(round(t1, digits=1)) \\ \\mu \\textrm{s}")
+    hline!(pl, [t1], ls = :dash, label = "", color = color_t1)
+    annotate!(pl, ((0.84, 0.91), text(label1, 7, "Computer Modern")))
+
     pure_t2 = get_param(path, :deco)
-    t2_real = t2(t1, pure_t2)
-    hline!(pl, [t2_real], ls = :dash, label =  L"$T_2^{\textrm{qb}}$", color = color_t2)
+    t2 = 1 / (1/pure_t2 + 1/(2*t1))
+    label2 = latexstring("T_2^{\\textrm{q}} \\approx $(round(t2, digits=1)) \\ \\mu \\textrm{s}")
+    hline!(pl, [t2], ls = :dash, label = "", color = color_t2)
+    annotate!(pl, ((0.84, 0.53), text(label2, 7, "Computer Modern")))
 
     U = get_param(path, :U) * 2 * pi
     short_scale(L) = t_small_scale(J, U, L)

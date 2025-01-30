@@ -7,15 +7,17 @@ function f(plots...)
     ]
     font_size = 10
     plots = deepcopy(collect(plots))
-    # pl_diss = plot(plot_diss, topmargin = 6.1Plots.mm)
-    # plot2 = plot(plot2, topmargin = 6.1Plots.mm)
     annonations = ["(a)", "(b)", "(c)", "(d)", "(e)", "(f)"]
     for i in 1:6
         plot!(plots[i], topmargin = 7Plots.mm, ytickfont = font_size - 1, xtickfont = font_size - 1)
-        annotate!(plots[i], ((-0.01, 1.15), text(latexstring("\\textbf{$(annonations[i])}"), font_size, "Computer Modern")))
+        annotate!(plots[i], ((-0.00, 1.15), text(latexstring("\\textbf{$(annonations[i])}"), font_size, "Computer Modern")))
 
+        if (i >= 1 && i <= 3)
+            plot!(plots[i], bottommargin = -3Plots.mm)
+        end
         if !(i == 1 || i == 4)
-            plot!(plots[i], legend = :none)
+            plot!(plots[i], legend = :none, ylabel = "")
+            plot!(plots[i], leftmargin = -3Plots.mm)
         end
         if i == 4
             plot!(plots[i], 

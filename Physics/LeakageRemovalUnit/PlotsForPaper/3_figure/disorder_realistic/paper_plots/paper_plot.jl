@@ -4,6 +4,7 @@ using OrderedCollections
 using PlotAndSave
 using QuantumTimes
 using LRUFigureColors
+using LaTeXStrings
 
 
 function TS_fit()
@@ -136,17 +137,21 @@ function combine_fit_plot()
     plot!(pl, t_time_x1 * J / (2 * pi), T1 / J, label = L"$T_1$", color = color_t1)
 
     t1 = get_param(data_path, :diss)
-    hline!(pl, [t1], ls = :dash, label =  latexstring("T_1^{\\textrm{qb}} = $(round(t1, digits=1)) \\ \\mu \\textrm{s}"), color = color_t1)
-    
+    label1 = latexstring("T_1^{\\textrm{q}} = $(round(t1, digits=1)) \\ \\mu \\textrm{s}")
+    hline!(pl, [t1], ls = :dash, label = "", color = color_t1)
+    annotate!(pl, ((0.84, 0.91), text(label1, 7, "Computer Modern")))
+
     plot!(pl, t_time_x2 * J / (2 * pi), T2 / J, label = L"$T_2$", color = color_t2)
 
     pure_t2 = get_param(data_path, :deco)
     t2 = 1 / (1/pure_t2 + 1/(2*t1))
-    hline!(pl, [t2], ls = :dash, label =  latexstring("T_2^{\\textrm{qb}} \\approx $(round(t2, digits=1)) \\ \\mu \\textrm{s}"), color = color_t2)
+    label2 = latexstring("T_2^{\\textrm{q}} \\approx $(round(t2, digits=1)) \\ \\mu \\textrm{s}")
+    hline!(pl, [t2], ls = :dash, label = "", color = color_t2)
+    annotate!(pl, ((0.84, 0.53), text(label2, 7, "Computer Modern")))
 
     plot!(t_time_xs * J / (2 * pi), Ts / J,
     xlabel = L"$W / 2 \pi \ [\textrm{MHz}]$",
-    ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
+    ylabel = L"$\textrm{Decay\ Times}\ [\mu \textrm{s}]$",
     label = L"$T_\star$",
     legend = :topleft,
     color = color_ts,
@@ -199,11 +204,30 @@ function ts_proportional_check()
     return pl
 end
 
+function print_last_val()
+    lines = TS_fit()
+    Ts = [val[2] for val in values(lines)]
+    
+    lines = T1_fit()
+    T1 = [val[2] for val in values(lines)]
+
+    lines = T2_fit()
+    T2 = [val[2] for val in values(lines)]
+
+    data_path = joinpath(dirname(@__DIR__), "T1")
+    J = get_param(data_path, :J) * 2 * pi
+
+    println("Ts = $(round(Ts[end] / J, digits = 2))")
+    println("T1 = $(round(T1[end] / J, digits = 2))")
+    println("T2 = $(round(T2[end] / J, digits = 2))")
+end
+
 #Plots.scalefontsizes(1.5)
-ts_plot()
-t1_plot()
-t2_plot()
+# ts_plot()
+# t1_plot()
+# t2_plot()
 combine_fit_plot()
-println("Trajectories: $(get_traj(joinpath(dirname(@__DIR__), "T1")))")
+# println("Trajectories: $(get_traj(joinpath(dirname(@__DIR__), "T1")))")
 # Plots.scalefontsizes();
 # ts_proportional_check()
+# print_last_val()

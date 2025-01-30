@@ -128,7 +128,7 @@ function combine_fit_plot()
     
     pl = plot(t_time_xs, Ts / U,
     xlabel = L"$J / 2 \pi  \ [\textrm{MHz}]$",
-    ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
+    ylabel = L"$\textrm{Decay\ Times}\ [\mu \textrm{s}]$",
     label = L"$T_s$",
     color = color_ts,
     legend = :topright,
@@ -145,10 +145,15 @@ function combine_fit_plot()
     plot!(pl, t_time_x2, T2 / U, label = L"$T_2$", color = color_t2)
 
     t1 = get_param(data_path, :diss)
-    hline!(pl, [t1], ls = :dash, label = L"$T_1^{\textrm{qb}}$", color = color_t1)
+    label1 = latexstring("T_1^{\\textrm{q}} = $(round(t1, digits=1)) \\ \\mu \\textrm{s}")
+    hline!(pl, [t1], ls = :dash, label = "", color = color_t1)
+    annotate!(pl, ((0.84, 0.91), text(label1, 7, "Computer Modern")))
+
     pure_t2 = get_param(data_path, :deco)
     t2 = 1 / (1/pure_t2 + 1/(2*t1))
-    hline!(pl, [t2], ls = :dash, label =  L"$T_2^{\textrm{qb}}$", color = color_t2)
+    label2 = latexstring("T_2^{\\textrm{q}} \\approx $(round(t2, digits=1)) \\ \\mu \\textrm{s}")
+    hline!(pl, [t2], ls = :dash, label = "", color = color_t2)
+    annotate!(pl, ((0.84, 0.53), text(label2, 7, "Computer Modern")))
 
     data_path = joinpath(dirname(@__DIR__), "T1")
     L = get_param(data_path, :L)
