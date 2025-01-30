@@ -20,7 +20,7 @@ end
 function initial_parameters(L)
     param = OrderedDict()
     param[:dt] = 0.02
-    param[:gamma] = 0.03
+    param[:gamma] = 0.04
     param[:t] = 400
     param[:d] = 3
     param[:L] = L
@@ -65,16 +65,14 @@ function f()
         indices = total_boson_number_subspace_indices(d, L)
         ranges, perm_mat = total_boson_number_subspace_tools(d, L)
 
-        msrop = measurement_subspace(param[:effect].val.msr, ranges, perm_mat)
-        feedback = feedback_measurement_subspace(param[:effect].val.fb, msrop, indices; digit_error = 10, id_relative_guess = -1)
-
         op = subspace_split(singlesite_n(d, L, 1), ranges, perm_mat)
         obs = (state, id) -> expval(state[id], op[id])
 
         dt = param[:dt]; t = param[:t]; k = param[:k]
     
-        diss_op = [sqrt(param[:diss].val) * singlesite_a(d, L, i) for i in 1:L]
-        deco_op = [sqrt(param[:deco].val) * singlesite_n(d, L, i) for i in 1:L]
+        diss_op = [sqrt(param[:diss].val) * singlesite_a(d, L, i) for i in 1:(L-1)]
+        push!(diss_op, sqrt(param[:gamma]) * singlesite_a(d, L, L))
+        deco_op = [sqrt(param[:deco].val) * singlesite_n(d, L, i) for i in 1:(L-1)]
         H_dd = complex(spzeros(d^L, d^L))
         for op in vcat(diss_op, deco_op)
             H_dd .+= -1.0im / 2 * op' * op
@@ -101,8 +99,7 @@ function f()
 
             H .+= H_dd
             H = subspace_split(H, ranges, perm_mat)
-            effect! = periodic_sbspc_msr_feedback!_function(msrop, param[:dt], param[:gamma], feedback, [L])
-            krylovevolve(state, initial_id, H, diss_op, deco_op, dt, t, k, obs; effect!)
+            krylovevolve(state, initial_id, H, diss_op, deco_op, dt, t, k, obs)
         end
         @time pa_out = solvetrajectories(r_f, traj; paral = :threads)
         r = traj_mean(pa_out)

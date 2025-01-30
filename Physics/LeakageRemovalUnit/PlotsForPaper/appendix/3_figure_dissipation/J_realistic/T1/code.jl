@@ -8,6 +8,7 @@ using QuantumOperators
 using PlotAndSave
 using QuantumTimeEvolution
 using OrderedCollections
+using SparseArrays
 
 function traj_mean(result)
     out = zeros(size(result[1]))
@@ -27,7 +28,7 @@ function initial_parameters(J)
     param[:diss] = ValueInfo(1 / (16.7 * 10^(-6) * U), "16.7µs")
     param[:w] = ValueInfo(7500 * mega_const / U, "7.5GHz")
     param[:dw] = ValueInfo(100 * mega_const / U, "100MHz")
-    param[:gamma] = 3/2 * (J / U)^2 # this is 3/2 J^2/U, in units of U
+    param[:gamma] = 2 * (J / U)^2 # this is 2 J^2/U, in units of U
 
     param[:t] = 1000 * U / (5 * J) # J was 5Mhz
     param[:dt] = 0.1 * 20 * mega_const / J
@@ -38,11 +39,8 @@ function initial_parameters(J)
     state[2] = 1.0
     param[:state] = ValueInfo(state, "|1> + thermal state")
 
-    param[:alg] = "exact sbspc"
+    param[:alg] = "exact"
     param[:H] = "BH, d_w, fixed |2> energy"
-    param[:k] = 6
-
-    param[:effect] = "rand start, msr_n last site -> fb -> 0"
     return param
 end
 
@@ -56,12 +54,10 @@ function f()
     lines = []
 
     d = param[:d]; L = param[:L]
-    msrop = measurementoperators(nop(d), L)
-    fb_op = [1 1 1; 0 0 0; 0 0 0]
-    feedback = [singlesite(fb_op, L, i) for i in 1:L]
 
-    diss_op = [sqrt(param[:diss].val) * singlesite_a(d, L, i) for i in 1:L]
-    deco_op = [sqrt(param[:deco].val) * singlesite_n(d, L, i) for i in 1:L]
+    diss_op = [sqrt(param[:diss].val) * singlesite_a(d, L, i) for i in 1:(L-1)]
+    push!(diss_op, sqrt(param[:gamma]) * singlesite_a(d, L, L))
+    deco_op = [sqrt(param[:deco].val) * singlesite_n(d, L, i) for i in 1:(L-1)]
     H_dd = complex(spzeros(d^L, d^L))
     for op in vcat(diss_op, deco_op)
         H_dd .+= -1.0im / 2 * op' * op
@@ -86,9 +82,8 @@ function f()
             ts_sample = sample_transmon_thermal_state(d, L-1, t_T, t_w, t_U)
             state = kron(param[:state].val, ts_sample)
 
-            effect! = periodic_msr_feedback!_function(msrop, param[:dt], param[:gamma], feedback, [param[:L]])
             U = exp(-1.0im * Matrix(H) * param[:dt])
-            exactevolve(state, U, vcat(diss_op, deco_op), dt, t, obs; effect!)
+            exactevolve(state, U, vcat(diss_op, deco_op), dt, t, obs)
         end
         @time pa_out = solvetrajectories(r_f, traj; paral = :threads)
         r = traj_mean(pa_out)
