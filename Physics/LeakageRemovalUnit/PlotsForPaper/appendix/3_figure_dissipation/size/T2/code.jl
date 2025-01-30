@@ -21,7 +21,7 @@ end
 function initial_parameters(L)
     param = OrderedDict()
     param[:dt] = 0.02
-    param[:gamma] = 0.03
+    param[:gamma] = 0.04
     param[:t] = 400
     param[:d] = 3
     param[:L] = L
@@ -37,13 +37,6 @@ function initial_parameters(L)
     param[:w] = ValueInfo(7500 * mega_const / param[:J].val, "7.5GHz")
     param[:dw] = ValueInfo(100 * mega_const / param[:J].val, "100MHz")
     param[:U] = ValueInfo(250 * mega_const / param[:J].val, "250MHz")
-
-    d = param[:d]; L = param[:L]
-    msrop = measurementoperators(nop(d), L)
-    feedback = [1 1 1; 0 0 0; 0 0 0]
-    fb_op = [singlesite(feedback, L, i) for i in 1:L]
-    
-    param[:effect] = ValueInfo((msr = msrop, fb = fb_op), "rand start, msr_n last site -> fb -> 0")
     return param
 end
 
@@ -60,23 +53,24 @@ function f()
         param = initial_parameters(L)
         d = param[:d]; L = param[:L]
 
-        msrop = param[:effect].val.msr
-        feedback = param[:effect].val.fb
-
         sigma_x = sparse(complex([0 1.0 0; 1 0 0; 0 0 0]))
         ops = singlesite(sigma_x, L, 1)
         obs = (state) -> expval(state, ops)
 
         dt = param[:dt]; t = param[:t]; k = param[:k]
 
+        diss_op = sqrt(param[:gamma]) * singlesite_a(d, L, L)
+        H_dd = complex(spzeros(d^L, d^L))
+        H_dd .+= -1.0im / 2 * diss_op' * diss_op
+
         out = []
         r_f() = begin
             dw = param[:w].val .+ (rand(L) .- 0.5) * param[:dw].val
             dU = 2 * dw .- (2 * param[:w].val - param[:U].val)
             H = bosehubbard(d, L; w = dw, U = dU, J = 1)
+            H .+= H_dd
 
-            effect! = periodic_msr_feedback!_function(msrop, param[:dt], param[:gamma], feedback, [L])
-            krylovevolve(param[:state].val, H, dt, t, k, obs; effect!)
+            krylovevolve(param[:state].val, H, [diss_op], dt, t, k, obs)
         end
         @time pa_out = solvetrajectories(r_f, traj; paral = :threads)
         r = map(x -> abs.(hilbert(x[1,:])), pa_out)
