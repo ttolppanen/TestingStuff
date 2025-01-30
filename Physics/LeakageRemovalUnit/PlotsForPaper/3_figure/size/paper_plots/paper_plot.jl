@@ -138,7 +138,7 @@ function combine_fit_plot()
     J = get_param(data_path, :J) * 2 * pi
     pl = plot(t_time_xs, Ts / J, seriestype = :scatter,
     xlabel = L"$L$",
-    ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
+    ylabel = L"$\textrm{Decay\ Times}\ [\mu \textrm{s}]$",
     label = L"$T_s$",
     color = color_ts,
     legend = :topleft,

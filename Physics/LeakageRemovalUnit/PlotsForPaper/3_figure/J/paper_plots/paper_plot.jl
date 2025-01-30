@@ -130,7 +130,7 @@ function combine_fit_plot()
 
     pl = plot(t_time_xs, Ts / U,
     xlabel = L"$J / 2 \pi \ [\textrm{MHz}]$",
-    ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
+    ylabel = L"$\textrm{Decay\ Times}\ [\mu \textrm{s}]$",
     label = L"$T_s$",
     color = color_ts,
     legend = :topright,

@@ -135,14 +135,14 @@ function combine_fit_plot()
 
     plot!(t_time_xs * J / (2 * pi), Ts / J,
     xlabel = L"$W / 2 \pi \ [\textrm{MHz}]$",
-    ylabel = L"$\textrm{Survival\ Times}\ [\mu \textrm{s}]$",
+    ylabel = L"$\textrm{Decay\ Times}\ [ \textrm{\mu s}]$",
     label = L"$T_\star$",
     color = color_ts,
     legend = :topleft,
     dpi = 300,
     titlefontsize = 9,
-    # yaxis = :log10,
-    # ylims = [0.1, 10^5],
+    yaxis = :log10,
+    ylims = [0.1, 10^5],
     xlims = [5, 100],
     xminorticks = 4,
     yminorticks = 1,
@@ -153,6 +153,9 @@ function combine_fit_plot()
     # int, slp, fit = exp_fit(x, T1 / J)
     # y = fit.(x)
     # plot!(x, y, ls = :dash, label = "T_1 fit", color = color_t1)
+
+    # plot!(pl, t_time_x1 * J / (2 * pi), x -> 9 * exp(0.0035 * x^(1.7)), ls = :dash, color = :green, label = L"exp(0.0035x^{1.7})")
+    # plot!(pl, t_time_x1 * J / (2 * pi), x -> 0.14 * x^1.5, ls = :dash, color = :red, label = L"0.14 x^\frac{3}{2}")
 
     data_path = joinpath(dirname(@__DIR__), "T1")
     J = get_param(data_path, :J) * 2 * pi
