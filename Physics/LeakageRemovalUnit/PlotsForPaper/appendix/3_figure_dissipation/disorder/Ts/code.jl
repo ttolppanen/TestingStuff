@@ -7,6 +7,7 @@ using LinearAlgebra
 using PlotAndSave
 @everywhere using QuantumTimeEvolution
 using OrderedCollections
+using SparseArrays
 
 function traj_mean(result)
     out = zeros(size(result[1]))
@@ -18,7 +19,7 @@ end
 
 function initial_parameters()
     param = OrderedDict()
-    param[:gamma] = 0.03
+    param[:gamma] = 0.04
     param[:t] = 400
     param[:dt] = param[:t] / 1000
     param[:d] = 3
@@ -32,13 +33,6 @@ function initial_parameters()
     param[:w] = ValueInfo(7500 * mega_const / param[:J].val, "7.5GHz")
     param[:dw] = ValueInfo(100 * mega_const / param[:J].val, "100MHz")
     param[:U] = ValueInfo(250 * mega_const / param[:J].val, "250MHz")
-
-    d = param[:d]; L = param[:L]
-    msrop = measurementoperators(nop(d), L)
-    feedback = [1 1 1; 0 0 0; 0 0 0]
-    fb_op = [singlesite(feedback, L, i) for i in 1:L]
-
-    param[:effect] = ValueInfo((msr = msrop, fb = fb_op), "rand start, msr_n last site -> fb -> 0")
     return param
 end
 
@@ -54,13 +48,14 @@ function f()
 
     state = param[:state].val
 
-    msrop = param[:effect].val.msr
-    feedback = param[:effect].val.fb
-
     op = anhall(d, L)
     obs = (state) -> expval(state, op)
 
     dt = param[:dt]; t = param[:t]
+
+    diss_op = sqrt(param[:gamma]) * singlesite_a(d, L, L)
+    H_dd = complex(spzeros(d^L, d^L))
+    H_dd .+= -1.0im / 2 * diss_op' * diss_op
 
     for dw_i in dws
         out = []
@@ -68,9 +63,9 @@ function f()
             dw = param[:w].val .+ (rand(L) .- 0.5) * dw_i
             dU = 2 * dw .- (2 * param[:w].val - param[:U].val)
             H = bosehubbard(d, L; w = dw, U = dU, J = 1)
+            H .+= H_dd
             U = exp(-1.0im * Matrix(H) * param[:dt])
-            effect! = periodic_msr_feedback!_function(msrop, param[:dt], param[:gamma], feedback, [param[:L]])
-            exactevolve(state, U, dt, t, obs; effect!)
+            exactevolve(state, U, [diss_op], dt, t, obs)
         end
         @time pa_out = solvetrajectories(r_f, traj; paral = :threads)
         r = traj_mean(pa_out)

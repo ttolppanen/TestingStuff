@@ -19,7 +19,7 @@ end
 
 function initial_parameters()
     param = OrderedDict()
-    param[:gamma] = 0.03
+    param[:gamma] = 0.04
     param[:t] = 400
     param[:dt] = param[:t] / 1000
     param[:d] = 3
@@ -40,14 +40,6 @@ function initial_parameters()
     param[:T] = ValueInfo(0.1, "0.1K")
     param[:diss] = ValueInfo(1 / (16.7 * 10^(-6) * param[:J].val), "16.7µs")
     param[:deco] = ValueInfo(2 / (10.0 * 10^(-6) * param[:J].val), "10.0µs") # 2 due to qubit-n op equivalence
-
-
-    d = param[:d]; L = param[:L]
-    msrop = measurementoperators(nop(d), L)
-    feedback = [1 1 1; 0 0 0; 0 0 0]
-    fb_op = [singlesite(feedback, L, i) for i in 1:L]
-
-    param[:effect] = ValueInfo((msr = msrop, fb = fb_op), "rand start, msr_n last site -> fb -> 0")
     return param
 end
 
@@ -63,16 +55,14 @@ function f()
 
     state = param[:state].val
 
-    msrop = param[:effect].val.msr
-    feedback = param[:effect].val.fb
-
     op = anhall(d, L)
     obs = (state) -> expval(state, op)
 
     dt = param[:dt]; t = param[:t]
 
-    diss_op = [sqrt(param[:diss].val) * singlesite_a(d, L, i) for i in 1:L]
-    deco_op = [sqrt(param[:deco].val) * singlesite_n(d, L, i) for i in 1:L]
+    diss_op = [sqrt(param[:diss].val) * singlesite_a(d, L, i) for i in 1:(L - 1)]
+    push!(diss_op, sqrt(param[:gamma]) * singlesite_a(d, L, L))
+    deco_op = [sqrt(param[:deco].val) * singlesite_n(d, L, i) for i in 1:(L - 1)]
     H_dd = complex(spzeros(d^L, d^L))
     for op in vcat(diss_op, deco_op)
         H_dd .+= -1.0im / 2 * op' * op
@@ -92,9 +82,7 @@ function f()
             t_U = param[:U].val * param[:J].val
             ts_sample = sample_transmon_thermal_state(d, L-1, t_T, t_w, t_U)
             state = kron(param[:state].val, ts_sample)
-
-            effect! = periodic_msr_feedback!_function(msrop, param[:dt], param[:gamma], feedback, [param[:L]])
-            exactevolve(state, U, vcat(diss_op, deco_op), dt, t, obs; effect!)
+            exactevolve(state, U, vcat(diss_op, deco_op), dt, t, obs)
         end
         @time pa_out = solvetrajectories(r_f, traj; paral = :threads)
         r = traj_mean(pa_out)
