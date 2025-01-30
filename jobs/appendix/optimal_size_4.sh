@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=o_L_456                      # Job name
+#SBATCH --job-name=o_L_4                        # Job name
 #SBATCH --mail-type=ALL                         # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=heikki.tolppanen@oulu.fi    # Where to send mail	
 #SBATCH --nodes=1                               # Run all processes on a single node	
@@ -9,7 +9,7 @@
 #SBATCH --time=30:00:00                         # Time limit hrs:min:sec
 #SBATCH --output=jobs/logs/%x_%j_log.txt        # Standard output and error log
 
-file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/appendix/size_optimal_spots_L/L=456/code.jl"
+file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/appendix/size_optimal_spots_L/L=4/code.jl"
 traj="1000" # total 100 000
 
 echo "$file_to_run"; echo "trajectories = $traj"; hostname; date; echo

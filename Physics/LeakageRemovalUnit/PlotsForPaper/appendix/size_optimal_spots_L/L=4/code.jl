@@ -19,7 +19,7 @@ end
 function initial_parameters(L)
     param = OrderedDict()
     param[:dt] = 0.01
-    param[:t] = 200
+    param[:t] = 200 * L / 3
     param[:d] = 3
     param[:state] = ValueInfo(bosonstack(2, L, 1), "|200...>")
     param[:alg] = "krylov sbspc"
@@ -44,7 +44,7 @@ function f()
     # -----------
     length(ARGS) > 0 ? traj = parse(Int, ARGS[1]) : traj = 100
     println("Number of trajectories: $traj")
-    Ls = [4]
+    Ls = [4, 5]
     gammas = exp.(x_ticks(log(10^-5), log(100), 200, 
         (log(0.009), log(0.04), 4), # more points between 0.009 and 0.04
         (log(3), log(10), 8))
