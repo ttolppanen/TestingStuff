@@ -28,7 +28,7 @@ end
 
 function initial_parameters(L)
     param = OrderedDict()
-    param[:dt] = ValueInfo(0.05, "min(0.05, 1/Γ)")
+    param[:dt] = ValueInfo(0.01, "min(0.01, 1/Γ)")
     param[:t] = 200
     param[:d] = 3
     param[:state] = ValueInfo(bosonstack(2, L, 1), "|200...>")
