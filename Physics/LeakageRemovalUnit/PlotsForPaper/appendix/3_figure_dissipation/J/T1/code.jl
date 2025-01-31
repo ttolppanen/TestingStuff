@@ -8,6 +8,7 @@ using SparseArrays
 using PlotAndSave
 @everywhere using QuantumTimeEvolution
 using OrderedCollections
+using SparseArrays
 
 function traj_mean(result)
     out = zeros(size(result[1]))
@@ -17,27 +18,6 @@ function traj_mean(result)
     return out ./ length(result)
 end
 
-function measure_ends_effect!(msr_op::Vector, 
-    dt, msr_rate, feedback::Vector)
-    time = [rand() / msr_rate]
-    out(state) = begin
-        time[1] += dt
-
-        if time[1] < 1 / msr_rate
-            return state
-        end
-        time[1] -= 1 / msr_rate
-
-        for site in [length(msr_op)]
-            measuresite!(state, msr_op, site)
-            state .= feedback[site] * state
-            normalize!(state)
-        end
-        return state
-    end
-    return out
-end
-
 function initial_parameters(J)
     param = OrderedDict()
     mega_const = 10^6 * 2 * pi
@@ -45,7 +25,7 @@ function initial_parameters(J)
     U = param[:U].val
     param[:w] = ValueInfo(7500 * mega_const / U, "7.5GHz")
     param[:dw] = ValueInfo(100 * mega_const / U, "100MHz")
-    param[:gamma] = 3/2 * (J / U)^2 # this is 3/2 J^2/U, in units of U
+    param[:gamma] = 2 * (J / U)^2 # this is 2 J^2/U, in units of U
 
     param[:t] = 1000 * U / (5 * J) # J was 5Mhz
     param[:dt] = 0.1 * 20 * mega_const / J
@@ -54,15 +34,8 @@ function initial_parameters(J)
 
     param[:state] = ValueInfo(bosonstack(1, param[:L], 1; d = param[:d]), "|100...>")
 
-    param[:alg] = "exact sbspc"
+    param[:alg] = "exact"
     param[:H] = "BH, d_w, fixed |2> energy"
-
-    d = param[:d]; L = param[:L]
-    msrop = measurementoperators(nop(d), L)
-    feedback = [1 1 1; 0 0 0; 0 0 0]
-    fb_op = [singlesite(feedback, L, i) for i in 1:L]
-
-    param[:effect] = ValueInfo((msr = msrop, fb = fb_op), "rand start, msr_n last site -> fb -> 0")
     return param
 end
 
@@ -78,22 +51,23 @@ function f()
         param = initial_parameters(J_i)
         d = param[:d]; L = param[:L]
         
-        msrop = param[:effect].val.msr
-        feedback = param[:effect].val.fb
-        
         op = singlesite_n(d, L, 1)
         obs = (state) -> expval(state, op)
 
         dt = param[:dt]; t = param[:t];
+
+        diss_op = sqrt(param[:gamma]) * singlesite_a(d, L, L)
+        H_dd = complex(spzeros(d^L, d^L))
+        H_dd .+= -1.0im / 2 * diss_op' * diss_op
 
         out = []
         r_f() = begin
             dw = param[:w].val .+ (rand(L) .- 0.5) * param[:dw].val
             dU = 2 * dw .- (2 * param[:w].val - 1)
             H = bosehubbard(d, L; w = dw, U = dU, J = J_i / param[:U].val)
-            effect! = measure_ends_effect!(msrop, param[:dt], param[:gamma], feedback)
+            H .+= H_dd
             U = exp(-1.0im * Matrix(H) * param[:dt])
-            exactevolve(param[:state].val, U, dt, t, obs; effect!)
+            exactevolve(param[:state].val, U, [diss_op], dt, t, obs)
         end
         @time pa_out = solvetrajectories(r_f, traj; paral = :threads)
         r = traj_mean(pa_out)

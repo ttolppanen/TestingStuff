@@ -20,7 +20,7 @@ end
 function initial_parameters(L)
     param = OrderedDict()
     param[:dt] = 0.02
-    param[:gamma] = 0.03
+    param[:gamma] = 0.04
     param[:t] = 1000
     param[:d] = 3
     param[:L] = L
@@ -40,13 +40,6 @@ function initial_parameters(L)
     param[:T] = ValueInfo(0.1, "0.1K")
     param[:diss] = ValueInfo(1 / (16.7 * 10^(-6) * param[:J].val), "16.7µs")
     param[:deco] = ValueInfo(2 / (10.0 * 10^(-6) * param[:J].val), "10.0µs") # 2 due to qubit-n op equivalence
-
-    d = param[:d]
-    msrop = measurementoperators(nop(d), L)
-    feedback = [1 1 1; 0 0 0; 0 0 0]
-    fb_op = [singlesite(feedback, L, i) for i in 1:L]
-
-    param[:effect] = ValueInfo((msr = msrop, fb = fb_op), "rand start, msr_n last site -> fb -> 0")
     return param
 end
 
@@ -64,16 +57,14 @@ function f()
         indices = total_boson_number_subspace_indices(d, L)
         ranges, perm_mat = total_boson_number_subspace_tools(d, L)
 
-        msrop = measurement_subspace(param[:effect].val.msr, ranges, perm_mat)
-        feedback = feedback_measurement_subspace(param[:effect].val.fb, msrop, indices; digit_error = 10, id_relative_guess = -1)
-
         op = subspace_split(anhall(d, L), ranges, perm_mat)
         obs = (state, id) -> expval(state[id], op[id])
 
         dt = param[:dt]; t = param[:t]; k = param[:k]
 
-        diss_op = [sqrt(param[:diss].val) * singlesite_a(d, L, i) for i in 1:L]
-        deco_op = [sqrt(param[:deco].val) * singlesite_n(d, L, i) for i in 1:L]
+        diss_op = [sqrt(param[:diss].val) * singlesite_a(d, L, i) for i in 1:(L-1)]
+        push!(diss_op, sqrt(param[:gamma]) * singlesite_a(d, L, L))
+        deco_op = [sqrt(param[:deco].val) * singlesite_n(d, L, i) for i in 1:(L-1)]
         H_dd = complex(spzeros(d^L, d^L))
         for op in vcat(diss_op, deco_op)
             H_dd .+= -1.0im / 2 * op' * op
@@ -100,8 +91,7 @@ function f()
 
             H .+= H_dd
             H = subspace_split(H, ranges, perm_mat)
-            effect! = periodic_sbspc_msr_feedback!_function(msrop, param[:dt], param[:gamma], feedback, [L])
-            krylovevolve(state, initial_id, H, diss_op, deco_op, dt, t, k, obs; effect!)
+            krylovevolve(state, initial_id, H, diss_op, deco_op, dt, t, k, obs)
         end
         @time pa_out = solvetrajectories(r_f, traj; paral = :threads)
         r = traj_mean(pa_out)

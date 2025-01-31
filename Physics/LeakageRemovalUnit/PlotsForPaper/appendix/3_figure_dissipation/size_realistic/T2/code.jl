@@ -21,7 +21,7 @@ end
 function initial_parameters(L)
     param = OrderedDict()
     param[:dt] = 0.02
-    param[:gamma] = 0.03
+    param[:gamma] = 0.04
     param[:t] = 400
     param[:d] = 3
     param[:L] = L
@@ -43,13 +43,6 @@ function initial_parameters(L)
     param[:T] = ValueInfo(0.1, "0.1K")
     param[:diss] = ValueInfo(1 / (16.7 * 10^(-6) * param[:J].val), "16.7µs")
     param[:deco] = ValueInfo(2 / (10.0 * 10^(-6) * param[:J].val), "10.0µs") # 2 due to qubit-n op equivalence
-
-    d = param[:d]; L = param[:L]
-    msrop = measurementoperators(nop(d), L)
-    feedback = [1 1 1; 0 0 0; 0 0 0]
-    fb_op = [singlesite(feedback, L, i) for i in 1:L]
-    
-    param[:effect] = ValueInfo((msr = msrop, fb = fb_op), "rand start, msr_n last site -> fb -> 0")
     return param
 end
 
@@ -66,17 +59,15 @@ function f()
         param = initial_parameters(L)
         d = param[:d]; L = param[:L]
 
-        msrop = param[:effect].val.msr
-        feedback = param[:effect].val.fb
-
         sigma_x = sparse(complex([0 1.0 0; 1 0 0; 0 0 0]))
         ops = singlesite(sigma_x, L, 1)
         obs = (state) -> expval(state, ops)
 
         dt = param[:dt]; t = param[:t]; k = param[:k]
         
-        diss_op = [sqrt(param[:diss].val) * singlesite_a(d, L, i) for i in 1:L]
-        deco_op = [sqrt(param[:deco].val) * singlesite_n(d, L, i) for i in 1:L]
+        diss_op = [sqrt(param[:diss].val) * singlesite_a(d, L, i) for i in 1:(L-1)]
+        push!(diss_op, sqrt(param[:gamma]) * singlesite_a(d, L, L))
+        deco_op = [sqrt(param[:deco].val) * singlesite_n(d, L, i) for i in 1:(L-1)]
         dd_op = vcat(diss_op, deco_op)
         H_dd = complex(spzeros(d^L, d^L))
         for op in dd_op
@@ -95,8 +86,7 @@ function f()
             ts_sample = sample_transmon_thermal_state(d, L-1, t_T, t_w, t_U)
             state = kron(param[:state].val, ts_sample)
 
-            effect! = periodic_msr_feedback!_function(msrop, param[:dt], param[:gamma], feedback, [L])
-            krylovevolve(state, H, dd_op, dt, t, k, obs; effect!)
+            krylovevolve(state, H, dd_op, dt, t, k, obs)
         end
         @time pa_out = solvetrajectories(r_f, traj; paral = :threads)
         r = map(x -> abs.(hilbert(x[1,:])), pa_out)
