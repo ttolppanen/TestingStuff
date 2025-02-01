@@ -6,11 +6,11 @@
 #SBATCH --ntasks=1                              # Run a single task		
 #SBATCH --cpus-per-task=40                      # Number of CPU cores per task
 #SBATCH --mem=70gb                              # Job memory request
-#SBATCH --time=30:00:00                         # Time limit hrs:min:sec
+#SBATCH --time=50:00:00                         # Time limit hrs:min:sec
 #SBATCH --output=jobs/logs/%x_%j_log.txt     # Standard output and error log
 
 file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/appendix/3_figure_dissipation/J/make_T_comparisons.jl"
-traj="1000" 
+traj="39000" # 1000 traj 45min -> 1333/h -> 40k takes 30h!
 
 echo "$file_to_run"; echo "trajectories = $traj"; hostname; date; echo
 

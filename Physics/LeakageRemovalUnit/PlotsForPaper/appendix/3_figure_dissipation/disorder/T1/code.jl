@@ -21,7 +21,7 @@ function initial_parameters()
     param = OrderedDict()
     param[:gamma] = 0.04
     param[:t] = 400
-    param[:dt] = param[:t] / 1000
+    param[:dt] = 0.02
     param[:d] = 3
     param[:L] = 3
     param[:state] = ValueInfo(bosonstack(1, param[:L], 1; d = param[:d]), "|100...>")
