@@ -16,8 +16,8 @@ function make_plot()
     )
     l_low = plotinfo.lines["gamma = 0.03"]
     l_high = plotinfo.lines["gamma = 30.0"]
-    plot!(pl, l_low.x, l_low.y / 2, label = L"$\Gamma_{\textrm{fb}} = 0.03J$", color = color_small_msr)
-    plot!(pl, l_high.x, l_high.y / 2, label = L"$\Gamma_{\textrm{fb}} = 30J$", color = color_high_msr)
+    plot!(pl, l_low.x, l_low.y / 2, label = L"$\Gamma_{\textrm{fb}}^{\textrm{low}} = 0.03J$", color = color_small_msr)
+    plot!(pl, l_high.x, l_high.y / 2, label = L"$\Gamma_{\textrm{fb}}^{\textrm{high}} = 30J$", color = color_high_msr)
     
     J = get_param(joinpath(dirname(@__DIR__)), :J)
     U = get_param(joinpath(dirname(@__DIR__)), :U)
