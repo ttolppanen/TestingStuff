@@ -28,7 +28,7 @@ end
 
 function initial_parameters(L)
     param = OrderedDict()
-    param[:dt] = ValueInfo(0.01, "min(0.01, 1/Γ)")
+    param[:dt] = ValueInfo(0.1, "min(0.05, 1/Γ)")
     param[:t] = 200
     param[:d] = 3
     param[:state] = ValueInfo(bosonstack(2, L, 1), "|200...>")
@@ -69,7 +69,7 @@ function f()
 
         out = []
         for gamma in gammas
-            dt = min(param[:dt].val, 1 / gamma)
+            dt = min(param[:dt].val, 1 / (8 * gamma))
             msr_prob = gamma * dt 
             r_f() = begin
                 dw = param[:w].val .+ (rand(L) .- 0.5) * param[:dw].val

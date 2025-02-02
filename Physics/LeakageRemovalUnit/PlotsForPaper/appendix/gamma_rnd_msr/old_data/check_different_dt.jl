@@ -3,7 +3,7 @@ using Plots
 
 function f()
     path1 = joinpath(@__DIR__, "gamma_dt_4x/")
-    path2 = joinpath(@__DIR__, "gamma_rnd_msr_smaller_dt/")
+    path2 = joinpath(@__DIR__, "gamma_dt_8x/")
     new_path = joinpath(@__DIR__, "dt_check")
 
     plot1 = loaddata(path1)
