@@ -58,14 +58,6 @@ function f()
 
     d = param[:d]; L = param[:L]
 
-    diss_op = [sqrt(param[:diss].val) * singlesite_a(d, L, i) for i in 1:(L-1)]
-    push!(diss_op, sqrt(param[:gamma]) * singlesite_a(d, L, L))
-    deco_op = [sqrt(param[:deco].val) * singlesite_n(d, L, i) for i in 1:(L-1)]
-    H_dd = complex(spzeros(d^L, d^L))
-    for op in vcat(diss_op, deco_op)
-        H_dd .+= -1.0im / 2 * op' * op
-    end
-
     sigma_x = sparse(complex([0 1.0 0; 1 0 0; 0 0 0]))
     op = singlesite(sigma_x, L, 1)
     obs = (state) -> expval(state, op)
@@ -74,6 +66,14 @@ function f()
         param = initial_parameters(J_i)
         d = param[:d]; L = param[:L]
         dt = param[:dt]; t = param[:t]
+
+        diss_op = [sqrt(param[:diss].val) * singlesite_a(d, L, i) for i in 1:(L-1)]
+        push!(diss_op, sqrt(param[:gamma]) * singlesite_a(d, L, L))
+        deco_op = [sqrt(param[:deco].val) * singlesite_n(d, L, i) for i in 1:(L-1)]
+        H_dd = complex(spzeros(d^L, d^L))
+        for op in vcat(diss_op, deco_op)
+            H_dd .+= -1.0im / 2 * op' * op
+        end
 
         r_f() = begin
             dw = param[:w].val .+ (rand(L) .- 0.5) * param[:dw].val
