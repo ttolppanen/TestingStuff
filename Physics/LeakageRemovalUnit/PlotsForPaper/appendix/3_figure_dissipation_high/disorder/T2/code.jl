@@ -34,7 +34,7 @@ function initial_parameters()
     param[:w] = ValueInfo(7500 * mega_const / param[:J].val, "7.5GHz")
     param[:dw] = ValueInfo(100 * mega_const / param[:J].val, "100MHz")
     param[:U] = ValueInfo(250 * mega_const / param[:J].val, "250MHz")
-    param[:gamma] = 2 * param[:U].val / param[:J].val
+    param[:gamma] = 2 * param[:U].val
     param[:dt] = 1 / (10 * param[:gamma])
     return param
 end
