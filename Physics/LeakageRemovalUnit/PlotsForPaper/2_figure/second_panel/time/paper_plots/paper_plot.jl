@@ -21,8 +21,8 @@ function make_plot()
     
     J = get_param(joinpath(dirname(@__DIR__)), :J)
     U = get_param(joinpath(dirname(@__DIR__)), :U)
-    t = t_small_scale(1, U / J)
-    vline!(pl, [t], ls = :dash, color = color_ts_short_fig2, label = L"T_{\textrm{prop}}")
+    t = t_small_scale(1, U / J) * 2
+    vline!(pl, [t], ls = :dash, color = color_ts_short_fig2, label = L"(L-1)T_{\textrm{prop}}")
 
     savefig(pl, joinpath(path, "paper_plot.png"))
     savefig(pl, joinpath(path, "paper_plot.svg"))
