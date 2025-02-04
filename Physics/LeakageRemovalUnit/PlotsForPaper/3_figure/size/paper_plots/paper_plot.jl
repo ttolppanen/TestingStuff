@@ -154,6 +154,7 @@ function combine_fit_plot()
     short_scale(L) = t_small_scale(J, U, L)
     t_y = short_scale.(t_time_xs)
     plot!(pl, t_time_xs, t_y, label = "Short", ls = :dash, color = color_ts_short)
+    #plot!(pl, t_time_xs, x -> (3 * (x - 2) + 0.6), label = "3 * (x - 2) + 0.6")
 
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.svg"))
@@ -161,9 +162,9 @@ function combine_fit_plot()
 end
 
 Plots.scalefontsizes()
-ts_plot()
-t1_plot()
-t2_plot()
+# ts_plot()
+# t1_plot()
+# t2_plot()
 combine_fit_plot();
 println("Trajectories: $(get_traj(joinpath(dirname(@__DIR__), "T1")))")
 Plots.scalefontsizes()
