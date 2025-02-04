@@ -85,9 +85,9 @@ function t2_plot()
     # deph_rate = deph_rate / U
     # plot!(pl, t, x -> exp(-x * deph_rate * 0.5), label = "decoherence")
 
-    line = collect(values(plotinfo.lines))[1]
-    vline!(pl, [line.x[end] * 0.9])
-    vline!(pl, [line.x[end] * 0.05])
+    # line = collect(values(plotinfo.lines))[1]
+    # vline!(pl, [line.x[end] * 0.9])
+    # vline!(pl, [line.x[end] * 0.05])
     plot!(pl, [0], [0], label = "fit", lc = :grey)
     savefig(pl, joinpath(path, "T2.png"))
     savefig(pl, joinpath(path, "T2.svg"))
