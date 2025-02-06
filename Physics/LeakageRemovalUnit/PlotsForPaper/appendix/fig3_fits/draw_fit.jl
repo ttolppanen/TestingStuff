@@ -76,7 +76,8 @@ end
 
 function combine_plots(plots)
     combined_plot = plot(plots..., 
-    layout = @layout([a b])
+    layout = @layout([a b]),
+    size = (800, 400)
     )
     return combined_plot
 end
@@ -89,4 +90,7 @@ push!(plots, make_plots(t1_plot(), t2_plot(), ts_plot(), "Ideal"))
 include(pl_path("disorder_realistic"))
 push!(plots, make_plots(t1_plot(), t2_plot(), ts_plot(), "Experimental"))
 
-combine_plots(plots)
+pl = combine_plots(plots)
+savefig(joinpath(@__DIR__, "fit.png"))
+savefig(joinpath(@__DIR__, "fig3_fits.svg"))
+pl
