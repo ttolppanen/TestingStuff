@@ -85,9 +85,9 @@ function combine_fit_plot()
     savefig(pl, joinpath(@__DIR__, "combine_fit_plot.png"))
 end
 
-include("Ts/code.jl")
-println("T1")
-include("T1/code.jl")
+# include("Ts/code.jl")
+# println("T1")
+# include("T1/code.jl")
 println("T2")
 include("T2/code.jl")
 make_fit_plot("Ts/", "Ts", 0.8)

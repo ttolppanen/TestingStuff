@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=L_T_times                    # Job name
+#SBATCH --job-name=L                            # Job name
 #SBATCH --mail-type=ALL                         # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=heikki.tolppanen@oulu.fi    # Where to send mail	
 #SBATCH --nodes=1                               # Run all processes on a single node	

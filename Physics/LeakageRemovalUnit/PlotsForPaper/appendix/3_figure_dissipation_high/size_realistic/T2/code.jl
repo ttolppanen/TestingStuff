@@ -42,7 +42,7 @@ function initial_parameters(L)
     param[:diss] = ValueInfo(1 / (16.7 * 10^(-6) * param[:J].val), "16.7µs")
     param[:deco] = ValueInfo(2 / (10.0 * 10^(-6) * param[:J].val), "10.0µs") # 2 due to qubit-n op equivalence
     
-    param[:gamma] = 2 * param[:U].val / param[:J].val
+    param[:gamma] = 2 * param[:U].val
     param[:dt] = 1 / (10 * param[:gamma])
     return param
 end
