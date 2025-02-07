@@ -91,7 +91,7 @@ function f()
         push!(lines, LineInfo(0:dt:t, y, traj, "J = $(J_i / (10^6 * 2 * pi))MHz"))
     end
     path = joinpath(@__DIR__)
-    makeplot(path, lines...; xlabel = "t", ylabel = "n_1", copy_code = false, add_traj = true, param...)
+    makeplot(path, lines...; xlabel = "t", ylabel = "n_1", copy_code = false, add_traj = true, cut_data = true, param...)
     #addtrajectories(path, lines...)
 end
 

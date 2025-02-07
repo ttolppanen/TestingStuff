@@ -86,7 +86,7 @@ function f()
         push!(lines, LineInfo(0:dt:t, y, traj, "L = $L"))
     end
     path = joinpath(@__DIR__)
-    makeplot(path, lines...; xlabel = "t", ylabel = "n1", copy_code = false, add_traj = true, param...)
+    makeplot(path, lines...; xlabel = "t", ylabel = "n1", copy_code = false, add_traj = true, cut_data = true, param...)
 end
 
 @time f()
