@@ -71,6 +71,9 @@ function make_plots(t1, t2, ts, title)
     end
     pl = plots_to_lines(plots[1], plots[2], plots[3])
     plot!(pl, title = title)
+
+    t = t_small_scale(1, 50) * 2 # U / J = 50, L - 1 = 2
+    vline!(pl, [t], ls = :dash, color = color_ts_short_fig2, label = L"(L-1)T_{\textrm{prop}}")
     return pl
 end
 
