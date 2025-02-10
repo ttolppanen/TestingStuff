@@ -147,7 +147,7 @@ function combine_fit_plot()
     t2 = 1 / (1/pure_t2 + 1/(2*t1))
     label2 = latexstring("T_2^{\\textrm{q}} \\approx $(round(t2, digits=1)) \\ \\mu \\textrm{s}")
     hline!(pl, [t2], ls = :dash, label = "", color = color_t2)
-    annotate!(pl, ((0.84, 0.53), text(label2, 7, "Computer Modern")))
+    annotate!(pl, ((0.16, 0.40), text(label2, 7, "Computer Modern")))
 
     plot!(t_time_xs * J / (2 * pi), Ts / J,
     xlabel = L"$W / 2 \pi \ [\textrm{MHz}]$",

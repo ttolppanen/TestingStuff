@@ -29,11 +29,17 @@ function ts_plot()
     plotinfo = load(joinpath(dirname(path), "Ts", "data.jld2"), "plotinfo")
     pl = plot(dpi = 300,
     xlabel = "time", 
-    ylabel = "Array Leakage Population"
+    ylabel = "Array Leakage Population",
+    legend = :none
     )
     fit_lines = TS_fit()
     for line in values(plotinfo.lines)
-        plot!(pl, line.x, line.y, label = line.tag)
+        J = parser(line.tag)
+        if J < 2.2
+            plot!(pl, line.x, line.y, label = line.tag, color = :red)
+        else
+            plot!(pl, line.x, line.y, label = line.tag)
+        end
         f, T = fit_lines[line.tag]
         plot!(pl, line.x, f, label = "", lc = :grey, ls = :dash)
     end
@@ -128,7 +134,8 @@ function combine_fit_plot()
     data_path = joinpath(dirname(@__DIR__), "T1")
     U = get_param(data_path, :U) * 2 * pi
 
-    pl = plot(t_time_xs, Ts / U,
+    x_cut = (1 + Int(floor(length(t_time_xs) * (2.25 - 1) / 19))):length(t_time_xs)
+    pl = plot(t_time_xs[x_cut], Ts[x_cut] / U,
     xlabel = L"$J / 2 \pi \ [\textrm{MHz}]$",
     ylabel = L"$\textrm{Decay\ Times}\ [\mu \textrm{s}]$",
     label = L"$T_s$",

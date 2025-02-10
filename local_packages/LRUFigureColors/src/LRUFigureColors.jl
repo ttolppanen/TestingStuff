@@ -34,6 +34,7 @@ function T_fit(path, start_cut, end_cut = 1.0, y_factor = 1)
 
     for (key, line) in plotinfo.lines
         f_s = floor(Int, length(line.x) * start_cut)
+        f_s = max(1, f_s)
         smaller_than = findfirst(x -> x < 0.01, line.y)
         f_e = isnothing(smaller_than) ? floor(Int, length(line.x) * end_cut) : smaller_than
 
