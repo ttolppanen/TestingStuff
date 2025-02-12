@@ -69,7 +69,7 @@ function f()
 
         out = []
         for gamma in gammas
-            dt = param[:dt].val
+            dt = param[:dt]
             msr_prob = gamma * dt 
             r_f() = begin
                 dw = param[:w].val .+ (rand(L) .- 0.5) * param[:dw].val
