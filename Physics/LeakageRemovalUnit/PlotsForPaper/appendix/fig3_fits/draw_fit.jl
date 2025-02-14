@@ -30,12 +30,12 @@ function format_t2(t2, xlims)
 end
 
 function cut_last_10_percent!(plot)
-    for series in plot.series_list
-        n = length(series[:x])
-        cut_index = floor(Int, 0.9 * n)
-        series[:x] = series[:x][1:cut_index]
-        series[:y] = series[:y][1:cut_index]
-    end
+    series = plot.series_list[1]
+    n = length(series[:x])
+    start_cut = 1 + floor(Int, 0.002 * n)
+    end_cut = floor(Int, 0.9 * n)
+    series[:x] = series[:x][start_cut:end_cut]
+    series[:y] = series[:y][start_cut:end_cut]
 end
 
 # Ts: The label is "$T_\star$".
@@ -48,7 +48,7 @@ function plots_to_lines(t1, t2, ts)
     t1.series_list[1][:linecolor] = color_t1
     plot!(new_plot, t1.series_list[1])
     plot!(new_plot, t1.series_list[2])
-    t2.series_list[1][:label] = L"\langle \sigma_x \rangle \textrm{envelope}"
+    t2.series_list[1][:label] = L"\langle \sigma_x \rangle_\textrm{envl}"
     t2.series_list[1][:linecolor] = color_t2
     plot!(new_plot, t2.series_list[1])
     plot!(new_plot, t2.series_list[2])
@@ -69,8 +69,13 @@ function make_plots(t1, t2, ts, title)
     for i in eachindex(plots)
         plot!(plots[i], legend = false)
     end
+    cut_last_10_percent!(plots[2])
     pl = plots_to_lines(plots[1], plots[2], plots[3])
     plot!(pl, title = title)
+    
+    if title == "Ideal"
+        plot!(pl, legend = :right)
+    end
 
     t = t_small_scale(1, 50) * 2 # U / J = 50, L - 1 = 2
     vline!(pl, [t], ls = :dash, color = color_ts_short_fig2, label = L"(L-1)T_{\textrm{prop}}")
