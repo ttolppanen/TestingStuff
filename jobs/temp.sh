@@ -9,8 +9,8 @@
 #SBATCH --time=30:00:00                         # Time limit hrs:min:sec
 #SBATCH --output=jobs/logs/%x_%j_log.txt        # Standard output and error log
 
-file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/appendix/gamma_rnd_msr/old_data/gamma_dt_001/code.jl"
-traj="5000"
+file_to_run="Physics/LeakageRemovalUnit/PlotsForPaper/3_figure/size/size_dependance_optimal_spot/code.jl"
+traj="2000"
 
 echo "$file_to_run"; echo "trajectories = $traj"; hostname; date; echo
 
