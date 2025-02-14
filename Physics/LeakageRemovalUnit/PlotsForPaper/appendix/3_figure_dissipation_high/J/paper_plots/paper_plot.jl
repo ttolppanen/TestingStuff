@@ -33,7 +33,13 @@ function ts_plot()
     )
     fit_lines = TS_fit()
     for line in values(plotinfo.lines)
-        plot!(pl, line.x, line.y, label = line.tag)
+        # plot!(pl, line.x, line.y, label = line.tag)
+        J = parser(line.tag)
+        if J < 3.5
+            plot!(pl, line.x, line.y, label = line.tag, color = :red)
+        else
+            plot!(pl, line.x, line.y, label = line.tag)
+        end
         f, T = fit_lines[line.tag]
         plot!(pl, line.x, f, label = "", lc = :grey, ls = :dash)
     end
@@ -128,7 +134,8 @@ function combine_fit_plot()
     data_path = joinpath(dirname(@__DIR__), "T1")
     U = get_param(data_path, :U) * 2 * pi
 
-    pl = plot(t_time_xs, Ts / U,
+    x_cut = (1 + Int(floor(length(t_time_xs) * (3.5 - 1) / 19))):length(t_time_xs)
+    pl = plot(t_time_xs[x_cut], Ts[x_cut] / U,
     xlabel = L"$J / 2 \pi \ [\textrm{MHz}]$",
     ylabel = L"$\textrm{Decay\ Times}\ [\mu \textrm{s}]$",
     label = L"$T_s$",

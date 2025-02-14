@@ -35,7 +35,7 @@ function f(plots...)
     size = (1000, 500)
     )
     savefig(pl, joinpath(@__DIR__, "fig3.png"))
-    savefig(pl, joinpath(@__DIR__, "fig3.svg"))
+    savefig(pl, joinpath(@__DIR__, "decay_times_dissipation_high.svg"))
     return pl
 end
 
