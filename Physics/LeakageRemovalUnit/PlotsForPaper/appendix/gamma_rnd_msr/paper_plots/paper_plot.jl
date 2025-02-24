@@ -26,8 +26,8 @@ function make_plot()
     vline!(pl, [0.055], color = color_small_msr, ls = :dash, label = "")
     vline!(pl, [60], color = color_high_msr, ls = :dash, label = "")
 
-    annotate!(pl, ((0.55, 0.9), text(L"\Gamma_{\textrm{rnd}}^{\textrm{low}}", 10, "Computer Modern")))
-    annotate!(pl, ((0.943, 0.9), text(L"\Gamma_{\textrm{rnd}}^{\textrm{high}}", 10, "Computer Modern")))
+    annotate!(pl, ((0.55, 0.9), text(L"\Gamma_{\textrm{fb}}^{\textrm{low}}", 10, "Computer Modern")))
+    annotate!(pl, ((0.943, 0.9), text(L"\Gamma_{\textrm{fb}}^{\textrm{high}}", 10, "Computer Modern")))
 
     savefig(pl, joinpath(path, "paper_plot.png"))
     savefig(pl, joinpath(path, "rnd_msr_optimal_spots.svg"))
