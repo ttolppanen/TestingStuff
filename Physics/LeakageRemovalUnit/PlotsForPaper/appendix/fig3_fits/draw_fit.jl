@@ -48,7 +48,7 @@ function plots_to_lines(t1, t2, ts)
     t1.series_list[1][:linecolor] = color_t1
     plot!(new_plot, t1.series_list[1])
     plot!(new_plot, t1.series_list[2])
-    t2.series_list[1][:label] = L"\langle \sigma_x \rangle_\textrm{envl}"
+    t2.series_list[1][:label] = L"\langle \sigma_x \rangle"
     t2.series_list[1][:linecolor] = color_t2
     plot!(new_plot, t2.series_list[1])
     plot!(new_plot, t2.series_list[2])
@@ -71,7 +71,7 @@ function make_plots(t1, t2, ts, title)
     end
     cut_last_10_percent!(plots[2])
     pl = plots_to_lines(plots[1], plots[2], plots[3])
-    plot!(pl, title = title)
+    plot!(pl, title = title, xlabel = L"tJ")
     
     if title == "Ideal"
         plot!(pl, legend = :right)
@@ -96,7 +96,7 @@ include(pl_path("disorder"))
 push!(plots, make_plots(t1_plot(), t2_plot(), ts_plot(), "Ideal"))
 
 include(pl_path("disorder_realistic"))
-push!(plots, make_plots(t1_plot(), t2_plot(), ts_plot(), "Experimental"))
+push!(plots, make_plots(t1_plot(), t2_plot(), ts_plot(), "Experimental Conditions"))
 
 pl = combine_plots(plots)
 savefig(joinpath(@__DIR__, "fit.png"))
