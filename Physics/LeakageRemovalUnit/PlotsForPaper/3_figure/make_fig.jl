@@ -1,4 +1,35 @@
 using Plots
+using HDF5
+using LaTeXStrings
+
+function save_data_to_hdf5(plt, annonation)
+    annonation = annonation[2]
+    path = joinpath(@__DIR__, "hdf5_data", "fig3_data.h5")
+    if annonation == 'a'
+        file = h5open(path, "w")
+    else
+        file = h5open(path, "r+")
+    end
+    g = create_group(file, string(annonation))
+    for s in plt.series_list
+        label = String(s[:label])
+        if label == "\$T_1\$"
+            label = "t1"
+        elseif label == "\$T_2\$"
+            label = "t2"
+        elseif label == "\$T_\\star\$" || label == "\$T_s\$"
+            label = "ts"
+        else
+            continue
+        end
+        x = s[:x]
+        y = s[:y]
+        sg = create_group(g, label)
+        write(sg, "y", y)
+        write(sg, "x", x)
+    end
+    close(file)
+end
 
 function f(plots...)
     layout = @layout [
@@ -9,6 +40,7 @@ function f(plots...)
     plots = deepcopy(collect(plots))
     annonations = ["(a)", "(b)", "(c)", "(d)", "(e)", "(f)"]
     for i in 1:6
+        save_data_to_hdf5(plots[i], annonations[i])
         plot!(plots[i], topmargin = 7Plots.mm, ytickfont = font_size - 1, xtickfont = font_size - 1)
         annotate!(plots[i], ((-0.00, 1.15), text(latexstring("\\textbf{$(annonations[i])}"), font_size, "Computer Modern")))
 
