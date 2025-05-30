@@ -7,6 +7,39 @@ using LinearAlgebra
 using PlotAndSave
 @everywhere using QuantumTimeEvolution
 using OrderedCollections
+using HDF5
+
+function save_data_to_hdf5(plt)
+    path = joinpath(@__DIR__, "hdf5_data", "supplementary_fig2_data.h5")
+    file = h5open(path, "w")
+    for s in plt.series_list
+        label = String(s[:label])
+        println(label)
+        if label == "L = 3"
+            label = "random feedback measurement"
+        else
+            continue
+        end
+        x = collect(s[:x])
+        y = s[:y]
+        sg = create_group(file, label)
+        write(sg, "y", y)
+        write(sg, "x", x)
+    end
+    close(file)
+end
+
+function add_attributes_to_hdf5_data()
+    path = joinpath(@__DIR__, "hdf5_data", "supplementary_fig2_data.h5")
+    file = h5open(path, "r+")
+    attrs(file)["DOI"] = "10.5281/zenodo.15516345"
+    attrs(file)["description"] = "Supplementary figure 2 data."
+    
+    g_c = file["random feedback measurement"]
+
+    attrs(g_c)["description"] = "Array leakage population as a function of random measurement rate. Rate is in the units of the coupling J. Random measurement here means that in each time-step of the simulation there is a probability of p = Gamma * dt to measure the last site."
+    close(file)
+end
 
 function rdm_msr_feedback!(state::AbstractVector{<:Number}, msr_op::MsrOpMatrixType, msr_prob::Real, feedback::AbstractVector)
     site = 3
@@ -109,5 +142,7 @@ function xlog_plot(path)
     return pl
 end
 
-@time f()
+# @time f()
 # xlog_plot(@__DIR__)
+save_data_to_hdf5(xlog_plot(@__DIR__))
+add_attributes_to_hdf5_data()
