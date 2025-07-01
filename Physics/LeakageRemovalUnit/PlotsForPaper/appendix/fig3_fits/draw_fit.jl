@@ -85,7 +85,7 @@ end
 function combine_plots(plots)
     combined_plot = plot(plots..., 
     layout = @layout([a b]),
-    size = (800, 400)
+    size = (800, 400) .* 0.7
     )
     return combined_plot
 end
