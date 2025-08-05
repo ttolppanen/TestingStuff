@@ -134,8 +134,8 @@ function combine_fit_plot()
     plot!(pl, t_time_x2 * J / (2 * pi), T2 / J, label = L"$T_2$", color = color_t2)
 
     plot!(t_time_xs * J / (2 * pi), Ts / J,
-    xlabel = L"$W / 2 \pi \ [\textrm{MHz}]$",
-    ylabel = L"$\textrm{Decay\ Times}\ [ \textrm{\mu s}]$",
+    xlabel = L"$W / 2 \pi \ (\textrm{MHz})$",
+    ylabel = L"$\textrm{Decay\ Times}\ ( \textrm{\mu s})$",
     label = L"$T_\star$",
     color = color_ts,
     legend = :topleft,

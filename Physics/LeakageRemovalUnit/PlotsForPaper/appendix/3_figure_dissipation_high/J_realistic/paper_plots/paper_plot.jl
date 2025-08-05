@@ -127,8 +127,8 @@ function combine_fit_plot()
     U = get_param(data_path, :U) * 2 * pi
     
     pl = plot(t_time_xs, Ts / U,
-    xlabel = L"$J / 2 \pi  \ [\textrm{MHz}]$",
-    ylabel = L"$\textrm{Decay\ Times}\ [\mu \textrm{s}]$",
+    xlabel = L"$J / 2 \pi  \ (\textrm{MHz})$",
+    ylabel = L"$\textrm{Decay\ Times}\ (\mu \textrm{s})$",
     label = L"$T_s$",
     color = color_ts,
     legend = :topright,

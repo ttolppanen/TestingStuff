@@ -150,8 +150,8 @@ function combine_fit_plot()
     annotate!(pl, ((0.16, 0.40), text(label2, 7, "Computer Modern")))
 
     plot!(t_time_xs * J / (2 * pi), Ts / J,
-    xlabel = L"$W / 2 \pi \ [\textrm{MHz}]$",
-    ylabel = L"$\textrm{Decay\ Times}\ [\mu \textrm{s}]$",
+    xlabel = L"$W / 2 \pi \ (\textrm{MHz})$",
+    ylabel = L"$\textrm{Decay\ Times}\ (\mu \textrm{s})$",
     label = L"$T_\star$",
     legend = :topleft,
     color = color_ts,

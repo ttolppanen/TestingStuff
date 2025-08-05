@@ -136,8 +136,8 @@ function combine_fit_plot()
 
     x_cut = (1 + Int(floor(length(t_time_xs) * (3.5 - 1) / 19))):length(t_time_xs)
     pl = plot(t_time_xs[x_cut], Ts[x_cut] / U,
-    xlabel = L"$J / 2 \pi \ [\textrm{MHz}]$",
-    ylabel = L"$\textrm{Decay\ Times}\ [\mu \textrm{s}]$",
+    xlabel = L"$J / 2 \pi \ (\textrm{MHz})$",
+    ylabel = L"$\textrm{Decay\ Times}\ (\mu \textrm{s})$",
     label = L"$T_s$",
     color = color_ts,
     legend = :topright,
