@@ -10,7 +10,7 @@ using OrderedCollections
 using HDF5
 
 function save_data_to_hdf5(plt)
-    path = joinpath(@__DIR__, "hdf5_data", "supplementary_fig2_data.h5")
+    path = joinpath(@__DIR__, "hdf5_data", "fig7_data.h5")
     file = h5open(path, "w")
     for s in plt.series_list
         label = String(s[:label])
@@ -30,10 +30,10 @@ function save_data_to_hdf5(plt)
 end
 
 function add_attributes_to_hdf5_data()
-    path = joinpath(@__DIR__, "hdf5_data", "supplementary_fig2_data.h5")
+    path = joinpath(@__DIR__, "hdf5_data", "fig7_data.h5")
     file = h5open(path, "r+")
     attrs(file)["DOI"] = "10.5281/zenodo.15516345"
-    attrs(file)["description"] = "Supplementary figure 2 data."
+    attrs(file)["description"] = "Figure 7 data."
     
     g_c = file["random feedback measurement"]
 

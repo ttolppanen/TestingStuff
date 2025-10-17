@@ -4,7 +4,7 @@ using LaTeXStrings
 
 function save_data_to_hdf5(plt, annonation)
     annonation = annonation[2]
-    path = joinpath(@__DIR__, "hdf5_data", "supplementary_fig3_data.h5")
+    path = joinpath(@__DIR__, "hdf5_data", "fig6_data.h5")
     if annonation == 'a'
         file = h5open(path, "w")
     else
@@ -32,10 +32,10 @@ function save_data_to_hdf5(plt, annonation)
 end
 
 function add_attributes_to_hdf5_data()
-    path = joinpath(@__DIR__, "hdf5_data", "supplementary_fig3_data.h5")
+    path = joinpath(@__DIR__, "hdf5_data", "fig6_data.h5")
     file = h5open(path, "r+")
     attrs(file)["DOI"] = "10.5281/zenodo.15516345"
-    attrs(file)["description"] = "Supplementary figure 3 data for the low dissipation rate optimal spot. Groups contain the data of each subplot."
+    attrs(file)["description"] = "Figure 6 data for the low dissipation rate optimal spot. Groups contain the data of each subplot."
     attrs(file)["y_description"] = "Decay times T1, T2 and Ts in the units of microseconds."
 
     g_a = file["a"]
